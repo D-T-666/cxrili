@@ -1,0 +1,98 @@
+:root {
+	--class-color: #8b9;
+	--class-color-bright: #afc;
+	--break-color: rgb(157, 61, 61);
+	--break-color-bright: #f99;
+	--break-color-dark: rgb(123, 46, 46);
+}
+
+body {
+	margin: 0;
+	padding: 1rem;
+	background-color: #333;
+}
+
+#root-div {
+	font-size: 48px;
+	padding: 1rem;
+}
+
+/* Time line */
+
+.time-line-block {
+	background-color: #0006;
+	display: flex;
+	padding: 0;
+	position: relative;
+	height: 17.5rem;
+	/* box-sizing: border-box; */
+	/* border: 0.4rem solid #666; */
+	box-shadow: inset 0 0 0 0.4rem #666;
+	z-index: 1;
+}
+
+.class {
+	box-shadow: inset 0 0 0 0.4rem var(--class-color);
+	color: var(--class-color);
+}
+
+.break {
+	background-image: repeating-linear-gradient(-25deg, var(--break-color), var(--break-color) 0.4rem, var(--break-color-dark) 0, var(--break-color-dark) 0.8rem);
+	height: 2.5rem;
+	content: " ";
+	border-color: var(--break-color);
+	box-shadow: inset 0 0 0 0.4rem var(--break-color);
+}
+
+.break>.time-line-container>.time-line {
+	background-color: var(--break-color-bright);
+}
+
+.time-line-container {
+	display: block;
+	position: relative;
+	width: 8rem;
+	margin: 0;
+	padding: 0;
+}
+
+.time-line {
+	display: block;
+	background-color: var(--class-color-bright);
+	width: 6px;
+	margin: 0;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	height: 100%;
+}
+
+.class-description {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	justify-content: space-around;
+}
+
+.class-name {
+	text-align: center;
+	width: 100%;
+	font-size: 100%;
+}
+
+.class-timers {
+	display: flex;
+	justify-content: space-evenly;
+	font-size: 26px;
+	align-items: center;
+}
+
+.timer {
+	text-align: center;
+	display: block;
+	/* justify-content: center; */
+}
+
+.timer-time {
+	font-size: 36px;
+}
