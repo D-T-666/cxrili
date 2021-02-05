@@ -1,9 +1,9 @@
 # Cxrili - timetable for my class
 
 ## features:
-- [ ] live updating time line
+- [x] live updating time line
 - [ ] multiple pages for every day
-- [ ] week view page
+- [ ] week view pages
 
-### fun facts:
-- made with pure HTML/CSS and JS. (beisdes some fonts if I use any)
+
+fun fact: made with pure HTML/CSS and JS.
