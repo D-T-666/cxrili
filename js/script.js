@@ -7,14 +7,14 @@ function getCurrentDay() {
 
     let d = new Date();
 
-    day = d.getDay()-2;
+    day = d.getDay();
 
 	return days[day];
 }
 
 function updateTimers(){
 	let date = new Date();
-	let time = date.getSeconds()+date.getMinutes()*60+date.getHours()*3600-6*60*60;
+	let time = date.getSeconds()+date.getMinutes()*60+date.getHours()*3600;
 
 	for(let i = 0; i < eltDurations.length; i++){
 		let left = (eltDurations[i]*60+mainStart*60) - time;
