@@ -1,9 +1,10 @@
-function addBreakEllement(duration){
-	let id, BreakEllement;
+function addBreakEllement(duration, id){
+	let BreakEllement;
 
 	BreakEllement = document.createElement("div");
 	BreakEllement.classList.add("break")
 	BreakEllement.classList.add("time-line-block");
+	BreakEllement.id = `${id}`;
 	BreakEllement.style.height = `${duration/2}rem`;
 
 	// Timeline creation
@@ -30,6 +31,4 @@ function addBreakEllement(duration){
 
 	// Appending ClassDescription
 	BreakEllement.appendChild(ClassDesctiprion);
-
-	return {id, BreakEllement}
 }

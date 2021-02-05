@@ -1,12 +1,11 @@
-function createClassEllement(name, duration, start, end){
-	let id, ClassEllement;
-
-	id = `${name}-${start}`;
+function createClassEllement(name, duration, start, end, id){
+	let ClassEllement;
 
 	ClassEllement = document.createElement("div");
 	ClassEllement.classList.add("class")
 	ClassEllement.classList.add("time-line-block");
 	ClassEllement.style.height = `${duration/2}rem`;
+	ClassEllement.id = `${id}`;
 
 	// Timeline creation
 	let timelineContainer, timeline;
@@ -63,6 +62,4 @@ function createClassEllement(name, duration, start, end){
 
 	// Appending ClassDescription
 	ClassEllement.appendChild(ClassDesctiprion);
-	
-	return id;
 }
