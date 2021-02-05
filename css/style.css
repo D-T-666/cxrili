@@ -25,6 +25,8 @@ body {
 	padding: 0;
 	position: relative;
 	height: 17.5rem;
+	max-width: 100vh;
+	/* width:auto; */
 	/* box-sizing: border-box; */
 	/* border: 0.4rem solid #666; */
 	box-shadow: inset 0 0 0 0.4rem #666;
@@ -51,7 +53,8 @@ body {
 .time-line-container {
 	display: block;
 	position: relative;
-	width: 8rem;
+	width: 4rem;
+	min-width: 4rem;
 	margin: 0;
 	padding: 0;
 }
@@ -59,11 +62,11 @@ body {
 .time-line {
 	display: block;
 	background-color: var(--class-color-bright);
-	width: 6px;
+	width: 1rem;
 	margin: 0;
 	position: absolute;
-	left: 50%;
-	transform: translate(-50%);
+	left: 100%;
+	transform: translate(-100%);
 	height: 100%;
 }
 

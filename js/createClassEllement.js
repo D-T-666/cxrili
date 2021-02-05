@@ -25,28 +25,28 @@ function createClassEllement(name, duration, start, end, id){
 	className.innerHTML = name;
 	ClassDesctiprion.appendChild(className);
 	// timers
-	let classTimers, timerStart, timerEllapsed, timerEnd;
+	let classTimers, timerTimeLeft, timerStart, timerEnd;
 	// classTimers
 	classTimers = document.createElement("div");
 	classTimers.classList.add("class-timers")
 	ClassDesctiprion.appendChild(classTimers);
+	// timerTimeLeft
+	timerTimeLeft = document.createElement("div");
+	timerTimeLeft.classList.add("timer-left");
+	timerTimeLeft.classList.add("timer");
+	timerTimeLeft.innerHTML = `<p>დარჩა:</p><p class="timer-time">${NaN}</p>`
+	classTimers.appendChild(timerTimeLeft);
 	// timerStart
 	timerStart = document.createElement("div");
 	timerStart.classList.add("timer-start");
 	timerStart.classList.add("timer");
-	timerStart.innerHTML = `<p>დაიწყება</p><p class="timer-time">${start}</p>`
+	timerStart.innerHTML = `<p>დაიწყება:</p><p class="timer-time">${start}</p>`
 	classTimers.appendChild(timerStart);
-	// timerEllapsed
-	timerEllapsed = document.createElement("div");
-	timerEllapsed.classList.add("timer-start");
-	timerEllapsed.classList.add("timer");
-	timerEllapsed.innerHTML = `<p>გასულია</p><p class="timer-time">${NaN}</p>`
-	classTimers.appendChild(timerEllapsed);
 	// timerEnd
 	timerEnd = document.createElement("div");
-	timerEnd.classList.add("timer-start");
+	timerEnd.classList.add("timer-end");
 	timerEnd.classList.add("timer");
-	timerEnd.innerHTML = `<p>დასრუკლდება</p><p class="timer-time">${end}</p>`
+	timerEnd.innerHTML = `<p>დასრულდება:</p><p class="timer-time">${end}</p>`
 	classTimers.appendChild(timerEnd);
 
 

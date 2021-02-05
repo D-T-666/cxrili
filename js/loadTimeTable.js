@@ -10,28 +10,16 @@ async function loadTimeTable(day) {
 		let row = table[i];
 		objects.push({
 			name: row[0],
-			start: {
-				h: Number(row[1].split(":")[0]),
-				m: Number(row[1].split(":")[1])
-			},
-			end: {
-				h: Number(row[2].split(":")[0]),
-				m: Number(row[2].split(":")[1])
-			},
+			start: Number(row[1].split(":")[0])*60+Number(row[1].split(":")[1]),
+			end: Number(row[2].split(":")[0])*60+Number(row[2].split(":")[1]),
 			duration: Number(row[2].split(":")[0])*60+Number(row[2].split(":")[1])-(Number(row[1].split(":")[0])*60+Number(row[1].split(":")[1]))
 		});
 		if(i < table.length-1){
 			let next_row = table[i+1];
 			objects.push({
 				name: 'break',
-				start: {
-					h: Number(row[2].split(":")[0]),
-					m: Number(row[2].split(":")[1])
-				},
-				end: {
-					h: Number(next_row[1].split(":")[0]),
-					m: Number(next_row[1].split(":")[1])
-				},
+				start: Number(row[2].split(":")[0])*60+Number(row[2].split(":")[1]),
+				end: Number(next_row[1].split(":")[0])*60+Number(next_row[1].split(":")[1]),
 				duration: Number(next_row[1].split(":")[0])*60+Number(next_row[1].split(":")[1])-(Number(row[2].split(":")[0])*60+Number(row[2].split(":")[1]))
 			});
 		}
