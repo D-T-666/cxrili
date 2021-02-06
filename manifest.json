@@ -29,7 +29,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/time-table/index.html",
+    "start_url": "/cxrili/index.html",
     "display": "fullscreen",
     "theme_color": "#a0ffc0",
     "background_color": "#333"
