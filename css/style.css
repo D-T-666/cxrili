@@ -1,73 +1,87 @@
 :root {
-	--class-color: #8b9;
-	--class-color-bright: #afc;
+	--class-color: rgb(160, 255, 192);
+	--class-color-bright:rgb(123, 255, 167);
+	--class-color-trans: #afc1;
+	--blue-color-trans: #7bf3;
 	--break-color: rgb(157, 61, 61);
 	--break-color-bright: #f99;
 	--break-color-dark: rgb(123, 46, 46);
+	--break-color-trans: #6003;
+	--end-color: var(--blue-color-trans);
+	--start-color: var(--class-color-trans);
+	--grey-trans: #0006;
 }
 
 body {
 	margin: 0;
-	padding: 1rem;
+	/* padding: 1rem; */
 	background-color: #333;
 }
 
 #root-div {
+	display: block;
+	/* max-width: 100vh; */
+	min-width: 35rem;
 	font-size: 48px;
-	padding: 1rem;
+	/* padding: 1rem; */
 }
 
 /* Time line */
 
 .time-line-block {
-	background-color: #0006;
+	background-color: #333;
 	display: flex;
 	padding: 0;
 	position: relative;
-	height: 17.5rem;
-	max-width: 100vh;
 	/* width:auto; */
 	/* box-sizing: border-box; */
 	/* border: 0.4rem solid #666; */
-	box-shadow: inset 0 0 0 0.4rem #666;
+	/* box-shadow: inset 0 0 0 0.4rem #666; */
 	z-index: 1;
 }
 
 .class {
-	box-shadow: inset 0 0 0 0.4rem var(--class-color);
+	/* box-shadow: inset 0 0 0 0.4rem var(--class-color); */
 	color: var(--class-color);
+	/* background-image: linear-gradient(#111, #000); */
 }
 
 .break {
-	background-image: repeating-linear-gradient(-25deg, var(--break-color), var(--break-color) 0.4rem, var(--break-color-dark) 0, var(--break-color-dark) 0.8rem);
+	/* background-image: repeating-linear-gradient(-25deg, var(--break-color), var(--break-color) 0.4rem, var(--break-color-dark) 0, var(--break-color-dark) 0.8rem); */
+	background-color: var(--break-color-trans);
 	height: 2.5rem;
 	content: " ";
 	border-color: var(--break-color);
-	box-shadow: inset 0 0 0 0.4rem var(--break-color);
-}
-
-.break>.time-line-container>.time-line {
-	background-color: var(--break-color-bright);
+	/* box-shadow: inset 0 0 0 0.4rem var(--break-color); */
 }
 
 .time-line-container {
 	display: block;
-	position: relative;
-	width: 4rem;
-	min-width: 4rem;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 	margin: 0;
 	padding: 0;
 }
 
 .time-line {
 	display: block;
-	background-color: var(--class-color-bright);
-	width: 1rem;
-	margin: 0;
 	position: absolute;
+	margin: 0;
 	left: 100%;
 	transform: translate(-100%);
+	width: 100%;
 	height: 100%;
+	content: " ";
+	z-index: -10;
+	box-sizing: border-box;
+	border-left: solid 1rem var(--class-color-bright);
+	border-right: solid 1rem var(--class-color-bright);
+}
+
+.break>.time-line-container>.time-line{
+	border-left: solid 1rem var(--break-color-bright);
+	border-right: solid 1rem var(--break-color-bright);
 }
 
 .class-description {
@@ -85,7 +99,7 @@ body {
 
 .class-timers {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	font-size: 26px;
 	align-items: center;
 }
@@ -93,7 +107,27 @@ body {
 .timer {
 	text-align: center;
 	display: block;
-	/* justify-content: center; */
+	justify-content: center;
+	/* border-radius: 1rem; */
+	padding: 0;
+	margin: 0 1rem;
+}
+
+.timer-start {
+	background-color: var(--class-color-trans);
+}
+
+.timer-end {
+	background-color: var(--blue-color-trans);
+}
+
+.timer-left {
+
+}
+
+.timer>p {
+	margin: 0.5rem 1rem;
+	padding: 0;
 }
 
 .timer-time {
