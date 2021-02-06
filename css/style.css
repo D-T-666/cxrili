@@ -1,5 +1,5 @@
 :root {
-	--class-color: rgb(160, 255, 192);
+	--class-color: #a0ffc0;
 	--class-color-bright:rgb(123, 255, 167);
 	--class-color-trans: #afc1;
 	--blue-color-trans: #7bf3;
@@ -10,6 +10,12 @@
 	--end-color: var(--blue-color-trans);
 	--start-color: var(--class-color-trans);
 	--grey-trans: #0006;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url("https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf");
+    /* src: url("localhost:5500/fonts/bpg_glaho_sylfaen.ttf"); */
 }
 
 body {
@@ -33,26 +39,19 @@ body {
 	display: flex;
 	padding: 0;
 	position: relative;
-	/* width:auto; */
-	/* box-sizing: border-box; */
-	/* border: 0.4rem solid #666; */
-	/* box-shadow: inset 0 0 0 0.4rem #666; */
 	z-index: 1;
+	font-family: myFont;
 }
 
 .class {
-	/* box-shadow: inset 0 0 0 0.4rem var(--class-color); */
 	color: var(--class-color);
-	/* background-image: linear-gradient(#111, #000); */
 }
 
 .break {
-	/* background-image: repeating-linear-gradient(-25deg, var(--break-color), var(--break-color) 0.4rem, var(--break-color-dark) 0, var(--break-color-dark) 0.8rem); */
 	background-color: var(--break-color-trans);
 	height: 2.5rem;
 	content: " ";
 	border-color: var(--break-color);
-	/* box-shadow: inset 0 0 0 0.4rem var(--break-color); */
 }
 
 .time-line-container {
@@ -95,6 +94,7 @@ body {
 	text-align: center;
 	width: 100%;
 	font-size: 100%;
+	font-family: myFont;
 }
 
 .class-timers {
@@ -108,7 +108,6 @@ body {
 	text-align: center;
 	display: block;
 	justify-content: center;
-	/* border-radius: 1rem; */
 	padding: 0;
 	margin: 0 1rem;
 }

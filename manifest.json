@@ -1,0 +1,36 @@
+{
+    "name": "XI-3 კლასის გაკვეთილების ცხრილი",
+    "short_name": "ცხრილი",
+    "description": "XI-3 კლასის გაკვეთილების ცხრილი",
+    "icons": [
+        {
+            "src": "./icons/32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/64x64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/160x160.png",
+            "sizes": "160x160",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/time-table/index.html",
+    "display": "fullscreen",
+    "theme_color": "#a0ffc0",
+    "background_color": "#333"
+}
