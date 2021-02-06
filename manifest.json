@@ -40,7 +40,7 @@
 			"purpose": "any maskable"
         }
     ],
-    "start_url": "/",
+    "start_url": "/cxrili/",
     "display": "fullscreen",
     "theme_color": "#a0ffc0",
     "background_color": "#333"
