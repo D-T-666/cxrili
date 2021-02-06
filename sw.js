@@ -1,6 +1,5 @@
 const staticCacheName = 'site-static';
 const assets = [
-	'/',
 	'/index.html',
 	'/css/style.css',
 	'/fonts/bpg_glaho_sylfaen.ttf',
