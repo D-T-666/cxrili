@@ -6,30 +6,41 @@
         {
             "src": "./icons/32x32.png",
             "sizes": "32x32",
-            "type": "image/png"
+            "type": "image/png",
+			"purpose": "any maskable"
         },
         {
             "src": "./icons/64x64.png",
             "sizes": "64x64",
-            "type": "image/png"
+            "type": "image/png",
+			"purpose": "any maskable"
         },
         {
             "src": "./icons/96x96.png",
             "sizes": "96x96",
-            "type": "image/png"
+            "type": "image/png",
+			"purpose": "any maskable"
         },
         {
             "src": "./icons/128x128.png",
             "sizes": "128x128",
-            "type": "image/png"
+            "type": "image/png",
+			"purpose": "any maskable"
         },
         {
             "src": "./icons/160x160.png",
             "sizes": "160x160",
-            "type": "image/png"
+            "type": "image/png",
+			"purpose": "any maskable"
+        },
+        {
+            "src": "./icons/512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+			"purpose": "any maskable"
         }
     ],
-    "start_url": "/cxrili/index.html",
+    "start_url": "/",
     "display": "fullscreen",
     "theme_color": "#a0ffc0",
     "background_color": "#333"

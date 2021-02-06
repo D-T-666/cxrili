@@ -7,7 +7,7 @@ function getCurrentDay() {
 
     let d = new Date();
 
-    day = d.getDay();
+    day = d.getDay()-3;
 
 	return days[day];
 }
@@ -70,6 +70,8 @@ function updateTimers(){
 }
 
 (async function main(){
+
+	
 	let day = getCurrentDay();
 
 	let objects = await loadTimeTable(day);
