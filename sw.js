@@ -21,7 +21,8 @@ const assets = [
 	'/cxrili/icons/160x160.png',
 	'/cxrili/icons/512x512.png',
 	'/cxrili/favicon.ico',
-	'/cxrili/manifest.json'
+	'/cxrili/manifest.json',
+	'/favicon.ico'
 ];
 
 self.addEventListener('install', evt => {
@@ -36,7 +37,10 @@ self.addEventListener('install', evt => {
 self.addEventListener('fetch', evt => {
 	evt.respondWith(
 		caches.match(evt.request).then(cacheRes => {
-			return cacheRes || fetch(evt.request);
+			if(cacheRes != undefined)
+				return cacheRes
+			else
+				return fetch(evt.request)
 		})
 	)
 })
