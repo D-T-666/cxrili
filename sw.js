@@ -13,6 +13,13 @@ const assets = [
 	'/cxrili/timetable/tue.csv',
 	'/cxrili/timetable/wed.csv',
 	'/cxrili/timetable/thu.csv',
+	'/cxrili/icons/32x32.png',
+	'/cxrili/icons/48x48.png',
+	'/cxrili/icons/64x64.png',
+	'/cxrili/icons/96x96.png',
+	'/cxrili/icons/128x128.png',
+	'/cxrili/icons/160x160.png',
+	'/cxrili/icons/512x512.png',
 	'/cxrili/favicon.ico',
 	'/cxrili/manifest.json'
 ];
