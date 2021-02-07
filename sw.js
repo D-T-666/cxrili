@@ -1,18 +1,18 @@
 const staticCacheName = 'site-static';
 const assets = [
-	'/',
-	'/index.html',
-	'/css/style.css',
-	'/fonts/bpg_glaho_sylfaen.ttf',
-	'/js/app.js',
-	'/js/script.js',
-	'/js/createBreakEllement.js',
-	'/js/createClassEllement.js',
-	'/js/loadTimeTable.js',
-	'/timetable/mon.csv',
-	'/timetable/tue.csv',
-	'/timetable/wed.csv',
-	'/timetable/thu.csv'
+	'/cxrili/',
+	'/cxrili/index.html',
+	'/cxrili/css/style.css',
+	'/cxrili/fonts/bpg_glaho_sylfaen.ttf',
+	'/cxrili/js/app.js',
+	'/cxrili/js/script.js',
+	'/cxrili/js/createBreakEllement.js',
+	'/cxrili/js/createClassEllement.js',
+	'/cxrili/js/loadTimeTable.js',
+	'/cxrili/timetable/mon.csv',
+	'/cxrili/timetable/tue.csv',
+	'/cxrili/timetable/wed.csv',
+	'/cxrili/timetable/thu.csv'
 ];
 
 self.addEventListener('install', evt => {
