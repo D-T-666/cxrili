@@ -7,7 +7,7 @@ function getCurrentDay() {
 
     let d = new Date();
 
-    day = d.getDay();
+    day = d.getDay()+1;
 
 	return days[day];
 }
