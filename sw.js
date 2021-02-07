@@ -1,5 +1,6 @@
 const staticCacheName = 'site-static';
 const assets = [
+	'/',
 	'/index.html',
 	'/css/style.css',
 	'/fonts/bpg_glaho_sylfaen.ttf',
@@ -23,17 +24,14 @@ self.addEventListener('install', evt => {
 	)
 });
 
-self.addEventListener('activate', evt => {
-	console.log('service worker has been activated');
-})
+// self.addEventListener('activate', evt => {
+// 	console.log('service worker has been activated');
+// })
 
 self.addEventListener('fetch', evt => {
 	evt.respondWith(
 		caches.match(evt.request).then(cacheRes => {
-			if(cacheRes != undefined)
-				return cacheRes;
-			else
-				return fetch(evt.request);
+			return cacheRes || fetch(evt.request);
 		})
 	)
 })
