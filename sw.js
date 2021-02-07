@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static';
+const staticCacheName = 'site-static-v.1.0';
 const assets = [
 	'/cxrili/',
 	'/cxrili/index.html',
@@ -30,6 +30,17 @@ self.addEventListener('install', evt => {
 		caches.open(staticCacheName).then(cache => {
 			console.log('caching shell assets');
 			cache.addAll(assets);
+		})
+	)
+});
+
+self.addEventListener('activate', evt => {
+	evt.waitUntil(
+		caches.keys().then(keys => {
+			return Promise.all(keys
+				.filter(key => key != staticCacheName)
+				.map(key => caches.delete(key))
+			)
 		})
 	)
 });
