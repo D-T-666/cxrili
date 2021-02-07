@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v.1.1';
+const staticCacheName = 'site-static-v.1.8';
 const assets = [
 	'/cxrili/',
 	'/cxrili/index.html',
@@ -20,6 +20,7 @@ const assets = [
 	'/cxrili/icons/128x128.png',
 	'/cxrili/icons/160x160.png',
 	'/cxrili/icons/512x512.png',
+	'/cxrili/icons/calendar.svg',
 	'/cxrili/favicon.ico',
 	'/cxrili/manifest.json',
 	'/favicon.ico'

@@ -40,6 +40,64 @@
 			"purpose": "any maskable"
         }
     ],
+	"shortcuts": [
+		{
+			"short_name": "ორშაბათი",
+			"name": "ცხრილი ორშაბათისთვის",
+			"description": "იხილეთ ცხრილი ორშაბათისთვის",
+			"url": "?d=mon",
+			"icons": [
+				{
+					"src": "./icons/128x128.png",
+					"sizes": "128x128",
+					"type": "image/png",
+					"purpose": "any maskable"
+				}
+			]
+		},
+		{
+			"short_name": "სამშაბათი",
+			"name": "ცხრილი სამშაბათისთვის",
+			"description": "იხილეთ ცხრილი სამშაბათისთვის",
+			"url": "?d=tue",
+			"icons": [
+				{
+					"src": "./icons/128x128.png",
+					"sizes": "128x128",
+					"type": "image/png",
+					"purpose": "any maskable"
+				}
+			]
+		},
+		{
+			"short_name": "ოთხშაბათი",
+			"name": "ცხრილი ოთხშაბათისთვის",
+			"description": "იხილეთ ცხრილი ოთხშაბათისთვის",
+			"url": "?d=wed",
+			"icons": [
+				{
+					"src": "./icons/128x128.png",
+					"sizes": "128x128",
+					"type": "image/png",
+					"purpose": "any maskable"
+				}
+			]
+		},
+		{
+			"short_name": "ხუთშაბათი",
+			"name": "ცხრილი ხუთშაბათისთვის",
+			"description": "იხილეთ ცხრილი ხუთშაბათისთვის",
+			"url": "?d=thu",
+			"icons": [
+				{
+					"src": "./icons/128x128.png",
+					"sizes": "128x128",
+					"type": "image/png",
+					"purpose": "any maskable"
+				}
+			]
+		}
+	],
     "start_url": "/cxrili/",
     "display": "fullscreen",
     "theme_color": "#a0ffc0",

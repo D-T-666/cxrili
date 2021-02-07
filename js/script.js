@@ -7,9 +7,11 @@ function getCurrentDay() {
 
     let d = new Date();
 
-    day = d.getDay();
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const url_Day = urlParams.get('d');
 
-	return days[day];
+	return url_Day || days[d.getDay()];
 }
 
 function updateTimers(){
