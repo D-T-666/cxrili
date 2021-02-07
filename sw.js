@@ -3,7 +3,7 @@ const assets = [
 	'/cxrili/',
 	'/cxrili/index.html',
 	'/cxrili/css/style.css',
-	'/cxrili/fonts/bpg_glaho_sylfaen.ttf',
+	'https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf',
 	'/cxrili/js/app.js',
 	'/cxrili/js/script.js',
 	'/cxrili/js/createBreakEllement.js',
@@ -12,7 +12,9 @@ const assets = [
 	'/cxrili/timetable/mon.csv',
 	'/cxrili/timetable/tue.csv',
 	'/cxrili/timetable/wed.csv',
-	'/cxrili/timetable/thu.csv'
+	'/cxrili/timetable/thu.csv',
+	'/cxrili/favicon.ico',
+	'/cxrili/manifest.json'
 ];
 
 self.addEventListener('install', evt => {
@@ -23,10 +25,6 @@ self.addEventListener('install', evt => {
 		})
 	)
 });
-
-// self.addEventListener('activate', evt => {
-// 	console.log('service worker has been activated');
-// })
 
 self.addEventListener('fetch', evt => {
 	evt.respondWith(
