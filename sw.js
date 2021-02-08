@@ -1,5 +1,6 @@
-const staticCacheName = 'site-static-v.1.11.1';
+const staticCacheName = 'site-static-v.1.11.8';
 const assets = [
+	'/',
 	'/cxrili/',
 	'/cxrili/?d=mon',
 	'/cxrili/?d=tue',
@@ -24,10 +25,8 @@ const assets = [
 	'/cxrili/icons/128x128.png',
 	'/cxrili/icons/160x160.png',
 	'/cxrili/icons/512x512.png',
-	'/cxrili/icons/calendar.svg',
 	'/cxrili/favicon.ico',
 	'/cxrili/manifest.json',
-	'/favicon.ico'
 ];
 
 self.addEventListener('install', evt => {

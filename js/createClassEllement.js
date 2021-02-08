@@ -1,10 +1,10 @@
-function createClassEllement(name, duration, start, end, id){
+function createClassEllement(name, duration, start, end, id) {
 	let ClassEllement;
 
 	ClassEllement = document.createElement("div");
 	ClassEllement.classList.add("class")
 	ClassEllement.classList.add("time-line-block");
-	ClassEllement.style.height = `${duration/2}rem`;
+	ClassEllement.style.height = `${duration / 2}rem`;
 	ClassEllement.id = `${id}`;
 
 	// Timeline creation
@@ -53,7 +53,7 @@ function createClassEllement(name, duration, start, end, id){
 	// === Appending ===
 
 	let root = document.getElementById("root-div");
-	
+
 	root.appendChild(ClassEllement);
 
 	// Appending timeline
