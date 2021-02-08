@@ -1,10 +1,10 @@
-const staticCacheName = 'site-static-v.1.11';
+const staticCacheName = 'site-static-v.1.11.1';
 const assets = [
 	'/cxrili/',
-	'/cxrili/d=mon',
-	'/cxrili/d=tue',
-	'/cxrili/d=wed',
-	'/cxrili/d=thu',
+	'/cxrili/?d=mon',
+	'/cxrili/?d=tue',
+	'/cxrili/?d=wed',
+	'/cxrili/?d=thu',
 	'/cxrili/index.html',
 	'/cxrili/css/style.css',
 	'https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf',
@@ -53,7 +53,7 @@ self.addEventListener('activate', evt => {
 self.addEventListener('fetch', evt => {
 	evt.respondWith(
 		caches.match(evt.request).then(cacheRes => {
-			if(cacheRes != undefined)
+			if (cacheRes != undefined)
 				return cacheRes
 			else
 				return fetch(evt.request)
