@@ -29,7 +29,7 @@ function updateTimers(){
 		}
 
 		// Updating timers
-		if((i+1)%2==1){
+		if((i)%2==0){
 			timer = elt.childNodes[1].childNodes[1].childNodes[0].childNodes[1];
 			if(left > 0){
 				let s = String(left % 60).padStart(2, "0"); left = Math.floor(left/60);
@@ -72,8 +72,6 @@ function updateTimers(){
 }
 
 (async function main(){
-
-	
 	let day = getCurrentDay();
 
 	let objects = await loadTimeTable(day);
@@ -97,5 +95,4 @@ function updateTimers(){
 
 	updateTimers();
 	setInterval(updateTimers, 1000);
-
 })();
