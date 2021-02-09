@@ -35,7 +35,7 @@ async function updatetabelsAndButtons() {
     if (exists) {
         exists.style.display = 'block';
     } else {
-        await loadTimetabel(CURRENT_DAY).then(objects => buildtabel(objects));
+        await loadTimeTabel(CURRENT_DAY).then(objects => buildTabel(objects));
     }
 
     // Hide all other tabels

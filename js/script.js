@@ -30,8 +30,8 @@ function getCurrentDay(real) {
 	initializeButtons();
 
 	// Build tabel from the current day
-	loadTimetabel(day)
-		.then(objects => buildtabel(objects));
+	loadTimeTabel(day)
+		.then(objects => buildTabel(objects));
 
 	// Update timers every 1000 milliseconds (1 second)
 	timerUpdaterInterval = setInterval(updateTimers, 1000);

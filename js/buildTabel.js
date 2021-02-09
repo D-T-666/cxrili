@@ -1,4 +1,4 @@
-function buildtabel(objects) {
+function buildTabel(objects) {
     eltCount = 0;
     eltDurations = [0];
     mainStart = objects[0].start;

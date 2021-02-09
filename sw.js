@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v.1.13.5';
+const staticCacheName = 'site-static-v.1.13.6';
 const assets = [
 	'/',
 	'/cxrili/',
@@ -10,14 +10,14 @@ const assets = [
 	'/cxrili/index.html',
 	'/cxrili/css/style.css',
 	'/cxrili/css/buttons.css',
-	'https://d-t-666.github.io/time-tabel/fonts/bpg_glaho_sylfaen.ttf',
+	'https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf',
 	'/cxrili/js/app.js',
 	'/cxrili/js/script.js',
 	'/cxrili/js/buttons.js',
 	'/cxrili/js/createBreakEllement.js',
 	'/cxrili/js/createClassEllement.js',
-	'/cxrili/js/loadTimetabel.js',
-	'/cxrili/js/buildtabel.js',
+	'/cxrili/js/loadTimeTabel.js',
+	'/cxrili/js/buildTabel.js',
 	'/cxrili/js/updateTimers.js',
 	'/cxrili/timetabel/mon.csv',
 	'/cxrili/timetabel/tue.csv',

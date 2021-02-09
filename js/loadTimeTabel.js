@@ -1,4 +1,4 @@
-async function loadTimetabel(day) {
+async function loadTimeTabel(day) {
 	const response = await fetch(`timetabel/${day}.csv`);
 	const data = await response.text();
 
