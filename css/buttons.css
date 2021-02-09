@@ -1,21 +1,27 @@
 .buttons-container{
     display: flex;
-    background-color: #0002;
+    background-color: var(--grey-trans);
 }
 
 .button-weekday {
     padding: 1rem;
     margin: 1rem;
-    background-color: #0002;
+    background-color: var(--grey-trans);
     flex-grow: 1;
     font-size: 2rem;
     color: var(--white-subtle);
     transition: 0.4s;
     cursor: pointer;
     user-select: none;
+    box-sizing: border-box;
 }
 
 .button-weekday:hover {
     color: var(--class-color-bright);
     background-color: var(--class-color-trans);
+}
+
+.button-today {
+    border: 0.3rem solid var(--blue-color-trans);
+    color: var(--blue-color);
 }

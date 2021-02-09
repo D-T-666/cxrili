@@ -4,7 +4,9 @@ function buildTable(objects) {
     mainStart = objects[0].start;
 
     let tableContainer = document.createElement('div');
-    tableContainer.id = `${CURRENT_DAY}-table-container`;
+    tableContainer.id = `${CURRENT_DAY}-table`;
+    tableContainer.style.display = 'block';
+    tableContainer.classList.add('table-container');
 
     document.getElementById("root-div").appendChild(tableContainer);
 

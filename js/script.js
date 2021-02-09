@@ -1,10 +1,13 @@
 let mainStart;
 let eltCount = 0;
 let eltDurations = [0];
+const DAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 let CURRENT_DAY = getCurrentDay();
+let switchedToNextDay = false;
+
+let timerUpdaterInterval;
 
 function getCurrentDay(real) {
-	const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 	let d = new Date();
 
@@ -13,11 +16,10 @@ function getCurrentDay(real) {
 	const urlParams = new URLSearchParams(queryString);
 	const url_Day = urlParams.get('d');
 
-
 	if (real)
-		return days[d.getDay()];
+		return DAYS[d.getDay()];
 	else
-		return url_Day || days[d.getDay()];
+		return url_Day || DAYS[d.getDay()];
 }
 
 (async function main() {
@@ -32,5 +34,5 @@ function getCurrentDay(real) {
 		.then(objects => buildTable(objects));
 
 	// Update timers every 1000 milliseconds (1 second)
-	setInterval(updateTimers, 1000);
+	timerUpdaterInterval = setInterval(updateTimers, 1000);
 })();

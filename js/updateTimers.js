@@ -61,4 +61,13 @@ function updateTimers() {
             }
         }
     }
+
+    if ((eltDurations[eltDurations.length - 1] * 60 + mainStart * 60) - time < -5 * 60 && !switchedToNextDay) {
+        let d = new Date();
+
+        CURRENT_DAY = DAYS[d.getDay() + 1];
+        updateTablesAndButtons();
+
+        switchedToNextDay = true;
+    }
 }

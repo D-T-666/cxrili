@@ -21,7 +21,7 @@ function addBreakEllement(duration, id) {
 
 	// === Appending ===
 
-	let root = document.getElementById(`${CURRENT_DAY}-table-container`);
+	let root = document.getElementById(`${CURRENT_DAY}-table`);
 
 	root.appendChild(BreakEllement);
 
