@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v.1.12.33';
+const staticCacheName = 'site-static-v.1.12.52';
 const assets = [
 	'/',
 	'/cxrili/',
@@ -17,6 +17,8 @@ const assets = [
 	'/cxrili/js/createBreakEllement.js',
 	'/cxrili/js/createClassEllement.js',
 	'/cxrili/js/loadTimeTable.js',
+	'/cxrili/js/buildTable.js',
+	'/cxrili/js/updateTimers.js',
 	'/cxrili/timetable/mon.csv',
 	'/cxrili/timetable/tue.csv',
 	'/cxrili/timetable/wed.csv',

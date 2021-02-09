@@ -7,14 +7,15 @@ function initializeButtons() {
         let button = document.getElementById(day);
 
         button.addEventListener('click', () => {
-            if (day != getCurrentDay()) {
-                let root = document.getElementById("root-div");
+            if (day !== CURRENT_DAY) {
+                let exists = document.getElementById(`${CURRENT_DAY}-table-container`);
 
-                root.innerHTML = '';
-
-                loadTimeTable(day).then(objects => buildTable(objects));
-                updateTimers();
-                CURRENT_DAY = day;
+                if (exists) {
+                    exists.style.opacity = 1;
+                } else {
+                    CURRENT_DAY = day;
+                    loadTimeTable(day).then(objects => buildTable(objects));
+                }
             }
         }, false);
 
