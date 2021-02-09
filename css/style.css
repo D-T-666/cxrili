@@ -2,6 +2,7 @@
 	--class-color: #a0ffc0;
 	--class-color-bright:#7bffa7;
 	--class-color-trans: #afc1;
+	--blue-color: #70abe6;
 	--blue-color-trans: #7bf3;
 	--break-color: rgb(157, 61, 61);
 	--break-color-bright: #f99;
@@ -10,6 +11,7 @@
 	--end-color: var(--blue-color-trans);
 	--start-color: var(--class-color-trans);
 	--grey-trans: #0006;
+	--white-subtle: #beccc0;
 }
 
 @font-face {

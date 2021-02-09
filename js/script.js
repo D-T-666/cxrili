@@ -1,17 +1,24 @@
 let mainStart;
 let eltCount = 0;
 let eltDurations = [0];
+let CURRENT_DAY = undefined;
 
-function getCurrentDay() {
+function getCurrentDay(real = false) {
 	const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
-	let d = new Date();
+	if (CURRENT_DAY == undefined) {
+		let d = new Date();
 
-	const queryString = window.location.search;
-	const urlParams = new URLSearchParams(queryString);
-	const url_Day = urlParams.get('d');
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const url_Day = urlParams.get('d');
 
-	return url_Day || days[d.getDay()];
+		if (!real)
+			CURRENT_DAY = url_Day || days[d.getDay()];
+		else
+			CURRENT_DAY = days[d.getDay()];
+	}
+	return CURRENT_DAY;
 }
 
 function updateTimers() {
@@ -71,11 +78,7 @@ function updateTimers() {
 	}
 }
 
-(async function main() {
-	let day = getCurrentDay();
-
-	let objects = await loadTimeTable(day);
-
+function buildTable(objects) {
 	mainStart = objects[0].start;
 
 	let total_duration = 0;
@@ -92,6 +95,16 @@ function updateTimers() {
 		total_duration += obj.duration;
 		eltDurations.push(Number(total_duration));
 	}
+}
+
+(async function main() {
+	let day = getCurrentDay();
+
+	initializeButtons();
+
+	let objects = await loadTimeTable(day);
+
+	buildTable(objects)
 
 	updateTimers();
 	setInterval(updateTimers, 1000);

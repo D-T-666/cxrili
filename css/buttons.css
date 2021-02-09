@@ -3,17 +3,19 @@
     background-color: #0002;
 }
 
-.button {
+.button-weekday {
     padding: 1rem;
     margin: 1rem;
     background-color: #0002;
     flex-grow: 1;
-    font-size: 3rem;
-    color: var(--class-color);
+    font-size: 2rem;
+    color: var(--white-subtle);
     transition: 0.4s;
+    cursor: pointer;
+    user-select: none;
 }
 
-.button:hover {
+.button-weekday:hover {
     color: var(--class-color-bright);
     background-color: var(--class-color-trans);
 }

@@ -2,7 +2,7 @@
 
 ## features:
 - [x] live updating time line
-- [ ] multiple pages for every day of the week
+- [x] multiple pages for every day of the week
 - [ ] week view page
 
 
