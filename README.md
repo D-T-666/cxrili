@@ -1,8 +1,8 @@
-# [Cxrili](https://d-t-666.github.io/cxrili) - timetable for my class
+# [Cxrili](https://d-t-666.github.io/cxrili) - timetabel for my class
 
 ## features:
 - [x] live updating time line
-- [ ] multiple pages for every day of the week
+- [x] multiple pages for every day of the week
 - [ ] week view page
 
 

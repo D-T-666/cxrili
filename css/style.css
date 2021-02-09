@@ -1,21 +1,22 @@
 :root {
 	--class-color: #a0ffc0;
-	--class-color-bright:rgb(123, 255, 167);
+	--class-color-bright:#7bffa7;
 	--class-color-trans: #afc1;
+	--blue-color: #70abe6;
 	--blue-color-trans: #7bf3;
-	--break-color: rgb(157, 61, 61);
+	--break-color: #9d3d3d;
 	--break-color-bright: #f99;
-	--break-color-dark: rgb(123, 46, 46);
+	--break-color-dark: #7b2e2e;
 	--break-color-trans: #6003;
 	--end-color: var(--blue-color-trans);
 	--start-color: var(--class-color-trans);
 	--grey-trans: #0006;
+	--white-subtle: #beccc0;
 }
 
 @font-face {
     font-family: myFont;
     src: url("https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf");
-    /* src: url("localhost:5500/fonts/bpg_glaho_sylfaen.ttf"); */
 }
 
 body {
@@ -30,6 +31,12 @@ body {
 	min-width: 35rem;
 	font-size: 48px;
 	/* padding: 1rem; */
+}
+
+/* tabel */
+
+.tabel-container {
+	transition: 0.6s;
 }
 
 /* Time line */

@@ -2,10 +2,10 @@ function createClassEllement(name, duration, start, end, id) {
 	let ClassEllement;
 
 	ClassEllement = document.createElement("div");
-	ClassEllement.classList.add("class")
+	ClassEllement.classList.add("class");
 	ClassEllement.classList.add("time-line-block");
+	ClassEllement.classList.add(`${id}`);
 	ClassEllement.style.height = `${duration / 2}rem`;
-	ClassEllement.id = `${id}`;
 
 	// Timeline creation
 	let timelineContainer, timeline;
@@ -52,7 +52,7 @@ function createClassEllement(name, duration, start, end, id) {
 
 	// === Appending ===
 
-	let root = document.getElementById("root-div");
+	let root = document.getElementById(`${CURRENT_DAY}-tabel`);
 
 	root.appendChild(ClassEllement);
 

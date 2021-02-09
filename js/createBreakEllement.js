@@ -1,11 +1,11 @@
-function addBreakEllement(duration, id){
+function addBreakEllement(duration, id) {
 	let BreakEllement;
 
 	BreakEllement = document.createElement("div");
-	BreakEllement.classList.add("break")
+	BreakEllement.classList.add("break");
 	BreakEllement.classList.add("time-line-block");
-	BreakEllement.id = `${id}`;
-	BreakEllement.style.height = `${duration/2}rem`;
+	BreakEllement.classList.add(`${id}`);
+	BreakEllement.style.height = `${duration / 2}rem`;
 
 	// Timeline creation
 	let timelineContainer, timeline;
@@ -21,8 +21,8 @@ function addBreakEllement(duration, id){
 
 	// === Appending ===
 
-	let root = document.getElementById("root-div");
-	
+	let root = document.getElementById(`${CURRENT_DAY}-tabel`);
+
 	root.appendChild(BreakEllement);
 
 	// Appending timeline
