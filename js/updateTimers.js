@@ -66,7 +66,7 @@ function updateTimers() {
         let d = new Date();
 
         CURRENT_DAY = DAYS[d.getDay() + 1];
-        updateTablesAndButtons();
+        updatetabelsAndButtons();
 
         switchedToNextDay = true;
     }

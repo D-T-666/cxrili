@@ -10,7 +10,7 @@ function initializeButtons() {
             if (day !== CURRENT_DAY) {
                 CURRENT_DAY = day;
 
-                updateTablesAndButtons();
+                updatetabelsAndButtons();
             }
         }, false);
 
@@ -20,7 +20,7 @@ function initializeButtons() {
     }
 }
 
-async function updateTablesAndButtons() {
+async function updatetabelsAndButtons() {
     // Update weekday buttons
     const buttons = document.getElementsByClassName('button-weekday');
     for (let btn of buttons) {
@@ -30,21 +30,21 @@ async function updateTablesAndButtons() {
             btn.style.backgroundColor = "var(--class-color-trans)";
     }
 
-    // Show the current day's table
-    let exists = document.getElementById(`${CURRENT_DAY}-table`);
+    // Show the current day's tabel
+    let exists = document.getElementById(`${CURRENT_DAY}-tabel`);
     if (exists) {
         exists.style.display = 'block';
     } else {
-        await loadTimeTable(CURRENT_DAY).then(objects => buildTable(objects));
+        await loadTimetabel(CURRENT_DAY).then(objects => buildtabel(objects));
     }
 
-    // Hide all other tables
-    const tables = document.getElementsByClassName('table-container');
-    for (let table of tables) {
-        if (table.id !== `${CURRENT_DAY}-table`) {
-            table.style.display = 'none';
+    // Hide all other tabels
+    const tabels = document.getElementsByClassName('tabel-container');
+    for (let tabel of tabels) {
+        if (tabel.id !== `${CURRENT_DAY}-tabel`) {
+            tabel.style.display = 'none';
         } else {
-            table.style.display = 'block';
+            tabel.style.display = 'block';
         }
     }
 }

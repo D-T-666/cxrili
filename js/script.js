@@ -29,9 +29,9 @@ function getCurrentDay(real) {
 	// Initialize the weekday buttons
 	initializeButtons();
 
-	// Build table from the current day
-	loadTimeTable(day)
-		.then(objects => buildTable(objects));
+	// Build tabel from the current day
+	loadTimetabel(day)
+		.then(objects => buildtabel(objects));
 
 	// Update timers every 1000 milliseconds (1 second)
 	timerUpdaterInterval = setInterval(updateTimers, 1000);

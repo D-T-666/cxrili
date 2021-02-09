@@ -16,7 +16,7 @@
 
 @font-face {
     font-family: myFont;
-    src: url("https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf");
+    src: url("https://d-t-666.github.io/time-tabel/fonts/bpg_glaho_sylfaen.ttf");
 }
 
 body {
@@ -33,9 +33,9 @@ body {
 	/* padding: 1rem; */
 }
 
-/* Table */
+/* tabel */
 
-.table-container {
+.tabel-container {
 	transition: 0.6s;
 }
 

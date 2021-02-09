@@ -1,14 +1,14 @@
-function buildTable(objects) {
+function buildtabel(objects) {
     eltCount = 0;
     eltDurations = [0];
     mainStart = objects[0].start;
 
-    let tableContainer = document.createElement('div');
-    tableContainer.id = `${CURRENT_DAY}-table`;
-    tableContainer.style.display = 'block';
-    tableContainer.classList.add('table-container');
+    let tabelContainer = document.createElement('div');
+    tabelContainer.id = `${CURRENT_DAY}-tabel`;
+    tabelContainer.style.display = 'block';
+    tabelContainer.classList.add('tabel-container');
 
-    document.getElementById("root-div").appendChild(tableContainer);
+    document.getElementById("root-div").appendChild(tabelContainer);
 
     let total_duration = 0;
 
