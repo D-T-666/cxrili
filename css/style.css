@@ -1,6 +1,6 @@
 :root {
 	--class-color: #a0ffc0;
-	--class-color-bright:rgb(123, 255, 167);
+	--class-color-bright:#7bffa7;
 	--class-color-trans: #afc1;
 	--blue-color-trans: #7bf3;
 	--break-color: rgb(157, 61, 61);
@@ -15,7 +15,6 @@
 @font-face {
     font-family: myFont;
     src: url("https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf");
-    /* src: url("localhost:5500/fonts/bpg_glaho_sylfaen.ttf"); */
 }
 
 body {

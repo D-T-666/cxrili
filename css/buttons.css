@@ -1,0 +1,19 @@
+.buttons-container{
+    display: flex;
+    background-color: #0002;
+}
+
+.button {
+    padding: 1rem;
+    margin: 1rem;
+    background-color: #0002;
+    flex-grow: 1;
+    font-size: 3rem;
+    color: var(--class-color);
+    transition: 0.4s;
+}
+
+.button:hover {
+    color: var(--class-color-bright);
+    background-color: var(--class-color-trans);
+}
