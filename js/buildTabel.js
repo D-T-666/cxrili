@@ -1,6 +1,6 @@
 function buildTabel(objects) {
     eltCount = 0;
-    eltDurations = [0];
+    eltDurations[CURRENT_DAY] = [0];
     mainStart = objects[0].start;
 
     let tabelContainer = document.createElement('div');
@@ -22,7 +22,7 @@ function buildTabel(objects) {
         }
         eltCount++;
         total_duration += obj.duration;
-        eltDurations.push(Number(total_duration));
+        eltDurations[CURRENT_DAY].push(Number(total_duration));
     }
 
     updateTimers();

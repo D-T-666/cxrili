@@ -1,6 +1,6 @@
 let mainStart;
 let eltCount = 0;
-let eltDurations = [0];
+let eltDurations = {};
 const DAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 let CURRENT_DAY = getCurrentDay();
 let switchedToNextDay = false;

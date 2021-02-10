@@ -2,16 +2,18 @@
 function updateTimers() {
     let date = new Date();
     let time = date.getSeconds() + date.getMinutes() * 60 + date.getHours() * 60 * 60;
+    const timeMinutes = date.getMinutes() + date.getHours() * 60;
+    const currentEltDurations = eltDurations[CURRENT_DAY];
 
-    for (let i = 0; i < eltDurations.length - 1; i++) {
-        let elts = document.getElementsByClassName(`${i}`);
+    for (let i = 0; i < currentEltDurations.length - 1; i++) {
+        let elts = document.getElementById(`${CURRENT_DAY}-tabel`).getElementsByClassName(`${i}`);
 
         for (let elt of elts) {
-            let left = (eltDurations[i] * 60 + mainStart * 60) - time;
+            let left = (currentEltDurations[i] * 60 + mainStart * 60) - time;
 
             // Coloring the timer background and timer remaining based on time left
             if (left <= 0) {
-                left += (eltDurations[i + 1] - eltDurations[i]) * 60;
+                left += (currentEltDurations[i + 1] - currentEltDurations[i]) * 60;
                 if (!elt.classList.contains("break"))
                     elt.childNodes[1].childNodes[1].childNodes[0].style.backgroundColor = 'var(--end-color)';
             } else {
@@ -27,6 +29,8 @@ function updateTimers() {
                     let m = String(left % 60).padStart(2, "0"); left = Math.floor(left / 60);
                     let h = String(left);
 
+                    console.log(h, m, s);
+                    // console.log(date.getSeconds(), date.getMinutes(), date.getHours());
                     timer.innerHTML = `${h}:${m}:${s}`;
                 } else {
                     timer.innerHTML = `0:00:00`;
@@ -35,9 +39,9 @@ function updateTimers() {
 
             // Updating timelines and block backgrounds
             timer = elt.childNodes[0].childNodes[0];
-            if (time / 60 < eltDurations[i + 1] + mainStart) {
-                if (time / 60 > eltDurations[i] + mainStart) {
-                    let p = (time / 60 - (eltDurations[i] + mainStart)) / (eltDurations[i + 1] - eltDurations[i]);
+            if (timeMinutes < currentEltDurations[i + 1] + mainStart) {
+                if (timeMinutes > currentEltDurations[i] + mainStart) {
+                    let p = (timeMinutes - (currentEltDurations[i] + mainStart)) / (currentEltDurations[i + 1] - currentEltDurations[i]);
                     timer.style.height = `${p * 100}%`;
                     elt.style.color = "var(--class-color-bright)";
 
@@ -62,12 +66,12 @@ function updateTimers() {
         }
     }
 
-    if ((eltDurations[eltDurations.length - 1] * 60 + mainStart * 60) - time < -5 * 60 && !switchedToNextDay) {
+    const timeTillEndOfDay = (currentEltDurations[currentEltDurations.length - 1] * 60 + mainStart * 60) - time;
+    if (timeTillEndOfDay < -5 * 60 && !switchedToNextDay) {
         let d = new Date();
 
         CURRENT_DAY = DAYS[d.getDay() + 1];
         updatetabelsAndButtons();
-
         switchedToNextDay = true;
     }
 }
