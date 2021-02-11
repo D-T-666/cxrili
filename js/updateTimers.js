@@ -29,8 +29,6 @@ function updateTimers() {
                     let m = String(left % 60).padStart(2, "0"); left = Math.floor(left / 60);
                     let h = String(left);
 
-                    console.log(h, m, s);
-                    // console.log(date.getSeconds(), date.getMinutes(), date.getHours());
                     timer.innerHTML = `${h}:${m}:${s}`;
                 } else {
                     timer.innerHTML = `0:00:00`;
