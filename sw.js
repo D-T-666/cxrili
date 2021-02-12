@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v.1.15.0.1';
+const staticCacheName = 'site-static-v.1.15.0.2';
 const assets = [
 	'/',
 	'/cxrili/',
@@ -8,6 +8,7 @@ const assets = [
 	'/cxrili/?d=thu',
 	'/cxrili/?d=fri',
 	'/cxrili/index.html',
+	'/cxrili/css/root.css',
 	'/cxrili/css/style.css',
 	'/cxrili/css/buttons.css',
 	'https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf',
