@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v.1.14.1.1';
+const staticCacheName = 'site-static-v.1.14.2';
 const assets = [
 	'/',
 	'/cxrili/',
@@ -23,6 +23,7 @@ const assets = [
 	'/cxrili/timetabel/tue.csv',
 	'/cxrili/timetabel/wed.csv',
 	'/cxrili/timetabel/thu.csv',
+	'/cxrili/timetabel/fri.csv',
 	'/cxrili/icons/32x32.png',
 	'/cxrili/icons/48x48.png',
 	'/cxrili/icons/64x64.png',

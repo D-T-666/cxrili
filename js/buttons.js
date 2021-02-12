@@ -1,6 +1,4 @@
 function initializeButtons() {
-    const workdays = ["mon", "tue", "wed", "thu", "fri"];
-
     for (let i = 0; i < workdays.length; i++) {
         let day = workdays[i];
 
@@ -10,7 +8,7 @@ function initializeButtons() {
             if (day !== CURRENT_DAY) {
                 CURRENT_DAY = day;
 
-                updatetabelsAndButtons();
+                updateTabelsAndButtons();
             }
         }, false);
 
@@ -18,9 +16,10 @@ function initializeButtons() {
             button.classList.add('button-today');
         }
     }
+	updateTabelsAndButtons();
 }
 
-async function updatetabelsAndButtons() {
+async function updateTabelsAndButtons() {
     // Update weekday buttons
     const buttons = document.getElementsByClassName('button-weekday');
     for (let btn of buttons) {
@@ -35,7 +34,7 @@ async function updatetabelsAndButtons() {
     if (exists) {
         exists.style.display = 'block';
     } else {
-        await loadTimeTabel(CURRENT_DAY).then(objects => buildTabel(objects));
+        await loadTimeTabel(CURRENT_DAY).then(objects => buildTabel(objects, CURRENT_DAY));
     }
 
     // Hide all other tabels

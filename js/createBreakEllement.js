@@ -1,4 +1,4 @@
-function addBreakEllement(duration, id) {
+function addBreakEllement(day, duration, id) {
 	let BreakEllement;
 
 	BreakEllement = document.createElement("div");
@@ -21,7 +21,7 @@ function addBreakEllement(duration, id) {
 
 	// === Appending ===
 
-	let root = document.getElementById(`${CURRENT_DAY}-tabel`);
+	let root = document.getElementById(`${day}-tabel`);
 
 	root.appendChild(BreakEllement);
 

@@ -1,7 +1,7 @@
 let mainStart;
-let eltCount = 0;
 let eltDurations = {};
 const DAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const workdays = ["mon", "tue", "wed", "thu", "fri"];
 let CURRENT_DAY = getCurrentDay();
 let switchedToNextDay = false;
 
@@ -23,15 +23,19 @@ function getCurrentDay(real) {
 }
 
 (async function main() {
-	// Get the current day from the URL or the date
-	let day = getCurrentDay();
+	for(let day of workdays) {
+		CURRENT_DAY = day;
+		// Build tabel from the current day
+		await loadTimeTabel(day)
+			.then(objects => buildTabel(objects, day));
+	}
+
+	CURRENT_DAY = getCurrentDay();
+
+	updateTimers();
 
 	// Initialize the weekday buttons
 	initializeButtons();
-
-	// Build tabel from the current day
-	loadTimeTabel(day)
-		.then(objects => buildTabel(objects));
 
 	// Update timers every 1000 milliseconds (1 second)
 	timerUpdaterInterval = setInterval(updateTimers, 1000);

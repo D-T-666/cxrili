@@ -1,4 +1,4 @@
-function createClassEllement(name, duration, start, end, id) {
+function createClassEllement(day, name, duration, start, end, id) {
 	let ClassEllement;
 
 	ClassEllement = document.createElement("div");
@@ -52,7 +52,7 @@ function createClassEllement(name, duration, start, end, id) {
 
 	// === Appending ===
 
-	let root = document.getElementById(`${CURRENT_DAY}-tabel`);
+	let root = document.getElementById(`${day}-tabel`);
 
 	root.appendChild(ClassEllement);
 
