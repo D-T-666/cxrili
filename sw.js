@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v.1.14.3.1';
+const staticCacheName = 'site-static-v.1.15.0.0';
 const assets = [
 	'/',
 	'/cxrili/',
@@ -19,6 +19,7 @@ const assets = [
 	'/cxrili/js/loadTimeTabel.js',
 	'/cxrili/js/buildTabel.js',
 	'/cxrili/js/updateTimers.js',
+	'/cxrili/js/getCurrentDay.js',
 	'/cxrili/timetabel/mon.csv',
 	'/cxrili/timetabel/tue.csv',
 	'/cxrili/timetabel/wed.csv',
@@ -33,6 +34,11 @@ const assets = [
 	'/cxrili/icons/512x512.png',
 	'/cxrili/favicon.ico',
 	'/cxrili/manifest.json',
+
+	'/cxrili/pages/weekview/',
+	'/cxrili/pages/weekview/index.html',
+	'/cxrili/pages/weekview/css/style.css',
+	'/cxrili/pages/weekview/js/script.js'
 ];
 
 self.addEventListener('install', evt => {
