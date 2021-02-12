@@ -73,7 +73,7 @@ function updateTimers() {
 		const urlParams = new URLSearchParams(queryString);
 		const url_Day = urlParams.get('d');
 
-		if (getCurrentDay() === getCurrentDay(true) && url_Day !== undefined){
+		if (url_Day === undefined){
 			let d = new Date();
 
 			CURRENT_DAY = DAYS[d.getDay() + 1];
