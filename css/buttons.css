@@ -1,11 +1,14 @@
 .buttons-container{
+	z-index: 10;
+	width: 100%;
     display: flex;
     background-color: var(--grey-trans);
+	height: 5rem;
 }
 
 .button-weekday {
-    padding: 1rem;
-    margin: 1rem;
+    padding: 0.4rem;
+    margin: 0.8rem;
     background-color: var(--grey-trans);
     flex-grow: 1;
     font-size: 2rem;
@@ -14,6 +17,7 @@
     cursor: pointer;
     user-select: none;
     box-sizing: border-box;
+	text-align: center;
 }
 
 .button-weekday:hover {
@@ -23,5 +27,6 @@
 
 .button-today {
     border: 0.3rem solid var(--blue-color-trans);
+    padding: 0.1rem;
     color: var(--blue-color);
 }
