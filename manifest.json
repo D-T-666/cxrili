@@ -99,7 +99,7 @@
 		}
 	],
     "start_url": "/cxrili/",
-    "display": "fullscreen",
+    "display": "standalone",
     "theme_color": "#a0ffc0",
     "background_color": "#333"
 }
