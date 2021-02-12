@@ -1,6 +1,5 @@
 function initializeButtons() {
-    for (let i = 0; i < workdays.length; i++) {
-        let day = workdays[i];
+    for (let day of workdays) {
 
         let button = document.getElementById(day);
 
@@ -16,6 +15,9 @@ function initializeButtons() {
             button.classList.add('button-today');
         }
     }
+	document.getElementById('menu').addEventListener('click', evt => {
+		window.location.href = "/cxrili/pages/weekview/";
+	})
 	updateTabelsAndButtons();
 }
 

@@ -69,10 +69,16 @@ function updateTimers() {
 
     const timeTillEndOfDay = (eltDurations[CURRENT_DAY][eltDurations[CURRENT_DAY].length - 1] * 60 + mainStart * 60) - time;
     if (timeTillEndOfDay < -5 * 60 && !switchedToNextDay) {
-        let d = new Date();
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const url_Day = urlParams.get('d');
 
-        CURRENT_DAY = DAYS[d.getDay() + 1];
-        updateTabelsAndButtons();
+		if (getCurrentDay() === getCurrentDay(true) && url_Day !== undefined){
+			let d = new Date();
+
+			CURRENT_DAY = DAYS[d.getDay() + 1];
+			updateTabelsAndButtons();
+		}
         switchedToNextDay = true;
     }
 }
