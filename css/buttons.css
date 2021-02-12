@@ -6,7 +6,7 @@
 	height: 5rem;
 }
 
-.button-weekday {
+.button {
     padding: 0.4rem;
     margin: 0.8rem;
     background-color: var(--grey-trans);
@@ -20,12 +20,16 @@
 	text-align: center;
 }
 
-.button-weekday:hover {
+.button.menu {
+	flex-grow: 0.5;
+}
+
+.button:hover {
     color: var(--class-color-bright);
     background-color: var(--class-color-trans);
 }
 
-.button-today {
+.button.today {
     border: 0.3rem solid var(--blue-color-trans);
     padding: 0.1rem;
     color: var(--blue-color);

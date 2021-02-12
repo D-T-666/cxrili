@@ -1,0 +1,41 @@
+#root-div {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* Day table */
+.day-table {
+	flex-grow: 1;
+	min-width: 25%;
+	box-sizing: border-box;
+	margin: 2rem;
+
+	font-family: myFont;
+	color: var(--white-subtle);
+
+	background-color: var(--grey-trans);
+	min-width: fit-content;
+}
+
+.day-table.today {
+	border: 1rem solid var(--blue-color);
+	color: var(--blue-color);
+}
+
+/* title */
+.day-table>.title {
+	text-align: center;
+	font-size: 3rem;
+	margin: 1rem 2rem;
+}
+
+/* list */
+.day-table>.list{
+	padding: 1rem;
+	text-align: center;
+}
+
+.day-table>.list>.item{
+	font-size: 1.3rem;
+	margin: 0.5rem;
+}
