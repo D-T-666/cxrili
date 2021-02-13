@@ -55,3 +55,14 @@
     padding: 0.1rem;
     color: var(--blue-color);
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#root-div::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#root-div {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
