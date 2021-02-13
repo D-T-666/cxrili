@@ -1,17 +1,38 @@
+/* root divs */
+
+#main-root {
+	display: flex;
+	flex-direction: column;
+}
+
+#root-div {
+    background-color: var(--grey-trans);
+	display: block;
+	width: 100%;
+	/* min-width: 35rem; */
+	font-size: 48px;
+	/* padding: 1rem; */
+
+	height: calc(100vh - 2rem);
+	overflow-y: scroll;
+}
+
+/* Buttons */
+
 .buttons-container{
 	z-index: 10;
 	width: 100%;
     display: flex;
     background-color: var(--grey-trans);
-	height: 5rem;
+	height: 2rem;
 }
 
 .button {
-    padding: 0.4rem;
-    margin: 0.8rem;
+    padding: 0.2rem;
+    margin: 0.3rem;
     background-color: var(--grey-trans);
     flex-grow: 1;
-    font-size: 2rem;
+    font-size: 0.8rem;
     color: var(--white-subtle);
     transition: 0.4s;
     cursor: pointer;

@@ -1,12 +1,12 @@
 
 function updateTimers() {
-    let date = new Date();
-    let time = date.getSeconds() + date.getMinutes() * 60 + date.getHours() * 60 * 60;
-    const timeMinutes = date.getMinutes() + date.getHours() * 60;
+	let date = new Date();
+	let time = date.getSeconds() + date.getMinutes() * 60 + date.getHours() * 60 * 60;
+	const timeMinutes = date.getMinutes() + date.getHours() * 60;
 
 	const day = DAYS[date.getDay()];
 	const currentEltDurations = eltDurations[day];
-	if(currentEltDurations){
+	if (currentEltDurations) {
 
 		for (let i = 0; i < currentEltDurations.length - 1; i++) {
 			let elts = document.getElementById(`${day}-tabel`).getElementsByClassName(`${i}`);
@@ -18,10 +18,10 @@ function updateTimers() {
 				if (left <= 0) {
 					left += (currentEltDurations[i + 1] - currentEltDurations[i]) * 60;
 					if (!elt.classList.contains("break"))
-						elt.childNodes[1].childNodes[1].childNodes[0].style.backgroundColor = 'var(--end-color)';
+						elt.childNodes[1].childNodes[1].childNodes[0].style.color = 'var(--end-color)';
 				} else {
 					if (!elt.classList.contains("break"))
-						elt.childNodes[1].childNodes[1].childNodes[0].style.backgroundColor = 'var(--start-color)';
+						elt.childNodes[1].childNodes[1].childNodes[0].style.color = 'var(--start-color)';
 				}
 
 				// Updating timers
@@ -66,20 +66,20 @@ function updateTimers() {
 				}
 			}
 		}
-    }
+	}
 
-    const timeTillEndOfDay = (eltDurations[CURRENT_DAY][eltDurations[CURRENT_DAY].length - 1] * 60 + mainStart * 60) - time;
-    if (timeTillEndOfDay < -5 * 60 && !switchedToNextDay) {
+	const timeTillEndOfDay = (eltDurations[CURRENT_DAY][eltDurations[CURRENT_DAY].length - 1] * 60 + mainStart * 60) - time;
+	if (timeTillEndOfDay < -5 * 60 && !switchedToNextDay) {
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		const url_Day = urlParams.get('d');
 
-		if (url_Day === undefined){
+		if (url_Day === undefined) {
 			let d = new Date();
 
 			CURRENT_DAY = DAYS[d.getDay() + 1];
 			updateTabelsAndButtons();
 		}
-        switchedToNextDay = true;
-    }
+		switchedToNextDay = true;
+	}
 }
