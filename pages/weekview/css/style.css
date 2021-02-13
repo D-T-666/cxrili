@@ -33,7 +33,7 @@
 }
 
 .button.menu {
-	flex-grow: 0.5;
+	flex-grow: unset;
 }
 
 .button.spacer {
@@ -49,17 +49,18 @@
 .table {
 	font-family: myFont;
 	color: var(--white-subtle);
-	background-color: var(--grey-trans);
 
 	flex-grow: 1;
 	box-sizing: border-box;
-	min-width: 30%;
+	min-width: 20rem;
 	height: 36rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin: 1rem;
+	/* margin: 1rem; */
+	user-select: none;
 }
+
 @media only screen and (orientation: portrait) {
 	/* For mobile phones: */
 	[class*="table"] {

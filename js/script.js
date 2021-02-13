@@ -1,6 +1,6 @@
 let mainStart;
 let eltDurations = {};
-const DAYS = ['mon', 'mon', 'tue', 'wed', 'thu', 'fri', 'mon'];
+const DAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const workdays = ["mon", "tue", "wed", "thu", "fri"];
 let CURRENT_DAY = getCurrentDay();
 let switchedToNextDay = false;

@@ -21,7 +21,12 @@ function initializeButtons(){
 	}, false)
 }
 
+function buildTables(){
+	
+}
+
 (() => {
 	console.log('Hello, world!');
+	buildTables();
 	initializeButtons();
 })()

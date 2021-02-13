@@ -4,11 +4,12 @@ function updateTimers() {
     let time = date.getSeconds() + date.getMinutes() * 60 + date.getHours() * 60 * 60;
     const timeMinutes = date.getMinutes() + date.getHours() * 60;
 
-	for(let day of workdays){
-		const currentEltDurations = eltDurations[day];
+	const day = DAYS[date.getDay()];
+	const currentEltDurations = eltDurations[day];
+	if(currentEltDurations){
 
 		for (let i = 0; i < currentEltDurations.length - 1; i++) {
-        	let elts = document.getElementById(`${day}-tabel`).getElementsByClassName(`${i}`);
+			let elts = document.getElementById(`${day}-tabel`).getElementsByClassName(`${i}`);
 
 			for (let elt of elts) {
 				let left = (currentEltDurations[i] * 60 + mainStart * 60) - time;
@@ -57,7 +58,7 @@ function updateTimers() {
 					if (elt.classList.contains("break")) {
 						elt.style.backgroundColor = "var(--break-color-trans)";
 					} else {
-						elt.style.backgroundColor = "#0006";
+						elt.style.backgroundColor = "var(--grey-trans)";
 					}
 					elt.style.backgroundImage = "";
 					timer.style.height = "100%";
