@@ -1,45 +1,45 @@
 {
-    "name": "XI-3 კლასის გაკვეთილების ცხრილი",
-    "short_name": "ცხრილი",
-    "description": "XI-3 კლასის გაკვეთილების ცხრილი",
-    "icons": [
-        {
-            "src": "./icons/32x32.png",
-            "sizes": "32x32",
-            "type": "image/png",
+	"name": "cxrili",
+	"short_name": "cxrili",
+	"description": "ციფრული გაკვეთილების განრიგი ვებ აპლიკაციის სახით. (ჯერჯერობით მხოლოდ ბორჯომის მე-3 საჯარო სკოლის XI-3 კლასისთვის)",
+	"icons": [
+		{
+			"src": "./icons/32x32.png",
+			"sizes": "32x32",
+			"type": "image/png",
 			"purpose": "any maskable"
-        },
-        {
-            "src": "./icons/64x64.png",
-            "sizes": "64x64",
-            "type": "image/png",
+		},
+		{
+			"src": "./icons/64x64.png",
+			"sizes": "64x64",
+			"type": "image/png",
 			"purpose": "any maskable"
-        },
-        {
-            "src": "./icons/96x96.png",
-            "sizes": "96x96",
-            "type": "image/png",
+		},
+		{
+			"src": "./icons/96x96.png",
+			"sizes": "96x96",
+			"type": "image/png",
 			"purpose": "any maskable"
-        },
-        {
-            "src": "./icons/128x128.png",
-            "sizes": "128x128",
-            "type": "image/png",
+		},
+		{
+			"src": "./icons/128x128.png",
+			"sizes": "128x128",
+			"type": "image/png",
 			"purpose": "any maskable"
-        },
-        {
-            "src": "./icons/160x160.png",
-            "sizes": "160x160",
-            "type": "image/png",
+		},
+		{
+			"src": "./icons/160x160.png",
+			"sizes": "160x160",
+			"type": "image/png",
 			"purpose": "any maskable"
-        },
-        {
-            "src": "./icons/512x512.png",
-            "sizes": "512x512",
-            "type": "image/png",
+		},
+		{
+			"src": "./icons/512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
 			"purpose": "any maskable"
-        }
-    ],
+		}
+	],
 	"shortcuts": [
 		{
 			"short_name": "ორშაბათი",
@@ -98,8 +98,8 @@
 			]
 		}
 	],
-    "start_url": "/cxrili/",
-    "display": "standalone",
-    "theme_color": "#a0ffc0",
-    "background_color": "#333"
+	"start_url": "/cxrili/",
+	"display": "standalone",
+	"theme_color": "#a0ffc0",
+	"background_color": "#333"
 }

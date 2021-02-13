@@ -1,18 +1,17 @@
-async function loadTimeTabel(day) {
+async function loadTimeTable(day) {
 	let objects = undefined;
 
-	if(workdays.includes(day)){
+	if (workdays.includes(day)) {
 		objects = [];
 
-		const response = await fetch(`timetabel/${day}.csv`);
+		const response = await fetch(`/cxrili/timetable/${day}.csv`);
 		const data = await response.text();
 
-		const tabel = data.split("\n").map(a => a.split(",").map(b => b.trim())).slice(1);
+		const table = data.split("\n").map(a => a.split(",").map(b => b.trim())).slice(1);
 
-
-		for (let i = 0; i < tabel.length; i++) {
-			const cls = tabel[i].map(a => a.split(":").map(Number));
-			const className = tabel[i][0];
+		for (let i = 0; i < table.length; i++) {
+			const cls = table[i].map(a => a.split(":").map(Number));
+			const className = table[i][0];
 			const classStart = cls[1][0] * 60 + cls[1][1];
 			const classEnd = cls[2][0] * 60 + cls[2][1];
 			objects.push({
@@ -23,8 +22,8 @@ async function loadTimeTabel(day) {
 			});
 
 			// If there is a class after this one insert a break
-			if (i < tabel.length - 1) {
-				const nextCls = tabel[i + 1].map(a => a.split(":").map(Number));
+			if (i < table.length - 1) {
+				const nextCls = table[i + 1].map(a => a.split(":").map(Number));
 				const breakStart = cls[2][0] * 60 + cls[2][1];
 				const breakEnd = nextCls[1][0] * 60 + nextCls[1][1];
 				objects.push({

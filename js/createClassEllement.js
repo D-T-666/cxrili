@@ -52,7 +52,7 @@ function createClassEllement(day, name, duration, start, end, id) {
 
 	// === Appending ===
 
-	let root = document.getElementById(`${day}-tabel`);
+	let root = document.getElementById(`${day}-table`);
 
 	root.appendChild(ClassEllement);
 

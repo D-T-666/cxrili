@@ -9,7 +9,7 @@ function updateTimers() {
 	if (currentEltDurations) {
 
 		for (let i = 0; i < currentEltDurations.length - 1; i++) {
-			let elts = document.getElementById(`${day}-tabel`).getElementsByClassName(`${i}`);
+			let elts = document.getElementById(`${day}-table`).getElementsByClassName(`${i}`);
 
 			for (let elt of elts) {
 				let left = (currentEltDurations[i] * 60 + mainStart * 60) - time;
@@ -78,7 +78,7 @@ function updateTimers() {
 			let d = new Date();
 
 			CURRENT_DAY = DAYS[d.getDay() + 1];
-			updateTabelsAndButtons();
+			updateTablesAndButtons();
 		}
 		switchedToNextDay = true;
 	}

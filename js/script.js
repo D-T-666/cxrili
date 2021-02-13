@@ -8,11 +8,11 @@ let switchedToNextDay = false;
 let timerUpdaterInterval;
 
 (async function main() {
-	for(let day of workdays) {
+	for (let day of workdays) {
 		CURRENT_DAY = day;
-		// Build tabel from the current day
-		await loadTimeTabel(day)
-			.then(objects => buildTabel(objects, day));
+		// Build table from the current day
+		await loadTimeTable(day)
+			.then(objects => buildTable(objects, day));
 	}
 
 	CURRENT_DAY = getCurrentDay();

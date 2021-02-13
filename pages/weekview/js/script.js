@@ -1,9 +1,16 @@
-function initializeButtons(){
-	const workdays = ['mon', 'tue', 'wed', 'thu', 'fri'];
+const workdays = ['mon', 'tue', 'wed', 'thu', 'fri'];
+const georgian_days = {
+	'mon': 'ორშაბათი',
+	'tue': 'სამშაბათი',
+	'wed': 'ოთხშაბათი',
+	'thu': 'ხუთშაბათი',
+	'fri': 'პარასკევი',
+}
 
+function initializeButtons() {
 	const today = getCurrentDay(true);
 
-	for(let day of workdays){
+	for (let day of workdays) {
 		let elt = document.getElementById(`${day}-table`);
 
 		if (today === day) {
@@ -21,12 +28,14 @@ function initializeButtons(){
 	}, false)
 }
 
-function buildTables(){
-	
+async function buildTables() {
+	for (let day of workdays) {
+		createTableElement(day);
+	}
 }
 
-(() => {
+(async () => {
 	console.log('Hello, world!');
-	buildTables();
+	await buildTables();
 	initializeButtons();
 })()
