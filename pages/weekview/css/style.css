@@ -10,12 +10,11 @@
 
 	flex-grow: 1;
 	box-sizing: border-box;
-	min-width: 5rem;
+	min-width: 30%;
 	height: 18rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	/* margin: 1rem; */
 	user-select: none;
 }
 

@@ -5,6 +5,7 @@ const georgian_days = {
 	'wed': 'ოთხშაბათი',
 	'thu': 'ხუთშაბათი',
 	'fri': 'პარასკევი',
+	'times': 'დროები'
 }
 
 function initializeButtons() {
@@ -13,14 +14,20 @@ function initializeButtons() {
 	for (let day of workdays) {
 		let elt = document.getElementById(`${day}-table`);
 
-		if (today === day) {
-			elt.classList.add("today");
-		}
+		if (elt) {
 
-		elt.addEventListener('click', evt => {
-			window.location.href = `/cxrili/?d=${day}`;
-			console.log(day);
-		}, false);
+			if (today === day) {
+				elt.classList.add("today");
+			}
+
+			elt.addEventListener('click', evt => {
+				window.location.href = `/cxrili/?d=${day}`;
+				console.log(day);
+			}, false);
+
+		} else {
+			console.error(`no element with id '${day}-table' found.`);
+		}
 	}
 
 	document.getElementById('menu').addEventListener('click', evt => {
@@ -30,12 +37,11 @@ function initializeButtons() {
 
 async function buildTables() {
 	for (let day of workdays) {
-		createTableElement(day);
+		await createTableElement(day);
 	}
+	await createTableElement('times');
 }
 
 (async () => {
-	console.log('Hello, world!');
-	await buildTables();
-	initializeButtons();
+	buildTables().then(initializeButtons);
 })()
