@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v.1.15.1.1';
+const staticCacheName = 'site-static-v.1.15.2.0';
 const assets = [
 	'/',
 	'/cxrili/',
