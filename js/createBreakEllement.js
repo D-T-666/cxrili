@@ -5,7 +5,7 @@ function addBreakEllement(day, duration, id) {
 	BreakEllement.classList.add("break");
 	BreakEllement.classList.add("time-line-block");
 	BreakEllement.classList.add(`${id}`);
-	BreakEllement.style.height = `${duration / 2}rem`;
+	BreakEllement.style.height = `${duration / 4}rem`;
 
 	// Timeline creation
 	let timelineContainer, timeline;
@@ -21,7 +21,7 @@ function addBreakEllement(day, duration, id) {
 
 	// === Appending ===
 
-	let root = document.getElementById(`${day}-tabel`);
+	let root = document.getElementById(`${day}-table`);
 
 	root.appendChild(BreakEllement);
 

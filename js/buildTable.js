@@ -1,15 +1,15 @@
-function buildTabel(objects, day) {
-	if(objects){
+function buildTable(objects, day) {
+	if (objects) {
 		let eltCount = 0;
 		eltDurations[day] = [0];
 		mainStart = objects[0].start;
 
-		let tabelContainer = document.createElement('div');
-		tabelContainer.id = `${day}-tabel`;
-		tabelContainer.style.display = 'block';
-		tabelContainer.classList.add('tabel-container');
+		let tableContainer = document.createElement('div');
+		tableContainer.id = `${day}-table`;
+		tableContainer.style.display = 'block';
+		tableContainer.classList.add('table-container');
 
-		document.getElementById("root-div").appendChild(tabelContainer);
+		document.getElementById("root-div").appendChild(tableContainer);
 
 		let total_duration = 0;
 
