@@ -4,98 +4,46 @@
 	"description": "ციფრული გაკვეთილების განრიგი ვებ აპლიკაციის სახით. (ჯერჯერობით მხოლოდ ბორჯომის მე-3 საჯარო სკოლის XI-3 კლასისთვის)",
 	"icons": [
 		{
-			"src": "./icons/32x32.png",
+			"src": "./icons/3round-2x32.png",
 			"sizes": "32x32",
 			"type": "image/png",
 			"purpose": "any maskable"
 		},
 		{
-			"src": "./icons/64x64.png",
+			"src": "./icons/round-48x48.png",
+			"sizes": "48x48",
+			"type": "image/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "./icons/round-64x64.png",
 			"sizes": "64x64",
 			"type": "image/png",
 			"purpose": "any maskable"
 		},
 		{
-			"src": "./icons/96x96.png",
+			"src": "./icons/round-96x96.png",
 			"sizes": "96x96",
 			"type": "image/png",
 			"purpose": "any maskable"
 		},
 		{
-			"src": "./icons/128x128.png",
+			"src": "./icons/round-128x128.png",
 			"sizes": "128x128",
 			"type": "image/png",
 			"purpose": "any maskable"
 		},
 		{
-			"src": "./icons/160x160.png",
+			"src": "./icons/round-160x160.png",
 			"sizes": "160x160",
 			"type": "image/png",
 			"purpose": "any maskable"
 		},
 		{
-			"src": "./icons/512x512.png",
+			"src": "./icons/round-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "any maskable"
-		}
-	],
-	"shortcuts": [
-		{
-			"short_name": "ორშაბათი",
-			"name": "ცხრილი ორშაბათისთვის",
-			"description": "იხილეთ ცხრილი ორშაბათისთვის",
-			"url": "/cxrili/?d=mon",
-			"icons": [
-				{
-					"src": "./icons/128x128.png",
-					"sizes": "128x128",
-					"type": "image/png",
-					"purpose": "any maskable"
-				}
-			]
-		},
-		{
-			"short_name": "სამშაბათი",
-			"name": "ცხრილი სამშაბათისთვის",
-			"description": "იხილეთ ცხრილი სამშაბათისთვის",
-			"url": "/cxrili/?d=tue",
-			"icons": [
-				{
-					"src": "./icons/128x128.png",
-					"sizes": "128x128",
-					"type": "image/png",
-					"purpose": "any maskable"
-				}
-			]
-		},
-		{
-			"short_name": "ოთხშაბათი",
-			"name": "ცხრილი ოთხშაბათისთვის",
-			"description": "იხილეთ ცხრილი ოთხშაბათისთვის",
-			"url": "/cxrili/?d=wed",
-			"icons": [
-				{
-					"src": "./icons/128x128.png",
-					"sizes": "128x128",
-					"type": "image/png",
-					"purpose": "any maskable"
-				}
-			]
-		},
-		{
-			"short_name": "ხუთშაბათი",
-			"name": "ცხრილი ხუთშაბათისთვის",
-			"description": "იხილეთ ცხრილი ხუთშაბათისთვის",
-			"url": "/cxrili/?d=thu",
-			"icons": [
-				{
-					"src": "./icons/128x128.png",
-					"sizes": "128x128",
-					"type": "image/png",
-					"purpose": "any maskable"
-				}
-			]
 		}
 	],
 	"start_url": "/cxrili/",
