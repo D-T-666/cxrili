@@ -46,8 +46,9 @@
 			"purpose": "any maskable"
 		}
 	],
-	"start_url": "/cxrili/",
+	"start_url": "/cxrili",
 	"display": "standalone",
 	"theme_color": "#a0ffc0",
-	"background_color": "#333"
+	"background_color": "#333",
+	"orientation": "portrait"
 }

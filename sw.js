@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v.1.15.3.1';
+const cacheVersion = 'v.1.15.3.5';
 const assets = [
 	'/',
 	'/cxrili/',
@@ -30,14 +30,6 @@ const assets = [
 	'/cxrili/timetable/thu.csv',
 	'/cxrili/timetable/fri.csv',
 
-	'/cxrili/icons/32x32.png',
-	'/cxrili/icons/48x48.png',
-	'/cxrili/icons/64x64.png',
-	'/cxrili/icons/96x96.png',
-	'/cxrili/icons/128x128.png',
-	'/cxrili/icons/160x160.png',
-	'/cxrili/icons/512x512.png',
-
 	'/cxrili/favicon.ico',
 	'/cxrili/manifest.json',
 
@@ -49,7 +41,7 @@ const assets = [
 
 self.addEventListener('install', evt => {
 	evt.waitUntil(
-		caches.open(staticCacheName).then(cache => {
+		caches.open(`site-static-${cacheVersion}`).then(cache => {
 			console.log('caching shell assets');
 			cache.addAll(assets);
 		})
@@ -60,7 +52,7 @@ self.addEventListener('activate', evt => {
 	evt.waitUntil(
 		caches.keys().then(keys => {
 			return Promise.all(keys
-				.filter(key => key != staticCacheName)
+				.filter(key => key != cacheVersion)
 				.map(key => caches.delete(key))
 			)
 		})
@@ -70,7 +62,7 @@ self.addEventListener('activate', evt => {
 self.addEventListener('fetch', evt => {
 	evt.respondWith(
 		caches.match(evt.request).then(cacheRes => {
-			if (cacheRes != undefined)
+			if (cacheRes)
 				return cacheRes
 			else
 				return fetch(evt.request)
