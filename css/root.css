@@ -8,8 +8,8 @@
 	--break-color-bright: #f99;
 	--break-color-dark: #7b2e2e;
 	--break-color-trans: #6003;
-	--end-color: var(--blue-color-trans);
-	--start-color: var(--class-color-trans);
+	--end-color: var(--blue-color);
+	--start-color: var(--class-color);
 	--grey-trans: #0006;
 	--white-subtle: #beccc0;
 }
