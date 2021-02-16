@@ -51,7 +51,7 @@
 }
 
 .button.today {
-    border: 0.3rem solid var(--blue-color-trans);
+    border: 0.1rem solid var(--blue-color-trans);
     padding: 0.1rem;
     color: var(--blue-color);
 }

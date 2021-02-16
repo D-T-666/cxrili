@@ -12,7 +12,7 @@ function initializeButtons() {
         }, false);
 
         if (day === getCurrentDay(true)) {
-            button.classList.add('button-today');
+            button.classList.add('today');
         }
     }
     document.getElementById('menu').addEventListener('click', evt => {
