@@ -21,7 +21,7 @@ const assets = [
 	'/cxrili/js/createClassEllement.js',
 	'/cxrili/js/loadTimeTable.js',
 	'/cxrili/js/buildTable.js',
-	'/cxrili/js/updateTimers.js',
+	'/cxrili/js/updateBlocks.js',
 	'/cxrili/js/getCurrentDay.js',
 
 	'/cxrili/timetable/mon.csv',

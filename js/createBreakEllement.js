@@ -5,7 +5,7 @@ function addBreakEllement(day, duration, id) {
 	BreakEllement.classList.add("break");
 	BreakEllement.classList.add("time-line-block");
 	BreakEllement.classList.add(`${id}`);
-	BreakEllement.style.height = `${duration / 4}rem`;
+	BreakEllement.style.height = `${duration / 240}rem`;
 
 	// Timeline creation
 	let timelineContainer, timeline;

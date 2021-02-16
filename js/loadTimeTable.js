@@ -12,8 +12,8 @@ async function loadTimeTable(day) {
 		for (let i = 0; i < table.length; i++) {
 			const cls = table[i].map(a => a.split(":").map(Number));
 			const className = table[i][0];
-			const classStart = cls[1][0] * 60 + cls[1][1];
-			const classEnd = cls[2][0] * 60 + cls[2][1];
+			const classStart = cls[1][0] * 3600 + cls[1][1] * 60;
+			const classEnd = cls[2][0] * 3600 + cls[2][1] * 60;
 			objects.push({
 				name: className,
 				start: classStart,
@@ -24,8 +24,8 @@ async function loadTimeTable(day) {
 			// If there is a class after this one insert a break
 			if (i < table.length - 1) {
 				const nextCls = table[i + 1].map(a => a.split(":").map(Number));
-				const breakStart = cls[2][0] * 60 + cls[2][1];
-				const breakEnd = nextCls[1][0] * 60 + nextCls[1][1];
+				const breakStart = classEnd;
+				const breakEnd = nextCls[1][0] * 3600 + nextCls[1][1] * 60;
 				objects.push({
 					name: 'break',
 					start: breakStart,

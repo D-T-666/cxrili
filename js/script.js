@@ -1,4 +1,3 @@
-let mainStart;
 let eltDurations = {};
 const DAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const workdays = ["mon", "tue", "wed", "thu", "fri"];
@@ -17,11 +16,11 @@ let timerUpdaterInterval;
 
 	CURRENT_DAY = getCurrentDay();
 
-	updateTimers();
+	updateBlocks();
 
 	// Initialize the weekday buttons
 	initializeButtons();
 
 	// Update timers every 1000 milliseconds (1 second)
-	timerUpdaterInterval = setInterval(updateTimers, 1000);
+	timerUpdaterInterval = setInterval(updateBlocks, 1000);
 })();
