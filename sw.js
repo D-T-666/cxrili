@@ -1,4 +1,4 @@
-const cacheVersion = 'v.1.15.3.6';
+const cacheVersion = 'v.1.15.4.0';
 const assets = [
 	'/',
 	'/cxrili/',
