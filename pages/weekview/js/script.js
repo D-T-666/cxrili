@@ -44,4 +44,6 @@ async function buildTables() {
 
 (async () => {
 	buildTables().then(initializeButtons);
-})()
+
+	loadWebsiteVersion();
+})();

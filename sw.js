@@ -60,6 +60,12 @@ self.addEventListener('activate', evt => {
 });
 
 self.addEventListener('fetch', evt => {
+	if (evt.request.url.toString().split('/').includes('version')){
+		let data = new Blob([JSON.stringify({version: cacheVersion}, null, 2)], {type : 'application/json'});
+		let res = new Response(data, {status: 200});
+		evt.respondWith(res);
+		return
+	}
 	evt.respondWith(
 		caches.match(evt.request).then(cacheRes => {
 			if (cacheRes)

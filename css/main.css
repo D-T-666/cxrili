@@ -13,7 +13,7 @@
 	font-size: 48px;
 	/* padding: 1rem; */
 
-	height: calc(100vh - 2rem);
+	height: calc(100vh - 3rem);
 	overflow-y: scroll;
 }
 
@@ -65,4 +65,18 @@
 #root-div {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+
+.version {
+	width: 100%;
+	text-align: center;
+	color: var(--class-color-trans);
+	background-color: var(--grey-trans);
+	box-sizing: border-box;
+	border: 0.1rem solid var(--grey-trans);
+	height: 1rem;
+	font-size: 0.7rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }

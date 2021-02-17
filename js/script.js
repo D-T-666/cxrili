@@ -21,6 +21,8 @@ let timerUpdaterInterval;
 	// Initialize the weekday buttons
 	initializeButtons();
 
+	loadWebsiteVersion();
+
 	// Update timers every 1000 milliseconds (1 second)
 	timerUpdaterInterval = setInterval(updateBlocks, 1000);
 })();
