@@ -1,12 +1,7 @@
-const cacheVersion = 'v.1.15.4.0';
+const cacheVersion = 'v.1.15.5.0';
 const assets = [
 	'/',
 	'/cxrili/',
-	'/cxrili/?d=mon',
-	'/cxrili/?d=tue',
-	'/cxrili/?d=wed',
-	'/cxrili/?d=thu',
-	'/cxrili/?d=fri',
 	'/cxrili/index.html',
 
 	'/cxrili/css/root.css',
@@ -15,20 +10,22 @@ const assets = [
 	'https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf',
 
 	'/cxrili/js/app.js',
-	'/cxrili/js/script.js',
+	'/cxrili/js/buildTable.js',
 	'/cxrili/js/buttons.js',
 	'/cxrili/js/createBreakEllement.js',
 	'/cxrili/js/createClassEllement.js',
-	'/cxrili/js/loadTimeTable.js',
-	'/cxrili/js/buildTable.js',
-	'/cxrili/js/updateBlocks.js',
 	'/cxrili/js/getCurrentDay.js',
+	'/cxrili/js/loadTimeTable.js',
+	'/cxrili/js/loadWebsiteVersion.js',
+	'/cxrili/js/script.js',
+	'/cxrili/js/updateBlocks.js',
 
 	'/cxrili/timetable/mon.csv',
 	'/cxrili/timetable/tue.csv',
 	'/cxrili/timetable/wed.csv',
 	'/cxrili/timetable/thu.csv',
 	'/cxrili/timetable/fri.csv',
+	'/cxrili/timetable/times.csv',
 
 	'/cxrili/favicon.ico',
 	'/cxrili/manifest.json',
@@ -36,6 +33,7 @@ const assets = [
 	'/cxrili/pages/weekview/',
 	'/cxrili/pages/weekview/index.html',
 	'/cxrili/pages/weekview/css/style.css',
+	'/cxrili/pages/weekview/js/createTableElement.js',
 	'/cxrili/pages/weekview/js/script.js'
 ];
 
@@ -52,7 +50,7 @@ self.addEventListener('activate', evt => {
 	evt.waitUntil(
 		caches.keys().then(keys => {
 			return Promise.all(keys
-				.filter(key => key != cacheVersion)
+				.filter(key => key != `site-static-${cacheVersion}`)
 				.map(key => caches.delete(key))
 			)
 		})
