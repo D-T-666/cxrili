@@ -1,55 +1,16 @@
-const cacheVersion = 'v.1.f.5.1';
-const assets = [
-	'/',
-	'/cxrili/',
-	'/cxrili/index.html',
-	
-	'/cxrili/?d=mon',
-	'/cxrili/?d=tue',
-	'/cxrili/?d=wed',
-	'/cxrili/?d=thu',
-	'/cxrili/?d=fri',
-
-	'/cxrili/css/root.css',
-	'/cxrili/css/style.css',
-	'/cxrili/css/main.css',
-	'https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf',
-
-	'/cxrili/js/app.js',
-	'/cxrili/js/buildTable.js',
-	'/cxrili/js/buttons.js',
-	'/cxrili/js/createBreakEllement.js',
-	'/cxrili/js/createClassEllement.js',
-	'/cxrili/js/getCurrentDay.js',
-	'/cxrili/js/loadTimeTable.js',
-	'/cxrili/js/loadWebsiteVersion.js',
-	'/cxrili/js/script.js',
-	'/cxrili/js/updateBlocks.js',
-
-	'/cxrili/timetable/mon.csv',
-	'/cxrili/timetable/tue.csv',
-	'/cxrili/timetable/wed.csv',
-	'/cxrili/timetable/thu.csv',
-	'/cxrili/timetable/fri.csv',
-	'/cxrili/timetable/times.csv',
-
-	'/cxrili/favicon.ico',
-	'/cxrili/manifest.json',
-
-	'/cxrili/pages/weekview/',
-	'/cxrili/pages/weekview/index.html',
-	'/cxrili/pages/weekview/css/style.css',
-	'/cxrili/pages/weekview/js/createTableElement.js',
-	'/cxrili/pages/weekview/js/script.js'
-];
+const cacheVersion = 'v.1.f.6.6';
 
 self.addEventListener('install', evt => {
-	evt.waitUntil(
+	evt.waitUntil((async () => {
+		const response = await fetch('/cxrili/static.json');
+		const data = await response.text();
+		let assets = JSON.parse(data).files;
+
 		caches.open(`site-static-${cacheVersion}`).then(cache => {
 			console.log('caching shell assets');
 			cache.addAll(assets);
 		})
-	)
+	})())
 });
 
 self.addEventListener('activate', evt => {
