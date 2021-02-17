@@ -1,8 +1,14 @@
-const cacheVersion = 'v.1.15.5.0';
+const cacheVersion = 'v.1.f.5.1';
 const assets = [
 	'/',
 	'/cxrili/',
 	'/cxrili/index.html',
+	
+	'/cxrili/?d=mon',
+	'/cxrili/?d=tue',
+	'/cxrili/?d=wed',
+	'/cxrili/?d=thu',
+	'/cxrili/?d=fri',
 
 	'/cxrili/css/root.css',
 	'/cxrili/css/style.css',
