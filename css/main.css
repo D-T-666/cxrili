@@ -34,7 +34,7 @@
     flex-grow: 1;
     font-size: 0.8rem;
     color: var(--white-subtle);
-    transition: 0.4s;
+    transition: 0.1s;
     cursor: pointer;
     user-select: none;
     box-sizing: border-box;
