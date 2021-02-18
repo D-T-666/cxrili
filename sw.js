@@ -1,4 +1,4 @@
-const cacheVersion = 'v.1.f.6.7';
+const cacheVersion = 'v.1.f.6.8';
 
 self.addEventListener('install', evt => {
 	evt.waitUntil((async () => {
