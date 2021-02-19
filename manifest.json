@@ -48,7 +48,7 @@
 	],
 	"start_url": "/cxrili",
 	"display": "standalone",
-	"theme_color": "#a0ffc0",
-	"background_color": "#333",
+	"theme_color": "#ff7a51",
+	"background_color": "#e9d9c3",
 	"orientation": "portrait"
 }
