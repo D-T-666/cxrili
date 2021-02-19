@@ -46,7 +46,7 @@
 			"purpose": "any maskable"
 		}
 	],
-	"start_url": "/cxrili",
+	"start_url": "/cxrili/",
 	"display": "standalone",
 	"theme_color": "#ff7a51",
 	"background_color": "#e9d9c3",

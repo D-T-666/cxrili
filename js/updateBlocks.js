@@ -29,22 +29,9 @@ const updateBlockBackground = (elt, time, currentEltDurations, i) => {
 	if (time < currentEltDurations[i + 1]) {
 		if (time >= currentEltDurations[i]) {
 			elt.classList.add("active");
-			// if (elt.classList.contains("break")) {
-			// 	elt.style.backgroundImage = "repeating-linear-gradient(-25deg, var(--break-color), var(--break-color) 0.4rem, var(--break-color-dark) 0, var(--break-color-dark) 0.8rem)";
-			// } else {
-			// 	elt.style.color = "var(--class-color-bright)";
-			// 	elt.style.backgroundImage = "repeating-linear-gradient(30deg, var(--class-color-trans), var(--class-color-trans) 0.4rem, #0006 0.4rem, #0006 1rem)";
-			// }
 		} else {
 			elt.classList.remove("active");
 		}
-	} else {
-		// if (elt.classList.contains("break"))
-		// 	elt.style.backgroundColor = "var(--break-color-trans)";
-		// else
-		// 	elt.style.backgroundColor = "var(--grey-trans)";
-		// elt.style.backgroundImage = "";
-		// elt.style.color = "var(--class-color)";
 	}
 };
 
