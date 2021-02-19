@@ -19,14 +19,16 @@
 	user-select: none;
 	background-color: var(--week-table-background);
 	box-shadow: 0 0.2rem 1rem var(--shadow-color);
-	margin: 0.35rem 0.7rem;
+	margin: 0.7rem;
+	text-align: center;
 	border-radius: 1.6rem;
 }
 
 @media only screen and (orientation: portrait) {
 	/* For mobile phones: */
-	[class*="table"] {
+	.table {
 		width: 50%;
+		margin: 0.35rem 0.7rem;
 	}
 }
 
