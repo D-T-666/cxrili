@@ -21,6 +21,11 @@ function initializeButtons() {
 	document.getElementById("menu").addEventListener("click", (evt) => {
 		window.location.href = "/cxrili/pages/weekview/";
 	});
+	document
+		.getElementById("theme-switcher")
+		.addEventListener("click", (evt) => {
+			document.body.classList.toggle("dark-theme");
+		});
 	updateTablesAndButtons();
 }
 

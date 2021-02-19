@@ -63,71 +63,69 @@
 	--body-background: #e9d9c3;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		/* Presets */
-		--dark: #ddd6d4;
-		--orange: #ff7a51;
-		--green: #73c577;
-		--blue: #8081d8;
-		--white: #2b2c33;
-		/* transparent */
-		--dark-1: #0e0e11aa;
-		--dark-2: #0e0e1166;
-		--dark-3: #0e0e1122;
-		--dark-4: #0e0e1111;
-		--green-1: #98e6b0aa;
-		--green-2: #98e6b066;
-		--green-3: #98e6b022;
-		--green-4: #98e6b011;
-		--orange-1: #ff7a51aa;
-		--orange-2: #ff7a5166;
-		--orange-3: #ff7a5122;
-		--orange-4: #ff7a5111;
-		--blue-1: #8081d8aa;
-		--blue-2: #8081d866;
-		--blue-3: #8081d822;
-		--blue-4: #8081d811;
+.dark-theme {
+	/* Presets */
+	--dark: #ddd6d4;
+	--orange: #ff7a51;
+	--green: #73c577;
+	--blue: #8081d8;
+	--white: #2b2c33;
+	/* transparent */
+	--dark-1: #0e0e11aa;
+	--dark-2: #0e0e1166;
+	--dark-3: #0e0e1122;
+	--dark-4: #0e0e1111;
+	--green-1: #98e6b0aa;
+	--green-2: #98e6b066;
+	--green-3: #98e6b022;
+	--green-4: #98e6b011;
+	--orange-1: #ff7a51aa;
+	--orange-2: #ff7a5166;
+	--orange-3: #ff7a5122;
+	--orange-4: #ff7a5111;
+	--blue-1: #8081d8aa;
+	--blue-2: #8081d866;
+	--blue-3: #8081d822;
+	--blue-4: #8081d811;
 
-		/* Week tables */
-		--week-table-text: var(--dark);
-		--week-table-background: var(--white);
-		--week-table-highlight: var(--blue);
+	/* Week tables */
+	--week-table-text: var(--dark);
+	--week-table-background: var(--white);
+	--week-table-highlight: var(--blue);
 
-		/* Blocks */
-		--block-background: var(--white);
-		--class-block-background: var(--white);
-		--class-text: var(--dark);
-		--class-text-highlight: var(--orange);
-		--break-block-background: var(--blue-1);
-		--break-text: var(--dark);
-		--shadow-color: transparent;
+	/* Blocks */
+	--block-background: var(--white);
+	--class-block-background: var(--white);
+	--class-text: var(--dark);
+	--class-text-highlight: var(--orange);
+	--break-block-background: var(--blue-1);
+	--break-text: var(--dark);
+	--shadow-color: transparent;
 
-		/* Buttons */
-		--button-background: var(--white);
-		--button-text: var(--dark);
-		--orange-button-background: var(--orange);
-		--orange-button-text: var(--white);
-		--green-button-background: var(--green);
-		--green-button-text: var(--dark);
-		--blue-button-background: var(--blue);
-		--blue-button-text: var(--white);
+	/* Buttons */
+	--button-background: var(--white);
+	--button-text: var(--dark);
+	--orange-button-background: var(--orange);
+	--orange-button-text: var(--white);
+	--green-button-background: var(--green);
+	--green-button-text: var(--dark);
+	--blue-button-background: var(--blue);
+	--blue-button-text: var(--white);
 
-		/* Timers */
-		--timer-start-text: var(--dark);
-		--timer-end-text: var(--dark);
-		--timer-live-text: var(--green);
+	/* Timers */
+	--timer-start-text: var(--dark);
+	--timer-end-text: var(--dark);
+	--timer-live-text: var(--green);
 
-		/* Timeline */
-		--time-line-border: var(--dark);
-		--time-line-color: var(--dark);
+	/* Timeline */
+	--time-line-border: var(--dark);
+	--time-line-color: var(--dark);
 
-		/* Version stamp */
-		--version-text: var(--orange);
+	/* Version stamp */
+	--version-text: var(--orange);
 
-		/* Background color */
-		--body-background: #1e1e22;
-	}
+	/* Background color */
+	--body-background: #1e1e22;
 }
 
 @font-face {
@@ -143,4 +141,5 @@
 body {
 	margin: 0;
 	background-color: var(--body-background);
+	transition: 0.4s;
 }

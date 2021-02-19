@@ -21,6 +21,7 @@
 	margin: 0.7rem;
 	box-shadow: 0 0.2rem 1rem var(--shadow-color);
 
+	transition: 0.4s;
 	overflow: hidden;
 }
 
@@ -38,9 +39,7 @@
 		var(--break-block-background) 0.6rem,
 		var(--break-block-background) 1rem
 	);
-	/* border: 0.4rem solid var(--orange); */
-	/* box-shadow: inset 0 0.2rem 1rem var(--dark-3), 0 0.2rem 1rem var(--dark-4); */
-	content: " ";
+	transition: 0.4s;
 }
 
 .time-line-container {
