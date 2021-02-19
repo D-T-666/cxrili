@@ -1,5 +1,5 @@
 let eltDurations = {};
-const DAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const DAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 const workdays = ["mon", "tue", "wed", "thu", "fri"];
 let CURRENT_DAY = getCurrentDay();
 let switchedToNextDay = false;
@@ -7,11 +7,12 @@ let switchedToNextDay = false;
 let timerUpdaterInterval;
 
 (async function main() {
+	initializeTheme();
+
 	for (let day of workdays) {
 		CURRENT_DAY = day;
 		// Build table from the current day
-		await loadTimeTable(day)
-			.then(objects => buildTable(objects, day));
+		await loadTimeTable(day).then((objects) => buildTable(objects, day));
 	}
 
 	CURRENT_DAY = getCurrentDay();

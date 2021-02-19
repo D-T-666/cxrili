@@ -38,12 +38,6 @@ function initializeButtons() {
 		},
 		false
 	);
-
-	document
-		.getElementById("theme-switcher")
-		.addEventListener("click", (evt) => {
-			document.body.classList.toggle("dark-theme");
-		});
 }
 
 async function buildTables() {
@@ -54,6 +48,8 @@ async function buildTables() {
 }
 
 (async () => {
+	initializeTheme();
+	
 	await buildTables();
 	initializeButtons();
 

@@ -40,6 +40,16 @@
 		var(--break-block-background) 1rem
 	);
 	transition: 0.4s;
+	background-size: 400% 500%;
+	animation: linear gradient 256s infinite;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0 -2.8rem;
+	}
+	100% {
+		background-position: -4.849rem 0;
+	}
 }
 
 .time-line-container {
@@ -68,7 +78,7 @@
 		var(--block-background) 1rem
 	);
 	background-size: 400% 200%;
-	animation: linear gradient 7s infinite;
+	animation: linear gradient 11s infinite;
 }
 
 @keyframes gradient {

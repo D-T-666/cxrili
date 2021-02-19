@@ -26,6 +26,7 @@
 		"/cxrili/js/loadWebsiteVersion.js",
 		"/cxrili/js/script.js",
 		"/cxrili/js/updateBlocks.js",
+		"/cxrili/js/theme.js",
 
 		"/cxrili/timetable/mon.csv",
 		"/cxrili/timetable/tue.csv",
