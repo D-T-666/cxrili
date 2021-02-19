@@ -14,6 +14,7 @@
 		"/cxrili/css/style.css",
 		"/cxrili/css/main.css",
 		"https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf",
+		"/cxrili/fonts/SourceCodePro-Medium.ttf",
 
 		"/cxrili/js/app.js",
 		"/cxrili/js/buildTable.js",
@@ -43,7 +44,6 @@
 		"/cxrili/pages/weekview/js/createTableElement.js",
 		"/cxrili/pages/weekview/js/script.js",
 
-		"/cxrili/icons/160x160.png",
-		"/cxrili/icons/round-160x160.png"
+		"/cxrili/icons/cxr-160x160.png"
 	]
 }

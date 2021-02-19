@@ -13,6 +13,7 @@ function createClassEllement(day, name, duration, start, end, id) {
 	timelineContainer = document.createElement("div");
 	timeline.classList.add("time-line");
 	timelineContainer.classList.add("time-line-container");
+	timelineContainer.appendChild(timeline);
 
 	// ClassDesctiprion creation
 	let ClassDesctiprion, className;
@@ -21,34 +22,33 @@ function createClassEllement(day, name, duration, start, end, id) {
 	ClassDesctiprion.classList.add("class-description");
 	// className
 	className = document.createElement("div");
-	className.classList.add("class-name")
+	className.classList.add("class-name");
 	className.innerHTML = name;
 	ClassDesctiprion.appendChild(className);
 	// timers
-	let classTimers, timerTimeLeft, timerStart, timerEnd;
+	let classTimers, timerStart, timerTimeLeft, timerEnd;
 	// classTimers
 	classTimers = document.createElement("div");
-	classTimers.classList.add("class-timers")
+	classTimers.classList.add("class-timers");
 	ClassDesctiprion.appendChild(classTimers);
-	// timerTimeLeft
-	timerTimeLeft = document.createElement("div");
-	timerTimeLeft.classList.add("timer-left");
-	timerTimeLeft.classList.add("timer");
-	timerTimeLeft.innerHTML = `<p>დარჩა:</p><p class="timer-time">0:00:00</p>`
-	classTimers.appendChild(timerTimeLeft);
 	// timerStart
 	timerStart = document.createElement("div");
 	timerStart.classList.add("timer-start");
 	timerStart.classList.add("timer");
-	timerStart.innerHTML = `<p>იწყება:</p><p class="timer-time">${start}</p>`
+	timerStart.innerHTML = `<p class="timer-time">${start}</p>`;
 	classTimers.appendChild(timerStart);
+	// timerTimeLeft
+	timerTimeLeft = document.createElement("div");
+	timerTimeLeft.classList.add("timer-left");
+	timerTimeLeft.classList.add("timer");
+	timerTimeLeft.innerHTML = `<p class="timer-time">00:00</p>`;
+	classTimers.appendChild(timerTimeLeft);
 	// timerEnd
 	timerEnd = document.createElement("div");
 	timerEnd.classList.add("timer-end");
 	timerEnd.classList.add("timer");
-	timerEnd.innerHTML = `<p>სრულდება:</p><p class="timer-time">${end}</p>`
+	timerEnd.innerHTML = `<p class="timer-time">${end}</p>`;
 	classTimers.appendChild(timerEnd);
-
 
 	// === Appending ===
 
@@ -58,7 +58,6 @@ function createClassEllement(day, name, duration, start, end, id) {
 
 	// Appending timeline
 	ClassEllement.appendChild(timelineContainer);
-	timelineContainer.appendChild(timeline);
 
 	// Appending ClassDescription
 	ClassEllement.appendChild(ClassDesctiprion);

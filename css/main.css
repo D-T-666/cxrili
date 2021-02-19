@@ -6,76 +6,82 @@
 }
 
 #root-div {
-    background-color: var(--grey-trans);
-	display: block;
-	width: 100%;
-	/* min-width: 35rem; */
+	display: flex;
+	flex-direction: column;
 	font-size: 48px;
-	/* padding: 1rem; */
 
-	height: calc(100vh - 3rem);
-	overflow-y: scroll;
+	height: calc(100vh - 5.5rem);
+	overflow-y: auto;
+
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }
 
-/* Buttons */
+/* Nav bar */
 
-.buttons-container{
+.nav-bar {
 	z-index: 10;
-	width: 100%;
-    display: flex;
-    background-color: var(--grey-trans);
-	height: 2rem;
+	display: flex;
+	height: 4.5rem;
+	overflow-x: auto;
+
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+.buttons-container {
+	flex-grow: 1;
+	display: flex;
+	padding: 0.3rem;
 }
 
 .button {
-    padding: 0.2rem;
-    margin: 0.3rem;
-    background-color: var(--grey-trans);
-    flex-grow: 1;
-    font-size: 0.8rem;
-    color: var(--white-subtle);
-    transition: 0.1s;
-    cursor: pointer;
-    user-select: none;
-    box-sizing: border-box;
+	padding: 0.6rem 0.8rem;
+	margin: 0.4rem;
+	background-color: var(--button-background);
+	flex-grow: 1;
+	font-size: 1.4rem;
+	font-family: myFont;
+	color: var(--button-text);
+	cursor: pointer;
+	user-select: none;
+	box-sizing: border-box;
 	text-align: center;
+	border-radius: 0.6rem;
+	box-shadow: 0 0.2rem 1rem var(--shadow-color);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	transition: 0.3s;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .button.menu {
+	background-color: var(--orange-button-background);
+	color: var(--orange-button-text);
 	flex-grow: unset;
 }
 
-.button:hover {
-    color: var(--class-color-bright);
-    background-color: var(--class-color-trans);
-}
-
-.button.today {
-    border: 0.1rem solid var(--blue-color-trans);
-    padding: 0.1rem;
-    color: var(--blue-color);
+.button.selected {
+	background-color: var(--blue-button-background);
+	color: var(--blue-button-text);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 #root-div::-webkit-scrollbar {
-    display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-#root-div {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+	display: none;
 }
 
 .version {
 	width: 100%;
 	text-align: center;
-	color: var(--class-color-trans);
-	background-color: var(--grey-trans);
+	color: var(--version-text);
+	background-color: var(--body-background);
 	box-sizing: border-box;
-	border: 0.1rem solid var(--grey-trans);
 	height: 1rem;
 	font-size: 0.7rem;
+	font-family: numFont;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

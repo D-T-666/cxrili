@@ -1,42 +1,45 @@
-const cacheVersion = 'v.1.f.6.8';
+let cacheVersion = "v.2.0.2.2";
 
-self.addEventListener('install', evt => {
-	evt.waitUntil((async () => {
-		const response = await fetch('/cxrili/static.json');
-		const data = await response.text();
-		let assets = JSON.parse(data).files;
-
-		caches.open(`site-static-${cacheVersion}`).then(cache => {
-			console.log('caching shell assets');
-			cache.addAll(assets);
-		})
-	})())
-});
-
-self.addEventListener('activate', evt => {
+self.addEventListener("install", (evt) => {
 	evt.waitUntil(
-		caches.keys().then(keys => {
-			return Promise.all(keys
-				.filter(key => key != `site-static-${cacheVersion}`)
-				.map(key => caches.delete(key))
-			)
-		})
-	)
+		(async () => {
+			const assetsResponse = await fetch("/cxrili/static.json");
+			const assetsData = await assetsResponse.text();
+			let assets = JSON.parse(assetsData).files;
+			caches.open(`site-static-${cacheVersion}`).then((cache) => {
+				console.log("caching shell assets");
+				cache.addAll(assets);
+			});
+		})()
+	);
 });
 
-self.addEventListener('fetch', evt => {
-	if (evt.request.url.toString().split('/').includes('version')){
-		let data = new Blob([JSON.stringify({version: cacheVersion}, null, 2)], {type : 'application/json'});
-		let res = new Response(data, {status: 200});
+self.addEventListener("activate", (evt) => {
+	evt.waitUntil(
+		caches.keys().then((keys) => {
+			return Promise.all(
+				keys
+					.filter((key) => key != `site-static-${cacheVersion}`)
+					.map((key) => caches.delete(key))
+			);
+		})
+	);
+});
+
+self.addEventListener("fetch", (evt) => {
+	if (evt.request.url.toString().split("/").includes("version")) {
+		let data = new Blob(
+			[JSON.stringify({ version: cacheVersion }, null, 2)],
+			{ type: "application/json" }
+		);
+		let res = new Response(data, { status: 200 });
 		evt.respondWith(res);
-		return
+		return;
 	}
 	evt.respondWith(
-		caches.match(evt.request).then(cacheRes => {
-			if (cacheRes)
-				return cacheRes
-			else
-				return fetch(evt.request)
+		caches.match(evt.request).then((cacheRes) => {
+			if (cacheRes) return cacheRes;
+			else return fetch(evt.request);
 		})
-	)
-})
+	);
+});
