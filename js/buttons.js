@@ -28,7 +28,6 @@ async function updateTablesAndButtons() {
 	// Update weekday buttons
 	const buttons = document.getElementsByClassName("weekday");
 	for (let btn of buttons) {
-		console.log(btn.id);
 		if (btn.id !== CURRENT_DAY) btn.classList.remove("selected");
 		else btn.classList.add("selected");
 	}

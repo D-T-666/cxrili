@@ -68,16 +68,16 @@
 		var(--block-background) 0.4rem,
 		var(--block-background) 1rem
 	);
-	background-size: 300% 100%;
-	animation: linear gradient 8s infinite;
+	background-size: 400% 200%;
+	animation: linear gradient 7s infinite;
 }
 
 @keyframes gradient {
 	0% {
-		background-position: 0% 0%;
+		background-position: 0 -2.8rem;
 	}
 	100% {
-		background-position: 100% 100%;
+		background-position: -4.849rem 0;
 	}
 }
 

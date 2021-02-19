@@ -1,12 +1,11 @@
-const cacheVersion = "v.2.0.2.0";
+let cacheVersion = "v.2.0.2.2";
 
 self.addEventListener("install", (evt) => {
 	evt.waitUntil(
 		(async () => {
-			const response = await fetch("/cxrili/static.json");
-			const data = await response.text();
-			let assets = JSON.parse(data).files;
-
+			const assetsResponse = await fetch("/cxrili/static.json");
+			const assetsData = await assetsResponse.text();
+			let assets = JSON.parse(assetsData).files;
 			caches.open(`site-static-${cacheVersion}`).then((cache) => {
 				console.log("caching shell assets");
 				cache.addAll(assets);
@@ -38,12 +37,9 @@ self.addEventListener("fetch", (evt) => {
 		return;
 	}
 	evt.respondWith(
-		// caches.match(evt.request).then(cacheRes => {
-		// 	if (cacheRes)
-		// 		return cacheRes
-		// 	else
-		// 		return fetch(evt.request)
-		// })
-		fetch(evt.request)
+		caches.match(evt.request).then((cacheRes) => {
+			if (cacheRes) return cacheRes;
+			else return fetch(evt.request);
+		})
 	);
 });

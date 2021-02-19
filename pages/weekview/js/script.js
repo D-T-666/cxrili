@@ -23,7 +23,6 @@ function initializeButtons() {
 				"click",
 				(evt) => {
 					window.location.href = `/cxrili/?d=${day}`;
-					console.log(day);
 				},
 				false
 			);
