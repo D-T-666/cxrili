@@ -4,7 +4,7 @@
 }
 
 .table-container.today > .time-line-block > .time-line-container {
-	width: 25%;
+	width: 20%;
 }
 
 /* Time line */
@@ -48,7 +48,7 @@
 	width: 0;
 	margin: 0;
 	padding: 0;
-	max-width: 25%;
+	max-width: 20%;
 }
 
 .time-line {
@@ -87,6 +87,9 @@
 }
 .active.time-line-block > .class-description > .class-timers > .timer-left {
 	display: block;
+}
+.active.time-line-block > .class-description > .class-name {
+	color: var(--class-text-highlight);
 }
 
 .class-description {

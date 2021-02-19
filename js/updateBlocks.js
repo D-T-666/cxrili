@@ -52,7 +52,7 @@ function updateBlocks() {
 	const date = new Date();
 	let d, h, m, s;
 	d = date.getDay();
-	h = 10; //date.getHours();
+	h = date.getHours();
 	m = date.getMinutes();
 	s = date.getSeconds();
 

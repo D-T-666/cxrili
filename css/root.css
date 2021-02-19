@@ -46,6 +46,7 @@
 	--block-background: var(--white);
 	--class-block-background: var(--white);
 	--class-text: var(--dark);
+	--class-text-highlight: var(--orange);
 	--break-block-background: var(--blue-1);
 	--break-text: var(--dark);
 	--shadow-color: var(--dark-3);
@@ -111,6 +112,7 @@
 		--block-background: var(--white);
 		--class-block-background: var(--white);
 		--class-text: var(--dark);
+		--class-text-highlight: var(--orange);
 		--break-block-background: var(--blue-1);
 		--break-text: var(--dark);
 		--shadow-color: transparent;
