@@ -61,7 +61,7 @@ async function createTableElement(day) {
 		for (let cls of classes) {
 			const listItem = document.createElement("div");
 			listItem.classList.add("item");
-			listItem.innerHTML = `${i}. ${cls}`;
+			listItem.innerHTML = `${cls}`;
 
 			tableList.appendChild(listItem);
 			i++;
