@@ -58,6 +58,7 @@
 	margin: 0;
 	padding: 0;
 	max-width: 20%;
+	transition: 0.4s;
 }
 
 .time-line {
@@ -68,30 +69,39 @@
 	box-sizing: border-box;
 	transition: 0.4s;
 
-	border-right: 0.4rem solid var(--time-line-border);
+	border-right: 0.4rem solid var(--time-line);
 
 	background-image: repeating-linear-gradient(
 		30deg,
-		var(--time-line-color),
-		var(--time-line-color) 0.4rem,
+		var(--time-line),
+		var(--time-line) 0.4rem,
 		var(--block-background) 0.4rem,
 		var(--block-background) 1rem
 	);
 	background-size: 400% 400%;
-	animation: linear gradient 17s infinite;
+	animation: linear gradient 12s infinite;
+	border-radius: 0;
 }
 
 @keyframes gradient {
 	0% {
-		background-position: 0 -2.8rem;
+		background-position: 0 -1.73205rem;
 	}
 	100% {
-		background-position: -4.849rem 0;
+		background-position: -1rem 0;
 	}
 }
 
 .active.time-line-block > .time-line-container > .time-line {
-	border-bottom: 0.4rem solid var(--time-line-border);
+	background-image: repeating-linear-gradient(
+		30deg,
+		var(--time-line-active),
+		var(--time-line-active) 0.4rem,
+		var(--block-background) 0.4rem,
+		var(--block-background) 1rem
+	);
+	border-right: 0.4rem solid var(--time-line-active);
+	border-bottom: 0.4rem solid var(--time-line-active);
 	border-radius: 0 0 1.4rem 0;
 }
 .active.time-line-block > .class-description > .class-timers > .timer-left {

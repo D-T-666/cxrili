@@ -39,8 +39,8 @@ function updateBlocks() {
 	const date = new Date();
 	let d, h, m, s;
 	d = date.getDay();
-	h = date.getHours();
-	m = date.getMinutes();
+	h = date.getHours() - 1;
+	m = date.getMinutes() + 59;
 	s = date.getSeconds();
 
 	if (d + 1 < 6) {
@@ -102,8 +102,7 @@ function updateBlocks() {
 
 			// If there is a day provided in the url bar, don't switch.
 			if (urlDay === null) {
-				CURRENT_DAY =
-					d + 1 !== 0 && d + 1 !== 6 ? DAYS[d + 1] : DAYS[1];
+				CURRENT_DAY = DAYS[d + 1];
 				updateTablesAndButtons();
 			}
 			switchedToNextDay = true;

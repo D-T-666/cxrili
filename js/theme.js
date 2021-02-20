@@ -7,8 +7,6 @@ function initializeThemeButton() {
 			const darkTheme = document.body.classList.toggle("dark-theme");
 
 			myStorage.setItem("colorTheme", darkTheme);
-
-			console.log({ darkTheme });
 		});
 }
 
@@ -24,6 +22,4 @@ function initializeTheme() {
 	}
 
 	initializeThemeButton();
-
-	console.log({ darkTheme });
 }

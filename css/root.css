@@ -2,7 +2,7 @@
 	/* Presets */
 	--dark: #86756d;
 	--orange: #ff7a51;
-	--green: #98e6b0;
+	--green: #008148;
 	--blue: #8081d8;
 	--white: #f7e9d5;
 	/* transparent */
@@ -33,7 +33,7 @@
 	--class-block-background: var(--white);
 	--class-text: var(--dark);
 	--class-text-highlight: var(--orange);
-	--break-block-background: var(--blue-1);
+	--break-block-background: var(--blue);
 	--break-text: var(--dark);
 	--shadow-color: var(--dark-3);
 
@@ -50,17 +50,17 @@
 	/* Timers */
 	--timer-start-text: var(--dark);
 	--timer-end-text: var(--dark);
-	--timer-live-text: var(--dark);
+	--timer-live-text: var(--green);
 
 	/* Timeline */
-	--time-line-border: var(--dark);
-	--time-line-color: var(--dark);
+	--time-line-active: var(--green);
+	--time-line: var(--dark);
 
 	/* Version stamp */
 	--version-text: var(--dark);
 
 	/* Background color */
-	--body-background: #e9d9c3;
+	--body-background: #e4d2b8;
 }
 
 .dark-theme {
@@ -69,7 +69,7 @@
 	--orange: #ff7a51;
 	--green: #73c577;
 	--blue: #8081d8;
-	--white: #2b2c33;
+	--white: #27282e;
 	/* transparent */
 	--dark-1: #0e0e11aa;
 	--dark-2: #0e0e1166;
@@ -118,14 +118,14 @@
 	--timer-live-text: var(--green);
 
 	/* Timeline */
-	--time-line-border: var(--dark);
-	--time-line-color: var(--dark);
+	--time-line-active: var(--green);
+	--time-line: var(--dark);
 
 	/* Version stamp */
 	--version-text: var(--orange);
 
 	/* Background color */
-	--body-background: #1e1e22;
+	--body-background: #1d1d22;
 }
 
 @font-face {
