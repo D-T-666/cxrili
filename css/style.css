@@ -66,7 +66,7 @@
 	width: 100%;
 	height: 0%;
 	box-sizing: border-box;
-	transition: linear 1s;
+	transition: 0.4s;
 
 	border-right: 0.4rem solid var(--time-line-border);
 
@@ -77,8 +77,8 @@
 		var(--block-background) 0.4rem,
 		var(--block-background) 1rem
 	);
-	background-size: 400% 200%;
-	animation: linear gradient 11s infinite;
+	background-size: 400% 400%;
+	animation: linear gradient 17s infinite;
 }
 
 @keyframes gradient {

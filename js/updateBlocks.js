@@ -43,61 +43,70 @@ function updateBlocks() {
 	m = date.getMinutes();
 	s = date.getSeconds();
 
-	// Current time in seconds
-	const time = s + m * 60 + h * 60 * 60;
-	const day = DAYS[d];
+	if (d + 1 < 6) {
+		// Current time in seconds
+		const time = s + m * 60 + h * 60 * 60;
+		const day = DAYS[d + 1 < 6 ? d + 1 : 1];
 
-	const currentEltDurations = eltDurations[day];
-	const nBlocks = currentEltDurations.length - 1; // The first element is ignored
+		const currentEltDurations = eltDurations[day];
+		const nBlocks = currentEltDurations.length - 1; // The first element is ignored
 
-	const tableElement = document.getElementById(`${day}-table`);
+		const tableElement = document.getElementById(`${day}-table`);
 
-	tableElement.classList.add("today");
+		tableElement.classList.add("today");
 
-	for (let i = 0; i < nBlocks; i++) {
-		const elt = tableElement.getElementsByClassName(`${i}`)[0];
+		for (let i = 0; i < nBlocks; i++) {
+			const elt = tableElement.getElementsByClassName(`${i}`)[0];
+			if (elt) {
+				const timerElement = elt.getElementsByClassName(
+					"timer-left"
+				)[0];
 
-		const timerElement = elt.getElementsByClassName("timer-left")[0];
+				const timeLineElement = elt.getElementsByClassName(
+					"time-line"
+				)[0];
 
-		const timeLineElement = elt.getElementsByClassName("time-line")[0];
+				let timeLeft = currentEltDurations[i] - time;
 
-		let timeLeft = currentEltDurations[i] - time;
+				// If the ellement is not of class 'break' we can
+				// update timers it displays
+				if (!elt.classList.contains("break")) {
+					// If it's past the start time of this class, switch
+					// countdown to be counting down towards the end of the class.
+					if (timeLeft <= 0)
+						timeLeft +=
+							currentEltDurations[i + 1] - currentEltDurations[i];
 
-		// If the ellement is not of class 'break' we can
-		// update timers it displays
-		if (!elt.classList.contains("break")) {
-			// If it's past the start time of this class, switch
-			// countdown to be counting down towards the end of the class.
-			if (timeLeft <= 0)
-				timeLeft += currentEltDurations[i + 1] - currentEltDurations[i];
+					// Update the timer
+					updateTimer(timerElement, timeLeft);
+				}
 
-			// Update the timer
-			updateTimer(timerElement, timeLeft);
+				// Update the time line
+				updateTimeLine(timeLineElement, time, currentEltDurations, i);
+
+				// Update the block background
+				updateBlockBackground(elt, time, currentEltDurations, i);
+			}
 		}
 
-		// Update the time line
-		updateTimeLine(timeLineElement, time, currentEltDurations, i);
+		// Total time left
+		const timeTillEndOfDay =
+			currentEltDurations[currentEltDurations.length - 1] - time;
 
-		// Update the block background
-		updateBlockBackground(elt, time, currentEltDurations, i);
-	}
+		// If the day has ended more than 5 minutes ago, automatically
+		// switch to the next day (If not already switched)
+		if (timeTillEndOfDay < -5 * 60 && !switchedToNextDay) {
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			const urlDay = urlParams.get("d");
 
-	// Total time left
-	const timeTillEndOfDay =
-		currentEltDurations[currentEltDurations.length - 1] - time;
-
-	// If the day has ended more than 5 minutes ago, automatically
-	// switch to the next day (If not already switched)
-	if (timeTillEndOfDay < -5 * 60 && !switchedToNextDay) {
-		const queryString = window.location.search;
-		const urlParams = new URLSearchParams(queryString);
-		const urlDay = urlParams.get("d");
-
-		// If there is a day provided in the url bar, don't switch.
-		if (urlDay === null) {
-			CURRENT_DAY = d + 1 !== 0 && d + 1 !== 6 ? DAYS[d + 1] : DAYS[1];
-			updateTablesAndButtons();
+			// If there is a day provided in the url bar, don't switch.
+			if (urlDay === null) {
+				CURRENT_DAY =
+					d + 1 !== 0 && d + 1 !== 6 ? DAYS[d + 1] : DAYS[1];
+				updateTablesAndButtons();
+			}
+			switchedToNextDay = true;
 		}
-		switchedToNextDay = true;
 	}
 }

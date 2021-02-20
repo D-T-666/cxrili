@@ -1,4 +1,4 @@
-let cacheVersion = "v.2.0.4.8";
+let cacheVersion = "v.2.0.4.c";
 
 self.addEventListener("install", (evt) => {
 	evt.waitUntil(
@@ -6,6 +6,7 @@ self.addEventListener("install", (evt) => {
 			const assetsResponse = await fetch("/cxrili/static.json");
 			const assetsData = await assetsResponse.text();
 			let assets = JSON.parse(assetsData).files;
+
 			caches.open(`site-static-${cacheVersion}`).then((cache) => {
 				console.log("caching shell assets");
 				cache.addAll(assets);
