@@ -1,4 +1,4 @@
-let cacheVersion = "v.2.0.4.e";
+let cacheVersion = "v.2.0.4.f";
 
 self.addEventListener("install", (evt) => {
 	evt.waitUntil(
