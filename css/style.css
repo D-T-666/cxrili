@@ -138,6 +138,7 @@
 .class-timers {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .timer {
@@ -158,8 +159,11 @@
 }
 
 .timer-left {
-	color: var(--timer-live-text);
+	color: var(--block-background);
+	background-color: var(--timer-live-text);
 	display: none;
+	padding: 0.3rem 0.6rem;
+	border-radius: 0.8rem;
 }
 
 .break > .class-description {
@@ -171,7 +175,7 @@
 	align-items: center;
 }
 .break > .class-description > .class-timers > .timer-left {
-	background-color: var(--block-background);
+	/* background-color: var(--block-background); */
 	padding: 0.3rem 0.6rem;
 	border-radius: 0.8rem;
 	opacity: 0;
