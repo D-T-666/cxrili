@@ -1,5 +1,3 @@
-let pauseScrollDetection = false;
-
 function initializeButtons() {
 	for (let day of workdays) {
 		let button = document.getElementById(day);
@@ -20,18 +18,6 @@ function initializeButtons() {
 			button.classList.add("today");
 		}
 	}
-	document.getElementById("root-div").addEventListener("scroll", (evt) => {
-		if (!pauseScrollDetection) {
-			const w = document.body.scrollWidth;
-			const pageN = Math.floor(
-				(document.getElementById("root-div").scrollLeft + w / 2) / w
-			);
-
-			CURRENT_DAY = workdays[pageN];
-
-			updateButtons();
-		}
-	});
 	document.getElementById("menu").addEventListener("click", (evt) => {
 		window.location.href = "/cxrili/pages/weekview/";
 	});
@@ -42,8 +28,10 @@ async function updateTables() {
 	const tables = document.getElementsByClassName("table-container");
 	for (let table of tables) {
 		if (table.id !== `${CURRENT_DAY}-table`) {
+			table.style.display = "none";
 			table.classList.remove("active");
 		} else {
+			table.style.display = "block";
 			table.classList.add("active");
 			table.scrollIntoView();
 

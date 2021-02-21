@@ -1,17 +1,6 @@
-#root-div {
-	flex-direction: row;
-	/* flex-wrap: nowrap; */
-	overflow-x: scroll;
-	scroll-snap-type: x mandatory;
-}
-
 .table-container {
-	display: block;
-	width: 100%;
-	height: fit-content;
-	flex: 0 0 auto;
-	scroll-snap-align: start end;
-	scroll-snap-stop: always;
+	flex-direction: column;
+	align-items: center;
 }
 
 /* Time line */
