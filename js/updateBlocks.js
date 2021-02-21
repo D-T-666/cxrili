@@ -32,6 +32,8 @@ const updateBlockBackground = (elt, time, currentEltDurations, i) => {
 		} else {
 			elt.classList.remove("active");
 		}
+	} else {
+		elt.classList.remove("active");
 	}
 };
 
@@ -39,14 +41,14 @@ function updateBlocks() {
 	const date = new Date();
 	let d, h, m, s;
 	d = date.getDay();
-	h = date.getHours() - 1;
-	m = date.getMinutes() + 59;
+	h = date.getHours();
+	m = date.getMinutes();
 	s = date.getSeconds();
 
-	if (d + 1 < 6) {
+	if (d != 6 && d != 0) {
 		// Current time in seconds
 		const time = s + m * 60 + h * 60 * 60;
-		const day = DAYS[d + 1 < 6 ? d + 1 : 1];
+		const day = DAYS[d];
 
 		const currentEltDurations = eltDurations[day];
 		const nBlocks = currentEltDurations.length - 1; // The first element is ignored
@@ -68,18 +70,14 @@ function updateBlocks() {
 
 				let timeLeft = currentEltDurations[i] - time;
 
-				// If the ellement is not of class 'break' we can
-				// update timers it displays
-				if (!elt.classList.contains("break")) {
-					// If it's past the start time of this class, switch
-					// countdown to be counting down towards the end of the class.
-					if (timeLeft <= 0)
-						timeLeft +=
-							currentEltDurations[i + 1] - currentEltDurations[i];
+				// If it's past the start time of this class, switch
+				// countdown to be counting down towards the end of the class.
+				if (timeLeft <= 0)
+					timeLeft +=
+						currentEltDurations[i + 1] - currentEltDurations[i];
 
-					// Update the timer
-					updateTimer(timerElement, timeLeft);
-				}
+				// Update the timer
+				updateTimer(timerElement, timeLeft);
 
 				// Update the time line
 				updateTimeLine(timeLineElement, time, currentEltDurations, i);

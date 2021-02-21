@@ -43,6 +43,12 @@
 	background-size: 400% 500%;
 	animation: linear gradient 256s infinite;
 }
+.long.break {
+	height: 6rem;
+}
+.short.break {
+	height: 2rem;
+}
 @keyframes gradient {
 	0% {
 		background-position: 0 -2.8rem;
@@ -92,6 +98,9 @@
 	}
 }
 
+.active.short.break {
+	height: 4rem;
+}
 .active.time-line-block > .time-line-container > .time-line {
 	background-image: repeating-linear-gradient(
 		30deg,
@@ -151,6 +160,26 @@
 .timer-left {
 	color: var(--timer-live-text);
 	display: none;
+}
+
+.break > .class-description {
+	justify-content: center;
+	align-items: center;
+}
+.break > .class-description > .class-timers {
+	justify-content: center;
+	align-items: center;
+}
+.break > .class-description > .class-timers > .timer-left {
+	background-color: var(--block-background);
+	padding: 0.3rem 0.6rem;
+	border-radius: 0.8rem;
+	opacity: 0;
+	transition: 0.4s;
+}
+.active.break > .class-description > .class-timers > .timer-left {
+	display: block;
+	opacity: 1;
 }
 
 .timer > p {

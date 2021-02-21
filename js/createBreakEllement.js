@@ -6,7 +6,7 @@ function addBreakEllement(day, duration, id) {
 		BreakEllement.classList.add("break");
 		BreakEllement.classList.add("time-line-block");
 		BreakEllement.classList.add(`${id}`);
-		BreakEllement.style.height = `${duration / 240}rem`;
+		BreakEllement.classList.add(duration > 300 ? "long" : "short");
 
 		// Timeline creation
 		let timelineContainer, timeline;
@@ -19,6 +19,18 @@ function addBreakEllement(day, duration, id) {
 		let ClassDesctiprion;
 		ClassDesctiprion = document.createElement("div");
 		ClassDesctiprion.classList.add("class-description");
+
+		let classTimers, timerTimeLeft;
+		// classTimers
+		classTimers = document.createElement("div");
+		classTimers.classList.add("class-timers");
+		ClassDesctiprion.appendChild(classTimers);
+		// timerTimeLeft
+		timerTimeLeft = document.createElement("div");
+		timerTimeLeft.classList.add("timer-left");
+		timerTimeLeft.classList.add("timer");
+		timerTimeLeft.innerHTML = `<p class="timer-time">00:00</p>`;
+		classTimers.appendChild(timerTimeLeft);
 
 		// === Appending ===
 
@@ -33,4 +45,8 @@ function addBreakEllement(day, duration, id) {
 		// Appending ClassDescription
 		BreakEllement.appendChild(ClassDesctiprion);
 	}
+}
+
+function max(a, b) {
+	return a > b ? a : b;
 }

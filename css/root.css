@@ -34,7 +34,7 @@
 	--class-text: var(--dark);
 	--class-text-highlight: var(--orange);
 	--break-block-background: var(--blue);
-	--break-text: var(--dark);
+	--break-text: var(--blue);
 	--shadow-color: var(--dark-3);
 
 	/* Buttons */
@@ -99,7 +99,7 @@
 	--class-text: var(--dark);
 	--class-text-highlight: var(--orange);
 	--break-block-background: var(--blue-1);
-	--break-text: var(--dark);
+	--break-text: var(--blue);
 	--shadow-color: transparent;
 
 	/* Buttons */
