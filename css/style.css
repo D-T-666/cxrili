@@ -1,10 +1,17 @@
-.table-container {
-	flex-direction: column;
-	align-items: center;
+#root-div {
+	flex-direction: row;
+	/* flex-wrap: nowrap; */
+	overflow-x: scroll;
+	scroll-snap-type: x mandatory;
 }
 
-.table-container.today > .time-line-block > .time-line-container {
-	width: 20%;
+.table-container {
+	display: block;
+	width: 100%;
+	height: fit-content;
+	flex: 0 0 auto;
+	scroll-snap-align: start end;
+	scroll-snap-stop: always;
 }
 
 /* Time line */
@@ -87,6 +94,10 @@
 	background-size: 400% 400%;
 	animation: linear gradient 12s infinite;
 	border-radius: 0;
+}
+
+.today > .time-line-block > .time-line-container {
+	width: 20%;
 }
 
 @keyframes gradient {
