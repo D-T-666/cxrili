@@ -37,7 +37,7 @@
 	);
 	transition: 0.4s;
 	background-size: 400% 500%;
-	animation: linear gradient 256s infinite;
+	animation: linear gradient 96s infinite;
 }
 .long.break {
 	height: 6rem;
@@ -47,10 +47,10 @@
 }
 @keyframes gradient {
 	0% {
-		background-position: 0 -2.8rem;
+		background-position: 0 -1.73205rem;
 	}
 	100% {
-		background-position: -4.849rem 0;
+		background-position: -1rem 0;
 	}
 }
 
