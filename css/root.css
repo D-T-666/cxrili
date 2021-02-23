@@ -1,6 +1,7 @@
 :root {
 	/* Presets */
 	--dark: #86756d;
+	--red: #e66375;
 	--orange: #ff7a51;
 	--green: #009c56;
 	--blue: #8081d8;
@@ -50,7 +51,8 @@
 	/* Timers */
 	--timer-start-text: var(--dark);
 	--timer-end-text: var(--dark);
-	--timer-live-text: var(--green);
+	--timer-live: var(--green);
+	--timer-live-pre-active: var(--red);
 
 	/* Timeline */
 	--time-line-active: var(--green);
@@ -66,9 +68,8 @@
 .dark-theme {
 	/* Presets */
 	--dark: #ddd6d4;
-	--orange: #ff7a51;
+	--red: #e4264f;
 	--green: #51bb8b;
-	--blue: #8081d8;
 	--white: #27282e;
 	/* transparent */
 	--dark-1: #0e0e11aa;
@@ -115,7 +116,8 @@
 	/* Timers */
 	--timer-start-text: var(--dark);
 	--timer-end-text: var(--dark);
-	--timer-live-text: var(--green);
+	--timer-live: var(--green);
+	--timer-live-pre-active: var(--red);
 
 	/* Timeline */
 	--time-line-active: var(--green);

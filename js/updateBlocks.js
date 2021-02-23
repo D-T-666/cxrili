@@ -27,22 +27,27 @@ const updateTimeLine = (elt, time, currentEltDurations, i) => {
 
 const updateBlockBackground = (elt, time, currentEltDurations, i) => {
 	if (time < currentEltDurations[i + 1]) {
-		if (time >= currentEltDurations[i]) {
+		if (i == 0) {
+			elt.classList.add("pre-active");
+		} else if (time >= currentEltDurations[i]) {
 			elt.classList.add("active");
+			elt.classList.remove("pre-active");
 		} else {
 			elt.classList.remove("active");
+			elt.classList.remove("pre-active");
 		}
 	} else {
 		elt.classList.remove("active");
+		elt.classList.add("deactivated");
 	}
 };
 
 function updateBlocks() {
 	const date = new Date();
 	let d, h, m, s;
-	d = date.getDay();
-	h = date.getHours();
-	m = date.getMinutes();
+	d = date.getDay() + 1;
+	h = 10; //date.getHours();
+	m = date.getMinutes() + 30;
 	s = date.getSeconds();
 
 	if (d != 6 && d != 0) {

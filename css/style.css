@@ -98,8 +98,12 @@
 	}
 }
 
+
 .active.short.break {
 	height: 4rem;
+}
+.active.class {
+	min-height: 7.5rem;
 }
 .active.time-line-block > .time-line-container > .time-line {
 	background-image: repeating-linear-gradient(
@@ -114,6 +118,10 @@
 	border-radius: 0 0 1.4rem 0;
 }
 .active.time-line-block > .class-description > .class-timers > .timer-left {
+	display: block;
+}
+.pre-active.time-line-block > .class-description > .class-timers > .timer-left {
+	background-color: var(--timer-live-pre-active);
 	display: block;
 }
 .active.time-line-block > .class-description > .class-name {
@@ -160,7 +168,7 @@
 
 .timer-left {
 	color: var(--block-background);
-	background-color: var(--timer-live-text);
+	background-color: var(--timer-live);
 	display: none;
 	padding: 0.3rem 0.6rem;
 	border-radius: 0.8rem;
