@@ -45,9 +45,9 @@ const updateBlockBackground = (elt, time, currentEltDurations, i) => {
 function updateBlocks() {
 	const date = new Date();
 	let d, h, m, s;
-	d = date.getDay() + 1;
-	h = 10; //date.getHours();
-	m = date.getMinutes() + 30;
+	d = date.getDay();
+	h = date.getHours();
+	m = date.getMinutes();
 	s = date.getSeconds();
 
 	if (d != 6 && d != 0) {
