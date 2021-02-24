@@ -29,11 +29,11 @@ const updateTimeLine = (elt, time, currentEltDurations, i) => {
 
 const updateBlockBackground = (elt, time, currentEltDurations, i) => {
 	if (time < currentEltDurations[i + 1]) {
-		if (i == 0) {
-			elt.classList.add("pre-active");
-		} else if (time >= currentEltDurations[i]) {
+		if (time >= currentEltDurations[i]) {
 			elt.classList.add("active");
 			elt.classList.remove("pre-active");
+		} else if (i == 0) {
+			elt.classList.add("pre-active");
 		} else {
 			elt.classList.remove("active");
 			elt.classList.remove("pre-active");
