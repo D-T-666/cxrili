@@ -1,4 +1,11 @@
-let cacheVersion = "v.2.1.3.2";
+let cacheVersion = "v.2.1.3.3";
+// Versioning scheme:
+// # . # . # . #
+// |   |   |   |
+// |   |   |   > timetable updates, minor bug fixes
+// |   |   > major bug fixes, feature updates, design updates
+// |   > major feature updates, restructuring updates, big cleanups
+// > versions
 
 self.addEventListener("install", (evt) => {
 	evt.waitUntil(
