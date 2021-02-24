@@ -3,8 +3,10 @@ const updateTimer = (elt, time) => {
 		const s = String(time % 60).padStart(2, "0");
 		time = Math.floor(time / 60);
 		const m = String(time % 60).padStart(2, "0");
+		time = Math.floor(time / 60);
+		const h = String(time % 60);
 
-		elt.innerHTML = `${m}:${s}`;
+		elt.innerHTML = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
 	} else {
 		elt.innerHTML = `0:00:00`;
 	}
