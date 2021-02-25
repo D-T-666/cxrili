@@ -139,7 +139,7 @@
 @supports (-webkit-touch-callout: none) {
 	:root {
 		--home-button-bar-height: 1rem;
-		--version-bar-height: 0;
+		--version-bar-height: 0rem;
 	}
 }
 

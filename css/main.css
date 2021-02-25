@@ -15,9 +15,6 @@
 			var(--home-button-bar-height)
 	);
 	overflow-y: auto;
-
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
 }
 
 /* Nav bar */
@@ -78,11 +75,6 @@
 	.button.weekday {
 		font-size: 90%;
 	}
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-#root-div::-webkit-scrollbar {
-	display: none;
 }
 
 .version {
