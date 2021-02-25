@@ -1,4 +1,10 @@
 :root {
+	--navbar-height: 4.5rem;
+	--version-bar-height: 1rem;
+	--home-button-bar-height: 0rem;
+
+	/* Colors */
+
 	/* Presets */
 	--dark: #86756d;
 	--red: #e66375;
@@ -128,6 +134,13 @@
 
 	/* Background color */
 	--body-background: #1d1d22;
+}
+
+@supports (-webkit-touch-callout: none) {
+	:root {
+		--home-button-bar-height: 1rem;
+		--version-bar-height: 0;
+	}
 }
 
 @font-face {

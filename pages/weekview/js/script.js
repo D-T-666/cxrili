@@ -38,6 +38,8 @@ function initializeButtons() {
 		},
 		false
 	);
+
+	initializeInfoButton();
 }
 
 async function buildTables() {
@@ -49,7 +51,7 @@ async function buildTables() {
 
 (async () => {
 	initializeTheme();
-	
+
 	await buildTables();
 	initializeButtons();
 

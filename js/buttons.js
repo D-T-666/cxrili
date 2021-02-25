@@ -22,6 +22,7 @@ function initializeButtons() {
 		window.location.href = "/cxrili/pages/weekview/";
 	});
 	updateTablesAndButtons();
+	initializeInfoButton();
 }
 
 async function updateTables() {

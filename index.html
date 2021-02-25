@@ -13,6 +13,7 @@
 	<script src="js/createBreakEllement.js"></script>
 	<script src="js/loadTimeTable.js"></script>
 	<script src="js/loadWebsiteVersion.js"></script>
+	<script src="js/initializeInfoButton.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/buttons.js"></script>
 	<script src="js/updateBlocks.js"></script>
@@ -46,9 +47,22 @@
 	<div id="main-root">
 		<div class="nav-bar">
 			<div class="buttons-container">
-				<div class="button menu" id="menu">
+				<div class="button nogrow menu" id="menu">
 					<p>ცხრილი</p>
 				</div>
+				<div class="button" id="theme-switcher">
+					<p>🔆</p>
+				</div>
+				<div class="button nogrow info" id="cxrili-info">
+					<p>ⓘ</p>
+				</div>
+			</div>
+		</div>
+		<div id="root-div">
+			<!-- Ellements go here! -->
+		</div>
+		<div class="nav-bar">
+			<div class="buttons-container">
 				<div class="button weekday" id="mon">
 					<p>ორშ</p>
 				</div>
@@ -64,15 +78,9 @@
 				<div class="button weekday" id="fri">
 					<p>პარ</p>
 				</div>
-				<div class="button" id="theme-switcher">
-					<p>🔆</p>
-				</div>
 			</div>
 		</div>
-		<div id="root-div">
-			<!-- Ellements go here! -->
-		</div>
-		<div class="version" id="version-number"></div>
+		<div class="version" id="version-number">version unavailable</div>
 	</div>
 	<script src="js/script.js"></script>
 </body>
