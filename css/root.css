@@ -60,6 +60,9 @@
 	--timer-live: var(--green);
 	--timer-live-pre-active: var(--red);
 
+	--total-time-text: var(--dark);
+	--total-time-background: transparent;
+
 	/* Timeline */
 	--time-line-active: var(--green);
 	--time-line: var(--dark);
@@ -124,6 +127,9 @@
 	--timer-end-text: var(--dark);
 	--timer-live: var(--green);
 	--timer-live-pre-active: var(--red);
+
+	--total-time-text: var(--dark);
+	--total-time-background: transparent;
 
 	/* Timeline */
 	--time-line-active: var(--green);

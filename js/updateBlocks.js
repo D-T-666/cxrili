@@ -12,6 +12,20 @@ const updateTimer = (elt, time) => {
 	}
 };
 
+const updateTotalTimer = (elt, time) => {
+	if (time > 0) {
+		const s = String(time % 60).padStart(2, "0");
+		time = Math.floor(time / 60);
+		const m = String(time % 60).padStart(2, "0");
+		time = Math.floor(time / 60);
+		const h = String(time % 60);
+
+		elt.innerHTML = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
+	} else {
+		elt.innerHTML = `0:00:00`;
+	}
+};
+
 const updateTimeLine = (elt, time, currentEltDurations, i) => {
 	if (time < currentEltDurations[i + 1]) {
 		if (time >= currentEltDurations[i]) {
@@ -99,6 +113,10 @@ function updateBlocks() {
 		// Total time left
 		const timeTillEndOfDay =
 			currentEltDurations[currentEltDurations.length - 1] - time;
+
+		const elt = document.getElementsByClassName("total-timer")[0];
+
+		updateTotalTimer(elt, timeTillEndOfDay);
 
 		// If the day has ended more than 5 minutes ago, automatically
 		// switch to the next day (If not already switched)

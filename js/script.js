@@ -15,6 +15,8 @@ let timerUpdaterInterval;
 		await loadTimeTable(day).then((objects) => buildTable(objects, day));
 	}
 
+	createTotalTimeLeftBlock();
+
 	CURRENT_DAY = getCurrentDay();
 
 	updateBlocks();

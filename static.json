@@ -25,6 +25,7 @@
 		"/cxrili/js/loadTimeTable.js",
 		"/cxrili/js/loadWebsiteVersion.js",
 		"/cxrili/js/initializeInfoButton.js",
+		"/cxrili/js/createTotalTimeLeftBlock.js",
 		"/cxrili/js/script.js",
 		"/cxrili/js/updateBlocks.js",
 		"/cxrili/js/theme.js",
