@@ -1,8 +1,6 @@
-function createTotalTimeLeftBlock() {
-	let cd = getCurrentDay(true);
-	if (workdays.includes(cd))
-		document.getElementById(`${cd}-table`).innerHTML +=
-			'\
+function createTotalTimeLeftBlock(day) {
+	document.getElementById(`${day}-table`).innerHTML +=
+		'\
 	<div class="total-time-block">\
 		<div class="container">\
 			<div class="title">\

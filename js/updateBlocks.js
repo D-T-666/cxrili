@@ -12,17 +12,17 @@ const updateTimer = (elt, time) => {
 	}
 };
 
-const updateTotalTimer = (elt, time) => {
-	if (time > 0) {
-		const s = String(time % 60).padStart(2, "0");
-		time = Math.floor(time / 60);
-		const m = String(time % 60).padStart(2, "0");
-		time = Math.floor(time / 60);
-		const h = String(time % 60);
+const updateTotalTimer = (elt, left, passed) => {
+	if (left >= 0 && passed <= 0) {
+		const s = String(left % 60).padStart(2, "0");
+		left = Math.floor(left / 60);
+		const m = String(left % 60).padStart(2, "0");
+		left = Math.floor(left / 60);
+		const h = String(left % 60);
 
-		elt.innerHTML = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
+		elt.getElementsByClassName("container")[0].getElementsByClassName("total-tmer")[0].innerHTML = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
 	} else {
-		elt.innerHTML = `0:00:00`;
+		elt.classList.add("hide");
 	}
 };
 
@@ -113,10 +113,15 @@ function updateBlocks() {
 		// Total time left
 		const timeTillEndOfDay =
 			currentEltDurations[currentEltDurations.length - 1] - time;
+		// Total time left
+		const timeTillStartOfDay =
+			currentEltDurations[0] - time;
 
-		const elt = document.getElementsByClassName("total-timer")[0];
+		const elt = document
+			.getElementById(`${CURRENT_DAY}-table`)
+			.getElementsByClassName("total-time-block")[0];
 
-		updateTotalTimer(elt, timeTillEndOfDay);
+		updateTotalTimer(elt, timeTillEndOfDay, timeTillStartOfDay);
 
 		// If the day has ended more than 5 minutes ago, automatically
 		// switch to the next day (If not already switched)
@@ -127,7 +132,10 @@ function updateBlocks() {
 
 			// If there is a day provided in the url bar, don't switch.
 			if (urlDay === null) {
-				CURRENT_DAY = DAYS[d + 1];
+				if (d + 1 >= 6)
+					CURRENT_DAY = DAYS[1];
+				else
+					CURRENT_DAY = DAYS[d + 1];
 				updateTablesAndButtons();
 			}
 			switchedToNextDay = true;

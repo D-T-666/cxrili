@@ -9,6 +9,7 @@ function initializeButtons() {
 					CURRENT_DAY = day;
 
 					updateTablesAndButtons();
+					updateBlocks();
 				}
 			},
 			false

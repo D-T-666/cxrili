@@ -1,6 +1,6 @@
 #root-div {
 	height: calc(
-		100vh - var(--navbar-height) - var(--version-bar-height) -
+		100vh - var(--navbar-height) -
 			var(--navbar-height) - var(--home-button-bar-height)
 	);
 }
@@ -217,6 +217,9 @@
 
 	transition: 0.4s;
 	justify-content: center;
+}
+.total-time-block.hide {
+	display: none;
 }
 
 .total-time-block > .container {

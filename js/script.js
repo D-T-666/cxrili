@@ -13,9 +13,9 @@ let timerUpdaterInterval;
 		CURRENT_DAY = day;
 		// Build table from the current day
 		await loadTimeTable(day).then((objects) => buildTable(objects, day));
+		createTotalTimeLeftBlock(day);
 	}
 
-	createTotalTimeLeftBlock();
 
 	CURRENT_DAY = getCurrentDay();
 

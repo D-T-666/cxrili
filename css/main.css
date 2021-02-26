@@ -11,7 +11,7 @@
 	font-size: 48px;
 
 	height: calc(
-		100vh - var(--navbar-height) - var(--version-bar-height) -
+		100vh - var(--navbar-height) -
 			var(--home-button-bar-height)
 	);
 	overflow-y: scroll;
@@ -81,19 +81,4 @@
 	.button.weekday {
 		font-size: 80%;
 	}
-}
-
-.version {
-	width: 100%;
-	text-align: center;
-	color: var(--version-text);
-	background-color: var(--body-background);
-	box-sizing: border-box;
-	height: var(--version-bar-height);
-	font-size: 0.7rem;
-	font-family: numFont;
-	display: flex;
-	flex-direction: column;
-	justify-content: start;
-	overflow: hidden;
 }

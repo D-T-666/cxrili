@@ -1,6 +1,5 @@
 :root {
-	--navbar-height: 4.5rem;
-	--version-bar-height: 1rem;
+	--navbar-height: 4rem;
 	--home-button-bar-height: 0rem;
 
 	/* Colors */
@@ -145,7 +144,6 @@
 @supports (-webkit-touch-callout: none) {
 	:root {
 		--home-button-bar-height: 1rem;
-		--version-bar-height: 0rem;
 	}
 }
 

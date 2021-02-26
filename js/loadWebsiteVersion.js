@@ -5,8 +5,5 @@ const loadWebsiteVersion = async () => {
 	let data = await response.text();
 	data = JSON.parse(data);
 
-	let elt = document.getElementById("version-number");
-
 	VERSION = data.version;
-	elt.innerHTML = data.version;
 };
