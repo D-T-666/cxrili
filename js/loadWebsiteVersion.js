@@ -1,4 +1,4 @@
-let VERSION;
+let VERSION = "version unavailable";
 
 const loadWebsiteVersion = async () => {
 	const response = await fetch("/cxrili/version");

@@ -33,7 +33,9 @@ const updateBlockBackground = (elt, time, currentEltDurations, i) => {
 			elt.classList.add("active");
 			elt.classList.remove("pre-active");
 		} else if (i == 0) {
-			elt.classList.add("pre-active");
+			// activate 2 hours before classes start
+			if (time - currentEltDurations[i + 1] > -2 * 60 * 60)
+				elt.classList.add("pre-active");
 		} else {
 			elt.classList.remove("active");
 			elt.classList.remove("pre-active");
