@@ -3,7 +3,7 @@ function initializeInfoButton() {
 		var w = window.innerWidth;
 		var h = window.innerHeight;
 		alert(
-			`version: ${VERSION}\nwidth: ${w}\nheight: ${h}\nThanks for using cxrili!`
+			`version: ${VERSION}\nwidth: ${w}\nheight: ${h}\ncxrili-ს პროგრესი დროებით დაპაუზებულია. მუშაობას ალბათ 05/03/21-ში განვაგრძობ.`
 		);
 	});
 }
