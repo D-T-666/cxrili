@@ -142,8 +142,10 @@
 }
 
 @supports (-webkit-touch-callout: none) {
-	:root {
-		--home-button-bar-height: 1rem;
+	@media only screen and (min-height: 650px) {
+		:root {
+			--home-button-bar-height: 1rem;
+		}
 	}
 }
 

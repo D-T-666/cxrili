@@ -13,14 +13,17 @@ const updateTimer = (elt, time) => {
 };
 
 const updateTotalTimer = (elt, left, passed) => {
-	if (left >= 0 && passed <= 0) {
+	if (left >= 0 && passed <= 0 && CURRENT_DAY == REAL_CURRENT_DAY) {
 		const s = String(left % 60).padStart(2, "0");
 		left = Math.floor(left / 60);
 		const m = String(left % 60).padStart(2, "0");
 		left = Math.floor(left / 60);
 		const h = String(left % 60);
 
-		elt.getElementsByClassName("container")[0].getElementsByClassName("total-tmer")[0].innerHTML = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
+		elt
+			.getElementsByClassName("container")[0]
+			.getElementsByClassName("total-tmer")[0].innerHTML =
+			h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
 	} else {
 		elt.classList.add("hide");
 	}
@@ -114,8 +117,7 @@ function updateBlocks() {
 		const timeTillEndOfDay =
 			currentEltDurations[currentEltDurations.length - 1] - time;
 		// Total time left
-		const timeTillStartOfDay =
-			currentEltDurations[0] - time;
+		const timeTillStartOfDay = currentEltDurations[0] - time;
 
 		const elt = document
 			.getElementById(`${CURRENT_DAY}-table`)
@@ -132,10 +134,9 @@ function updateBlocks() {
 
 			// If there is a day provided in the url bar, don't switch.
 			if (urlDay === null) {
-				if (d + 1 >= 6)
-					CURRENT_DAY = DAYS[1];
-				else
-					CURRENT_DAY = DAYS[d + 1];
+				if (d + 1 >= 6) CURRENT_DAY = DAYS[1];
+				else CURRENT_DAY = DAYS[d + 1];
+				REAL_CURRENT_DAY = getCurrentDay(true);
 				updateTablesAndButtons();
 			}
 			switchedToNextDay = true;
