@@ -74,11 +74,12 @@ function updateBlocks() {
 	if (d != 6 && d != 0) {
 		// Current time in seconds
 		const time = s + m * 60 + h * 60 * 60;
-		const day = DAYS[d];
+		const day = CURRENT_DAY; //DAYS[d];
 
 		const currentEltDurations = eltDurations[day];
 		const nBlocks = currentEltDurations.length - 1; // The first element is ignored
 
+                if (day === REAL_CURRENT_DAY) {
 		const tableElement = document.getElementById(`${day}-table`);
 
 		tableElement.classList.add("today");
@@ -112,6 +113,7 @@ function updateBlocks() {
 				updateBlockBackground(elt, time, currentEltDurations, i);
 			}
 		}
+                }
 
 		// Total time left
 		const timeTillEndOfDay =
@@ -119,11 +121,12 @@ function updateBlocks() {
 		// Total time left
 		const timeTillStartOfDay = currentEltDurations[0] - time;
 
-		const elt = document
-			.getElementById(`${CURRENT_DAY}-table`)
+		let elt = document
+			.getElementById(`${CURRENT_DAY}-table`);
+                elt = elt
 			.getElementsByClassName("total-time-block")[0];
 
-		updateTotalTimer(elt, timeTillEndOfDay, timeTillStartOfDay);
+		if (elt) updateTotalTimer(elt, timeTillEndOfDay, timeTillStartOfDay);
 
 		// If the day has ended more than 5 minutes ago, automatically
 		// switch to the next day (If not already switched)
