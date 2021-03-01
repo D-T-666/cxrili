@@ -1,4 +1,4 @@
-const notificationVersion = "0.1.0";
+const notificationVersion = "0.1.1";
 
 function initializeInfoButton() {
 	const notified =
@@ -10,7 +10,7 @@ function initializeInfoButton() {
 		window.localStorage.setItem("notificationVersion", notificationVersion);
 
 		alert(
-			`cxrili-ს პროგრესი დროებით დაპაუზებულია. მუშაობას ალბათ 05/03/21-დან განვაგრძობ.`
+			`გაფუჭებული რაც იყო შევასწორე, წესით ყველაფერმა რიგზე უნდა იმუშავოს.\n\nმაგრამ რამის დამატებას ჯერ არ ვაპირებ 05/03/21-მდე.`
 		);
 	}
 

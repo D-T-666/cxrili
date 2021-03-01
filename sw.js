@@ -1,4 +1,4 @@
-let cacheVersion = "v.2.1.7.0";
+let cacheVersion = "v.2.1.7.1";
 // Versioning scheme:
 // # . # . # . #
 // |   |   |   |

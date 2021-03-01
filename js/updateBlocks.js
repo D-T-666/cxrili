@@ -22,7 +22,7 @@ const updateTotalTimer = (elt, left, passed) => {
 
 		elt
 			.getElementsByClassName("container")[0]
-			.getElementsByClassName("total-tmer")[0].innerHTML =
+			.getElementsByClassName("total-timer")[0].innerHTML =
 			h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
 	} else {
 		elt.classList.add("hide");
@@ -51,7 +51,7 @@ const updateBlockBackground = (elt, time, currentEltDurations, i) => {
 			elt.classList.remove("pre-active");
 		} else if (i == 0) {
 			// activate 2 hours before classes start
-			if (time - currentEltDurations[i + 1] > -2 * 60 * 60)
+			if (time - currentEltDurations[i + 1] > -4.5 * 60 * 60)
 				elt.classList.add("pre-active");
 		} else {
 			elt.classList.remove("active");
