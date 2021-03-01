@@ -79,41 +79,46 @@ function updateBlocks() {
 		const currentEltDurations = eltDurations[day];
 		const nBlocks = currentEltDurations.length - 1; // The first element is ignored
 
-                if (day === REAL_CURRENT_DAY) {
-		const tableElement = document.getElementById(`${day}-table`);
+		if (day === REAL_CURRENT_DAY) {
+			const tableElement = document.getElementById(`${day}-table`);
 
-		tableElement.classList.add("today");
+			tableElement.classList.add("today");
 
-		for (let i = 0; i < nBlocks; i++) {
-			const elt = tableElement.getElementsByClassName(`${i}`)[0];
-			if (elt) {
-				const timerElement = elt.getElementsByClassName(
-					"timer-left"
-				)[0];
+			for (let i = 0; i < nBlocks; i++) {
+				const elt = tableElement.getElementsByClassName(`${i}`)[0];
+				if (elt) {
+					const timerElement = elt.getElementsByClassName(
+						"timer-left"
+					)[0];
 
-				const timeLineElement = elt.getElementsByClassName(
-					"time-line"
-				)[0];
+					const timeLineElement = elt.getElementsByClassName(
+						"time-line"
+					)[0];
 
-				let timeLeft = currentEltDurations[i] - time;
+					let timeLeft = currentEltDurations[i] - time;
 
-				// If it's past the start time of this class, switch
-				// countdown to be counting down towards the end of the class.
-				if (timeLeft <= 0)
-					timeLeft +=
-						currentEltDurations[i + 1] - currentEltDurations[i];
+					// If it's past the start time of this class, switch
+					// countdown to be counting down towards the end of the class.
+					if (timeLeft <= 0)
+						timeLeft +=
+							currentEltDurations[i + 1] - currentEltDurations[i];
 
-				// Update the timer
-				updateTimer(timerElement, timeLeft);
+					// Update the timer
+					updateTimer(timerElement, timeLeft);
 
-				// Update the time line
-				updateTimeLine(timeLineElement, time, currentEltDurations, i);
+					// Update the time line
+					updateTimeLine(
+						timeLineElement,
+						time,
+						currentEltDurations,
+						i
+					);
 
-				// Update the block background
-				updateBlockBackground(elt, time, currentEltDurations, i);
+					// Update the block background
+					updateBlockBackground(elt, time, currentEltDurations, i);
+				}
 			}
 		}
-                }
 
 		// Total time left
 		const timeTillEndOfDay =
@@ -121,10 +126,8 @@ function updateBlocks() {
 		// Total time left
 		const timeTillStartOfDay = currentEltDurations[0] - time;
 
-		let elt = document
-			.getElementById(`${CURRENT_DAY}-table`);
-                elt = elt
-			.getElementsByClassName("total-time-block")[0];
+		let elt = document.getElementById(`${CURRENT_DAY}-table`);
+		elt = elt.getElementsByClassName("total-time-block")[0];
 
 		if (elt) updateTotalTimer(elt, timeTillEndOfDay, timeTillStartOfDay);
 
