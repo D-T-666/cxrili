@@ -31,10 +31,11 @@ async function updateCache() {
 }
 
 self.addEventListener("install", (evt) => {
-	return evt.waitUntil(async () => {
+	evt.waitUntil(async () => {
 		await fetch("/cxrili/info.json")
 			.then((appInfoResponse) => appInfoResponse.json())
 			.then((appInfo) => {
+				console.log(`sw activated. app info: ${appInfo}`);
 				cacheVersion = appInfo.version;
 
 				return updateCache();
@@ -43,23 +44,37 @@ self.addEventListener("install", (evt) => {
 });
 
 self.addEventListener("activate", (evt) => {
-	evt.waitUntil(
-		fetch("/cxrili/info.json")
+	// evt.waitUntil(
+	// 	fetch("/cxrili/info.json")
+	// 		.then((appInfoResponse) => appInfoResponse.json())
+	// 		.then((appInfo) => {
+	// 			console.log(`sw activated. app info: ${appInfo}`);
+	// 			if (appInfo && cacheVersion !== appInfo.version) {
+	// 				cacheVersion = appInfo.version;
+
+	// 				return updateCache();
+	// 			}
+	// 		})
+	// );
+
+	evt.waitUntil(async () => {
+		await fetch("/cxrili/info.json")
 			.then((appInfoResponse) => appInfoResponse.json())
 			.then((appInfo) => {
+				console.log(`sw activated. app info: ${appInfo}`);
 				if (appInfo && cacheVersion !== appInfo.version) {
 					cacheVersion = appInfo.version;
 
-					updateCache();
+					return updateCache();
 				}
-			})
-	);
+			});
+	});
 });
 
 self.addEventListener("fetch", async (evt) => {
 	let reqList = evt.request.url.toString().split("/");
 
-	if (reqList.includes("updateCache")) {
+	if (reqList.includes("updateCache") || reqList.includes("version")) {
 		evt.respondWith(
 			fetch("/cxrili/info.json")
 				.catch((err) => {
