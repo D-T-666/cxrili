@@ -30,10 +30,8 @@ async function updateTables() {
 	const tables = document.getElementsByClassName("table-container");
 	for (let table of tables) {
 		if (table.id !== `${CURRENT_DAY}-table`) {
-			table.style.display = "none";
 			table.classList.remove("active");
 		} else {
-			table.style.display = "block";
 			table.classList.add("active");
 			table.scrollIntoView();
 

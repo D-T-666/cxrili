@@ -1,9 +1,10 @@
 let VERSION = "version unavailable";
+let updateMessage = undefined;
 
 const loadWebsiteVersion = async () => {
-	const response = await fetch("/cxrili/version");
-	let data = await response.text();
-	data = JSON.parse(data);
+	const response = await fetch("/cxrili/info.json");
+	let appInfo = await response.json();
 
-	VERSION = data.version;
+	VERSION = appInfo.version;
+	updateMessage = appInfo.message;
 };

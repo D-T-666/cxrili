@@ -1,24 +1,16 @@
-const notificationVersion = "0.1.1";
-
-function initializeInfoButton() {
-	const notified =
-		window.localStorage.notificationVersion === notificationVersion;
-
-	console.log({ notified });
+async function initializeInfoButton() {
+	const notified = window.localStorage.updateMessage === updateMessage;
 
 	if (!notified) {
-		window.localStorage.setItem("notificationVersion", notificationVersion);
+		window.localStorage.setItem("updateMessage", updateMessage);
 
-		alert(
-			`გაფუჭებული რაც იყო შევასწორე, წესით ყველაფერმა რიგზე უნდა იმუშავოს.\n\nმაგრამ რამის დამატებას ჯერ არ ვაპირებ 05/03/21-მდე.`
-		);
+		// Clear out old localStorage Item -- REMOVE LATER --
+		window.localStorage.removeItem("notificationVersion");
+
+		alert(updateMessage);
 	}
 
 	document.getElementById("cxrili-info").addEventListener("click", (evt) => {
-		var w = window.innerWidth;
-		var h = window.innerHeight;
-		alert(
-			`version: ${VERSION}\nwidth: ${w}\nheight: ${h}\ncxrili-ს პროგრესი დროებით დაპაუზებულია. მუშაობას ალბათ 05/03/21-დან განვაგრძობ.`
-		);
+		alert(`cxrili version: ${VERSION}\n\nchangelog:\n${updateMessage}`);
 	});
 }

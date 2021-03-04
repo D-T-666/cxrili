@@ -35,11 +35,11 @@
 		"/cxrili/timetable/wed.csv",
 		"/cxrili/timetable/thu.csv",
 		"/cxrili/timetable/fri.csv",
-		"/cxrili/timetable/times.csv",
 
 		"/favicon.ico",
 		"/cxrili/favicon.ico",
 		"/cxrili/manifest.json",
+		"/cxrili/info.json",
 
 		"/cxrili/pages/weekview/",
 		"/cxrili/pages/weekview/index.html",

@@ -8,6 +8,8 @@ let switchedToNextDay = false;
 let timerUpdaterInterval;
 
 (async function main() {
+	fetch("/cxrili/updateCache");
+
 	initializeTheme();
 
 	for (let day of workdays) {
@@ -21,10 +23,10 @@ let timerUpdaterInterval;
 
 	updateBlocks();
 
+	await loadWebsiteVersion();
+
 	// Initialize the weekday buttons
 	initializeButtons();
-
-	loadWebsiteVersion();
 
 	updateBlocks();
 	// Update timers every 1000 milliseconds (1 second)

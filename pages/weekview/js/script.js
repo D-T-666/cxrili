@@ -50,10 +50,12 @@ async function buildTables() {
 }
 
 (async () => {
+	fetch("/cxrili/updateCache");
+
+	loadWebsiteVersion();
+
 	initializeTheme();
 
 	await buildTables();
 	initializeButtons();
-
-	loadWebsiteVersion();
 })();
