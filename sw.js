@@ -107,6 +107,16 @@ self.addEventListener("fetch", async (evt) => {
 					);
 				})
 		);
+	} else if (reqList.includes("info.json")) {
+		evt.respondWith(
+			fetch("/cxrili/info.json")
+				.catch((err) => {
+					caches.match(evt.request).then((cacheRes) => {
+						return cacheRes;
+					});
+				})
+				.then((appInfoResponse) => appInfoResponse)
+		);
 	} else {
 		evt.respondWith(
 			caches.match(evt.request).then((cacheRes) => {
