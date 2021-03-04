@@ -43,7 +43,35 @@ self.addEventListener("install", (evt) => {
 });
 
 self.addEventListener("activate", (evt) => {
-	evt.waitUntil((_) => {});
+	evt.waitUntil((_) => {
+		fetch("/cxrili/info.json")
+			.catch((err) => {
+				return new Response(
+					new Blob([JSON.stringify({ status: "failed!" }, null, 2)], {
+						type: "application/json",
+					}),
+					{ status: 404 }
+				);
+			})
+			.then((appInfoResponse) => appInfoResponse.json())
+			.then((appInfo) => {
+				if (appInfo && cacheVersion !== appInfo.version) {
+					cacheVersion = appInfo.version;
+
+					updateCache();
+				}
+
+				return new Response(
+					new Blob(
+						[JSON.stringify({ status: "success!" }, null, 2)],
+						{
+							type: "application/json",
+						}
+					),
+					{ status: 200 }
+				);
+			});
+	});
 });
 
 self.addEventListener("fetch", async (evt) => {
