@@ -29,23 +29,16 @@
 		"/cxrili/js/script.js",
 		"/cxrili/js/updateBlocks.js",
 		"/cxrili/js/theme.js",
+		"/cxrili/js/main.js",
 
-		"/cxrili/timetable/mon.csv",
-		"/cxrili/timetable/tue.csv",
-		"/cxrili/timetable/wed.csv",
-		"/cxrili/timetable/thu.csv",
-		"/cxrili/timetable/fri.csv",
+		"/cxrili/timetable/",
+		"/cxrili/timetable/tables.json",
 
 		"/favicon.ico",
 		"/cxrili/favicon.ico",
 		"/cxrili/manifest.json",
 		"/cxrili/info.json",
 
-		"/cxrili/pages/weekview/",
-		"/cxrili/pages/weekview/index.html",
-		"/cxrili/pages/weekview/css/style.css",
-		"/cxrili/pages/weekview/js/createTableElement.js",
-		"/cxrili/pages/weekview/js/script.js",
 
 		"/cxrili/icons/cxr-160x160.png"
 	]

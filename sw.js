@@ -7,14 +7,13 @@ let cacheVersion = "unknown";
 // |   > major feature updates, restructuring updates, big cleanups
 // > versions
 
+const cachedTables = new Set();
+
 async function updateCache() {
-	return await fetch("/cxrili/static.json")
+	return fetch("/cxrili/static.json")
 		.then((assetsResponse) => assetsResponse.json())
 		.then((assets) => {
-			console.log(assets);
-
 			return caches.open(`site-static-${cacheVersion}`).then((cache) => {
-				console.log("caching shell assets");
 				cache.addAll(assets.files);
 
 				caches.keys().then((keys) => {
@@ -30,75 +29,80 @@ async function updateCache() {
 		});
 }
 
+const getAppInfoResponse = async () => {
+	return fetch("/cxrili/info.json").then((appInfoResponse) => {
+		if (appInfoResponse) return appInfoResponse;
+		else return caches.match(evt.request).then((cacheRes) => cacheRes);
+	});
+};
+
 self.addEventListener("install", (evt) => {
-	evt.waitUntil(async () => {
-		await fetch("/cxrili/info.json")
+	evt.waitUntil(
+		fetch("/cxrili/info.json")
 			.then((appInfoResponse) => appInfoResponse.json())
 			.then((appInfo) => {
-				console.log(`sw activated. app info: ${appInfo}`);
+				console.log(`service worker installed. app info: ${appInfo}`);
 				cacheVersion = appInfo.version;
 
-				return updateCache();
-			});
-	});
+				updateCache();
+			})
+	);
 });
 
 self.addEventListener("activate", (evt) => {
-	// evt.waitUntil(
-	// 	fetch("/cxrili/info.json")
-	// 		.then((appInfoResponse) => appInfoResponse.json())
-	// 		.then((appInfo) => {
-	// 			console.log(`sw activated. app info: ${appInfo}`);
-	// 			if (appInfo && cacheVersion !== appInfo.version) {
-	// 				cacheVersion = appInfo.version;
-
-	// 				return updateCache();
-	// 			}
-	// 		})
-	// );
-
-	evt.waitUntil(async () => {
-		await fetch("/cxrili/info.json")
+	evt.waitUntil(
+		fetch("/cxrili/info.json")
 			.then((appInfoResponse) => appInfoResponse.json())
 			.then((appInfo) => {
-				console.log(`sw activated. app info: ${appInfo}`);
+				console.log(`service worker activated. app info: ${appInfo}`);
 				if (appInfo && cacheVersion !== appInfo.version) {
 					cacheVersion = appInfo.version;
 
-					return updateCache();
+					updateCache();
 				}
-			});
-	});
+			})
+	);
 });
 
-self.addEventListener("fetch", async (evt) => {
+self.addEventListener("fetch", (evt) => {
 	let reqList = evt.request.url.toString().split("/");
 
 	if (reqList.includes("updateCache") || reqList.includes("version")) {
 		evt.respondWith(
 			fetch("/cxrili/info.json")
-				.catch((err) => {
-					return new Response(
-						new Blob(
-							[JSON.stringify({ status: "failed!" }, null, 2)],
-							{
-								type: "application/json",
-							}
-						),
-						{ status: 404 }
-					);
+				.then((appInfoResponse) => {
+					return appInfoResponse.json();
 				})
-				.then((appInfoResponse) => appInfoResponse.json())
 				.then((appInfo) => {
 					if (appInfo && cacheVersion !== appInfo.version) {
 						cacheVersion = appInfo.version;
-
 						updateCache();
-					}
 
+						return new Response(
+							new Blob(
+								[JSON.stringify({ updated: true }, null, 2)],
+								{
+									type: "application/json",
+								}
+							),
+							{ status: 200 }
+						);
+					} else {
+						return new Response(
+							new Blob(
+								[JSON.stringify({ updated: false }, null, 2)],
+								{
+									type: "application/json",
+								}
+							),
+							{ status: 200 }
+						);
+					}
+				})
+				.catch((err) => {
 					return new Response(
 						new Blob(
-							[JSON.stringify({ status: "success!" }, null, 2)],
+							[JSON.stringify({ updated: false }, null, 2)],
 							{
 								type: "application/json",
 							}
@@ -108,20 +112,70 @@ self.addEventListener("fetch", async (evt) => {
 				})
 		);
 	} else if (reqList.includes("info.json")) {
-		evt.respondWith(
-			fetch("/cxrili/info.json")
-				.catch((err) => {
-					caches.match(evt.request).then((cacheRes) => {
+		evt.respondWith(getAppInfoResponse());
+	} else if (reqList.includes("timetable")) {
+		if (reqList.includes("tables.json")) {
+			evt.respondWith(
+				fetch("/cxrili/timetable/tables.json")
+					.then((res) => res.json())
+					.then(
+						(tables) =>
+							new Response(
+								new Blob(
+									[
+										JSON.stringify(
+											{
+												...tables,
+												savedTables: Array.from(
+													cachedTables
+												),
+											},
+											null,
+											2
+										),
+									],
+									{
+										type: "application/json",
+									}
+								),
+								{ status: 200 }
+							)
+					)
+			);
+		} else {
+			evt.respondWith(
+				caches.match(evt.request).then((cacheRes) => {
+					if (cacheRes) {
+						cachedTables.add(
+							decodeURIComponent(reqList[reqList.length - 2])
+						);
 						return cacheRes;
-					});
+					} else {
+						caches
+							.open(`site-static-${cacheVersion}`)
+							.then((cache) =>
+								cache.addAll(
+									["mon", "tue", "wed", "thu", "fri"].map(
+										(a) =>
+											`/cxrili/timetable/${
+												reqList[reqList.length - 2]
+											}/${a}.csv`
+									)
+								)
+							);
+						cachedTables.add(
+							decodeURIComponent(reqList[reqList.length - 2])
+						);
+						return fetch(evt.request.url);
+					}
 				})
-				.then((appInfoResponse) => appInfoResponse)
-		);
+			);
+		}
 	} else {
 		evt.respondWith(
-			caches.match(evt.request).then((cacheRes) => {
-				return cacheRes || fetch(evt.request.url);
-			})
+			caches
+				.match(evt.request)
+				.then((cacheRes) => cacheRes || fetch(evt.request.url))
 		);
 	}
 });

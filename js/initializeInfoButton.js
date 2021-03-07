@@ -17,4 +17,8 @@ async function initializeInfoButton() {
 
 			alert(`cxrili version: ${VERSION}\n\nchangelog:\n${updateMessage}`);
 		});
+
+	document.getElementById("home").addEventListener("click", (evt) => {
+		window.location = "/cxrili/pages/home/";
+	});
 }

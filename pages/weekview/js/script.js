@@ -49,13 +49,7 @@ async function buildTables() {
 	// await createTableElement("times");
 }
 
-(async () => {
-	fetch("/cxrili/updateCache");
-
-	loadWebsiteVersion();
-
-	initializeTheme();
-
+async function main() {
 	await buildTables();
 	initializeButtons();
-})();
+}

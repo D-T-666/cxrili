@@ -13,7 +13,12 @@ const updateTimer = (elt, time) => {
 };
 
 const updateTotalTimer = (elt, left, passed) => {
-	if (left >= 0 && passed <= 0 && CURRENT_DAY == REAL_CURRENT_DAY) {
+	if (
+		left >= 0 &&
+		passed <= 0 &&
+		workdays.includes(REAL_CURRENT_DAY) &&
+		CURRENT_DAY == REAL_CURRENT_DAY
+	) {
 		const s = String(left % 60).padStart(2, "0");
 		left = Math.floor(left / 60);
 		const m = String(left % 60).padStart(2, "0");

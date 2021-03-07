@@ -36,6 +36,7 @@
 
 	/* Blocks */
 	--block-background: var(--white);
+	--block-text: var(--dark);
 	--class-block-background: var(--white);
 	--class-text: var(--dark);
 	--class-text-highlight: var(--orange);
@@ -49,7 +50,7 @@
 	--orange-button-background: var(--orange);
 	--orange-button-text: var(--white);
 	--green-button-background: var(--green);
-	--green-button-text: var(--dark);
+	--green-button-text: var(--white);
 	--blue-button-background: var(--blue);
 	--blue-button-text: var(--white);
 
@@ -80,10 +81,10 @@
 	--green: #51bb8b;
 	--white: #27282e;
 	/* transparent */
-	--dark-1: #0e0e11aa;
-	--dark-2: #0e0e1166;
-	--dark-3: #0e0e1122;
-	--dark-4: #0e0e1111;
+	--dark-1: #ddd6d4aa;
+	--dark-2: #ddd6d466;
+	--dark-3: #ddd6d422;
+	--dark-4: #ddd6d411;
 	--green-1: #98e6b0aa;
 	--green-2: #98e6b066;
 	--green-3: #98e6b022;
@@ -104,6 +105,7 @@
 
 	/* Blocks */
 	--block-background: var(--white);
+	--block-text: var(--dark);
 	--class-block-background: var(--white);
 	--class-text: var(--dark);
 	--class-text-highlight: var(--orange);

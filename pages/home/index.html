@@ -5,24 +5,23 @@
 	<meta charset="UTF-8">
 	<title>cxrili</title>
 	<!-- External Files -->
-	<link rel="stylesheet" href="../../css/root.css">
-	<link rel="stylesheet" href="../../css/main.css">
+	<link rel="stylesheet" href="/cxrili/css/root.css">
+	<link rel="stylesheet" href="/cxrili/css/main.css">
 	<link rel="stylesheet" href="css/style.css">
-	<script src="../../js/getCurrentDay.js"></script>
-	<script src="../../js/loadTimeTable.js"></script>
-	<script src="../../js/loadWebsiteVersion.js"></script>
-	<script src="../../js/initializeInfoButton.js"></script>
-	<script src="../../js/app.js"></script>
-	<script src="../../js/theme.js"></script>
-	<script src="js/createTableElement.js"></script>
+	<script src="/cxrili/js/getCurrentDay.js"></script>
+	<script src="/cxrili/js/loadTimeTable.js"></script>
+	<script src="/cxrili/js/loadWebsiteVersion.js"></script>
+	<script src="/cxrili/js/initializeInfoButton.js"></script>
+	<script src="/cxrili/js/app.js"></script>
+	<script src="/cxrili/js/theme.js"></script>
 	<script src="js/script.js"></script>
 	<!-- PWA -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="theme-color" content="#1d1d22" id="theme-color">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
-	<link rel="manifest" href="../../manifest.json">
+	<link rel="shortcut icon" href="/cxrili/favicon.ico" type="image/x-icon">
+	<link rel="manifest" href="/cxrili/manifest.json">
 	<!-- SEO -->
 	<meta name="description"
 		content="ციფრული გაკვეთილების განრიგი ვებ აპლიკაციის სახით. (ჯერჯერობით მხოლოდ ბორჯომის მე-3 საჯარო სკოლის XI-3 კლასისთვის)">
@@ -38,15 +37,26 @@
 <body>
 	<div id="main-root">
 		<div id="root-div">
-			<!-- Ellements go here! -->
+			<div id="added-tables" class="hidden">
+				<div class="title">
+					<p>შენახული</p>
+				</div>
+				<!-- Ellements go here! -->
+			</div>
+			<div id="available-tables">
+				<div class="title">
+					<p>ყველა</p>
+				</div>
+				<!-- Ellements go here! -->
+			</div>
 		</div>
 		<div class="nav-bar">
 			<div class="buttons-container">
 				<div class="button nogrow" id="theme-switcher">
 					<p>🔆</p>
 				</div>
-				<div class="button menu" id="menu">
-					<p>ცხრილი</p>
+				<div class="button menu" id="theme-switcher">
+					<p>გამართვა</p>
 				</div>
 				<div class="button nogrow" id="home">
 					<p>🏠</p>
