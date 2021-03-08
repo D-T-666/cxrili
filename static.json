@@ -39,6 +39,16 @@
 		"/cxrili/manifest.json",
 		"/cxrili/info.json",
 
+		"/cxrili/pages/weekview/",
+		"/cxrili/pages/weekview/index.html",
+		"/cxrili/pages/weekview/js/createTableElement.js",
+		"/cxrili/pages/weekview/js/script.js",
+		"/cxrili/pages/weekview/css/style.css",
+
+		"/cxrili/pages/home/",
+		"/cxrili/pages/home/index.html",
+		"/cxrili/pages/home/js/script.js",
+		"/cxrili/pages/home/css/style.css",
 
 		"/cxrili/icons/cxr-160x160.png"
 	]

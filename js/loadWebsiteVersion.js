@@ -2,9 +2,15 @@ let VERSION = "version unavailable";
 let updateMessage = undefined;
 
 const loadWebsiteVersion = async () => {
-	const response = await fetch("/cxrili/info.json");
-	let appInfo = await response.json();
+	await fetch("/cxrili/info.json")
+		.then((res) => res.json())
+		.then((appInfo) => {
+			VERSION = appInfo.version;
+			updateMessage = appInfo.message;
 
-	VERSION = appInfo.version;
-	updateMessage = appInfo.message;
+			if (appInfo.updated) {
+				alert("განახლება!");
+				window.location.reload();
+			}
+		});
 };

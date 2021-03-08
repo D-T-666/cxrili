@@ -1,4 +1,5 @@
 let cacheVersion = "unknown";
+let previousUpdateMessage = "";
 // Versioning scheme:
 // # . # . # . #
 // |   |   |   |
@@ -43,6 +44,7 @@ self.addEventListener("install", (evt) => {
 			.then((appInfo) => {
 				console.log(`service worker installed. app info: ${appInfo}`);
 				cacheVersion = appInfo.version;
+				previousUpdateMessage = appInfo.message;
 
 				updateCache();
 			})
@@ -57,6 +59,7 @@ self.addEventListener("activate", (evt) => {
 				console.log(`service worker activated. app info: ${appInfo}`);
 				if (appInfo && cacheVersion !== appInfo.version) {
 					cacheVersion = appInfo.version;
+					previousUpdateMessage = appInfo.message;
 
 					updateCache();
 				}
@@ -67,7 +70,7 @@ self.addEventListener("activate", (evt) => {
 self.addEventListener("fetch", (evt) => {
 	let reqList = evt.request.url.toString().split("/");
 
-	if (reqList.includes("updateCache") || reqList.includes("version")) {
+	if (reqList.includes("info.json")) {
 		evt.respondWith(
 			fetch("/cxrili/info.json")
 				.then((appInfoResponse) => {
@@ -76,21 +79,18 @@ self.addEventListener("fetch", (evt) => {
 				.then((appInfo) => {
 					if (appInfo && cacheVersion !== appInfo.version) {
 						cacheVersion = appInfo.version;
+						previousUpdateMessage = appInfo.message;
 						updateCache();
 
 						return new Response(
 							new Blob(
-								[JSON.stringify({ updated: true }, null, 2)],
-								{
-									type: "application/json",
-								}
-							),
-							{ status: 200 }
-						);
-					} else {
-						return new Response(
-							new Blob(
-								[JSON.stringify({ updated: false }, null, 2)],
+								[
+									JSON.stringify(
+										{ ...appInfo, updated: true },
+										null,
+										2
+									),
+								],
 								{
 									type: "application/json",
 								}
@@ -98,11 +98,41 @@ self.addEventListener("fetch", (evt) => {
 							{ status: 200 }
 						);
 					}
+					return new Response(
+						new Blob(
+							[
+								JSON.stringify(
+									{
+										...appInfo,
+										updated:
+											appInfo &&
+											cacheVersion !== appInfo.version,
+									},
+									null,
+									2
+								),
+							],
+							{
+								type: "application/json",
+							}
+						),
+						{ status: 200 }
+					);
 				})
 				.catch((err) => {
 					return new Response(
 						new Blob(
-							[JSON.stringify({ updated: false }, null, 2)],
+							[
+								JSON.stringify(
+									{
+										version: cacheVersion,
+										message: previousUpdateMessage,
+										updated: false,
+									},
+									null,
+									2
+								),
+							],
 							{
 								type: "application/json",
 							}
@@ -111,36 +141,35 @@ self.addEventListener("fetch", (evt) => {
 					);
 				})
 		);
-	} else if (reqList.includes("info.json")) {
-		evt.respondWith(getAppInfoResponse());
 	} else if (reqList.includes("timetable")) {
 		if (reqList.includes("tables.json")) {
 			evt.respondWith(
-				fetch("/cxrili/timetable/tables.json")
-					.then((res) => res.json())
-					.then(
-						(tables) =>
-							new Response(
-								new Blob(
-									[
-										JSON.stringify(
-											{
-												...tables,
-												savedTables: Array.from(
-													cachedTables
-												),
-											},
-											null,
-											2
-										),
-									],
-									{
-										type: "application/json",
-									}
-								),
-								{ status: 200 }
-							)
-					)
+				caches
+					.match(evt.request)
+					.then((cacheRes) => cacheRes.json())
+					.then((tables) => {
+						return new Response(
+							new Blob(
+								[
+									JSON.stringify(
+										{
+											...tables,
+											savedTables: Array.from(
+												cachedTables
+											),
+										},
+										null,
+										2
+									),
+								],
+								{
+									type: "application/json",
+								}
+							),
+							{ status: 200 }
+						);
+					})
+					.catch((err) => fetch(evt.request.url))
 			);
 		} else {
 			evt.respondWith(
@@ -162,10 +191,14 @@ self.addEventListener("fetch", (evt) => {
 											}/${a}.csv`
 									)
 								)
+							)
+							.then((res) =>
+								cachedTables.add(
+									decodeURIComponent(
+										reqList[reqList.length - 2]
+									)
+								)
 							);
-						cachedTables.add(
-							decodeURIComponent(reqList[reqList.length - 2])
-						);
 						return fetch(evt.request.url);
 					}
 				})

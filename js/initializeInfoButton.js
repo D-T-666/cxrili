@@ -13,8 +13,6 @@ async function initializeInfoButton() {
 	document
 		.getElementById("cxrili-info")
 		.addEventListener("click", async (evt) => {
-			await fetch("/cxrili/updateCache");
-
 			alert(`cxrili version: ${VERSION}\n\nchangelog:\n${updateMessage}`);
 		});
 
