@@ -42,7 +42,9 @@ self.addEventListener("install", (evt) => {
 		fetch("/cxrili/info.json")
 			.then((appInfoResponse) => appInfoResponse.json())
 			.then((appInfo) => {
-				console.log(`service worker installed. app info: ${appInfo}`);
+				console.log(
+					`service worker installed. app version - ${appInfo.version}`
+				);
 				cacheVersion = appInfo.version;
 				previousUpdateMessage = appInfo.message;
 
@@ -56,7 +58,9 @@ self.addEventListener("activate", (evt) => {
 		fetch("/cxrili/info.json")
 			.then((appInfoResponse) => appInfoResponse.json())
 			.then((appInfo) => {
-				console.log(`service worker activated. app info: ${appInfo}`);
+				console.log(
+					`service worker activated. app version - ${appInfo.version}`
+				);
 				if (appInfo && cacheVersion !== appInfo.version) {
 					cacheVersion = appInfo.version;
 					previousUpdateMessage = appInfo.message;

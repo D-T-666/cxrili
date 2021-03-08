@@ -88,8 +88,6 @@ async function createTableElement(table, saved) {
 async function buildEllements() {
 	const tables = await loadTimeTables();
 
-	console.log(tables);
-
 	for (let table of tables.tables) {
 		const tableElement = await createTableElement(
 			table,
