@@ -11,7 +11,10 @@ const georgian_days = {
 async function loadTimeTables() {
 	return await fetch("/cxrili/timetable/tables.json")
 		.then((res) => res.json())
-		.then((data) => data);
+		.then((data) => {
+			if (data.savedTables) return data;
+			else return { ...data, savedTables: [] };
+		});
 }
 
 async function createTableElement(table, saved) {
@@ -84,6 +87,8 @@ async function createTableElement(table, saved) {
 
 async function buildEllements() {
 	const tables = await loadTimeTables();
+
+	console.log(tables);
 
 	for (let table of tables.tables) {
 		const tableElement = await createTableElement(
