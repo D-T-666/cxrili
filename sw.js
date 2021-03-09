@@ -77,7 +77,7 @@ self.addEventListener("fetch", (evt) => {
 	if (reqList.includes("info.json")) {
 		evt.respondWith(
 			(async () => {
-				let data = fetch("/cxrili/info.json")
+				let data = await fetch("/cxrili/info.json")
 					.then((appInfoResponse) => {
 						return appInfoResponse.json();
 					})
