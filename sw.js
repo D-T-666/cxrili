@@ -76,74 +76,40 @@ self.addEventListener("fetch", (evt) => {
 
 	if (reqList.includes("info.json")) {
 		evt.respondWith(
-			fetch("/cxrili/info.json")
-				.then((appInfoResponse) => {
-					return appInfoResponse.json();
-				})
-				.then((appInfo) => {
-					if (appInfo && cacheVersion !== appInfo.version) {
-						cacheVersion = appInfo.version;
-						previousUpdateMessage = appInfo.message;
-						updateCache();
+			(async () => {
+				let data = fetch("/cxrili/info.json")
+					.then((appInfoResponse) => {
+						return appInfoResponse.json();
+					})
+					.then((appInfo) => {
+						if (cacheVersion !== appInfo.version) {
+							previousUpdateMessage = appInfo.message;
+							updateCache();
+						}
+						return {
+							...appInfo,
+							updated:
+								cacheVersion !==
+								(cacheVersion = appInfo.version),
+							offline: false,
+						};
+					})
+					.catch((err) => {
+						return {
+							version: cacheVersion,
+							message: previousUpdateMessage,
+							offline: true,
+							updated: false,
+						};
+					});
 
-						return new Response(
-							new Blob(
-								[
-									JSON.stringify(
-										{ ...appInfo, updated: true },
-										null,
-										2
-									),
-								],
-								{
-									type: "application/json",
-								}
-							),
-							{ status: 200 }
-						);
-					}
-					return new Response(
-						new Blob(
-							[
-								JSON.stringify(
-									{
-										...appInfo,
-										updated:
-											appInfo &&
-											cacheVersion !== appInfo.version,
-									},
-									null,
-									2
-								),
-							],
-							{
-								type: "application/json",
-							}
-						),
-						{ status: 200 }
-					);
-				})
-				.catch((err) => {
-					return new Response(
-						new Blob(
-							[
-								JSON.stringify(
-									{
-										version: cacheVersion,
-										message: previousUpdateMessage,
-										updated: false,
-									},
-									null,
-									2
-								),
-							],
-							{
-								type: "application/json",
-							}
-						),
-						{ status: 200 }
-					);
-				})
+				return new Response(
+					new Blob([JSON.stringify(data, null, 2)], {
+						type: "application/json",
+					}),
+					{ status: 200 }
+				);
+			})()
 		);
 	} else if (reqList.includes("timetable")) {
 		if (reqList.includes("tables.json")) {

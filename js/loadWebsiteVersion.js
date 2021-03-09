@@ -9,8 +9,8 @@ const loadWebsiteVersion = async () => {
 			updateMessage = appInfo.message;
 
 			if (appInfo.updated) {
-				alert("განახლება!");
-				window.location.reload();
+				if (confirm("ახალი ვერსია ხელმისაწვდომია!\nგსურს განახლება?"))
+					window.location.reload();
 			}
 		});
 };
