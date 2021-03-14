@@ -13,7 +13,14 @@ async function initializeInfoButton() {
 	document
 		.getElementById("cxrili-info")
 		.addEventListener("click", async (evt) => {
-			alert(`cxrili version: ${VERSION}\n\nchangelog:\n${updateMessage}`);
+			if (
+				confirm(
+					`cxrili version: ${VERSION}\n\nchangelog:\n${updateMessage}\n\nგაქვს რაიმე კარგი იდეან ან პრობლემა?`
+				)
+			) {
+				window.location =
+					"https://docs.google.com/forms/d/e/1FAIpQLSftI2MmEJyTZCgSSb5CzLfq9oBB94mzWRcWlRGnS09Pg1qm8A/viewform?usp=sf_link";
+			}
 		});
 
 	document.getElementById("home").addEventListener("click", (evt) => {
