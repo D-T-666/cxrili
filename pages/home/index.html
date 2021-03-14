@@ -1,73 +1,86 @@
 <!DOCTYPE html>
 <html lang="ka">
+	<head>
+		<meta charset="UTF-8" />
+		<title>cxrili</title>
+		<!-- External Files -->
+		<link rel="stylesheet" href="/cxrili/css/root.css" />
+		<link rel="stylesheet" href="/cxrili/css/main.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="/cxrili/js/getCurrentDay.js"></script>
+		<script src="/cxrili/js/loadTimeTable.js"></script>
+		<script src="/cxrili/js/loadWebsiteVersion.js"></script>
+		<script src="/cxrili/js/initializeInfoButton.js"></script>
+		<script src="/cxrili/js/app.js"></script>
+		<script src="/cxrili/js/theme.js"></script>
+		<script src="js/script.js"></script>
+		<!-- PWA -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#1d1d22" id="theme-color" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta
+			name="apple-mobile-web-app-status-bar-style"
+			content="black-translucent"
+		/>
+		<link
+			rel="shortcut icon"
+			href="/cxrili/favicon.ico"
+			type="image/x-icon"
+		/>
+		<link rel="manifest" href="/cxrili/manifest.json" />
+		<!-- SEO -->
+		<meta
+			name="description"
+			content="ციფრული გაკვეთილების განრიგი ვებ აპლიკაციის სახით. (ჯერჯერობით მხოლოდ ბორჯომის მე-3 საჯარო სკოლის XI-3 კლასისთვის)"
+		/>
+		<!-- Link preview -->
+		<meta property="og:title" content="cxrili - weekview" />
+		<meta
+			property="og:description"
+			content="ონლაინ ცხრილი (ჯერჯერობით ბორჯომის მე-3 საჯარო სკოლის XI-3 კლასისთვის)."
+		/>
+		<meta
+			property="og:image"
+			content="https://d-t-666.github.io/cxrili/icons/banner.jpg"
+		/>
+		<meta
+			property="og:url"
+			content="https://d-t-666.github.io/cxrili/pages/weekview/index.html"
+		/>
+		<meta property="og:site_name" content="D-T-666.github.io" />
+		<meta property="og:type" content="object" />
+	</head>
 
-<head>
-	<meta charset="UTF-8">
-	<title>cxrili</title>
-	<!-- External Files -->
-	<link rel="stylesheet" href="/cxrili/css/root.css">
-	<link rel="stylesheet" href="/cxrili/css/main.css">
-	<link rel="stylesheet" href="css/style.css">
-	<script src="/cxrili/js/getCurrentDay.js"></script>
-	<script src="/cxrili/js/loadTimeTable.js"></script>
-	<script src="/cxrili/js/loadWebsiteVersion.js"></script>
-	<script src="/cxrili/js/initializeInfoButton.js"></script>
-	<script src="/cxrili/js/app.js"></script>
-	<script src="/cxrili/js/theme.js"></script>
-	<script src="js/script.js"></script>
-	<!-- PWA -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="theme-color" content="#1d1d22" id="theme-color">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<link rel="shortcut icon" href="/cxrili/favicon.ico" type="image/x-icon">
-	<link rel="manifest" href="/cxrili/manifest.json">
-	<!-- SEO -->
-	<meta name="description"
-		content="ციფრული გაკვეთილების განრიგი ვებ აპლიკაციის სახით. (ჯერჯერობით მხოლოდ ბორჯომის მე-3 საჯარო სკოლის XI-3 კლასისთვის)">
-	<!-- Link preview -->
-	<meta property="og:title" content="cxrili - weekview">
-	<meta property="og:description" content="ონლაინ ცხრილი (ჯერჯერობით ბორჯომის მე-3 საჯარო სკოლის XI-3 კლასისთვის).">
-	<meta property="og:image" content="https://d-t-666.github.io/cxrili/icons/banner.jpg">
-	<meta property="og:url" content="https://d-t-666.github.io/cxrili/pages/weekview/index.html">
-	<meta property="og:site_name" content="D-T-666.github.io" />
-	<meta property="og:type" content="object">
-</head>
-
-<body>
-	<div id="main-root">
-		<div id="root-div">
-			<div id="added-tables" class="hidden">
-				<div class="title">
-					<p>შენახული</p>
+	<body>
+		<div id="main-root">
+			<div id="root-div">
+				<div id="added-tables" class="hidden">
+					<div class="title">
+						<p>შენახული</p>
+					</div>
+					<!-- Ellements go here! -->
 				</div>
-				<!-- Ellements go here! -->
+				<div id="available-tables">
+					<div class="title">
+						<p>ყველა</p>
+					</div>
+					<!-- Ellements go here! -->
+				</div>
 			</div>
-			<div id="available-tables">
-				<div class="title">
-					<p>ყველა</p>
+			<div class="nav-bar">
+				<div class="buttons-container">
+					<div class="button nogrow" id="theme-switcher">
+						<p>🔆</p>
+					</div>
+					<div class="button menu" id="cxrili">
+						<p>ცხრილი</p>
+					</div>
+					<div class="button nogrow info" id="cxrili-info">
+						<p>ⓘ</p>
+					</div>
 				</div>
-				<!-- Ellements go here! -->
 			</div>
 		</div>
-		<div class="nav-bar">
-			<div class="buttons-container">
-				<div class="button nogrow" id="theme-switcher">
-					<p>🔆</p>
-				</div>
-				<div class="button menu" id="theme-switcher">
-					<p>გამართვა</p>
-				</div>
-				<div class="button nogrow" id="home">
-					<p>🏠</p>
-				</div>
-				<div class="button nogrow info" id="cxrili-info">
-					<p>ⓘ</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="/cxrili/js/main.js"></script>
-</body>
-
+		<script src="/cxrili/js/main.js"></script>
+	</body>
 </html>

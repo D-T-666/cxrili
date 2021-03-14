@@ -89,8 +89,9 @@ self.addEventListener("fetch", (evt) => {
 						return {
 							...appInfo,
 							updated:
+								cacheVersion !== "unknown" &&
 								cacheVersion !==
-								(cacheVersion = appInfo.version),
+									(cacheVersion = appInfo.version),
 							offline: false,
 						};
 					})

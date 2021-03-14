@@ -4,6 +4,7 @@ async function loadTimeTable(day) {
 	const class_name = window.localStorage.currentTable;
 
 	if (class_name === undefined) {
+		alert("რომელი ცხრილის ნახვა გსურს?");
 		window.location = "/cxrili/pages/home/";
 	}
 
