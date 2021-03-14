@@ -9,8 +9,12 @@ const loadWebsiteVersion = async () => {
 			updateMessage = appInfo.message;
 
 			if (appInfo.updated) {
-				if (confirm("ახალი ვერსია ხელმისაწვდომია!\nგსურს განახლება?"))
-					window.location.reload();
+				if (confirm("ახალი ვერსია ხელმისაწვდომია!\nგსურს განახლება?")) {
+					navigator.serviceWorker
+						.getRegistration()
+						.then((sw) => sw.update())
+						.then((a) => window.location.reload());
+				}
 			}
 		});
 };

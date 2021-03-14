@@ -1,12 +1,5 @@
 let cacheVersion = "unknown";
 let previousUpdateMessage = "";
-// Versioning scheme:
-// # . # . # . #
-// |   |   |   |
-// |   |   |   > timetable updates, minor bug fixes
-// |   |   > major bug fixes, feature updates, design updates
-// |   > major feature updates, restructuring updates, big cleanups
-// > versions
 
 const cachedTables = new Set();
 
