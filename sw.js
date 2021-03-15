@@ -168,6 +168,28 @@ self.addEventListener("fetch", (evt) => {
 				})
 			);
 		}
+	} else if (reqList.includes("forceCachedFiles")) {
+		forceCachedFiles = true;
+		evt.respondWith(
+			new Response(
+				new Blob(
+					[
+						JSON.stringify(
+							{
+								...tables,
+								savedTables: Array.from(cachedTables),
+							},
+							null,
+							2
+						),
+					],
+					{
+						type: "application/json",
+					}
+				),
+				{ status: 200 }
+			)
+		);
 	} else {
 		evt.respondWith(
 			caches

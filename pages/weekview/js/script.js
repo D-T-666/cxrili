@@ -38,8 +38,6 @@ function initializeButtons() {
 		},
 		false
 	);
-
-	initializeInfoButton();
 }
 
 async function buildTables() {

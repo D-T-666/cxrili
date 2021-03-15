@@ -1,17 +1,21 @@
-window.addEventListener("load", () => {
-	console.log("'load' event triggered");
+window.addEventListener(
+	"load",
+	() => {
+		console.log("'load' event triggered");
 
-	window.addEventListener("online", () => {
-		loadWebsiteVersion();
-		alert("ინტერნეტთან წვდომა აღდგენილია!");
-	});
-	window.addEventListener("offline", () => {
-		alert("ინტერნეტთან წვდომა შეზღუდულია");
-	});
-});
+		window.addEventListener("online", () => {
+			loadWebsiteVersion();
+			alert("ინტერნეტთან წვდომა აღდგენილია!");
+		});
+		window.addEventListener("offline", () => {
+			alert("ინტერნეტთან წვდომა შეზღუდულია");
+		});
+	},
+	false
+);
 
 (async () => {
-	await loadWebsiteVersion();
+	loadWebsiteVersion().then((a) => initializeInfoButton());
 
 	await initializeTheme();
 

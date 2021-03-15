@@ -105,8 +105,6 @@ function initializeButtons() {
 	// 	false
 	// );
 
-	initializeInfoButton();
-
 	document.getElementById("cxrili").addEventListener("click", () => {
 		window.location = "/cxrili/";
 	});
