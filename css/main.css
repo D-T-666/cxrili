@@ -38,7 +38,7 @@
 	margin: 0.4rem;
 	background-color: var(--button-background);
 	flex-grow: 1;
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	font-family: myFont;
 	color: var(--button-text);
 	cursor: pointer;
@@ -71,12 +71,20 @@
 }
 
 @media only screen and (max-width: 375px) {
+	.button {
+		font-size: 1.2rem;
+	}
+
 	.button.weekday {
-		font-size: 95%;
+		font-size: 0.9rem;
 	}
 }
 @media only screen and (max-width: 330px) {
+	.button {
+		font-size: 1rem;
+	}
+
 	.button.weekday {
-		font-size: 80%;
+		font-size: 0.8rem;
 	}
 }

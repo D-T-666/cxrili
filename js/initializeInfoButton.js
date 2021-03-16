@@ -1,11 +1,15 @@
 const initializeInfoButton = async () => {
+	// Check if the previous update message is the same as the current one
 	const notified = window.localStorage.updateMessage === updateMessage;
 
+	// If not, print the message and update the previous message variable
 	if (!notified) {
 		window.localStorage.setItem("updateMessage", updateMessage);
 
-		// Clear out old localStorage Item -- REMOVE LATER --
+		//  -- REMOVE LATER --
+		// Clear out old localStorage Item
 		window.localStorage.removeItem("notificationVersion");
+		//  -- REMOVE LATER --
 
 		alert(updateMessage);
 	}
@@ -21,7 +25,10 @@ const initializeInfoButton = async () => {
 			}
 		});
 
-	document.getElementById("home").addEventListener("click", (evt) => {
-		window.location = "/cxrili/pages/home/";
-	});
+	const homeButton = document.getElementById("home");
+	if (homeButton) {
+		homeButton.addEventListener("click", (evt) => {
+			window.location = "/cxrili/pages/home/";
+		});
+	}
 };
