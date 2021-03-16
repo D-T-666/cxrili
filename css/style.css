@@ -168,20 +168,22 @@
 	font-family: numFont;
 }
 
-.timer-start {
-	color: var(--timer-start-text);
-}
-
-.timer-end {
-	color: var(--timer-end-text);
-}
-
 .timer-left {
 	color: var(--block-background);
 	background-color: var(--timer-live);
 	display: none;
 	padding: 0.3rem 0.6rem;
 	border-radius: 0.8rem;
+}
+
+@media only screen and (max-width: 330px) {
+	.timer {
+		font-size: 1rem;
+	}
+
+	.timer-left {
+		border-radius: 0.6rem;
+	}
 }
 
 .break > .class-description {

@@ -70,13 +70,14 @@
 	color: var(--blue-button-text);
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 395px) {
 	.button {
 		font-size: 1.2rem;
 	}
 
 	.button.weekday {
-		font-size: 0.9rem;
+		font-size: 1.2rem;
+		padding: 0.4rem 0.6rem;
 	}
 }
 @media only screen and (max-width: 330px) {
@@ -85,6 +86,7 @@
 	}
 
 	.button.weekday {
-		font-size: 0.8rem;
+		font-size: 1.1rem;
+		padding: 0.3rem 0.4rem;
 	}
 }
