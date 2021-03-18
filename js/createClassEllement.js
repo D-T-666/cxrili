@@ -5,7 +5,7 @@ function createClassEllement(day, name, duration, start, end, id) {
 	ClassEllement.classList.add("class");
 	ClassEllement.classList.add("time-line-block");
 	ClassEllement.classList.add(`${id}`);
-	ClassEllement.style.height = `${duration / 240}rem`;
+	ClassEllement.classList.add(duration / 60 > 30 ? "long" : "short");
 
 	// Timeline creation
 	let timelineContainer, timeline;

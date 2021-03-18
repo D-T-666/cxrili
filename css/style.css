@@ -112,6 +112,12 @@
 .active.short.break {
 	height: 4rem;
 }
+.short.class {
+	height: 5.5rem;
+}
+.long.class {
+	height: 7rem;
+}
 .active.class {
 	min-height: 7.5rem;
 }
