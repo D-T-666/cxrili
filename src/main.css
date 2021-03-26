@@ -1,0 +1,100 @@
+/* root divs */
+
+.App {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+#time-table-timeline {
+	display: flex;
+	flex-direction: column;
+	font-size: 48px;
+
+	height: calc(100vh - var(--navbar-height) - var(--home-button-bar-height));
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Nav bar */
+
+.nav-bar {
+	z-index: 10;
+	display: flex;
+	flex-grow: 0;
+	height: var(--navbar-height);
+	min-height: var(--navbar-height);
+	box-sizing: content-box;
+	overflow-x: auto;
+	padding: 0.3rem;
+
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+button {
+	padding: 0rem 0.8rem;
+	margin: 0.4rem;
+	background-color: var(--button-background);
+	flex-grow: 1;
+	font-size: 1.3rem;
+	font-family: myFont;
+	color: var(--button-text);
+	cursor: pointer;
+	user-select: none;
+	box-sizing: border-box;
+	text-align: center;
+	border-radius: 0.6rem;
+	box-shadow: 0 0.2rem 1rem var(--shadow-color);
+	transition: 0.3s;
+	outline: none;
+	font-weight: 700;
+	-webkit-tap-highlight-color: transparent;
+	border: none;
+	outline: none;
+}
+
+button p {
+	margin: 0;
+	height: 100%;
+}
+
+button.home {
+	background-color: var(--orange-button-background);
+	color: var(--orange-button-text);
+}
+
+button.nogrow {
+	flex-grow: unset;
+}
+
+button.active {
+	background-color: var(--blue-button-background);
+	color: var(--blue-button-text);
+}
+
+@media only screen and (max-width: 395px) {
+	button {
+		font-size: 1.2rem;
+	}
+
+	button.weekday {
+		font-size: 1.2rem;
+		padding: 0.4rem 0.6rem;
+	}
+}
+@media only screen and (max-width: 330px) {
+	button {
+		font-size: 1rem;
+	}
+
+	button.weekday {
+		font-size: 1.1rem;
+		padding: 0.3rem 0.4rem;
+	}
+}
+/* @media only screen and (orientation: portrait) and (max-width: 600px) {
+	button {
+		padding-top: 0.4rem;
+	}
+} */
