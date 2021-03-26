@@ -1,6 +1,6 @@
 {
   "name": "cxrili",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "homepage": "https://d-t-666.github.io/cxrili",
   "dependencies": {
@@ -14,8 +14,8 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
