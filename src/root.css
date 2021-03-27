@@ -5,7 +5,7 @@
 	/* Colors */
 
 	/* Presets */
-	--dark: #86756d;
+	--dark: #645a56;
 	--red: #e66375;
 	--orange: #ff7a51;
 	--green: #009c56;
@@ -153,7 +153,7 @@
 
 @font-face {
 	font-family: myFont;
-	src: url("https://d-t-666.github.io/time-table/fonts/bpg_glaho_sylfaen.ttf");
+	src: url("https://d-t-666.github.io/cxrili/fonts/bpg_glaho_sylfaen.ttf");
 }
 
 @font-face {
