@@ -4,14 +4,17 @@ class BlockTimers extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {left: "00:00", active: false};
+		this.state = {left: "00:00", active: false, previousPercentageThrough: 0};
   }
 
   componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
+		if(this.props.shouldUpdate){
+			this.tick();
+			this.timerID = setInterval(
+				() => this.tick(),
+				1000
+			);
+		}
   }
 
   componentWillUnmount() {
@@ -22,24 +25,36 @@ class BlockTimers extends Component {
 		const date = new Date();
 		let left = "0:00";
 		let active = false;
+		let percentage = 0;
 
-
-		const currentTime = date.getHours()*60 + date.getMinutes()-5;
+		const currentTime = date.getHours()*60 + date.getMinutes();
 
 		// If the current time is in the timeframe of the block
-		if (currentTime <= this.props.int_finish && currentTime > this.props.int_start) {
-			active = true;
+		if (currentTime > this.props.int_start) {
+			percentage = (currentTime-this.props.int_start +  date.getSeconds()/60)/(this.props.int_finish-this.props.int_start);
+			if(percentage >= 1)
+				percentage = 1;
 
-			// Time left to the end of the block
-			const timeLeft = this.props.int_finish - currentTime;
 
-			// Get padded string representations of the time remaining
-			const h = String(Math.floor(timeLeft / 60)).padStart(2, "0"),
-						m = String(Math.floor(timeLeft % 60)).padStart(2, "0"),
-						s = String(60 - date.getSeconds()).padStart(2, "0");
+			if (currentTime <= this.props.int_finish) {
+				active = true;
 
-			// If there is zero hours remaining, we don't need to show it
-			left = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
+				// Time left to the end of the block
+				const timeLeft = this.props.int_finish - currentTime;
+
+				// Get padded string representations of the time remaining
+				const h = String(Math.floor(timeLeft / 60)).padStart(2, "0"),
+							m = String(Math.floor(timeLeft % 60)).padStart(2, "0"),
+							s = String(60 - date.getSeconds()).padStart(2, "0");
+
+				// If there is zero hours remaining, we don't need to show it
+				left = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
+			
+				this.props.updatePercentageThrough(percentage);
+			}else{
+				if(percentage !== this.state.previousPercentageThrough)
+					this.props.updatePercentageThrough(1);
+			}
 		}
 
 		// Update the state
@@ -48,7 +63,7 @@ class BlockTimers extends Component {
 			this.props.changeActive(active);
 
 			// Set the state to newly calculated values
-			return { left, active };
+			return { left, active, previousPercentageThrough: percentage };
 		});
   }
 

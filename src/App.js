@@ -2,7 +2,7 @@ import { Component } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar.jsx";
 import WeekDayBar from "./components/WeekDayBar.jsx";
-import TimeTable from "./components/dayView/TimeTable.jsx";
+import TimeTable from "./components/TimeTable.jsx";
 import "./main.css";
 import "./style.css";
 import "./root.css";
@@ -15,7 +15,8 @@ class App extends Component {
 		const day = date.getDay();
 		this.state = {
 			colorTheme: "light-theme",
-			currentDay: day < 1 || day > 5 ? 0 : day,
+			currentDay: day < 1 || day > 5 ? 0 : day - 1,
+			today: day < 1 || day > 5 ? false : day - 1,
 		};
 
 		this.switchTheme = this.switchTheme.bind(this);
@@ -39,10 +40,9 @@ class App extends Component {
 	}
 
 	changeDay(newDay) {
-		console.log(newDay);
-		this.setState((state) => ({
+		this.setState({
 			currentDay: newDay,
-		}));
+		});
 	}
 
 	render() {
@@ -54,8 +54,7 @@ class App extends Component {
 				/>
 				<TimeTable
 					day={this.state.currentDay}
-					key={this.state.currentDay}
-					currentDay={this.state.currentDay}
+					today={this.state.today}
 				/>
 				<NavBar onThemeSwitch={this.switchTheme} />
 			</div>

@@ -74,7 +74,7 @@ ul {
 	display: block;
 	margin: 0;
 	width: 20%;
-	height: 0%;
+	height: 50%;
 	box-sizing: border-box;
 	transition: 0.4s;
 
@@ -107,7 +107,7 @@ ul {
 .active.class {
 	min-height: 7.5rem;
 }
-.active.time-line-block > .time-line-container > .time-line {
+.active.time-line-block > .time-line {
 	background-image: repeating-linear-gradient(
 		30deg,
 		var(--time-line-active),
