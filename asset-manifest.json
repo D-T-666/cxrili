@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/cxrili/static/css/main.fc4a6709.chunk.css",
-    "main.js": "/cxrili/static/js/main.7a8dbfce.chunk.js",
-    "main.js.map": "/cxrili/static/js/main.7a8dbfce.chunk.js.map",
+    "main.css": "/cxrili/static/css/main.c269fa4b.chunk.css",
+    "main.js": "/cxrili/static/js/main.4149a86b.chunk.js",
+    "main.js.map": "/cxrili/static/js/main.4149a86b.chunk.js.map",
     "runtime-main.js": "/cxrili/static/js/runtime-main.da597fb8.js",
     "runtime-main.js.map": "/cxrili/static/js/runtime-main.da597fb8.js.map",
     "static/js/2.0767b93b.chunk.js": "/cxrili/static/js/2.0767b93b.chunk.js",
@@ -10,13 +10,13 @@
     "index.html": "/cxrili/index.html",
     "service-worker.js": "/cxrili/service-worker.js",
     "service-worker.js.map": "/cxrili/service-worker.js.map",
-    "static/css/main.fc4a6709.chunk.css.map": "/cxrili/static/css/main.fc4a6709.chunk.css.map",
+    "static/css/main.c269fa4b.chunk.css.map": "/cxrili/static/css/main.c269fa4b.chunk.css.map",
     "static/js/2.0767b93b.chunk.js.LICENSE.txt": "/cxrili/static/js/2.0767b93b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.da597fb8.js",
     "static/js/2.0767b93b.chunk.js",
-    "static/css/main.fc4a6709.chunk.css",
-    "static/js/main.7a8dbfce.chunk.js"
+    "static/css/main.c269fa4b.chunk.css",
+    "static/js/main.4149a86b.chunk.js"
   ]
 }
