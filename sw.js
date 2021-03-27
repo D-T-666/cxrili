@@ -1,5 +1,5 @@
 self.addEventListener("install", function (e) {
-	setTimeout(self.skipWaiting, 2000);
+	self.skipWaiting();
 });
 
 self.addEventListener("activate", function (e) {
