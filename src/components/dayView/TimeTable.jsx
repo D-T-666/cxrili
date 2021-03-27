@@ -14,10 +14,10 @@ class TimeTable extends Component{
 
 	fetchData() {
 		// TODO: rework this function
-		fetch(`/timetable/11 - გ/${this.state.day}.csv`)
+		fetch(`timetable/11 - გ/${this.state.day}.csv`)
 		.then(res => res.text())
 		.then(data => {
-			let classes = data
+			let blocks = data
 				.split(/\r/)
 				.map(row => ({
 					name: row.split(",")[0], 
@@ -25,17 +25,15 @@ class TimeTable extends Component{
 					finish: row.split(",")[2]
 				}));
 
-			let breaks = [];
-			for(let i = 0; i < classes.length-1; i++) {
-				if (classes[i].finish !== classes[i+1].start)
-					breaks.push({
+			let len = blocks.length, offset = 0;
+			for(let i = 0; i < len-1; i++) {
+				if (blocks[i].finish !== blocks[i+1].start)
+					blocks.push({
 						name: "break",
-						start: classes[i].finish,
-						finish: classes[i+1].start
+						start: blocks[i].finish,
+						finish: blocks[i+1].start
 					});
 			}
-
-			let blocks = [...classes, ...breaks];
 
 			blocks = blocks.map(block => ({
 				...block, 
