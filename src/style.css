@@ -24,7 +24,6 @@ ul {
 	font-family: myFont;
 	border-radius: 1.6rem;
 	margin: 0.7rem;
-	box-shadow: 0 0.2rem 1rem var(--shadow-color);
 
 	transition: 0.4s;
 	overflow: hidden;

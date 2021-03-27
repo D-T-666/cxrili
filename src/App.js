@@ -11,7 +11,12 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { colorTheme: "light-theme", currentDay: "mon" };
+		const date = new Date();
+		const day = date.getDay();
+		this.state = {
+			colorTheme: "light-theme",
+			currentDay: day < 1 || day > 5 ? 0 : day,
+		};
 
 		this.switchTheme = this.switchTheme.bind(this);
 		this.changeDay = this.changeDay.bind(this);
@@ -47,19 +52,11 @@ class App extends Component {
 					onDayChange={this.changeDay}
 					currentDay={this.state.currentDay}
 				/>
-				{[
-					["mon", "ორშ"],
-					["tue", "სამ"],
-					["wed", "ოთხ"],
-					["thu", "ხუთ"],
-					["fri", "პარ"],
-				].map((day) => (
-					<TimeTable
-						day={day[0]}
-						key={day[0] + day[1]}
-						currentDay={this.state.currentDay}
-					/>
-				))}
+				<TimeTable
+					day={this.state.currentDay}
+					key={this.state.currentDay}
+					currentDay={this.state.currentDay}
+				/>
 				<NavBar onThemeSwitch={this.switchTheme} />
 			</div>
 		);

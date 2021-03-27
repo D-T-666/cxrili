@@ -6,18 +6,20 @@ class WeekDayBar extends Component{
 		super(props);
 
 		this.state = {};
+
+		this.dayNames = ["ორშ", "სამ", "ოთხ", "ხუთ", "პარ"];
 	}
 	
 	render () {
 		return (
 			<div className="nav-bar">
-				{[["mon", "ორშ"], ["tue", "სამ"], ["wed", "ოთხ"], ["thu", "ხუთ"], ["fri", "პარ"]].map(day => 
+				{this.dayNames.map(( day, idx ) => 
 					<DayButton 
 						key={day} 
 						onClick={this.props.onDayChange} 
-						name={day[0]} 
-						className={(day[0] === this.props.currentDay? "active": "")}>
-							{day[1]}
+						name={idx} 
+						className={(idx === this.props.currentDay? "active": "")}>
+							{day}
 					</DayButton>
 				)}
 			</div>

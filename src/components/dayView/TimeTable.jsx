@@ -6,6 +6,7 @@ class TimeTable extends Component{
 		super(props);
 
 		this.state = {blocks: [], day: this.props.day};
+		this.workdays = ["mon", "tue", "wed", "thu", "fri"];
 	}
 
 	componentDidMount() {
@@ -14,7 +15,7 @@ class TimeTable extends Component{
 
 	fetchData() {
 		// TODO: rework this function
-		fetch(`/cxrili/timetable/11 - გ/${this.state.day}.csv`)
+		fetch(`timetable/11 - გ/${this.workdays[this.state.day]}.csv`)
 		.then(res => res.text())
 		.then(data => {
 			let blocks = data
