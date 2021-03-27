@@ -5,7 +5,7 @@ class TimeTable extends Component{
 	constructor (props) {
 		super(props);
 
-		this.state = {classes: [], day: this.props.day};
+		this.state = {blocks: [], day: this.props.day};
 	}
 
 	componentDidMount() {
@@ -14,18 +14,18 @@ class TimeTable extends Component{
 
 	fetchData() {
 		// TODO: rework this function
-		fetch(`timetable/11 - გ/${this.state.day}.csv`)
+		fetch(`/cxrili/timetable/11 - გ/${this.state.day}.csv`)
 		.then(res => res.text())
 		.then(data => {
 			let blocks = data
-				.split(/\r/)
+				.split(/[\r|\n]+/)
 				.map(row => ({
 					name: row.split(",")[0], 
 					start: row.split(",")[1], 
 					finish: row.split(",")[2]
 				}));
 
-			let len = blocks.length, offset = 0;
+			let len = blocks.length;
 			for(let i = 0; i < len-1; i++) {
 				if (blocks[i].finish !== blocks[i+1].start)
 					blocks.push({
@@ -44,7 +44,7 @@ class TimeTable extends Component{
 			blocks = blocks.sort((a, b) => a.int_start - b.int_start)
 
 			this.setState({
-				classes: blocks
+				blocks
 			});
 		})
 	}
@@ -53,7 +53,7 @@ class TimeTable extends Component{
 		return (
 			<ul className={"time-table-timeline" + (this.state.day === this.props.currentDay? "": " invisible")}>
 				{
-					this.state.classes.map(entry => 
+					this.state.blocks.map(entry => 
 						<ClassTimeBlock 
 											key={entry.name+entry.start} 
 											name={entry.name} 

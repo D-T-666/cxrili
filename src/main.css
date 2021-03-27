@@ -37,7 +37,7 @@ button {
 	margin: 0.4rem;
 	background-color: var(--button-background);
 	flex-grow: 1;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	font-family: myFont;
 	color: var(--button-text);
 	cursor: pointer;
