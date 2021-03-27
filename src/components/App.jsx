@@ -1,11 +1,7 @@
 import { Component } from "react";
-import "./App.css";
-import NavBar from "./components/NavBar.jsx";
-import WeekDayBar from "./components/WeekDayBar.jsx";
-import TimeTable from "./components/TimeTable.jsx";
-import "./main.css";
-import "./style.css";
-import "./root.css";
+import NavBar from "./NavBar.jsx";
+import WeekDayBar from "./WeekDayBar.jsx";
+import TimeTable from "./TimeTable.jsx";
 
 class App extends Component {
 	constructor(props) {

@@ -1,14 +1,12 @@
-self.addEventListener("install", function (e) {
+self.addEventListener("install", () => {
 	self.skipWaiting();
 });
 
-self.addEventListener("activate", function (e) {
+self.addEventListener("activate", () => {
 	self.registration
 		.unregister()
-		.then(function () {
-			return self.clients.matchAll();
-		})
-		.then(function (clients) {
-			clients.forEach((client) => client.navigate(client.url));
-		});
+		.then(self.clients.matchAll())
+		.then((clients) =>
+			clients.forEach((client) => client.navigate(client.url))
+		);
 });
