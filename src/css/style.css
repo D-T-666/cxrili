@@ -1,24 +1,10 @@
-.time-table-timeline {
-	max-height: calc(100vh - var(--navbar-height) - var(--navbar-height));
-	overflow-y: scroll;
-	flex-grow: 1;
-	margin: 0;
-}
-
-.time-table-timeline.invisible {
-	display: none;
-}
-
 ul {
 	padding: 0;
 }
 
-/* Time line */
-
 .time-line-block {
 	display: flex;
 	position: relative;
-	/* box-sizing: border-box; */
 	padding: 0;
 	z-index: 1;
 	font-family: myFont;
@@ -35,7 +21,6 @@ ul {
 }
 
 .break {
-	background-color: var(--class-block-background);
 	background-image: repeating-linear-gradient(
 		30deg,
 		var(--block-background),

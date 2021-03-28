@@ -1,7 +1,10 @@
 import { Component } from "react";
 import NavBar from "./NavBar.jsx";
 import WeekDayBar from "./WeekDayBar.jsx";
-import TimeTable from "./TimeTable.jsx";
+import DayTable from "./DayTable.jsx";
+import WeekTable from "./WeekTable.jsx";
+
+import {HashRouter as Router, Switch, Route, withRouter} from 'react-router-dom';
 
 class App extends Component {
 	constructor(props) {
@@ -19,18 +22,16 @@ class App extends Component {
 		this.changeDay = this.changeDay.bind(this);
 	}
 
-	switchTheme() {
+	switchTheme(newTheme) {
+		console.log(newTheme);
 		this.setState(
-			(state) => ({
-				colorTheme:
-					state.colorTheme === "dark-theme"
-						? "light-theme"
-						: "dark-theme",
-			}),
-			() => {
-				if (this.state.colorTheme === "dark-theme")
-					document.body.classList.add("dark-theme");
-				else document.body.classList.remove("dark-theme");
+			(state) => {
+				document.body.classList.remove(state.colorTheme);
+				document.body.classList.add(newTheme);
+
+				return {
+					colorTheme: newTheme
+				};
 			}
 		);
 	}
@@ -41,6 +42,20 @@ class App extends Component {
 		});
 	}
 
+	componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.onRouteChanged();
+    }
+  }
+
+	onRouteChanged() {
+		let day = this.props.location.pathname.split("/")[2];
+		day = parseInt(day);
+		
+		// console.log(this.props.location.pathname);
+		if(this.state.currentDay !== day) this.changeDay(day);
+	}
+
 	render() {
 		return (
 			<div className="App">
@@ -48,14 +63,18 @@ class App extends Component {
 					onDayChange={this.changeDay}
 					currentDay={this.state.currentDay}
 				/>
-				<TimeTable
-					day={this.state.currentDay}
-					today={this.state.today}
-				/>
-				<NavBar onThemeSwitch={this.switchTheme} />
+
+				<Switch>
+					<Route path="/" component={}
+					<Route path="/day/:d" component={() => <DayTable day={this.state.currentDay} today={this.state.today}/>}/>	
+					
+					<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
+				</Switch>
+
+				<NavBar onThemeSwitch={this.switchTheme}/>
 			</div>
 		);
 	}
 }
 
-export default App;
+export default withRouter(App);

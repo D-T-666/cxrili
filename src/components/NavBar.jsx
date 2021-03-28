@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Button from "./buttons/Button";
-import ThemeButton from "./buttons/ThemeButton";
-import HomeButton from "./buttons/HomeButton";
-import InfoButton from "./buttons/InfoButton";
+import Button from "components/buttons/Button";
+import ThemeButton from "components/buttons/ThemeButton";
+import HomeButton from "components/buttons/HomeButton";
+import InfoButton from "components/buttons/InfoButton";
 
 class NavBar extends Component{
 	constructor (props) {
@@ -10,17 +10,12 @@ class NavBar extends Component{
 
 		this.state = {};
 	}
-
-	componentDidMount() {}
-
-	componentWillUnmount() {}
 	
 	render () {
 		return (
 			<div className="nav-bar">
 				<ThemeButton onThemeSwitch={this.props.onThemeSwitch}/>
 				<HomeButton/>
-				<Button className="nogrow">🏠</Button>
 				<InfoButton/>
 			</div>
 		);

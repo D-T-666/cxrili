@@ -14,7 +14,7 @@ class TimeTable extends Component{
 
 	fetchData() {
 		// TODO: rework this function
-		fetch(`timetable/11g.json`)
+		fetch(`/cxrili/timetable/11g.json`)
 		.then(res => res.json())
 		.then(wholeTable => {
 			this.setState({
@@ -42,6 +42,8 @@ class TimeTable extends Component{
 						int_start: parseInt(block.start.split(":")[0])*60 + parseInt(block.start.split(":")[1]),
 						int_finish: parseInt(block.finish.split(":")[0])*60 + parseInt(block.finish.split(":")[1])
 					}));
+
+					console.log()
 		
 					return blocks.sort((a, b) => a.int_start - b.int_start);
 				})
@@ -51,9 +53,9 @@ class TimeTable extends Component{
 	
 	render () {
 		return (
-			<ul className="time-table-timeline">
+			<ul className="time-table-timeline content-box">
 				{
-					this.state.tables.length > 0 && this.state.tables[this.props.day].map((entry, index) => 
+					this.state.tables.length > 0 && this.state.tables[this.state.day].map((entry, index) => 
 						<ClassTimeBlock 
 											key={index} 
 											name={entry.name} 
@@ -61,7 +63,7 @@ class TimeTable extends Component{
 											finish={entry.finish}
 											int_start={entry.int_start}
 											int_finish={entry.int_finish}
-											isToday={this.props.today === this.props.day}/>
+											isToday={this.props.today === this.state.day}/>
 					)
 				}
 			</ul>
