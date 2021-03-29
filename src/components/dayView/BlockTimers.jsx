@@ -35,6 +35,11 @@ class BlockTimers extends Component {
     clearInterval(this.timerID);
   }
 
+	componentDidUpdate(prevProps) {
+		if(this.props.shouldUpdate !== prevProps.shouldUpdate)
+			this.tick();
+	}
+
   tick() {
 		const date = new Date();
 		let left = "0:00";
@@ -55,6 +60,8 @@ class BlockTimers extends Component {
 
 			if(percentage >= 1)
 				percentage = 1;
+			if(!this.props.shouldUpdate)
+				percentage = 0;
 
 
 			if (currentTime < this.props.int_finish) {
@@ -77,8 +84,10 @@ class BlockTimers extends Component {
 				
 				this.setState({timerStage:2})
 
-				if(percentage !== this.state.previousPercentageThrough)
+				if(percentage !== this.state.previousPercentageThrough && percentage > 0)
 					this.props.updatePercentageThrough(1);
+				if(percentage == 0)
+					this.props.updatePercentageThrough(0);
 			}
 		}
 

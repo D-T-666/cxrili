@@ -17,16 +17,17 @@ class ClassTimeBlock extends Component {
 		}));
 	}
 
-	updatePercentageThrough(percentage) {
-		this.setState(state => ({
-			percentageThrough: percentage
-		}));
+	updatePercentageThrough(percentageThrough) {
+		this.setState({percentageThrough});
 	}
 
 	render() {
 		return (
 			<li className={"short time-line-block" + (this.props.name === "break"? " break" : " class") + (this.state.active? " active" : "")}>
-				{this.state.percentageThrough>0 && <div className="time-line" style={{height: `${this.state.percentageThrough*100}%`}}></div>}
+				{
+					this.state.percentageThrough > 0 
+					&& <div className="time-line" style={{height: `${this.state.percentageThrough*100}%`}}></div>
+				}
 				<div className="class-description">
 					{this.props.name !== "break" && (<h2 className="class-name"> {this.props.name} </h2>)}
 					<BlockTimers 
