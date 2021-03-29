@@ -36,12 +36,12 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					<Switch>
-						<Route path="/" exact component={WelcomePage} />
+						<Route path="/cxrili/" exact component={WelcomePage} />
 
-						<Route path="/day/:d" component={DayViewPage}/>
-						<Route path="/day/" component={DayViewPage}/>
+						<Route path="/cxrili/day/:d" component={DayViewPage}/>
+						<Route path="/cxrili/day/" component={DayViewPage}/>
 						
-						<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
+						<Route path="/cxrili/week" component={() => <WeekTable today={this.state.today}/>} />
 					</Switch>
 
 					<NavBar onThemeSwitch={this.switchTheme.bind(this)}/>

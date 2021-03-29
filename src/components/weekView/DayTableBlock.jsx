@@ -10,7 +10,7 @@ class DayTableBlock extends Component {
 
 	render() {
 		return (
-			<Link to={`/day/${this.props.day}`} className="day-table-block">
+			<Link to={`/cxrili/day/${this.props.day}`} className="day-table-block">
 					<h1 className="title">{this.props.name}</h1>
 					<ul>
 						{this.props.table.map((entry, index) => 

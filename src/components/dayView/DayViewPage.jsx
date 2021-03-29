@@ -11,7 +11,7 @@ class DayViewPage extends Component {
 		const today = day < 1 || day > 5 ? false : day - 1;
 		this.state = {
 			colorTheme: "light-theme",
-			day: parseInt(props.match.params.d) || (today || 0),
+			day: parseInt(props.match.params.d || String(today || 0)),
 			today: today,
 		};
 

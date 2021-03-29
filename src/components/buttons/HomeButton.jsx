@@ -10,7 +10,7 @@ class HomeButton extends Component {
 
 	render() {
 		return (
-			<Link to="/week" >
+			<Link to="/cxrili/week" >
 				<button className="home">
 					ცხრილი
 				</button>
