@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ClassTimeBlock from "./dayView/ClassTimeBlock.jsx";
+import ClassTimeBlock from "./ClassTimeBlock.jsx";
 
 class TimeTable extends Component{
 	constructor (props) {
@@ -55,7 +55,7 @@ class TimeTable extends Component{
 		return (
 			<ul className="time-table-timeline content-box">
 				{
-					this.state.tables.length > 0 && this.state.tables[this.state.day].map((entry, index) => 
+					this.state.tables.length > 0 && this.state.tables[this.props.day].map((entry, index) => 
 						<ClassTimeBlock 
 											key={index} 
 											name={entry.name} 
@@ -63,7 +63,7 @@ class TimeTable extends Component{
 											finish={entry.finish}
 											int_start={entry.int_start}
 											int_finish={entry.int_finish}
-											isToday={this.props.today === this.state.day}/>
+											isToday={this.props.today === this.props.day}/>
 					)
 				}
 			</ul>

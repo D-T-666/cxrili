@@ -40,7 +40,7 @@ class TimeTable extends Component{
 	
 	render () {
 		return (
-			<ul className="week-table content-box">
+			<div className="week-table content-box">
 				{
 					this.state.tables.map((entry, index) => 
 						<DayTableBlock 
@@ -51,7 +51,7 @@ class TimeTable extends Component{
 											isToday={this.props.today === index}/>
 					)
 				}
-			</ul>
+			</div>
 		);
 	}
 };

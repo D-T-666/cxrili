@@ -7,13 +7,10 @@ import "css/style.css";
 import "css/root.css";
 import App from "./components/App.jsx";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import { HashRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Router>
-			<App />
-		</Router>
+		<App />
 	</React.StrictMode>,
 	document.getElementById("root")
 );

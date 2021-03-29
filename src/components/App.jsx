@@ -1,11 +1,10 @@
 import { Component } from "react";
-import NavBar from "./NavBar.jsx";
-import WeekDayBar from "./WeekDayBar.jsx";
-import DayTable from "./DayTable.jsx";
-import WeekTable from "./WeekTable.jsx";
+import NavBar from "components/NavBar.jsx";
+import WeekTable from "components/weekView/WeekTable.jsx";
 import WelcomePage from 'components/WelcomePage.jsx';
+import DayViewPage from 'components/dayView/DayViewPage.jsx';
 
-import {HashRouter as Router, Switch, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, withRouter} from 'react-router-dom';
 
 class App extends Component {
 	constructor(props) {
@@ -15,73 +14,41 @@ class App extends Component {
 		const day = date.getDay();
 		this.state = {
 			colorTheme: "light-theme",
-			currentDay: day < 1 || day > 5 ? 0 : day - 1,
 			today: day < 1 || day > 5 ? false : day - 1,
 		};
-
-		this.switchTheme = this.switchTheme.bind(this);
-		this.changeDay = this.changeDay.bind(this);
 	}
 
-	switchTheme(newTheme) {
-		console.log(newTheme);
+	switchTheme(colorTheme) {
+		/* Set this.state.colorTheme to the argument provided
+			 and udate the classes attached to the document. */
 		this.setState(
-			(state) => {
+			state => {
 				document.body.classList.remove(state.colorTheme);
-				document.body.classList.add(newTheme);
+				document.body.classList.add(colorTheme);
 
-				return {
-					colorTheme: newTheme
-				};
+				return {colorTheme};
 			}
 		);
 	}
 
-	changeDay(newDay) {
-		this.setState({
-			currentDay: newDay,
-		});
-	}
-
-	componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
-      this.onRouteChanged();
-    }
-  }
-
-	onRouteChanged() {
-		let day = this.props.location.pathname.split("/")[2];
-		if(day){
-			day = parseInt(day);
-				
-			if(this.state.currentDay !== day) this.changeDay(day);
-		}
-	}
-
 	render() {
 		return (
-			<div className="App">
-				
+			<Router>
+				<div className="App">
+					<Switch>
+						<Route path="/" exact component={WelcomePage} />
 
-				<Switch>
-					<Route path="/" exact component={WelcomePage} />
-					<Route path="/day" exact component={() => (
-						<>
-							<WeekDayBar
-								onDayChange={this.changeDay}
-								currentDay={this.state.currentDay}
-							/>
-							<DayTable day={this.state.currentDay} today={this.state.today}/>
-						</>
-					)}/>
-					
-					<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
-				</Switch>
+						<Route path="/day/:d" component={DayViewPage}/>
+						<Route path="/day/" component={DayViewPage}/>
+						
+						<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
+					</Switch>
 
-				<NavBar onThemeSwitch={this.switchTheme}/>
-			</div>
+					<NavBar onThemeSwitch={this.switchTheme.bind(this)}/>
+				</div>
+			</Router>
 		);
 	}
 }
 
-export default withRouter(App);
+export default App;

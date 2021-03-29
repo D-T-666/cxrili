@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DayButton from "./buttons/DayButton";
+import DayButton from "../buttons/DayButton";
 
 class WeekDayBar extends Component{
 	constructor (props) {
@@ -18,7 +18,7 @@ class WeekDayBar extends Component{
 						key={day} 
 						onClick={this.props.onDayChange} 
 						name={idx} 
-						className={(idx === this.props.currentDay? "active": "")}>
+						className={(idx === this.props.day? "active": "")}>
 							{day}
 					</DayButton>
 				)}
