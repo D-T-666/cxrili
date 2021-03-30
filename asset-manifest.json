@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/cxrili/static/css/main.c844d398.chunk.css",
-    "main.js": "/cxrili/static/js/main.8a5a19d7.chunk.js",
-    "main.js.map": "/cxrili/static/js/main.8a5a19d7.chunk.js.map",
+    "main.css": "/cxrili/static/css/main.c410afeb.chunk.css",
+    "main.js": "/cxrili/static/js/main.5244f414.chunk.js",
+    "main.js.map": "/cxrili/static/js/main.5244f414.chunk.js.map",
     "runtime-main.js": "/cxrili/static/js/runtime-main.da597fb8.js",
     "runtime-main.js.map": "/cxrili/static/js/runtime-main.da597fb8.js.map",
-    "static/js/2.4a47a27d.chunk.js": "/cxrili/static/js/2.4a47a27d.chunk.js",
-    "static/js/2.4a47a27d.chunk.js.map": "/cxrili/static/js/2.4a47a27d.chunk.js.map",
+    "static/js/2.4344b43e.chunk.js": "/cxrili/static/js/2.4344b43e.chunk.js",
+    "static/js/2.4344b43e.chunk.js.map": "/cxrili/static/js/2.4344b43e.chunk.js.map",
     "index.html": "/cxrili/index.html",
     "service-worker.js": "/cxrili/service-worker.js",
     "service-worker.js.map": "/cxrili/service-worker.js.map",
-    "static/css/main.c844d398.chunk.css.map": "/cxrili/static/css/main.c844d398.chunk.css.map",
-    "static/js/2.4a47a27d.chunk.js.LICENSE.txt": "/cxrili/static/js/2.4a47a27d.chunk.js.LICENSE.txt"
+    "static/css/main.c410afeb.chunk.css.map": "/cxrili/static/css/main.c410afeb.chunk.css.map",
+    "static/js/2.4344b43e.chunk.js.LICENSE.txt": "/cxrili/static/js/2.4344b43e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.da597fb8.js",
-    "static/js/2.4a47a27d.chunk.js",
-    "static/css/main.c844d398.chunk.css",
-    "static/js/main.8a5a19d7.chunk.js"
+    "static/js/2.4344b43e.chunk.js",
+    "static/css/main.c410afeb.chunk.css",
+    "static/js/main.5244f414.chunk.js"
   ]
 }
