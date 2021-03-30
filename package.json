@@ -2,7 +2,7 @@
   "name": "cxrili",
   "version": "0.3.1",
   "private": true,
-  "homepage": "https://d-t-666.github.io/cxrili",
+  "homepage": "https://d-t-666.github.io/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -30,10 +30,9 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "netlify deploy --prod -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build && npm run swbuild",
-    "swbuild": "workbox generateSW workbox-config.js",
+    "build": "react-scripts build && workbox generateSW workbox-config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

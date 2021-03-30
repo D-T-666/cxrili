@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-class BlockTimers extends Component {
+class TotalTimer extends Component {
 	constructor(props) {
 		super(props);
 
@@ -51,12 +51,6 @@ class BlockTimers extends Component {
 
 		// If the current time is in the timeframe of the block
 		if (currentTime >= this.props.int_start) {
-			percentage = (currentTime-this.props.int_start +  date.getSeconds()/60)/(this.props.int_finish-this.props.int_start);
-
-			if(percentage >= 1)
-				percentage = 1;
-
-
 			if (currentTime < this.props.int_finish) {
 				active = true;
 
@@ -70,22 +64,15 @@ class BlockTimers extends Component {
 
 				// If there is zero hours remaining, we don't need to show it
 				left = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
-			
-				this.props.updatePercentageThrough(percentage);
 			}else{
 				clearInterval(this.timerID);
 				
 				this.setState({timerStage:2})
-
-				if(percentage !== this.state.previousPercentageThrough)
-					this.props.updatePercentageThrough(1);
 			}
 		}
 
 		// Update the state
     this.setState(state => {
-			// Update parent state if needed
-			this.props.changeActive(active);
 
 			// Set the state to newly calculated values
 			return { left, active, previousPercentageThrough: percentage };
@@ -94,13 +81,13 @@ class BlockTimers extends Component {
 
 	render() {
 		return (
-			<ul className="block-timers">
-				{this.props.showStartAndFinish && <li className="block-timer start"> {this.props.start} </li>}
-				{this.state.active && <li className="block-timer left"> {this.state.left} </li>}
-				{this.props.showStartAndFinish && <li className="block-timer finish"> {this.props.finish} </li>}
+			<ul className="total-time-block">
+				{this.state.active || (
+					<li className="container"> სულ დარჩა: <span className="total-timer">{this.state.left}</span> </li>
+				)}
 			</ul>
 		)
 	}
 }
 
-export default BlockTimers;
+export default TotalTimer;

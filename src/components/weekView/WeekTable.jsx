@@ -23,7 +23,7 @@ class TimeTable extends Component{
 
 	fetchData() {
 		// TODO: rework this function
-		fetch(`/cxrili/timetable/11g.json`)
+		fetch(`/timetable/11g.json`)
 		.then(res => res.json())
 		.then(wholeTable => {
 			this.setState({
@@ -44,7 +44,7 @@ class TimeTable extends Component{
 				{
 					this.state.tables.map((entry, index) => 
 						<DayTableBlock 
-											key={index}
+											key={String(index)+entry[0]}
 											day={index}
 											name={this.weekdays[index]}
 											table={entry} 

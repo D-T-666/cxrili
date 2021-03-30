@@ -211,9 +211,6 @@ ul {
 	transition: 0.4s;
 	justify-content: center;
 }
-.total-time-block.hide {
-	display: none;
-}
 
 .total-time-block > .container {
 	background-color: var(--total-time-background);
@@ -231,4 +228,5 @@ ul {
 
 .total-time-block > .container > .total-timer {
 	font-family: numFont;
+	margin-left: 1ch;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ClassTimeBlock from "./ClassTimeBlock.jsx";
+import TotalTimer from 'components/dayView/TotalTimer.jsx';
 
 class TimeTable extends Component{
 	constructor (props) {
@@ -9,16 +10,16 @@ class TimeTable extends Component{
 	}
 
 	componentDidMount() {
-		this.fetchData();
+		this.fetchData()
 	}
 
 	fetchData() {
 		// TODO: rework this function
-		fetch(`/cxrili/timetable/11g.json`)
+		fetch(`/timetable/11g.json`)
 		.then(res => res.json())
 		.then(wholeTable => {
-			this.setState({
-				tables: wholeTable.tables.map(data => {
+			this.setState(state => {
+				const tables = wholeTable.tables.map(data => {
 					let blocks = data
 						.split(/[\r|\n]+/)
 						.map(row => ({
@@ -46,7 +47,16 @@ class TimeTable extends Component{
 					console.log()
 		
 					return blocks.sort((a, b) => a.int_start - b.int_start);
-				})
+				});
+
+				const int_start = tables[this.props.day][0].int_start;
+				const int_finish = tables[this.props.day][tables[this.props.day].length-1].int_start;
+
+				return {
+					tables,
+					int_start,
+					int_finish
+				};
 			})
 		})
 	}
@@ -65,6 +75,14 @@ class TimeTable extends Component{
 											int_finish={entry.int_finish}
 											isToday={this.props.today === this.props.day}/>
 					)
+				}
+				{
+					this.props.today === this.props.day &&
+					<TotalTimer
+										int_start={this.state.int_start}
+										int_finish={this.state.int_finish}
+										shouldUpdate={this.props.today === this.props.day}
+					/>
 				}
 			</ul>
 		);

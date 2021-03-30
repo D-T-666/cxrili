@@ -4,14 +4,14 @@ import WeekTable from "components/weekView/WeekTable.jsx";
 import WelcomePage from 'components/WelcomePage.jsx';
 import DayViewPage from 'components/dayView/DayViewPage.jsx';
 
-import {BrowserRouter as Router, Switch, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 
 		const date = new Date();
-		const day = date.getDay();
+		const day = new Date().getDay();
 		this.state = {
 			colorTheme: "light-theme",
 			today: day < 1 || day > 5 ? false : day - 1,
@@ -36,12 +36,12 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					<Switch>
-						<Route path="/cxrili/" exact component={WelcomePage} />
+						<Route path="/" exact component={WelcomePage} />
 
-						<Route path="/cxrili/day/:d" component={DayViewPage}/>
-						<Route path="/cxrili/day/" component={DayViewPage}/>
+						<Route path="/day/:d" component={DayViewPage}/>
+						<Route path="/day/" component={DayViewPage}/>
 						
-						<Route path="/cxrili/week" component={() => <WeekTable today={this.state.today}/>} />
+						<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
 					</Switch>
 
 					<NavBar onThemeSwitch={this.switchTheme.bind(this)}/>
