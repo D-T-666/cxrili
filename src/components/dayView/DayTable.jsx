@@ -21,12 +21,15 @@ class TimeTable extends Component{
 			this.setState(state => {
 				const tables = wholeTable.tables.map(data => {
 					let blocks = data
-						.split(/[\r|\n]+/)
-						.map(row => ({
-							name: row.split(",")[0], 
-							start: row.split(",")[1], 
-							finish: row.split(",")[2]
-						}));
+						.map(row => {
+							const cols = row.split(",");
+
+							return {
+								name: cols[0], 
+								start: cols[1], 
+								finish: cols[2]
+							}
+						});
 		
 					let len = blocks.length;
 					for(let i = 0; i < len-1; i++) {
@@ -50,7 +53,7 @@ class TimeTable extends Component{
 				});
 
 				const int_start = tables[this.props.day][0].int_start;
-				const int_finish = tables[this.props.day][tables[this.props.day].length-1].int_start;
+				const int_finish = tables[this.props.day][tables[this.props.day].length-1].int_finish;
 
 				return {
 					tables,
@@ -77,7 +80,7 @@ class TimeTable extends Component{
 					)
 				}
 				{
-					this.props.today === this.props.day &&
+					this.props.today === this.props.day && this.state.int_finish && this.state.int_start &&	
 					<TotalTimer
 										int_start={this.state.int_start}
 										int_finish={this.state.int_finish}

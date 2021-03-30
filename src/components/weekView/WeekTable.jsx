@@ -22,14 +22,12 @@ class TimeTable extends Component{
 	}
 
 	fetchData() {
-		// TODO: rework this function
 		fetch(`/timetable/11g.json`)
 		.then(res => res.json())
 		.then(wholeTable => {
 			this.setState({
 				tables: wholeTable.tables.map(data => {
 					let blocks = data
-						.split(/[\r|\n]+/)
 						.map(row => row.split(",")[0]);
 
 					return blocks.sort((a, b) => a.int_start - b.int_start);

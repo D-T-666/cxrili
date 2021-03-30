@@ -4,7 +4,7 @@ import WeekTable from "components/weekView/WeekTable.jsx";
 import WelcomePage from 'components/WelcomePage.jsx';
 import DayViewPage from 'components/dayView/DayViewPage.jsx';
 
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
 class App extends Component {
 	constructor(props) {
@@ -39,7 +39,7 @@ class App extends Component {
 						<Route path="/" exact component={WelcomePage} />
 
 						<Route path="/day/:d" component={DayViewPage}/>
-						<Route path="/day/" component={DayViewPage}/>
+						<Route path="/day/" component={() => <Redirect to={`/day/${this.state.today}`}/>}/>
 						
 						<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
 					</Switch>

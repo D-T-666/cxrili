@@ -7,8 +7,9 @@ class TotalTimer extends Component {
 		this.state = {
 			left: "00:00", 
 			active: false, 
-			previousPercentageThrough: 0, 
-			timerStage: 0
+			timerStage: 0,
+			int_finish: this.props.int_finish,
+			int_start: this.props.int_start
 		};
   }
 
@@ -16,7 +17,8 @@ class TotalTimer extends Component {
 		if(this.props.shouldUpdate){
 			const date = new Date();
 			const currentTime = date.getHours()*60 + date.getMinutes();
-			if(this.props.int_finish-currentTime >= 0) {
+			console.log(this.state.int_finish, currentTime)
+			if(this.state.int_finish-currentTime >= 0) {
 				this.timerID = setInterval(
 					() => this.tick(),
 					(this.props.int_start - currentTime < 2) ? 1000 : 60000
@@ -35,13 +37,18 @@ class TotalTimer extends Component {
     clearInterval(this.timerID);
   }
 
+	componentDidUpdate(prevProps) {
+		if(this.props.shouldUpdate !== prevProps.shouldUpdate)
+			this.tick();
+	}
+
   tick() {
 		const date = new Date();
 		let left = "0:00";
 		let active = false;
-		let percentage = 0;
 
 		const currentTime = date.getHours()*60 + date.getMinutes();
+
 
 		if(this.props.int_start - currentTime < 2 && this.state.timerStage === 1) {
 			clearInterval(this.timerID);
@@ -64,28 +71,29 @@ class TotalTimer extends Component {
 
 				// If there is zero hours remaining, we don't need to show it
 				left = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
+			
 			}else{
 				clearInterval(this.timerID);
 				
-				this.setState({timerStage:2})
+				this.setState({timerStage:3})
 			}
 		}
 
 		// Update the state
-    this.setState(state => {
-
-			// Set the state to newly calculated values
-			return { left, active, previousPercentageThrough: percentage };
-		});
+    this.setState({ left, active });
   }
 
 	render() {
 		return (
-			<ul className="total-time-block">
-				{this.state.active || (
-					<li className="container"> სულ დარჩა: <span className="total-timer">{this.state.left}</span> </li>
-				)}
-			</ul>
+			<>
+				{
+					this.state.active
+					&&
+					<ul className="total-time-block">
+						<li className="container"> სულ დარჩა: <span className="total-timer">{this.state.left}</span> </li>
+					</ul>
+				}
+			</>
 		)
 	}
 }

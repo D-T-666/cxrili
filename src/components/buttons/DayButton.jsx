@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class DayButton extends Component {
 	constructor(props) {
@@ -9,11 +10,12 @@ class DayButton extends Component {
 
 	render() {
 		return (
-			<button 
-				onClick={() => this.props.onClick(this.props.name)} 
-				className={(this.props.className ? this.props.className+" ": "")}>
-				{this.props.children}
-			</button>
+			<Link to={`/${this.props.name}`}>
+				<button onClick={() => this.props.onClick(this.props.name)} 
+								className={(this.props.className ? this.props.className+" ": "")}>
+					{this.props.children}
+				</button>
+			</Link>
 		)
 	}
 }
