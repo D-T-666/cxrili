@@ -22,8 +22,9 @@ class ClassTimeBlock extends Component {
 	}
 
 	render() {
+
 		return (
-			<li className={"short time-line-block" + (this.props.name === "break"? " break" : " class") + (this.state.active? " active" : "")}>
+			<li className={"time-line-block" + (this.props.name === "break"? " break" : " class") + (this.state.active? " active" : "") + (this.props.int_finish-this.props.int_start > (this.props.name === "break"? 7.5 : 32.5) ? " long" : " short")}>
 				{
 					this.state.percentageThrough > 0 
 					&& <div className="time-line" style={{height: `${this.state.percentageThrough*100}%`}}></div>

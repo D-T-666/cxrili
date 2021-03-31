@@ -1,15 +1,21 @@
+const timeOffset = {
+	h: 0,
+	m: 0,
+	s: 0,
+}; // Should be all zeros for production
+
 export const getTimeHMS = (stringified) => {
 	const date = new Date();
 	const HMS = {
-		h: date.getHours(),
-		m: date.getMinutes(),
-		s: date.getSeconds(),
+		h: timeOffset.h + date.getHours(),
+		m: timeOffset.m + date.getMinutes(),
+		s: timeOffset.s + date.getSeconds(),
 	};
 	return stringified ? stringifyHMS(HMS) : HMS;
 };
 
 export const getTimeInMinutes = () => {
-	const { h, m, s } = getTimeHMS();
+	const { h, m } = getTimeHMS();
 	return h * 60 + m;
 };
 
@@ -19,7 +25,7 @@ export const getTimeInSeconds = () => {
 };
 
 export const timeLeftToHMS = (minutes) => {
-	const { h, m, s } = getTimeHMS();
+	const { s } = getTimeHMS();
 	return {
 		h: Math.floor(minutes / 60),
 		m: (minutes % 60) - 1,

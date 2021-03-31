@@ -15,6 +15,21 @@ class BlockTimers extends Component {
   }
 
   componentDidMount() {
+		this.initializeTimer();
+  }
+
+  componentWillUnmount() {
+		this.recycleTimer();
+  }
+
+	componentDidUpdate(prevProps) {
+		if(this.props.shouldUpdate !== prevProps.shouldUpdate){
+			this.recycleTimer();
+			this.initializeTimer();
+		}
+	}
+
+	initializeTimer() {
 		if(this.props.shouldUpdate){
 			const currentTime = getTimeInMinutes();
 			if(this.props.int_finish-currentTime >= 0) {
@@ -30,15 +45,13 @@ class BlockTimers extends Component {
 				this.tick();
 			}
 		}
-  }
+	}
 
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
-
-	componentDidUpdate(prevProps) {
-		if(this.props.shouldUpdate !== prevProps.shouldUpdate)
-			this.tick();
+	recycleTimer() {
+		clearInterval(this.timerID);
+		this.props.updatePercentageThrough(0);
+		this.props.changeActive(false);
+		this.setState({active: false, previousPercentageThrough: 0});
 	}
 
   tick() {

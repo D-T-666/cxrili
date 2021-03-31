@@ -90,7 +90,7 @@ ul {
 	height: 4rem;
 }
 .active.class {
-	min-height: 7.5rem;
+	min-height: 7rem;
 }
 .active.time-line-block > .time-line {
 	background-image: repeating-linear-gradient(
