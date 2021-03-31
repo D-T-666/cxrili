@@ -10,7 +10,6 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 
-		const date = new Date();
 		const day = new Date().getDay();
 		this.state = {
 			colorTheme: "light-theme",

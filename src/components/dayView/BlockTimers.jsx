@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import 'functions.js';
+import { getTimeInMinutes, getTimeInSeconds, stringifyHMS, timeLeftToHMS } from 'functions.js';
 
 class BlockTimers extends Component {
 	constructor(props) {
@@ -14,8 +16,7 @@ class BlockTimers extends Component {
 
   componentDidMount() {
 		if(this.props.shouldUpdate){
-			const date = new Date();
-			const currentTime = date.getHours()*60 + date.getMinutes();
+			const currentTime = getTimeInMinutes();
 			if(this.props.int_finish-currentTime >= 0) {
 				this.timerID = setInterval(
 					() => this.tick(),
@@ -41,12 +42,11 @@ class BlockTimers extends Component {
 	}
 
   tick() {
-		const date = new Date();
 		let left = "0:00";
 		let active = false;
 		let percentage = 0;
 
-		const currentTime = date.getHours()*60 + date.getMinutes();
+		const currentTime = getTimeInMinutes();
 
 		if(this.props.int_start - currentTime < 2 && this.state.timerStage === 1) {
 			clearInterval(this.timerID);
@@ -56,7 +56,7 @@ class BlockTimers extends Component {
 
 		// If the current time is in the timeframe of the block
 		if (currentTime >= this.props.int_start) {
-			percentage = (currentTime-this.props.int_start +  date.getSeconds()/60)/(this.props.int_finish-this.props.int_start);
+			percentage = (getTimeInSeconds()/60-this.props.int_start)/(this.props.int_finish-this.props.int_start);
 
 			if(percentage >= 1)
 				percentage = 1;
@@ -71,9 +71,7 @@ class BlockTimers extends Component {
 				const timeLeft = this.props.int_finish - currentTime;
 
 				// Get padded string representations of the time remaining
-				const h = String(Math.floor(timeLeft / 60)).padStart(2, "0"),
-							m = String(Math.floor(timeLeft % 60 - 1)).padStart(2, "0"),
-							s = String(60 - date.getSeconds()).padStart(2, "0");
+				const { h, m, s } = stringifyHMS(timeLeftToHMS(timeLeft));
 
 				// If there is zero hours remaining, we don't need to show it
 				left = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;

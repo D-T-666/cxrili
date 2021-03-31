@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { getTimeInMinutes, getTimeInSeconds, stringifyHMS, timeLeftToHMS } from 'functions.js';
 
 class TotalTimer extends Component {
 	constructor(props) {
@@ -15,8 +16,7 @@ class TotalTimer extends Component {
 
   componentDidMount() {
 		if(this.props.shouldUpdate){
-			const date = new Date();
-			const currentTime = date.getHours()*60 + date.getMinutes();
+			const currentTime = getTimeInMinutes();
 			console.log(this.state.int_finish, currentTime)
 			if(this.state.int_finish-currentTime >= 0) {
 				this.timerID = setInterval(
@@ -43,12 +43,10 @@ class TotalTimer extends Component {
 	}
 
   tick() {
-		const date = new Date();
 		let left = "0:00";
 		let active = false;
 
-		const currentTime = date.getHours()*60 + date.getMinutes();
-
+		const currentTime = getTimeInMinutes();
 
 		if(this.props.int_start - currentTime < 2 && this.state.timerStage === 1) {
 			clearInterval(this.timerID);
@@ -65,9 +63,7 @@ class TotalTimer extends Component {
 				const timeLeft = this.props.int_finish - currentTime;
 
 				// Get padded string representations of the time remaining
-				const h = String(Math.floor(timeLeft / 60)).padStart(2, "0"),
-							m = String(Math.floor(timeLeft % 60 - 1)).padStart(2, "0"),
-							s = String(60 - date.getSeconds()).padStart(2, "0");
+				const { h, m, s } = stringifyHMS(timeLeftToHMS(timeLeft));
 
 				// If there is zero hours remaining, we don't need to show it
 				left = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
