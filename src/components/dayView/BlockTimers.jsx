@@ -12,38 +12,75 @@ class BlockTimers extends Component {
 			previousPercentageThrough: 0, 
 			timerStage: 0
 		};
-  }
 
-  componentDidMount() {
+		// before start : 0
+		// during start : 1
+		// after stated : 2
+		// after ending : 3
+	}
+
+	componentDidMount() {
 		this.initializeTimer();
-  }
+		this.tick();
+	}
 
-  componentWillUnmount() {
+	componentWillUnmount() {
 		this.recycleTimer();
-  }
+	}
 
 	componentDidUpdate(prevProps) {
 		if(this.props.shouldUpdate !== prevProps.shouldUpdate){
-			this.recycleTimer();
 			this.initializeTimer();
+			this.tick();
 		}
 	}
 
 	initializeTimer() {
 		if(this.props.shouldUpdate){
 			const currentTime = getTimeInMinutes();
-			if(this.props.int_finish-currentTime >= 0) {
+			const timeLeftToFinish = this.props.int_finish - currentTime;
+			const timeLeftToStart = this.props.int_start - currentTime;
+			let timerStage = 0;
+
+			
+			// before start
+			if(timeLeftToFinish >= 0 && timeLeftToStart >= 2 && this.state.timerStage !== 0) {
+				this.recycleTimer();
 				this.timerID = setInterval(
 					() => this.tick(),
-					(this.props.int_start - currentTime < 2) ? 1000 : 60000
-				)
-
-				this.tick();
-
-				this.setState({timerStage:(this.props.int_start - currentTime < 2) ? 2 : 1})
-			}else{
-				this.tick();
+					60000
+				);
+				timerStage = 0;
 			}
+			// during start
+			if(timeLeftToFinish >= 0 && timeLeftToStart < 2 && this.state.timerStage !== 1) {
+				this.recycleTimer();
+				this.timerID = setInterval(
+					() => this.tick(),
+					1000
+				);
+				timerStage = 1;
+			}
+			// after started
+			if(timeLeftToFinish >= 0 && timeLeftToFinish < 0  && this.state.timerStage !== 2) {
+				this.recycleTimer();
+				this.timerID = setInterval(
+					() => this.tick(),
+					1000
+				);
+				timerStage = 2;
+			}
+			// after ending
+			if(timeLeftToFinish >= 0 && timeLeftToFinish < 0 && this.state.timerStage !== 3) {
+				this.recycleTimer();
+				this.timerID = setInterval(
+					() => this.tick(),
+					1000
+				);
+				timerStage = 2;
+			}
+
+			this.setState({ timerStage });
 		}
 	}
 
@@ -54,63 +91,56 @@ class BlockTimers extends Component {
 		this.setState({active: false, previousPercentageThrough: 0});
 	}
 
-  tick() {
-		let left = "0:00";
-		let active = false;
-		let percentage = 0;
+	tick() {
+		if(this.props.shouldUpdate){
+			let left = "0:00";
+			let active = false;
+			let percentage = 0;
 
-		const currentTime = getTimeInMinutes();
+			const currentTime = getTimeInMinutes();
 
-		if(this.props.int_start - currentTime < 2 && this.state.timerStage === 1) {
-			clearInterval(this.timerID);
-			this.timerID = setInterval(this.tick, 1000);
-			this.setState({timerStage:2})
-		}
+			this.initializeTimer();
 
-		// If the current time is in the timeframe of the block
-		if (currentTime >= this.props.int_start) {
-			percentage = (getTimeInSeconds()/60-this.props.int_start)/(this.props.int_finish-this.props.int_start);
+			// If the current time is in the timeframe of the block
+			if (currentTime >= this.props.int_start) {
+				percentage = (getTimeInSeconds()/60-this.props.int_start)/(this.props.int_finish-this.props.int_start);
 
-			if(percentage >= 1)
-				percentage = 1;
-			if(!this.props.shouldUpdate)
-				percentage = 0;
-
-
-			if (currentTime < this.props.int_finish) {
-				active = true;
+				if(percentage >= 1)
+					percentage = 1;
+				if(!this.props.shouldUpdate)
+					percentage = 0;
 
 				// Time left to the end of the block
 				const timeLeft = this.props.int_finish - currentTime;
 
-				// Get padded string representations of the time remaining
-				const { h, m, s } = stringifyHMS(timeLeftToHMS(timeLeft));
+				if (timeLeft > 0) {
+					active = true;
 
-				// If there is zero hours remaining, we don't need to show it
-				left = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
-			
-				this.props.updatePercentageThrough(percentage);
-			}else{
-				clearInterval(this.timerID);
+					// Get padded string representations of the time remaining
+					const { h, m, s } = stringifyHMS(timeLeftToHMS(timeLeft));
+
+					// If there is zero hours remaining, we don't need to show it
+					left = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
 				
-				this.setState({timerStage:2})
-
-				if(percentage !== this.state.previousPercentageThrough && percentage > 0)
-					this.props.updatePercentageThrough(1);
-				if(percentage == 0)
-					this.props.updatePercentageThrough(0);
+					this.props.updatePercentageThrough(percentage);
+				}else{
+					if(percentage !== this.state.previousPercentageThrough && percentage > 0)
+						this.props.updatePercentageThrough(1);
+					if(percentage == 0)
+						this.props.updatePercentageThrough(0);
+				}
 			}
+
+			// Update the state
+			this.setState(state => {
+				// Update parent state if needed
+				this.props.changeActive(active);
+
+				// Set the state to newly calculated values
+				return { left, active, previousPercentageThrough: percentage };
+			});
 		}
-
-		// Update the state
-    this.setState(state => {
-			// Update parent state if needed
-			this.props.changeActive(active);
-
-			// Set the state to newly calculated values
-			return { left, active, previousPercentageThrough: percentage };
-		});
-  }
+	}
 
 	render() {
 		return (

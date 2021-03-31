@@ -33,7 +33,7 @@
     "deploy": "netlify deploy --prod -d build",
     "start": "react-scripts start",
     "build": "react-scripts build && workbox generateSW workbox-config.js",
-		"servebuild": "npm run build && serve build",
+    "servebuild": "npm run build && serve build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
