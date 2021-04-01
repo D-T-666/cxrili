@@ -20,7 +20,7 @@ class BlockTimers extends Component {
 	}
 
 	componentDidMount() {
-		this.initializeTimer();
+		this.updateTimerState();
 		this.tick();
 	}
 
@@ -30,57 +30,59 @@ class BlockTimers extends Component {
 
 	componentDidUpdate(prevProps) {
 		if(this.props.shouldUpdate !== prevProps.shouldUpdate){
-			this.initializeTimer();
+			const currentTime = getTimeInMinutes();
+			this.updateTimerState(currentTime);
 			this.tick();
 		}
 	}
 
-	initializeTimer() {
+	updateTimerState(currentTime) {
 		if(this.props.shouldUpdate){
-			const currentTime = getTimeInMinutes();
 			const timeLeftToFinish = this.props.int_finish - currentTime;
-			const timeLeftToStart = this.props.int_start - currentTime;
-			let timerStage = 0;
+			const timeLeftToStart  = this.props.int_start  - currentTime;
 
+			let timerStage = 0,
+					interval = 0,
+					update = true;
 			
 			// before start
 			if(timeLeftToFinish >= 0 && timeLeftToStart >= 2 && this.state.timerStage !== 0) {
-				this.recycleTimer();
-				this.timerID = setInterval(
-					() => this.tick(),
-					60000
-				);
+				interval = 60000;
 				timerStage = 0;
 			}
 			// during start
-			if(timeLeftToFinish >= 0 && timeLeftToStart < 2 && this.state.timerStage !== 1) {
-				this.recycleTimer();
-				this.timerID = setInterval(
-					() => this.tick(),
-					1000
-				);
+			else if(timeLeftToFinish >= 0 && timeLeftToStart >= 0 && this.state.timerStage !== 1) {
+				interval = 1000;
 				timerStage = 1;
 			}
 			// after started
-			if(timeLeftToFinish >= 0 && timeLeftToFinish < 0  && this.state.timerStage !== 2) {
-				this.recycleTimer();
-				this.timerID = setInterval(
-					() => this.tick(),
-					1000
-				);
+			else if(timeLeftToFinish >= 0 && timeLeftToStart < 0  && this.state.timerStage !== 2) {
+				interval = 1000;
 				timerStage = 2;
 			}
 			// after ending
-			if(timeLeftToFinish >= 0 && timeLeftToFinish < 0 && this.state.timerStage !== 3) {
-				this.recycleTimer();
-				this.timerID = setInterval(
-					() => this.tick(),
-					1000
-				);
-				timerStage = 2;
+			else if(timeLeftToFinish < 0 && timeLeftToStart < 0 && this.state.timerStage !== 3) {
+				interval = 0;
+				timerStage = 3;
+			}
+			else {
+				update = false;
 			}
 
-			this.setState({ timerStage });
+			if(update) {
+				// Clear the previous timer and state variables related to it
+				this.recycleTimer();
+
+				if(interval !== 0)
+					this.timerID = setInterval(
+						() => this.tick(),
+						interval
+					);
+				
+				this.setState({ timerStage });
+			}
+		} else {
+			this.recycleTimer();
 		}
 	}
 
@@ -88,7 +90,11 @@ class BlockTimers extends Component {
 		clearInterval(this.timerID);
 		this.props.updatePercentageThrough(0);
 		this.props.changeActive(false);
-		this.setState({active: false, previousPercentageThrough: 0});
+		this.setState({
+			active: false, 
+			previousPercentageThrough: 0, 
+			timerStage: 0
+		});
 	}
 
 	tick() {
@@ -99,7 +105,7 @@ class BlockTimers extends Component {
 
 			const currentTime = getTimeInMinutes();
 
-			this.initializeTimer();
+			this.updateTimerState(currentTime);
 
 			// If the current time is in the timeframe of the block
 			if (currentTime >= this.props.int_start) {

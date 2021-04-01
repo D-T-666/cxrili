@@ -69,14 +69,13 @@ class TimeTable extends Component{
 			<ul className="time-table-timeline content-box">
 				{
 					this.state.tables.length > 0 && this.state.tables[this.props.day].map((entry, index) => 
-						<ClassTimeBlock 
-											key={index} 
-											name={entry.name} 
-											start={entry.start} 
-											finish={entry.finish}
-											int_start={entry.int_start}
-											int_finish={entry.int_finish}
-											isToday={this.props.today === this.props.day}/>
+						<ClassTimeBlock key={index} 
+														name={entry.name} 
+														start={entry.start} 
+														finish={entry.finish}
+														int_start={entry.int_start}
+														int_finish={entry.int_finish}
+														isToday={this.props.today === this.props.day}/>
 					)
 				}
 				{

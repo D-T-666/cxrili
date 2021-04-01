@@ -12,9 +12,9 @@ class ClassTimeBlock extends Component {
 	}
 
 	changeActive(newActive) {
-		this.setState(state => ({
+		this.setState({
 			active: newActive && this.props.isToday
-		}));
+		});
 	}
 
 	updatePercentageThrough(percentageThrough) {
@@ -22,7 +22,6 @@ class ClassTimeBlock extends Component {
 	}
 
 	render() {
-
 		return (
 			<li className={"time-line-block" + (this.props.name === "break"? " break" : " class") + (this.state.active? " active" : "") + (this.props.int_finish-this.props.int_start > (this.props.name === "break"? 7.5 : 32.5) ? " long" : " short")}>
 				{

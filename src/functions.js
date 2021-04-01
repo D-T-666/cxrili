@@ -1,6 +1,6 @@
 const timeOffset = {
-	h: 8,
-	m: 0,
+	h: -9,
+	m: 25,
 	s: 0,
 }; // Should be all zeros for production
 
