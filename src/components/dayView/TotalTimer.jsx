@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { getTimeInMinutes, getTimeInSeconds, stringifyHMS, timeLeftToHMS } from 'functions.js';
+import { getTimeInMinutes, stringifyHMS, timeLeftToHMS } from 'functions.js';
 
 class TotalTimer extends Component {
 	constructor(props) {

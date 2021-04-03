@@ -1,6 +1,6 @@
-const timeOffset = {
-	h: -9,
-	m: 25,
+export let timeOffset = {
+	h: 0,
+	m: 0,
 	s: 0,
 }; // Should be all zeros for production
 

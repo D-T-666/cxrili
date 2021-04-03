@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from "components/buttons/Button";
 import ThemeButton from "components/buttons/ThemeButton";
 import HomeButton from "components/buttons/HomeButton";
 import InfoButton from "components/buttons/InfoButton";

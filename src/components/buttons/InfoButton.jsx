@@ -1,23 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class InfoButton extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {};
-	}
-
-  handleClick() {
-		alert("no alerts pls");
-  }
-
-	render() {
-		return (
-			<button className="nogrow" onClick={this.handleClick.bind(this)}>
-				ⓘ
-			</button>
-		)
-	}
-}
+const InfoButton = () =>
+	<button className="nogrow" onClick={() => alert("no alerts pls")}>
+		ⓘ
+	</button>
 
 export default InfoButton

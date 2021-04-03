@@ -1,19 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Button extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {};
-	}
-
-	render() {
-		return (
-			<button className={(this.props.className ? this.props.className+" ": "")}>
-				{this.props.children}
-			</button>
-		)
-	}
-}
+const Button = ({className, children}) => 
+	<button className={(className ? className+" ": "")}>
+		{children}
+	</button>;
 
 export default Button

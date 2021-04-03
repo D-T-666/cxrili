@@ -98,6 +98,7 @@ class BlockTimers extends Component {
 	}
 
 	tick() {
+		// console.log(getTimeHMS());
 		if(this.props.shouldUpdate){
 			let left = "0:00";
 			let active = false;
@@ -132,7 +133,7 @@ class BlockTimers extends Component {
 				}else{
 					if(percentage !== this.state.previousPercentageThrough && percentage > 0)
 						this.props.updatePercentageThrough(1);
-					if(percentage == 0)
+					if(percentage === 0)
 						this.props.updatePercentageThrough(0);
 				}
 			}
@@ -152,7 +153,7 @@ class BlockTimers extends Component {
 		return (
 			<ul className="block-timers">
 				{this.props.showStartAndFinish && <li className="block-timer start"> {this.props.start} </li>}
-				{this.state.active && <li className="block-timer left"> {this.state.left} </li>}
+				{this.state.active && <li testId="block-timer-left" className="block-timer left"> {this.state.left} </li>}
 				{this.props.showStartAndFinish && <li className="block-timer finish"> {this.props.finish} </li>}
 			</ul>
 		)

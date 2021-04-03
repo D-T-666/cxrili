@@ -18,7 +18,7 @@ class TimeTable extends Component{
 		fetch(`/timetable/11g.json`)
 		.then(res => res.json())
 		.then(wholeTable => {
-			this.setState(state => {
+			this.setState(() => {
 				const tables = wholeTable.tables.map(data => {
 					let blocks = data
 						.map(row => {
@@ -47,7 +47,6 @@ class TimeTable extends Component{
 						int_finish: parseInt(block.finish.split(":")[0])*60 + parseInt(block.finish.split(":")[1])
 					}));
 
-					console.log()
 		
 					return blocks.sort((a, b) => a.int_start - b.int_start);
 				});

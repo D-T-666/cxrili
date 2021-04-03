@@ -18,10 +18,6 @@ class TimeTable extends Component{
 	}
 
 	componentDidMount() {
-		this.fetchData();
-	}
-
-	fetchData() {
 		fetch(`/timetable/11g.json`)
 		.then(res => res.json())
 		.then(wholeTable => {
@@ -41,12 +37,11 @@ class TimeTable extends Component{
 			<div className="week-table content-box">
 				{
 					this.state.tables.map((entry, index) => 
-						<DayTableBlock 
-											key={String(index)+entry[0]}
-											day={index}
-											name={this.weekdays[index]}
-											table={entry} 
-											isToday={this.props.today === index}/>
+						<DayTableBlock  key={String(index)+entry[0]}
+										day={index}
+										name={this.weekdays[index]}
+										table={entry} 
+										isToday={this.props.today === index}/>
 					)
 				}
 			</div>

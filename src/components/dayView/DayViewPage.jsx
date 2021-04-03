@@ -9,7 +9,7 @@ class DayViewPage extends Component {
 
 		const date = new Date();
 		const day = date.getDay();
-		const today = day < 1 || day > 5 ? false : day - 1;
+		const today = 0;//day < 1 || day > 5 ? false : day - 1;
 		this.state = {
 			colorTheme: "light-theme",
 			day: parseInt(props.match.params.d || String(today || 0)),

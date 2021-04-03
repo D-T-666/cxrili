@@ -17,7 +17,7 @@ div.center > h4 {
 }
 
 mark {
-	color: var(--body-background);
+	color: var(--white);
 	background-color: var(--orange);
 	font-size: 60%;
 	padding: 0.3em 0.4em;
