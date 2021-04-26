@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import WeekDayBar from "components/dayView/WeekDayBar.jsx";
-import DayTable from "components/dayView/DayTable.jsx";
+import WeekDayBar from "components/dayView/weekDayBar/WeekDayBar";
+import DayTable from "components/dayView/DayTable";
 import { BrowserRouter as Router } from 'react-router-dom';
 
 class DayViewPage extends Component {

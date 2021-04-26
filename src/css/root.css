@@ -28,6 +28,10 @@
 	--blue-2: #8081d866;
 	--blue-3: #8081d822;
 	--blue-4: #8081d811;
+	--white-1: #faf2e7aa;
+	--white-2: #faf2e766;
+	--white-3: #faf2e722;
+	--white-4: #faf2e711;
 
 	/* Week tables */
 	--week-table-text: var(--dark);
@@ -72,6 +76,8 @@
 
 	/* Background color */
 	--body-background: #e4d2b8;
+
+	user-select: none;
 }
 
 .dark-theme {
@@ -81,7 +87,7 @@
 	--green: #51bb8b;
 	--white: #27282e;
 	/* transparent */
-	--dark-1: #ddd6d4aa;
+	--dark-1: #ddd6d4cc;
 	--dark-2: #ddd6d466;
 	--dark-3: #ddd6d422;
 	--dark-4: #ddd6d411;
@@ -97,6 +103,10 @@
 	--blue-2: #8081d866;
 	--blue-3: #8081d822;
 	--blue-4: #8081d811;
+	--white-1: #27282eaa;
+	--white-2: #27282e66;
+	--white-3: #27282e22;
+	--white-4: #27282e11;
 
 	/* Week tables */
 	--week-table-text: var(--dark);
@@ -141,6 +151,10 @@
 
 	/* Background color */
 	--body-background: #1d1d22;
+	--body-background-1: #1d1d22aa;
+	--body-background-2: #1d1d2266;
+	--body-background-3: #1d1d2222;
+	--body-background-4: #1d1d2211;
 }
 
 /* @supports (-webkit-touch-callout: none) {

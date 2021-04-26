@@ -8,13 +8,7 @@ class TimeTable extends Component{
 
 		this.state = {tables: [], day: this.props.day};
 
-		this.weekdays = [
-			'ორშაბათი',
-			'სამშაბათი',
-			'ოთხშაბათი',
-			'ხუთშაბათი',
-			'პარასკევი'
-		];
+		this.weekdays = [];
 	}
 
 	componentDidMount() {
@@ -23,7 +17,10 @@ class TimeTable extends Component{
 		.then(wholeTable => {
 			this.setState({
 				tables: wholeTable.tables.map(data => {
-					let blocks = data
+					let key = Object.keys(data)[0];
+					this.weekdays.push(key);
+
+					let blocks = data[key]
 						.map(row => row.split(",")[0]);
 
 					return blocks.sort((a, b) => a.int_start - b.int_start);

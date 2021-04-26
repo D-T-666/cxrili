@@ -13,13 +13,13 @@ class App extends Component {
 		const day = new Date().getDay();
 		this.state = {
 			colorTheme: "light-theme",
-			today: day < 1 || day > 5 ? false : day - 1,
+			today: day % 6 && day - 1, // [0 1 2 3 4 5 6] -> [0 0 1 2 3 4 0]
 		};
 	}
 
 	switchTheme(colorTheme) {
-		/* Set this.state.colorTheme to the argument provided
-			 and udate the classes attached to the document. */
+		// Set this.state.colorTheme to the argument provided
+		// and update the classes attached to the document. 
 		this.setState(
 			state => {
 				document.body.classList.remove(state.colorTheme);

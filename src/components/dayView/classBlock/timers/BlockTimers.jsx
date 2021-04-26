@@ -38,8 +38,8 @@ class BlockTimers extends Component {
 
 	updateTimerState(currentTime) {
 		if(this.props.shouldUpdate){
-			const timeLeftToFinish = this.props.int_finish - currentTime;
-			const timeLeftToStart  = this.props.int_start  - currentTime;
+			const timeLeftToFinish = this.props.classData.int_finish - currentTime;
+			const timeLeftToStart  = this.props.classData.int_start  - currentTime;
 
 			let timerStage = 0,
 					interval = 0,
@@ -109,8 +109,8 @@ class BlockTimers extends Component {
 			this.updateTimerState(currentTime);
 
 			// If the current time is in the timeframe of the block
-			if (currentTime >= this.props.int_start) {
-				percentage = (getTimeInSeconds()/60-this.props.int_start)/(this.props.int_finish-this.props.int_start);
+			if (currentTime >= this.props.classData.int_start) {
+				percentage = (getTimeInSeconds()/60-this.props.classData.int_start)/(this.props.classData.int_finish-this.props.classData.int_start);
 
 				if(percentage >= 1)
 					percentage = 1;
@@ -118,7 +118,7 @@ class BlockTimers extends Component {
 					percentage = 0;
 
 				// Time left to the end of the block
-				const timeLeft = this.props.int_finish - currentTime;
+				const timeLeft = this.props.classData.int_finish - currentTime;
 
 				if (timeLeft > 0) {
 					active = true;
@@ -152,9 +152,9 @@ class BlockTimers extends Component {
 	render() {
 		return (
 			<ul className="block-timers">
-				{this.props.showStartAndFinish && <li className="block-timer start"> {this.props.start} </li>}
+				{this.props.showStartAndFinish && <li className="block-timer start"> {this.props.classData.start} </li>}
 				{this.state.active && <li testId="block-timer-left" className="block-timer left"> {this.state.left} </li>}
-				{this.props.showStartAndFinish && <li className="block-timer finish"> {this.props.finish} </li>}
+				{this.props.showStartAndFinish && <li className="block-timer finish"> {this.props.classData.finish} </li>}
 			</ul>
 		)
 	}

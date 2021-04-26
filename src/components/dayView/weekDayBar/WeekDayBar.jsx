@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DayButton from "../buttons/DayButton";
+import DayButton from "./DayButton";
 
 class WeekDayBar extends Component{
 	constructor (props) {
