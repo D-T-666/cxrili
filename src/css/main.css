@@ -86,7 +86,7 @@ button.nogrow {
 	flex-grow: unset;
 }
 
-button.active {
+button.active:not(.class-block) {
 	background-color: var(--blue-button-background);
 	color: var(--blue-button-text);
 }

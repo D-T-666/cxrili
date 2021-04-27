@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import 'css/class-block-popup.css';
+import 'css/class-block/class-block-popup.css';
 import BlockTimers from 'components/dayView/classBlock/timers/BlockTimers.jsx';
 
 class ClassBlockPopup extends Component {

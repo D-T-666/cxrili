@@ -2,25 +2,21 @@ ul {
 	padding: 0;
 }
 
-.time-line-block-container {
-	padding: 0;
-	position: relative;
-	margin: 0.9rem;
-	display: flex;
-}
-
-button.time-line-block {
+.class-block {
 	position: relative;
 	display: flex;
 	padding: 0;
 	z-index: 1;
 	font-family: myFont;
 	border-radius: 1.6rem;
-	align-items: center;
 
 	transition: 0.4s;
 	overflow: hidden;
-	margin: 0;
+	margin: 0.9rem;
+}
+
+.class-block.expanded {
+	height: fit-content;
 }
 
 .class {
@@ -52,6 +48,12 @@ button.time-line-block {
 }
 .long.class {
 	height: 8rem;
+}
+.class.expanded {
+	height: fit-content;
+}
+.class.expanded .time-line {
+	display: none;
 }
 
 @keyframes barber-roll {
@@ -97,10 +99,7 @@ button.time-line-block {
 .active.short.break {
 	height: 4rem;
 }
-.active.class {
-	min-height: 7rem;
-}
-.active.time-line-block > .time-line {
+.active.class-block > .time-line {
 	background-image: repeating-linear-gradient(
 		30deg,
 		var(--time-line-active),
@@ -112,20 +111,20 @@ button.time-line-block {
 	border-bottom: 0.4rem solid var(--time-line-active);
 	border-radius: 0 0 1.4rem 0;
 }
-.active.time-line-block
+.active.class-block
 	> .class-description
 	> .block-timers
 	> .block-timer.left {
 	display: block;
 }
-.pre-active.time-line-block
+.pre-active.class-block
 	> .class-description
 	> .block-timers
 	> .block-timer.left {
 	background-color: var(--timer-live-pre-active);
 	display: block;
 }
-.active.time-line-block > .class-description > .class-name {
+.active.class-block > .class-description > .class-name {
 	color: var(--class-text-highlight);
 }
 

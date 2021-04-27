@@ -1,0 +1,38 @@
+.class-block .details {
+	flex-shrink: 1;
+	background-color: var(--dark-4);
+	padding: 0.8em;
+	border-radius: 0.8em;
+	margin: 0.4em 0em;
+	transition: 5s;
+	overflow: hidden;
+	opacity: 0;
+}
+
+.class-block .details p {	
+	margin: 1ch 0;
+	padding: 0;
+	text-align: left;
+}
+
+.details .key {
+	background-color: var(--green);
+	color: var(--white);
+	padding: .5rem .5rem .3rem .6rem;
+	font-size: 0.9rem;
+	border-radius: 100vmin;
+	font-weight: 900;
+}
+
+.details .key.r {
+	background-color: var(--red);
+}
+.details .key.o {
+	background-color: var(--orange);
+}
+.details .key.g {
+	background-color: var(--green);
+}
+.details .key.b {
+	background-color: var(--blue);
+}
