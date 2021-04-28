@@ -43,6 +43,7 @@ ul {
 	font-size: 2rem;
 	margin: 1rem;
 	text-decoration: underline;
+	text-align: center;
 }
 
 .day-table-block.today > .title {

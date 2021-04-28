@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import BlockTimers from 'components/dayView/classBlock/timers/BlockTimers';
 import ClassBlockDetails from 'components/dayView/classBlock/blockDetails/ClassBlockDetails';
-import 'css/class-block/class-block.css';
-import 'css/class-block/timers.css';
+import 'css/dayView/class-block/class-block.css';
+import 'css/dayView/class-block/timers.css';
 
 class ClassTimeBlock extends Component {
 	constructor(props) {
@@ -65,6 +65,7 @@ class ClassTimeBlock extends Component {
 					<h2 className="class-name"> {this.props.classData.name} </h2>
 				}
 				<BlockTimers 
+					expanded={this.state.expanded}
 					classData={this.props.classData}
 					showStartAndFinish={this.props.classData.name !== "break"}
 					shouldUpdate={this.props.isToday}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DayButton from "./DayButton";
+import 'css/dayView/week-day-bar/week-day-bar.css';
 
 class WeekDayBar extends Component{
 	constructor (props) {
@@ -12,7 +13,7 @@ class WeekDayBar extends Component{
 	
 	render () {
 		return (
-			<div className="nav-bar">
+			<ul className="week-day-bar">
 				{this.dayNames.map(( day, idx ) => 
 					<DayButton 
 						key={day} 
@@ -22,7 +23,7 @@ class WeekDayBar extends Component{
 							{day}
 					</DayButton>
 				)}
-			</div>
+			</ul>
 		);
 	}
 };

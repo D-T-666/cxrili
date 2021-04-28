@@ -1,0 +1,36 @@
+.week-day-bar {
+	display: flex;
+	overflow-x: scroll;
+	flex-direction: row;
+	padding: .4rem .6rem;
+	margin: 0;
+	min-height: var(--navbar-height);
+	height: var(--navbar-height);
+	flex-grow: 0;
+	align-items: center;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.week-day-bar li {
+	padding: .4rem .3rem;
+	flex-shrink: 1;
+	/* flex-grow: 1; */
+}
+
+.week-day-bar li a {
+	font-family: myFont;
+	flex-grow: 1;
+	background-color: var(--block-background);
+	padding: .6rem 1rem;
+	border-radius: 100rem;
+	text-decoration: none;
+	color: var(--dark);
+}
+
+.week-day-bar li a.active {
+	background-color: var(--blue-2);
+	font-weight: 900;
+	/* color: var(--dark); */
+	box-shadow: inset 0 0 0 2px var(--blue);
+}

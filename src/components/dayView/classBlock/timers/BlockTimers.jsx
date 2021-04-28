@@ -168,15 +168,22 @@ class BlockTimers extends Component {
 					?
 						<ul>
 							<li className="block-timer start"> {this.props.classData.start} </li>
-							<ProgressBar percentage={this.state.previousPercentageThrough} active={this.state.active}/>
+							{this.props.expanded
+								? 
+									<ProgressBar percentage={this.state.previousPercentageThrough} active={this.state.active}/>
+								:
+									<span style={{fontWeight:900,fontFamily:"numFont",margin:"0 1ch"}}> - </span>
+							}
 							<li className="block-timer finish"> {this.props.classData.finish} </li>
 						</ul>
 					:
+						this.state.active && 
 						<>
-							{this.state.active && <ul> <li testId="block-timer-left" className="block-timer left"> {this.state.left} </li> </ul>}
+							<ul> <li testId="block-timer-left" className="block-timer left"> {this.state.left} </li> </ul>
 							<ProgressBar percentage={this.state.previousPercentageThrough} active={this.state.active}/>
 						</>
 				}
+
 			</div>
 		)
 	}

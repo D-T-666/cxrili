@@ -14,7 +14,7 @@ ul {
 	/* transition: .8s ease-in-out; */
 	overflow: hidden;
 	margin: 0.9rem;
-	/* border: 0rem solid var(--orange); */
+	border: 0rem solid var(--dark);
 }
 
 .class {
@@ -38,13 +38,13 @@ ul {
 	animation: linear barber-roll 96s infinite;
 }
 
-.title {
+.class-block .title {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: baseline;
 	justify-content: space-between;
 }
-.expanded .title {
+.expanded.class-block  .title {
 	flex-direction: column;
 	align-items: stretch;
 }
@@ -83,8 +83,8 @@ ul {
 }
 
 .active.class-block {
-	/* border-width: 0.3rem; */
-	box-shadow: 0 0 .4rem .3rem var(--green-1);
+	border-width: 0.2rem;
+	/* box-shadow: 0 0 .4rem .3rem var(--green-1); */
 }
 
 @media only screen and (max-width: 395px) {

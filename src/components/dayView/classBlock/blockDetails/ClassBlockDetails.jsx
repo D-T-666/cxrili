@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import 'css/class-block/class-block-details.css';
+import 'css/dayView/class-block/class-block-details.css';
 import NumText from 'components/small/NumText.jsx';
 
 class ClassBlockDetails extends Component {

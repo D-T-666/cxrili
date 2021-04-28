@@ -41,6 +41,8 @@ class App extends Component {
 						<Route path="/day/" component={() => <Redirect to={`/day/${this.state.today}`}/>}/>
 						
 						<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
+
+						<Route path="/profile" component={() => <h1 className="content-box" style={{color: "var(--dark)"}}>პროფილის გვერდი აქ დაგხვდება!</h1>} />
 					</Switch>
 
 					<NavBar onThemeSwitch={this.switchTheme.bind(this)}/>
