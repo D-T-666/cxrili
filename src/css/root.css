@@ -14,8 +14,8 @@
 	/* transparent */
 	--dark-1: #86756daa;
 	--dark-2: #86756d66;
-	--dark-3: #86756d22;
-	--dark-4: #86756d11;
+	--dark-3: #86756d33;
+	--dark-4: #86756d22;
 	--green-1: #98e6b0aa;
 	--green-2: #98e6b066;
 	--green-3: #98e6b022;
@@ -43,7 +43,7 @@
 	--block-text: var(--dark);
 	--class-block-background: var(--white);
 	--class-text: var(--dark);
-	--class-text-highlight: var(--orange);
+	--class-text-highlight: var(--dark);
 	--break-block-background: var(--blue);
 	--break-text: var(--blue);
 	--shadow-color: var(--dark-3);
@@ -78,6 +78,7 @@
 	--body-background: #e4d2b8;
 
 	user-select: none;
+	vertical-align: baseline;
 }
 
 .dark-theme {
@@ -118,7 +119,7 @@
 	--block-text: var(--dark);
 	--class-block-background: var(--white);
 	--class-text: var(--dark);
-	--class-text-highlight: var(--orange);
+	--class-text-highlight: var(--dark);
 	--break-block-background: var(--blue-1);
 	--break-text: var(--blue);
 	--shadow-color: transparent;
@@ -168,11 +169,15 @@
 @font-face {
 	font-family: myFont;
 	src: url("https://d-t-666.github.io/cxrili/fonts/bpg_glaho_sylfaen.ttf");
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
 	font-family: numFont;
 	src: url("https://d-t-666.github.io/cxrili/fonts/SourceCodePro-Medium.ttf");
+	font-weight: normal;
+	font-style: normal;
 }
 
 body {

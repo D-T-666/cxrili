@@ -1,12 +1,17 @@
 .class-block .details {
-	flex-shrink: 1;
-	background-color: var(--dark-4);
-	padding: 0.8em;
-	border-radius: 0.8em;
-	margin: 0.4em 0em;
-	transition: 5s;
-	overflow: hidden;
+	/* flex-shrink: 1; */
+	transition: max-height .4s ease-out, opacity .4s ease;
 	opacity: 0;
+	max-height: 0px;
+	position: relative;
+	overflow: hidden;
+}
+
+.class-block .details div {
+	background-color: var(--dark-4);
+	padding: 1px .8rem;
+	border-radius: .8rem;
+	margin: .4rem 0rem;
 }
 
 .class-block .details p {	
@@ -15,13 +20,25 @@
 	text-align: left;
 }
 
+@media only screen and (max-width: 395px) {
+	.class-block .details p {
+		font-size: 85%;
+	}
+}
+@media only screen and (max-width: 330px) {
+	.class-block .details p {
+		font-size: 75%;
+	}
+}
+
 .details .key {
 	background-color: var(--green);
 	color: var(--white);
-	padding: .5rem .5rem .3rem .6rem;
-	font-size: 0.9rem;
+	padding: .2rem .2rem .2rem .3rem;
+	font-size: 90%;
 	border-radius: 100vmin;
 	font-weight: 900;
+	vertical-align: baseline;
 }
 
 .details .key.r {

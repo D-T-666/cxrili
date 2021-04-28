@@ -55,7 +55,8 @@ class TimeTable extends Component{
 				return {
 					...block, 
 					int_start: parseInt(start[0])*60 + parseInt(start[1]),
-					int_finish: parseInt(finish[0])*60 + parseInt(finish[1])
+					int_finish: parseInt(finish[0])*60 + parseInt(finish[1]),
+					id: block.name+"s"+block.start+"e"+block.end
 				};
 			});
 

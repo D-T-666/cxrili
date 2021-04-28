@@ -2,6 +2,22 @@ import { Component } from 'react';
 import 'functions.js';
 import { getTimeInMinutes, getTimeInSeconds, stringifyHMS, timeLeftToHMS } from 'functions.js';
 
+const ProgressBar = ({percentage, active}) => (
+	<ul className="progress-bar" style={{opacity: active ? 1 : 0.2}}>
+		<li className="start" style={{
+			backgroundColor: percentage <= 0 &&"var(--dark)"
+		}}>
+		</li>
+		<div className={"rail"+(active?" left":"")} style={{flexGrow: percentage}}></div>
+		{ active && <div className="knob"></div> }
+		<div className="rail" style={{flexGrow: 1-percentage}}></div>
+		<li className="finish" style={{
+			backgroundColor: percentage >= 1 &&"var(--dark)"
+		}}>
+		</li>
+	</ul>
+);
+
 class BlockTimers extends Component {
 	constructor(props) {
 		super(props);
@@ -88,7 +104,7 @@ class BlockTimers extends Component {
 
 	recycleTimer() {
 		clearInterval(this.timerID);
-		this.props.updatePercentageThrough(0);
+		this.props.updateTimeLeft(false)
 		this.props.changeActive(false);
 		this.setState({
 			active: false, 
@@ -129,12 +145,8 @@ class BlockTimers extends Component {
 					// If there is zero hours remaining, we don't need to show it
 					left = h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
 				
-					this.props.updatePercentageThrough(percentage);
+					this.props.updateTimeLeft(left);
 				}else{
-					if(percentage !== this.state.previousPercentageThrough && percentage > 0)
-						this.props.updatePercentageThrough(1);
-					if(percentage === 0)
-						this.props.updatePercentageThrough(0);
 				}
 			}
 
@@ -151,11 +163,21 @@ class BlockTimers extends Component {
 
 	render() {
 		return (
-			<ul className="block-timers">
-				{this.props.showStartAndFinish && <li className="block-timer start"> {this.props.classData.start} </li>}
-				{this.state.active && <li testId="block-timer-left" className="block-timer left"> {this.state.left} </li>}
-				{this.props.showStartAndFinish && <li className="block-timer finish"> {this.props.classData.finish} </li>}
-			</ul>
+			<div className="block-timers">
+				{this.props.showStartAndFinish 
+					?
+						<ul>
+							<li className="block-timer start"> {this.props.classData.start} </li>
+							<ProgressBar percentage={this.state.previousPercentageThrough} active={this.state.active}/>
+							<li className="block-timer finish"> {this.props.classData.finish} </li>
+						</ul>
+					:
+						<>
+							{this.state.active && <ul> <li testId="block-timer-left" className="block-timer left"> {this.state.left} </li> </ul>}
+							<ProgressBar percentage={this.state.previousPercentageThrough} active={this.state.active}/>
+						</>
+				}
+			</div>
 		)
 	}
 }

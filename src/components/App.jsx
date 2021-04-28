@@ -1,5 +1,5 @@
 import { Component } from "react";
-import NavBar from "components/NavBar.jsx";
+import NavBar from "components/navbar/NavBar.jsx";
 import WeekTable from "components/weekView/WeekTable.jsx";
 import WelcomePage from 'components/WelcomePage.jsx';
 import DayViewPage from 'components/dayView/DayViewPage.jsx';

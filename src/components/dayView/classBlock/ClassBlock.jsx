@@ -2,15 +2,16 @@ import { Component } from 'react';
 import BlockTimers from 'components/dayView/classBlock/timers/BlockTimers';
 import ClassBlockDetails from 'components/dayView/classBlock/blockDetails/ClassBlockDetails';
 import 'css/class-block/class-block.css';
+import 'css/class-block/timers.css';
 
 class ClassTimeBlock extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {active: false, percentageThrough: 0};
+		this.state = {active: false, timeLeft: false};
 
 		this.changeActive = this.changeActive.bind(this);
-		this.updatePercentageThrough = this.updatePercentageThrough.bind(this);
+		this.updateTimeLeft = this.updateTimeLeft.bind(this);
 		this.showClassBlockPopup = this.showClassBlockPopup.bind(this);
 	}
 
@@ -20,8 +21,8 @@ class ClassTimeBlock extends Component {
 		});
 	}
 
-	updatePercentageThrough(percentageThrough) {
-		this.setState({percentageThrough});
+	updateTimeLeft(timeLeft) {
+		this.setState({timeLeft});
 	}
 
 	getBlockClassName() {
@@ -49,38 +50,36 @@ class ClassTimeBlock extends Component {
 
 	showClassBlockPopup() {
 		this.setState((state) => ({
-			expanded: !state.expanded
+			expanded: !state.expanded,
+			expanding: true
 		}));
 		// this.props.showPopup(this.props.blockIndex);
 	}
 
 	render() {
 		return (
-			<li className={this.getBlockClassName()} onClick={this.showClassBlockPopup}>
+			<section className={this.getBlockClassName()} onClick={this.showClassBlockPopup}>
+				<div className="title">
 				{
-					this.state.percentageThrough > 0 
-					&& <div className="time-line" style={{height: `${this.state.percentageThrough*100}%`}}></div>
+					this.props.classData.name !== "break" && 
+					<h2 className="class-name"> {this.props.classData.name} </h2>
 				}
-				<div className="class-description">
-					{
-						this.props.classData.name !== "break" && 
-						<h2 className="class-name"> {this.props.classData.name} </h2>
-					}
-					<BlockTimers 
-						classData={this.props.classData}
-						showStartAndFinish={this.props.classData.name !== "break"}
-						shouldUpdate={this.props.isToday}
-						changeActive={this.changeActive}
-						updatePercentageThrough={this.updatePercentageThrough}/>
-					{
-						this.props.classData.name !== "break" && 
-						<ClassBlockDetails
-							getData={this.props.getClassBlockDetails} 
-							blockIndex={this.props.blockIndex}
-							expanded={this.state.expanded}/>
-					}
+				<BlockTimers 
+					classData={this.props.classData}
+					showStartAndFinish={this.props.classData.name !== "break"}
+					shouldUpdate={this.props.isToday}
+					changeActive={this.changeActive}
+					updateTimeLeft={this.updateTimeLeft}/>
 				</div>
-			</li>
+				{
+					this.props.classData.name !== "break" && 
+					<ClassBlockDetails
+						getData={this.props.getClassBlockDetails} 
+						blockIndex={this.props.blockIndex}
+						expanded={this.state.expanded}
+						timeLeft={this.state.timeLeft}/>
+				}
+			</section>
 		)
 	}
 }
