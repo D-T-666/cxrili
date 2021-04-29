@@ -1,5 +1,5 @@
 {
-  "short_name": "cxrili",
+  "short_name": "cxrili nightly",
   "name": "ის ცხრილი რომელზეც ბავშვობიდან ოცნებობ",
   "icons": [
 		{
@@ -38,7 +38,7 @@
 		 "type": "image/png"
 		}
   ],
-  "start_url": "/cxrili/",
+  "start_url": "https://cxrili.netlify.app/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

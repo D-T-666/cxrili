@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/cxrili/static/css/main.c410afeb.chunk.css",
-    "main.js": "/cxrili/static/js/main.5244f414.chunk.js",
-    "main.js.map": "/cxrili/static/js/main.5244f414.chunk.js.map",
-    "runtime-main.js": "/cxrili/static/js/runtime-main.da597fb8.js",
-    "runtime-main.js.map": "/cxrili/static/js/runtime-main.da597fb8.js.map",
-    "static/js/2.4344b43e.chunk.js": "/cxrili/static/js/2.4344b43e.chunk.js",
-    "static/js/2.4344b43e.chunk.js.map": "/cxrili/static/js/2.4344b43e.chunk.js.map",
-    "index.html": "/cxrili/index.html",
-    "service-worker.js": "/cxrili/service-worker.js",
-    "service-worker.js.map": "/cxrili/service-worker.js.map",
-    "static/css/main.c410afeb.chunk.css.map": "/cxrili/static/css/main.c410afeb.chunk.css.map",
-    "static/js/2.4344b43e.chunk.js.LICENSE.txt": "/cxrili/static/js/2.4344b43e.chunk.js.LICENSE.txt"
+    "main.css": "/cxrili/npm%20install%20gh-pages%20--save-dev/static/css/main.82492f9f.chunk.css",
+    "main.js": "/cxrili/npm%20install%20gh-pages%20--save-dev/static/js/main.ca17576e.chunk.js",
+    "main.js.map": "/cxrili/npm%20install%20gh-pages%20--save-dev/static/js/main.ca17576e.chunk.js.map",
+    "runtime-main.js": "/cxrili/npm%20install%20gh-pages%20--save-dev/static/js/runtime-main.ef0643c5.js",
+    "runtime-main.js.map": "/cxrili/npm%20install%20gh-pages%20--save-dev/static/js/runtime-main.ef0643c5.js.map",
+    "static/js/2.fab3fc74.chunk.js": "/cxrili/npm%20install%20gh-pages%20--save-dev/static/js/2.fab3fc74.chunk.js",
+    "static/js/2.fab3fc74.chunk.js.map": "/cxrili/npm%20install%20gh-pages%20--save-dev/static/js/2.fab3fc74.chunk.js.map",
+    "index.html": "/cxrili/npm%20install%20gh-pages%20--save-dev/index.html",
+    "service-worker.js": "/cxrili/npm%20install%20gh-pages%20--save-dev/service-worker.js",
+    "service-worker.js.map": "/cxrili/npm%20install%20gh-pages%20--save-dev/service-worker.js.map",
+    "static/css/main.82492f9f.chunk.css.map": "/cxrili/npm%20install%20gh-pages%20--save-dev/static/css/main.82492f9f.chunk.css.map",
+    "static/js/2.fab3fc74.chunk.js.LICENSE.txt": "/cxrili/npm%20install%20gh-pages%20--save-dev/static/js/2.fab3fc74.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.da597fb8.js",
-    "static/js/2.4344b43e.chunk.js",
-    "static/css/main.c410afeb.chunk.css",
-    "static/js/main.5244f414.chunk.js"
+    "static/js/runtime-main.ef0643c5.js",
+    "static/js/2.fab3fc74.chunk.js",
+    "static/css/main.82492f9f.chunk.css",
+    "static/js/main.ca17576e.chunk.js"
   ]
 }
