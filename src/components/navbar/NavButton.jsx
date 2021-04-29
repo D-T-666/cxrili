@@ -18,7 +18,9 @@ class NavButton extends Component{
 	render () {
 		return (
 			<li>
-				<Link to={this.props.to} className={this.getClassname()} onClick={() => this.props.buttonClicked(this.props.ind)}>
+				<Link to={this.props.to} className={this.getClassname()} onClick={() => {if(this.props.buttonClicked)this.props.buttonClicked()}}>
+					{/* <img src={this.props.icon} /> */}
+					<this.props.icon />
 					{this.props.children}
 				</Link>
 			</li>

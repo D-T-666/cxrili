@@ -1,5 +1,6 @@
 :root {
-	--navbar-height: 3.4rem;
+	--day-bar-height: 2.8rem;
+	--navbar-height: 4.6rem;
 	--home-button-bar-height: 0rem;
 
 	/* Colors */
@@ -9,7 +10,7 @@
 	--red: #e66375;
 	--orange: #ff7a51;
 	--green: #26b182;
-	--blue: #8081d8;
+	--blue: #787ae4;
 	--white: #faf2e7;
 	/* transparent */
 	--dark-1: #86756daa;
@@ -24,10 +25,10 @@
 	--orange-2: #ff7a5166;
 	--orange-3: #ff7a5122;
 	--orange-4: #ff7a5111;
-	--blue-1: #8081d8aa;
-	--blue-2: #8081d866;
-	--blue-3: #8081d822;
-	--blue-4: #8081d811;
+	--blue-1: #787ae4cc;
+	--blue-2: #787ae466;
+	--blue-3: #787ae422;
+	--blue-4: #787ae411;
 	--white-1: #faf2e7aa;
 	--white-2: #faf2e766;
 	--white-3: #faf2e722;
@@ -44,7 +45,7 @@
 	--class-block-background: var(--white);
 	--class-text: var(--dark);
 	--class-text-highlight: var(--dark);
-	--break-block-background: var(--blue);
+	--break-block-background: var(--blue-1);
 	--break-text: var(--blue);
 	--shadow-color: var(--dark-3);
 
@@ -75,7 +76,7 @@
 	--version-text: var(--dark);
 
 	/* Background color */
-	--body-background: #e4d2b8;
+	--body-background: #f3e1c8;
 
 	user-select: none;
 	vertical-align: baseline;
@@ -87,6 +88,7 @@
 	--red: #e4264f;
 	--green: #51bb8b;
 	--white: #27282e;
+	--blue: #8c8deb;
 	/* transparent */
 	--dark-1: #ddd6d4cc;
 	--dark-2: #ddd6d466;
@@ -100,10 +102,10 @@
 	--orange-2: #ff7a5166;
 	--orange-3: #ff7a5122;
 	--orange-4: #ff7a5111;
-	--blue-1: #8081d8aa;
-	--blue-2: #8081d866;
-	--blue-3: #8081d822;
-	--blue-4: #8081d811;
+	--blue-1: #8c8debaa;
+	--blue-2: #8c8deb66;
+	--blue-3: #8c8deb22;
+	--blue-4: #8c8deb11;
 	--white-1: #27282eaa;
 	--white-2: #27282e66;
 	--white-3: #27282e22;

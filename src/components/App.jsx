@@ -20,6 +20,7 @@ class App extends Component {
 	switchTheme(colorTheme) {
 		// Set this.state.colorTheme to the argument provided
 		// and update the classes attached to the document. 
+		if(colorTheme !== this.state.colorTheme)
 		this.setState(
 			state => {
 				document.body.classList.remove(state.colorTheme);
@@ -32,7 +33,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router>
+			<Router  basename="/cxrili">
 				<div className="App">
 					<Switch>
 						<Route path="/" exact component={WelcomePage} />
@@ -45,7 +46,10 @@ class App extends Component {
 						<Route path="/profile" component={() => <h1 className="content-box" style={{color: "var(--dark)"}}>პროფილის გვერდი აქ დაგხვდება!</h1>} />
 					</Switch>
 
-					<NavBar onThemeSwitch={this.switchTheme.bind(this)}/>
+					<Switch>
+						<Route path="/" exact component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
+						<Route path="/:page" component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
+					</Switch>
 				</div>
 			</Router>
 		);

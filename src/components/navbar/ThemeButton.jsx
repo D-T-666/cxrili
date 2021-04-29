@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import ls from 'local-storage'
+import NavButton from 'components/navbar/NavButton';
+
+import {DarkMode, LightMode} from 'iconComponents';
 
 class ThemeButton extends Component {
 	constructor(props) {
@@ -13,6 +16,7 @@ class ThemeButton extends Component {
 	componentDidMount() {
 		const currentTheme = ls.get("colorTheme");
 		this.props.onThemeSwitch(currentTheme);
+		if((currentTheme === "dark-theme") !== this.state.isToggleOn)
 		this.setState({
 			isToggleOn: currentTheme === "dark-theme"
 		})
@@ -20,9 +24,10 @@ class ThemeButton extends Component {
 
 	handleClick() {
 		this.setState(({isToggleOn}) => {
-			const newTheme = !isToggleOn ? "dark-theme" : "light-theme"
+			const newTheme = !isToggleOn ? "dark-theme" : "light-theme";
 			this.props.onThemeSwitch(newTheme);
 			ls.set("colorTheme", newTheme);
+			document.getElementById("theme-color").content = !isToggleOn ? "#1d1d22" : "#f3e1c8";
 			return {
 				isToggleOn: !isToggleOn
 			}
@@ -31,9 +36,14 @@ class ThemeButton extends Component {
 
 	render() {
 		return (
-			<button className="nogrow" onClick={this.handleClick}>
-				{this.state.isToggleOn ? "🌙" : "🔆" }
-			</button>
+			<NavButton 
+				active={false} 
+				buttonClicked={this.handleClick}
+				className="theme-button"
+				icon={this.state.isToggleOn ? DarkMode : LightMode }
+				to="#">
+				{this.state.isToggleOn ? "ბნელი" : "ნათელი" }
+			</NavButton>
 		)
 	}
 }

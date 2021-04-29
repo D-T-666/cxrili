@@ -8,9 +8,12 @@
 	align-items: center;
 }
 
+.class .block-timers {
+	animation: .4s fold-block-timers;
+}
+
 .expanded.class .block-timers {
-	animation-name: expand-block-timers;
-	animation-duration: .2s;
+	animation: .2s expand-block-timers;
 }
 
 @keyframes expand-block-timers {
@@ -25,6 +28,18 @@
 	100% {
 		transform: translateY(0%);
 		min-width: 100%;
+	}
+}
+@keyframes fold-block-timers {
+	0% {
+		transform: translateY(0%);
+		min-width: 60%;
+		align-self: flex-end;
+	}
+	100% {
+		transform: translateY(-1ch);
+		min-width: 0%;
+		align-self: flex-end;
 	}
 }
 

@@ -8,7 +8,7 @@ class ClassTimeBlock extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {active: false, timeLeft: false};
+		this.state = {active: false, timeLeft: false, id: this.props.classData.id};
 
 		this.changeActive = this.changeActive.bind(this);
 		this.updateTimeLeft = this.updateTimeLeft.bind(this);
@@ -47,6 +47,14 @@ class ClassTimeBlock extends Component {
 
 		return classList.join(" ")
 	} 
+
+	componentDidUpdate() {
+		if(this.state.id !== this.props.classData.id)
+		this.setState({
+			expanded: false,
+			id: this.props.classData.id
+		})
+	}
 
 	showClassBlockPopup() {
 		this.setState((state) => ({

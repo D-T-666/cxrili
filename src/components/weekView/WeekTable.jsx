@@ -12,7 +12,7 @@ class TimeTable extends Component{
 	}
 
 	componentDidMount() {
-		fetch(`/timetable/11g.json`)
+		fetch(`/cxrili/timetable/11g.json`)
 		.then(res => res.json())
 		.then(wholeTable => {
 			this.setState({

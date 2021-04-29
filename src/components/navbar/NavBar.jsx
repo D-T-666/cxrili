@@ -1,55 +1,44 @@
 import React, { Component } from 'react';
 import NavButton from 'components/navbar/NavButton';
 import 'css/navbar/navbar.css';
-import ThemeButton from 'components/buttons/ThemeButton';
+import ThemeButton from 'components/navbar/ThemeButton';
+
+import week from 'iconComponents/Week';
+import day from 'iconComponents/Day';
+import profile from 'iconComponents/Profile';
 
 class NavBar extends Component{
 	constructor (props) {
 		super(props);
 
 		this.state = {
-			buttons: [false, false, false]
+			currentPage: this.props.match.params.page
 		};
-
-		this.buttonClicked = this.buttonClicked.bind(this);
-	}
-
-	buttonClicked(ind) {
-		this.setState(() => {
-			let buttons = [];
-			for(let i = 0; i < 3; i++) buttons[i] = false;
-			buttons[ind] = true;
-
-			return {buttons};
-		})
 	}
 	
 	render() {
 		return (
 			<ul className="nav-bar">
 				<NavButton 
-					active={this.state.buttons[0]} 
-					buttonClicked={this.buttonClicked}
-					ind={0}
+					active={this.props.match.params.page === "day"} 
+					icon={day}
 					to="/day">
 					დღე
 				</NavButton>
 
 				<NavButton 
-					active={this.state.buttons[1]} 
-					buttonClicked={this.buttonClicked}
-					ind={1}
+					active={this.props.match.params.page === "week"} 
+					icon={week}
 					to="/week">
 					კვირა
 				</NavButton>
 
-				<NavButton 
-					active={this.state.buttons[2]} 
-					buttonClicked={this.buttonClicked}
-					ind={2}
+				{/* <NavButton 
+					active={this.props.match.params.page === "profile"} 
+					icon={profile}
 					to="/profile">
 					პროფილი
-				</NavButton>
+				</NavButton> */}
 
 				<ThemeButton onThemeSwitch={this.props.onThemeSwitch}></ThemeButton>
 			</ul>
