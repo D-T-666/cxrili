@@ -33,7 +33,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router  basename="/cxrili">
+			<Router>
 				<div className="App">
 					<Switch>
 						<Route path="/" exact component={WelcomePage} />
