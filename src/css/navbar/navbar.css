@@ -44,6 +44,7 @@
 	color: var(--dark);
 	text-decoration: none;
 	/* font-weight: 700; */
+	-webkit-tap-highlight-color: transparent;
 }
 
 .nav-button svg {

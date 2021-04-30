@@ -3,6 +3,8 @@ import NavBar from "components/navbar/NavBar.jsx";
 import WeekTable from "components/weekView/WeekTable.jsx";
 import WelcomePage from 'components/WelcomePage.jsx';
 import DayViewPage from 'components/dayView/DayViewPage.jsx';
+import ProfilePage from 'components/profile/ProfilePage.jsx';
+import ls from 'local-storage'
 
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
@@ -15,6 +17,13 @@ class App extends Component {
 			colorTheme: "light-theme",
 			today: day % 6 && day - 1, // [0 1 2 3 4 5 6] -> [0 0 1 2 3 4 0]
 		};
+	}
+
+	componentDidMount() {
+		if(ls.get('userName') === null) {
+			const userName = window.prompt("შენი სახელი");
+			ls.set('userName', userName);
+		}
 	}
 
 	switchTheme(colorTheme) {
@@ -43,7 +52,7 @@ class App extends Component {
 						
 						<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
 
-						<Route path="/profile" component={() => <h1 className="content-box" style={{color: "var(--dark)"}}>პროფილის გვერდი აქ დაგხვდება!</h1>} />
+						<Route path="/profile" component={ProfilePage} />
 					</Switch>
 
 					<Switch>

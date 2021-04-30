@@ -1,6 +1,8 @@
 .week-day-bar {
 	display: flex;
-	overflow-x: scroll;
+	position: sticky;
+	top: 0;
+	overflow-x: auto;
 	flex-direction: row;
 	padding: .4rem .6rem;
 	margin: 0;
@@ -12,7 +14,7 @@
 	scrollbar-width: none;
 	border-bottom: 1px solid var(--dark-3);
 	z-index: 30;
-	/* background-color: var(--block-background); */
+	background-color: var(--body-background);
 	box-shadow: 0 0 .3rem var(--dark-3);
 }
 
@@ -36,6 +38,7 @@
 	text-decoration: none;
 	color: var(--dark);
 	font-size: 1rem;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .week-day-bar li a.active {

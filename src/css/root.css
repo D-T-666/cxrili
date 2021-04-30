@@ -7,7 +7,7 @@
 
 	/* Presets */
 	--dark: #645a56;
-	--red: #e66375;
+	--red: #e95151;
 	--orange: #ff7a51;
 	--green: #26b182;
 	--blue: #787ae4;
@@ -85,7 +85,7 @@
 .dark-theme {
 	/* Presets */
 	--dark: #ddd6d4;
-	--red: #e4264f;
+	--red: #f04e4e;
 	--green: #51bb8b;
 	--white: #27282e;
 	--blue: #8c8deb;
@@ -185,5 +185,5 @@
 body {
 	margin: 0;
 	background-color: var(--body-background);
-	transition: 0.4s;
+	/* transition: background-color .4s; */
 }

@@ -33,12 +33,12 @@ class NavBar extends Component{
 					კვირა
 				</NavButton>
 
-				{/* <NavButton 
+				<NavButton 
 					active={this.props.match.params.page === "profile"} 
 					icon={profile}
 					to="/profile">
 					პროფილი
-				</NavButton> */}
+				</NavButton>
 
 				<ThemeButton onThemeSwitch={this.props.onThemeSwitch}></ThemeButton>
 			</ul>

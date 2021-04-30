@@ -1,0 +1,103 @@
+.profile {
+	color: var(--dark);
+	// font-family: myFont;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 4rem 1rem;
+
+	svg {
+		width: 6rem;
+		height: 6rem;
+	}
+
+	.picture {
+		border-radius: 100%;
+		width: 6rem;
+		height: 6rem;
+	}
+
+	.name {
+		align-self: stretch;
+		margin: .8rem 0 0 0;
+		text-align: center;
+		font-size: 2rem;
+		color: var(--dark);
+		border-style: solid;
+		border-radius: .4rem;
+		border-width: .1rem;
+		background-color: var(--dark-3);
+		user-select: none;
+	}
+
+	.name:disabled {
+		margin-top: 1rem;
+		background-color: transparent;
+		border: none;
+		color: var(--dark);
+	}
+
+	ul {
+		align-self: stretch;
+	}
+
+	hr {
+		margin: 2rem;
+		width: 90%;
+		border-style: solid;
+		// height: 0;
+		border-top: 0;
+		border-right: 0;
+		border-left: 0;
+		border-color: var(--dark-1);
+	}
+}
+
+.account-option {
+	background-color: var(--block-background);
+	font-family: myFont;
+	font-size: 1.2rem;
+	text-align: left;
+	border-radius: .6rem;
+	margin: .4rem;
+
+	button {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 1rem .2rem;
+
+		margin: 0;
+		// padding: 0;
+		width: 100%;
+		text-align: left;
+
+		svg {
+			width: 1.6rem;
+			height: 1.6rem;
+			margin: 0 1.8rem;
+			fill: currentColor;
+		}
+		svg+svg {
+			width: 1.6rem;
+			height: 1.6rem;
+			margin: 0 1.8rem 0 0;
+			fill: currentColor;
+		}
+	}
+}
+
+.red {
+	color: var(--red);
+}
+
+.green {
+	color: var(--green);
+}
+
+#name-edit.active {
+	button{
+		// justify-content: space-evenly;
+		color: var(--green);
+	}
+}

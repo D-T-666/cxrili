@@ -10,7 +10,7 @@ class WelcomePage extends Component {
 
 	render() {
 		return (
-			<div className="center">
+			<div className="center content-box">
 				<h1>
 					სალამი!
 				</h1>
