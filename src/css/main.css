@@ -20,17 +20,26 @@
 	overflow-y: scroll;
 	flex-grow: 1;
 	margin: 0;
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+
+	animation: cubic-bezier(0.075, 0.82, 0.165, 1) .2s float-up;
+}
+
+@keyframes float-up {
+	0% {
+		transform: translateY(5rem);
+	}
+
+	100% {
+		transform: translateY();
+	}
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
 .content-box::-webkit-scrollbar {
 	display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.content-box {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
-}
 
 /* Nav bar */
 
@@ -44,24 +53,11 @@
 } */
 
 button {
-	padding: 0rem 0.8rem;
-	margin: 0.4rem;
 	background-color: var(--button-background);
-	flex-grow: 1;
-	font-size: 1.2rem;
-	font-family: myFont;
-	color: var(--button-text);
 	cursor: pointer;
 	user-select: none;
 	box-sizing: border-box;
-	text-align: center;
-	border-radius: 0.6rem;
-	transition: 0.3s;
-	outline: none;
-	font-weight: 700;
 	-webkit-tap-highlight-color: transparent;
-	border: none;
-	outline: none;
 }
 
 button.home {

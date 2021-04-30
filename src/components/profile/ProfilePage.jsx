@@ -4,7 +4,7 @@ import ls from 'local-storage'
 
 import AccountOption from 'components/profile/AccountOption';
 
-import { LogOut, Delete, Edit, SelectColor, ProfilePicture, Done, Cancel } from 'iconComponents';
+import { LogOut, Delete, Edit, SelectColor, Profile, Done, Cancel } from 'iconComponents';
 
 
 const ProfilePage = ({match}) => {
@@ -40,11 +40,11 @@ const ProfilePage = ({match}) => {
 				?
 					<img src={profilePictureURL} alt="user profile" className="picture" />
 				:
-					<ProfilePicture className="picture" />
+					<Profile className="picture" />
 			}
 			<input className="name" value={userName} onChange={handleNameFieldChanged} autoFocus disabled={NameEdit} />
 			<hr />
-			
+
 			<ul>
 				<AccountOption
 					Icon={NameEdit?Edit:Done} 

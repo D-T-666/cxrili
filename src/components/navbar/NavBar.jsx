@@ -3,9 +3,7 @@ import NavButton from 'components/navbar/NavButton';
 import 'css/navbar/navbar.css';
 import ThemeButton from 'components/navbar/ThemeButton';
 
-import week from 'iconComponents/Week';
-import day from 'iconComponents/Day';
-import profile from 'iconComponents/Profile';
+import { Week, WeekFilled, Day, DayFilled, Profile, ProfileFilled } from 'iconComponents';
 
 class NavBar extends Component{
 	constructor (props) {
@@ -21,21 +19,21 @@ class NavBar extends Component{
 			<ul className="nav-bar">
 				<NavButton 
 					active={this.props.match.params.page === "day"} 
-					icon={day}
+					icon={this.props.match.params.page === "day"?DayFilled:Day}
 					to="/day">
 					დღე
 				</NavButton>
 
 				<NavButton 
 					active={this.props.match.params.page === "week"} 
-					icon={week}
+					icon={this.props.match.params.page === "week"?WeekFilled:Week}
 					to="/week">
 					კვირა
 				</NavButton>
 
 				<NavButton 
 					active={this.props.match.params.page === "profile"} 
-					icon={profile}
+					icon={this.props.match.params.page === "profile"?ProfileFilled:Profile}
 					to="/profile">
 					პროფილი
 				</NavButton>

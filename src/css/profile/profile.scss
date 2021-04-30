@@ -9,6 +9,7 @@
 	svg {
 		width: 6rem;
 		height: 6rem;
+		fill: var(--dark);
 	}
 
 	.picture {
@@ -54,14 +55,17 @@
 }
 
 .account-option {
-	background-color: var(--block-background);
-	font-family: myFont;
-	font-size: 1.2rem;
-	text-align: left;
-	border-radius: .6rem;
 	margin: .4rem;
 
 	button {
+		background-color: var(--block-background);
+		font-family: myFont;
+		font-size: 1.2rem;
+		text-align: left;
+		border-radius: .6rem;
+		border: none;
+		color: var(--dark);
+
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -87,12 +91,16 @@
 	}
 }
 
-.red {
-	color: var(--red);
+.account-option.red {
+	button {
+		color: var(--red);
+	}
 }
 
-.green {
-	color: var(--green);
+.account-option.green {
+	button {
+		color: var(--green);
+	}
 }
 
 #name-edit.active {

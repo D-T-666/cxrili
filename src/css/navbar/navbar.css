@@ -38,7 +38,7 @@
 	/* flex-grow: 1; */
 	/* background-color: var(--white); */
 	box-sizing: border-box;
-	padding: .4rem .8rem;
+	padding: .4rem .8rem 0rem .8rem;
 	font-size: .9rem;
 	font-family: myFont;
 	color: var(--dark);
@@ -49,7 +49,7 @@
 
 .nav-button svg {
 	width: 1.6rem;
-	height: 2.0rem;
+	height: 1.6rem;
 	fill: currentColor;
 }
 
