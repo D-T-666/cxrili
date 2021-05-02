@@ -83,6 +83,7 @@ ul {
 	text-decoration: underline;
 	text-align: left;
 	margin: 0;
+	height: 2.5rem;
 }
 
 .active.class-block {
