@@ -1,4 +1,4 @@
-div.center {
+welcome-page.center {
 	width: 100%;
 	flex-grow: 1;
 	display: flex;
@@ -7,9 +7,9 @@ div.center {
 	justify-content: space-evenly;
 }
 
-div.center > h1,
-div.center > h2,
-div.center > h4 {
+welcome-page.center > h1,
+welcome-page.center > h2,
+welcome-page.center > h4 {
 	width: 80%;
 	/* max-width: 15rem; */
 	color: var(--dark);

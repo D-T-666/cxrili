@@ -3,7 +3,7 @@ import NavButton from 'components/navbar/NavButton';
 import 'css/navbar/navbar.css';
 import ThemeButton from 'components/navbar/ThemeButton';
 
-import { Week, WeekFilled, Day, DayFilled, Profile, ProfileFilled } from 'iconComponents';
+import { Week, WeekFilled, Day, DayFilled, Settings, SettingsFilled } from 'iconComponents';
 
 class NavBar extends Component{
 	constructor (props) {
@@ -32,13 +32,13 @@ class NavBar extends Component{
 				</NavButton>
 
 				<NavButton 
-					active={this.props.match.params.page === "profile"} 
-					icon={this.props.match.params.page === "profile"?ProfileFilled:Profile}
-					to="/profile">
-					პროფილი
+					active={this.props.match.params.page === "settings"} 
+					icon={this.props.match.params.page === "settings"?SettingsFilled:Settings}
+					to="/settings">
+					პარამეტრები
 				</NavButton>
 
-				<ThemeButton onThemeSwitch={this.props.onThemeSwitch}></ThemeButton>
+				{/* <ThemeButton onThemeSwitch={this.props.onThemeSwitch}></ThemeButton> */}
 			</ul>
 		);
 	}

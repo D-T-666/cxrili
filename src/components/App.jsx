@@ -3,8 +3,10 @@ import NavBar from "components/navbar/NavBar.jsx";
 import WeekTable from "components/weekView/WeekTable.jsx";
 import WelcomePage from 'components/WelcomePage.jsx';
 import DayViewPage from 'components/dayView/DayViewPage.jsx';
-import ProfilePage from 'components/profile/ProfilePage.jsx';
+import SettingsPage from 'components/settings/SettingsPage';
 import ls from 'local-storage'
+
+import {AuthProvider} from 'contexts/AuthContext';
 
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
@@ -14,15 +16,15 @@ class App extends Component {
 
 		const day = new Date().getDay();
 		this.state = {
-			colorTheme: "light-theme",
+			colorTheme: "light",
 			today: day % 6 && day - 1, // [0 1 2 3 4 5 6] -> [0 0 1 2 3 4 0]
 		};
 	}
 
 	componentDidMount() {
-		if(ls.get('userName') === null) {
-			const userName = window.prompt("შენი სახელი");
-			ls.set('userName', userName);
+		const currentTheme = ls.get("colorTheme");
+		if(currentTheme){
+			this.switchTheme(currentTheme);
 		}
 	}
 
@@ -32,8 +34,10 @@ class App extends Component {
 		if(colorTheme !== this.state.colorTheme)
 		this.setState(
 			state => {
-				document.body.classList.remove(state.colorTheme);
-				document.body.classList.add(colorTheme);
+				document.getElementById("theme-color").content = state.colorTheme==="dark" ? "#f3e1c8" : "#1d1d22";
+
+				document.body.classList.remove(state.colorTheme+"-theme");
+				document.body.classList.add(colorTheme+"-theme");
 
 				return {colorTheme};
 			}
@@ -43,23 +47,24 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div className="App">
-					<Switch>
-						<Route path="/" exact component={WelcomePage} />
+				<AuthProvider>
+					<div className="App">
+						<Switch>
+							<Route path="/" exact component={WelcomePage} />
 
-						<Route path="/day/:d" component={DayViewPage}/>
-						<Route path="/day/" component={() => <Redirect to={`/day/${this.state.today}`}/>}/>
-						
-						<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
+							<Route path="/day/:d?" component={DayViewPage}/>
+							
+							<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
 
-						<Route path="/profile" component={ProfilePage} />
-					</Switch>
+							<Route path="/settings" component={() => <SettingsPage switchTheme={this.switchTheme.bind(this)}/>} />
+						</Switch>
 
-					<Switch>
-						<Route path="/" exact component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
-						<Route path="/:page" component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
-					</Switch>
-				</div>
+						<Switch>
+							<Route path="/" exact component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
+							<Route path="/:page" component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
+						</Switch>
+					</div>
+				</AuthProvider>
 			</Router>
 		);
 	}

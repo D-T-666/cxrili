@@ -1,25 +1,27 @@
-.profile {
+.settings {
 	color: var(--dark);
 	// font-family: myFont;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	padding: 4rem 1rem;
+	align-items: stretch;
+	padding: 2.6rem 1rem 4rem 1rem;
 
-	svg {
+
+	>svg {
+		align-self: center;
 		width: 6rem;
-		height: 6rem;
+		min-height: 6rem;
 		fill: var(--dark);
 	}
 
 	.picture {
+		align-self: center;
 		border-radius: 100%;
 		width: 6rem;
 		height: 6rem;
 	}
 
 	.name {
-		align-self: stretch;
 		margin: .8rem 0 0 0;
 		text-align: center;
 		font-size: 2rem;
@@ -43,7 +45,8 @@
 	}
 
 	hr {
-		margin: 2rem;
+		margin: 2rem 0;
+		align-self: center;
 		width: 90%;
 		border-style: solid;
 		// height: 0;
@@ -54,26 +57,48 @@
 	}
 }
 
-.account-option {
-	margin: .4rem;
+.back-button {
+	display: flex;
+	padding: 1rem;
+	border: none;
+	background-color: transparent;
+	svg {
+		fill: var(--dark);
+		width:1.4rem;
+		height:1.4rem;
+	}
+}
 
-	button {
+.setting {
+	margin: .4rem;
+	display: flex;
+
+	&.small {
+		button, a {
+			svg {
+				width: 1.6rem;
+				height: 1.2rem;
+			}
+		}
+	}
+
+	button, a {
+		color: currentColor;
+
+		flex-grow: 1;
+		text-decoration: none;
 		background-color: var(--block-background);
 		font-family: myFont;
 		font-size: 1.2rem;
 		text-align: left;
 		border-radius: .6rem;
 		border: none;
-		color: var(--dark);
 
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		padding: 1rem .2rem;
 
-		margin: 0;
-		// padding: 0;
-		width: 100%;
 		text-align: left;
 
 		svg {
@@ -83,24 +108,17 @@
 			fill: currentColor;
 		}
 		svg+svg {
-			width: 1.6rem;
-			height: 1.6rem;
 			margin: 0 1.8rem 0 0;
-			fill: currentColor;
 		}
 	}
 }
 
-.account-option.red {
-	button {
-		color: var(--red);
-	}
+.red {
+	color: var(--red);
 }
 
-.account-option.green {
-	button {
-		color: var(--green);
-	}
+.green {
+	color: var(--green);
 }
 
 #name-edit.active {
@@ -108,4 +126,11 @@
 		// justify-content: space-evenly;
 		color: var(--green);
 	}
+}
+
+ul.center {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }

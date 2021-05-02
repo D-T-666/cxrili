@@ -16,18 +16,17 @@ class ThemeButton extends Component {
 	componentDidMount() {
 		const currentTheme = ls.get("colorTheme");
 		this.props.onThemeSwitch(currentTheme);
-		if((currentTheme === "dark-theme") !== this.state.isToggleOn)
+		if((currentTheme === "dark") !== this.state.isToggleOn)
 		this.setState({
-			isToggleOn: currentTheme === "dark-theme"
+			isToggleOn: currentTheme === "dark"
 		})
 	}
 
 	handleClick() {
 		this.setState(({isToggleOn}) => {
-			const newTheme = !isToggleOn ? "dark-theme" : "light-theme";
+			const newTheme = !isToggleOn ? "dark" : "light";
 			this.props.onThemeSwitch(newTheme);
 			ls.set("colorTheme", newTheme);
-			document.getElementById("theme-color").content = !isToggleOn ? "#1d1d22" : "#f3e1c8";
 			return {
 				isToggleOn: !isToggleOn
 			}
