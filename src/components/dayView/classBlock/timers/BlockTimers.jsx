@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import 'functions.js';
+import 'css/dayView/class-block/block-timers.scss';
 import { getTimeInMinutes, getTimeInSeconds, stringifyHMS, timeLeftToHMS } from 'functions.js';
 
 const ProgressBar = ({percentage, active}) => (
@@ -11,7 +12,7 @@ const ProgressBar = ({percentage, active}) => (
 		<div className={"rail"+(active?" left":"")} style={{flexGrow: percentage}}></div>
 		{ active && <div className="knob"></div> }
 		<div className="rail" style={{flexGrow: 1-percentage}}></div>
-		<li className="finish" style={{
+		<li className="end" style={{
 			backgroundColor: percentage >= 1 &&"var(--dark)"
 		}}>
 		</li>
@@ -54,7 +55,7 @@ class BlockTimers extends Component {
 
 	updateTimerState(currentTime) {
 		if(this.props.shouldUpdate){
-			const timeLeftToFinish = this.props.classData.int_finish - currentTime;
+			const timeLeftToFinish = this.props.classData.int_end - currentTime;
 			const timeLeftToStart  = this.props.classData.int_start  - currentTime;
 
 			let timerStage = 0,
@@ -126,7 +127,7 @@ class BlockTimers extends Component {
 
 			// If the current time is in the timeframe of the block
 			if (currentTime >= this.props.classData.int_start) {
-				percentage = (getTimeInSeconds()/60-this.props.classData.int_start)/(this.props.classData.int_finish-this.props.classData.int_start);
+				percentage = (getTimeInSeconds()/60-this.props.classData.int_start)/(this.props.classData.int_end-this.props.classData.int_start);
 
 				if(percentage >= 1)
 					percentage = 1;
@@ -134,7 +135,7 @@ class BlockTimers extends Component {
 					percentage = 0;
 
 				// Time left to the end of the block
-				const timeLeft = this.props.classData.int_finish - currentTime;
+				const timeLeft = this.props.classData.int_end - currentTime;
 
 				if (timeLeft > 0) {
 					active = true;
@@ -174,12 +175,12 @@ class BlockTimers extends Component {
 								:
 									<span style={{fontWeight:900,fontFamily:"numFont",margin:"0 1ch"}}> - </span>
 							}
-							<li className="block-timer finish"> {this.props.classData.finish} </li>
+							<li className="block-timer end"> {this.props.classData.end} </li>
 						</ul>
 					:
 						this.state.active && 
 						<>
-							<ul> <li testId="block-timer-left" className="block-timer left"> {this.state.left} </li> </ul>
+							<ul> <li className="block-timer left"> {this.state.left} </li> </ul>
 							<ProgressBar percentage={this.state.previousPercentageThrough} active={this.state.active}/>
 						</>
 				}

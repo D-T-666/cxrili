@@ -23,8 +23,8 @@
 		>.content {
 			font-family: myFont;
 			padding: 1rem;
-			background-color: var(--block-background);
-			box-shadow: 0 1rem 8rem 2rem var(--body-background);
+			background-color: var(--darker-block);
+			box-shadow: 0 1rem 4rem 4rem var(--body-background);
 
 			margin: 0 1rem;
 			width: 100%;
@@ -39,11 +39,12 @@
 			}
 
 			button {
+				position: relative;
 				font-family: myFont;
 				font-size: 1rem;
 				font-weight: 700;
 				float: right;
-				margin: .4rem;
+				margin-top: .4rem;
 				padding: .6rem .8rem;
 				border-radius: .4rem;
 				color: var(--white);

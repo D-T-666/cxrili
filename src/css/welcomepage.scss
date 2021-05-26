@@ -5,15 +5,13 @@ welcome-page.center {
 	flex-direction: column;
 	align-items: flex-end;
 	justify-content: space-evenly;
-}
 
-welcome-page.center > h1,
-welcome-page.center > h2,
-welcome-page.center > h4 {
-	width: 80%;
-	/* max-width: 15rem; */
-	color: var(--dark);
-	text-align: left;
+	h1, h2, h4 {
+		width: 80%;
+		/* max-width: 15rem; */
+		color: var(--dark);
+		text-align: left;
+	}
 }
 
 mark {

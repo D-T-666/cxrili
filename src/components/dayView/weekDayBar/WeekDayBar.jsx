@@ -3,7 +3,7 @@ import DayButton from "./DayButton";
 import 'css/dayView/week-day-bar/week-day-bar.css';
 
 const WeekDayBar = ({ onDayChange, day }) => {
-	const dayNames = ["ორშ", "სამ", "ოთხ", "ხუთ", "პარ"];
+	const dayNames = ["ორშაბათი", "სამშაბათი", "ოთხშაბათი", "ხუთშაბათი", "პარასკევი"];
 
 	return (
 		<ul className="week-day-bar">

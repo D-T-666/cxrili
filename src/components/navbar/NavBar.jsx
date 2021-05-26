@@ -1,47 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NavButton from 'components/navbar/NavButton';
-import 'css/navbar/navbar.css';
-import ThemeButton from 'components/navbar/ThemeButton';
+import 'css/navbar/navbar.scss';
 
-import { Week, WeekFilled, Day, DayFilled, Settings, SettingsFilled } from 'iconComponents';
+import { Day, DayFilled, Week, WeekFilled, Homework, HomeworkFilled, Settings, SettingsFilled } from 'iconComponents';
 
-class NavBar extends Component{
-	constructor (props) {
-		super(props);
+const NavBar = ({match}) => (
+	<ul className="nav-bar">
+		<NavButton 
+			active={match.params.page === "day"} 
+			icon={match.params.page === "day"?DayFilled:Day}
+			to="/day">
+			დღე
+		</NavButton>
 
-		this.state = {
-			currentPage: this.props.match.params.page
-		};
-	}
-	
-	render() {
-		return (
-			<ul className="nav-bar">
-				<NavButton 
-					active={this.props.match.params.page === "day"} 
-					icon={this.props.match.params.page === "day"?DayFilled:Day}
-					to="/day">
-					დღე
-				</NavButton>
+		<NavButton 
+			active={match.params.page === "week"} 
+			icon={match.params.page === "week"?WeekFilled:Week}
+			to="/week">
+			კვირა
+		</NavButton>
+		
+		<NavButton 
+			active={match.params.page === "homework"} 
+			icon={match.params.page === "homework"?HomeworkFilled:Homework}
+			to="/homework">
+			დავალება
+		</NavButton>
 
-				<NavButton 
-					active={this.props.match.params.page === "week"} 
-					icon={this.props.match.params.page === "week"?WeekFilled:Week}
-					to="/week">
-					კვირა
-				</NavButton>
-
-				<NavButton 
-					active={this.props.match.params.page === "settings"} 
-					icon={this.props.match.params.page === "settings"?SettingsFilled:Settings}
-					to="/settings">
-					პარამეტრები
-				</NavButton>
-
-				{/* <ThemeButton onThemeSwitch={this.props.onThemeSwitch}></ThemeButton> */}
-			</ul>
-		);
-	}
-};
+		<NavButton 
+			active={match.params.page === "settings"} 
+			icon={match.params.page === "settings"?SettingsFilled:Settings}
+			to="/settings">
+			პარამეტრები
+		</NavButton>
+	</ul>
+);
 
 export default NavBar;

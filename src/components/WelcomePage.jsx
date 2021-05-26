@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'css/welcomepage.css';
+import 'css/welcomepage.scss';
 
 class WelcomePage extends Component {
 	constructor(props) {
@@ -26,3 +26,4 @@ class WelcomePage extends Component {
 }
 
 export default WelcomePage;
+

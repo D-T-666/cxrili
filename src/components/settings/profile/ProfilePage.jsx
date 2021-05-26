@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
+import { usePopup } from 'contexts/PopupContext';
 import ls from 'local-storage'
-
-import { Confirm } from 'components/popup';
 
 import { Setting } from 'components/settings/Setting';
 
-import { LogOut, Edit, SelectColor, Profile, Done, LightMode, DarkMode } from 'iconComponents';
+import { LogOut, Edit, Profile, Done, LightMode, DarkMode } from 'iconComponents';
 
 const ProfilePage = ({switchTheme}) => {
 	const [NameEdit, setNameEdit] = useState(true);
 
+	const popup = usePopup(); 
 
 	const { currentUser, signout, editProfile } = useAuth();
 	const [currentDisplayName, setCurrentDisplayName] = useState(currentUser.displayName || currentUser.email)
@@ -20,22 +20,24 @@ const ProfilePage = ({switchTheme}) => {
 
 	useEffect(() => {
 		userName.current.value = currentDisplayName;
-	}, []);
-
-	const [nameEditPopupVisible, setNameEditPopupVisible] = useState(false);
-	const [logOutPopupVisible, setLogOutPopupVisible] = useState(false);
+	}, [currentDisplayName]);
 
 	const confirmNameEdit = () => {
-		// alert("ge")
 		editProfile(userName.current.value, photoURL);
 		setCurrentDisplayName(userName.current.value);
-		setNameEditPopupVisible(false);
+	}
+
+	const cancelNameEdit = () => {
+		userName.current.value = currentDisplayName;
 	}
 
 	const editName = () => {
 		if(!NameEdit){
 			if(userName.current.value !== currentDisplayName){
-				setNameEditPopupVisible(true);
+				popup.setVisible(true);
+				popup.setMessage("ახალი სახელი: "+userName.current.value);
+				popup.setOnConfirm([confirmNameEdit]);
+				popup.setOnCancel([cancelNameEdit]);
 			}
 		}
 		
@@ -51,10 +53,16 @@ const ProfilePage = ({switchTheme}) => {
 		})
 	};
 
+	const confirmSignOut = () => {signout()};
+
+	const cancelSignOut = () => {};
+
 	const handleSignOut = () => {
-		setLogOutPopupVisible(false);
-		signout();
-	}
+		popup.setVisible(true);
+		popup.setMessage("ანგარიშიდან გამოსვლა");
+		popup.setOnConfirm([confirmSignOut]);
+		popup.setOnCancel([cancelSignOut]);
+	};
 
 	return (
 		<>
@@ -75,41 +83,20 @@ const ProfilePage = ({switchTheme}) => {
 						onClick={editName} 
 						id="name-edit"
 						className={!NameEdit?"active":""}
-					>
-						{NameEdit ? "სახელის შეცვლა" : "შენახვა" } </Setting>
-
-					{/* <Setting
-						Icon={SelectColor}
-					>
-						ფერის შეცვლა </Setting> */}
+					> {NameEdit ? "სახელის შეცვლა" : "შენახვა" } </Setting>
 
 					<Setting
 						Icon={colorTheme==="dark"?DarkMode:LightMode}
 						onClick={changeTheme}
-					>
-						{colorTheme==="dark"?"ღამის რეჟიმი":"დღის რეჟიმი"} </Setting>
+					> {colorTheme==="dark"?"ღამის რეჟიმი":"დღის რეჟიმი"} </Setting>
 
 					<Setting
 						Icon={LogOut}
 						color="red"
-						onClick={()=>setLogOutPopupVisible(true)}
-					>
-						გამოსვლა </Setting>
+						onClick={handleSignOut}
+					> გამოსვლა </Setting>
 				</ul>
 			</div>
-
-			<Confirm 
-				visible={nameEditPopupVisible}
-				prompt={"ახალი სახელი: " + (nameEditPopupVisible?userName.current.value:"")}
-				onConfirm={confirmNameEdit}
-				onCancel={() => {userName.current.value = currentDisplayName; setNameEditPopupVisible(false)}} />
-
-			<Confirm 
-				visible={logOutPopupVisible}
-				prompt={"ანგარიშიდან გამოსვლა"}
-				onConfirm={handleSignOut}
-				onCancel={() => {setLogOutPopupVisible(false)}} />
-
 		</>
 	)
 };

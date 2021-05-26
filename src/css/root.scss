@@ -12,6 +12,9 @@
 	--green: #26b182;
 	--blue: #787ae4;
 	--white: #faf2e7;
+	/*  */
+	--dark-block: #f3e1c8;
+	--darker-block: #dfcbb2;
 	/* transparent */
 	--dark-1: #86756daa;
 	--dark-2: #86756d66;
@@ -72,9 +75,6 @@
 	--time-line-active: var(--green);
 	--time-line: var(--dark);
 
-	/* Version stamp */
-	--version-text: var(--dark);
-
 	/* Background color */
 	--body-background: #f3e1c8;
 
@@ -89,6 +89,9 @@
 	--green: #51bb8b;
 	--white: #27282e;
 	--blue: #8c8deb;
+	/* */
+	--dark-block: #3a3a42;
+	--darker-block: #43434d;
 	/* transparent */
 	--dark-1: #ddd6d4cc;
 	--dark-2: #ddd6d466;
@@ -149,9 +152,6 @@
 	--time-line-active: var(--green);
 	--time-line: var(--dark);
 
-	/* Version stamp */
-	--version-text: var(--orange);
-
 	/* Background color */
 	--body-background: #1d1d22;
 	--body-background-1: #1d1d22aa;
@@ -183,6 +183,7 @@
 }
 
 body {
+	/* overscroll-behavior: contain; */
 	margin: 0;
 	background-color: var(--body-background);
 	/* transition: background-color .4s; */

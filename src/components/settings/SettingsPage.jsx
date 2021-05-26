@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import 'css/settings/settings.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';

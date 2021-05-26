@@ -1,14 +1,18 @@
-import { Component } from "react";
-import NavBar from "components/navbar/NavBar.jsx";
-import WeekTable from "components/weekView/WeekTable.jsx";
-import WelcomePage from 'components/WelcomePage.jsx';
-import DayViewPage from 'components/dayView/DayViewPage.jsx';
-import SettingsPage from 'components/settings/SettingsPage';
-import ls from 'local-storage'
+import { Component, lazy, Suspense } from "react";
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import {AuthProvider} from 'contexts/AuthContext';
+import NavBar from "components/navbar/NavBar";
+import { Confirm } from 'components/popup';
 
-import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import { AuthProvider } from 'contexts/AuthContext';
+import { PopupProvider } from 'contexts/PopupContext';
+import ls from 'local-storage';
+
+const DayViewPage = lazy(() => import('components/dayView/DayViewPage'));
+const WeekTable = lazy(() => import('components/weekView/WeekTable'));
+const HomeworkView = lazy(() => import('components/homeworkView'));
+const SettingsPage = lazy(() => import('components/settings/SettingsPage'));
+
 
 class App extends Component {
 	constructor(props) {
@@ -49,15 +53,23 @@ class App extends Component {
 			<Router>
 				<AuthProvider>
 					<div className="App">
-						<Switch>
-							<Route path="/" exact component={WelcomePage} />
+						<PopupProvider>
+							<Suspense fallback={()=><div className="content-box">loading..</div>}>
+								<Switch>
+									<Route path="/day/:d?" component={DayViewPage}/>
+									
+									<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
 
-							<Route path="/day/:d?" component={DayViewPage}/>
-							
-							<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
+									<Route path="/homework" component={HomeworkView} />
 
-							<Route path="/settings" component={() => <SettingsPage switchTheme={this.switchTheme.bind(this)}/>} />
-						</Switch>
+									<Route path="/settings" component={() => <SettingsPage switchTheme={this.switchTheme.bind(this)}/>} />
+								
+									<Route path="/" component={() => <Redirect to="/day" />} />
+								</Switch>
+							</Suspense>
+
+							<Confirm />
+						</PopupProvider>
 
 						<Switch>
 							<Route path="/" exact component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
