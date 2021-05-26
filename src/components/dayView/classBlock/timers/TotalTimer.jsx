@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import 'css/dayView/class-block/total-timer.scss';
 import { getTimeInMinutes, stringifyHMS, timeLeftToHMS } from 'functions.js';
 
 class TotalTimer extends Component {
@@ -9,7 +10,7 @@ class TotalTimer extends Component {
 			left: "00:00", 
 			active: false, 
 			timerStage: 0,
-			int_finish: this.props.int_finish,
+			int_end: this.props.int_end,
 			int_start: this.props.int_start
 		};
   }
@@ -17,8 +18,7 @@ class TotalTimer extends Component {
   componentDidMount() {
 		if(this.props.shouldUpdate){
 			const currentTime = getTimeInMinutes();
-			console.log(this.state.int_finish, currentTime)
-			if(this.state.int_finish-currentTime >= 0) {
+			if(this.state.int_end-currentTime >= 0) {
 				this.timerID = setInterval(
 					() => this.tick(),
 					(this.props.int_start - currentTime < 2) ? 1000 : 60000
@@ -56,11 +56,11 @@ class TotalTimer extends Component {
 
 		// If the current time is in the timeframe of the block
 		if (currentTime >= this.props.int_start) {
-			if (currentTime < this.props.int_finish) {
+			if (currentTime < this.props.int_end) {
 				active = true;
 
 				// Time left to the end of the block
-				const timeLeft = this.props.int_finish - currentTime;
+				const timeLeft = this.props.int_end - currentTime;
 
 				// Get padded string representations of the time remaining
 				const { h, m, s } = stringifyHMS(timeLeftToHMS(timeLeft));

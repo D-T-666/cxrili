@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import BlockTimers from 'components/dayView/classBlock/timers/BlockTimers';
 import ClassBlockDetails from 'components/dayView/classBlock/blockDetails/ClassBlockDetails';
-import 'css/dayView/class-block/class-block.css';
-import 'css/dayView/class-block/timers.css';
+import 'css/dayView/class-block/class-block.scss';
 
 class ClassTimeBlock extends Component {
 	constructor(props) {
@@ -12,7 +11,7 @@ class ClassTimeBlock extends Component {
 
 		this.changeActive = this.changeActive.bind(this);
 		this.updateTimeLeft = this.updateTimeLeft.bind(this);
-		this.showClassBlockPopup = this.showClassBlockPopup.bind(this);
+		this.expand = this.expand.bind(this);
 	}
 
 	changeActive(newActive) {
@@ -28,63 +27,56 @@ class ClassTimeBlock extends Component {
 	getBlockClassName() {
 		let classList = ["class-block"];
 
-		if(this.props.classData.name === "break")
-			classList.push("break")
-		else
-			classList.push("class");
+		classList.push(this.props.classData.name === "break" ? "break" : "class")
 
-		if(this.state.active)
-			classList.push("active");
+		if (this.state.active) classList.push("active");
 
-		let duration = this.props.classData.int_finish-this.props.classData.int_start;
+		let duration = this.props.classData.int_end-this.props.classData.int_start;
 		if((this.props.classData.name === "break" ? 7.5 : 32.5) < duration)
 			classList.push("long")
 		else
 			classList.push("short")
 
-		if(this.state.expanded)
-			classList.push("expanded");
+		if(this.state.expanded) classList.push("expanded");
 
 		return classList.join(" ")
 	} 
 
 	componentDidUpdate() {
 		if(this.state.id !== this.props.classData.id)
-		this.setState({
-			expanded: false,
-			id: this.props.classData.id
-		})
+			this.setState({
+				expanded: false,
+				id: this.props.classData.id
+			})
 	}
 
-	showClassBlockPopup() {
+	expand() {
 		this.setState((state) => ({
 			expanded: !state.expanded,
 			expanding: true
 		}));
-		// this.props.showPopup(this.props.blockIndex);
 	}
 
 	render() {
 		return (
-			<section className={this.getBlockClassName()} onClick={this.showClassBlockPopup}>
+			<section className={this.getBlockClassName()} onClick={this.expand}>
 				<div className="title">
-				{
-					this.props.classData.name !== "break" && 
-					<h2 className="class-name"> {this.props.classData.name} </h2>
-				}
-				<BlockTimers 
-					expanded={this.state.expanded}
-					classData={this.props.classData}
-					showStartAndFinish={this.props.classData.name !== "break"}
-					shouldUpdate={this.props.isToday}
-					changeActive={this.changeActive}
-					updateTimeLeft={this.updateTimeLeft}/>
+					{
+						this.props.classData.name !== "break" && 
+						<h2 className="class-name"> {this.props.classData.name} </h2>
+					}
+					<BlockTimers 
+						expanded={this.state.expanded}
+						classData={this.props.classData}
+						showStartAndFinish={this.props.classData.name !== "break"}
+						shouldUpdate={this.props.isToday}
+						changeActive={this.changeActive}
+						updateTimeLeft={this.updateTimeLeft}/>
 				</div>
 				{
 					this.props.classData.name !== "break" && 
 					<ClassBlockDetails
-						getData={this.props.getClassBlockDetails} 
-						blockIndex={this.props.blockIndex}
+						classData={this.props.classData} 
 						expanded={this.state.expanded}
 						timeLeft={this.state.timeLeft}/>
 				}

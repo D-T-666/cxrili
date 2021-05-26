@@ -1,10 +1,18 @@
-import { Component } from "react";
-import NavBar from "components/navbar/NavBar.jsx";
-import WeekTable from "components/weekView/WeekTable.jsx";
-import WelcomePage from 'components/WelcomePage.jsx';
-import DayViewPage from 'components/dayView/DayViewPage.jsx';
+import { Component, lazy, Suspense } from "react";
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import NavBar from "components/navbar/NavBar";
+import { Confirm } from 'components/popup';
+
+import { AuthProvider } from 'contexts/AuthContext';
+import { PopupProvider } from 'contexts/PopupContext';
+import ls from 'local-storage';
+
+const DayViewPage = lazy(() => import('components/dayView/DayViewPage'));
+const WeekTable = lazy(() => import('components/weekView/WeekTable'));
+const HomeworkView = lazy(() => import('components/homeworkView'));
+const SettingsPage = lazy(() => import('components/settings/SettingsPage'));
+
 
 class App extends Component {
 	constructor(props) {
@@ -12,9 +20,16 @@ class App extends Component {
 
 		const day = new Date().getDay();
 		this.state = {
-			colorTheme: "light-theme",
+			colorTheme: "light",
 			today: day % 6 && day - 1, // [0 1 2 3 4 5 6] -> [0 0 1 2 3 4 0]
 		};
+	}
+
+	componentDidMount() {
+		const currentTheme = ls.get("colorTheme");
+		if(currentTheme){
+			this.switchTheme(currentTheme);
+		}
 	}
 
 	switchTheme(colorTheme) {
@@ -23,8 +38,10 @@ class App extends Component {
 		if(colorTheme !== this.state.colorTheme)
 		this.setState(
 			state => {
-				document.body.classList.remove(state.colorTheme);
-				document.body.classList.add(colorTheme);
+				document.getElementById("theme-color").content = state.colorTheme==="dark" ? "#f3e1c8" : "#1d1d22";
+
+				document.body.classList.remove(state.colorTheme+"-theme");
+				document.body.classList.add(colorTheme+"-theme");
 
 				return {colorTheme};
 			}
@@ -34,23 +51,32 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div className="App">
-					<Switch>
-						<Route path="/" exact component={WelcomePage} />
+				<AuthProvider>
+					<div className="App">
+						<PopupProvider>
+							<Suspense fallback={()=><div className="content-box">loading..</div>}>
+								<Switch>
+									<Route path="/day/:d?" component={DayViewPage}/>
+									
+									<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
 
-						<Route path="/day/:d" component={DayViewPage}/>
-						<Route path="/day/" component={() => <Redirect to={`/day/${this.state.today}`}/>}/>
-						
-						<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
+									<Route path="/homework" component={HomeworkView} />
 
-						<Route path="/profile" component={() => <h1 className="content-box" style={{color: "var(--dark)"}}>პროფილის გვერდი აქ დაგხვდება!</h1>} />
-					</Switch>
+									<Route path="/settings" component={() => <SettingsPage switchTheme={this.switchTheme.bind(this)}/>} />
+								
+									<Route path="/" component={() => <Redirect to="/day" />} />
+								</Switch>
+							</Suspense>
 
-					<Switch>
-						<Route path="/" exact component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
-						<Route path="/:page" component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
-					</Switch>
-				</div>
+							<Confirm />
+						</PopupProvider>
+
+						<Switch>
+							<Route path="/" exact component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
+							<Route path="/:page" component={({match})=><NavBar match={match} onThemeSwitch={this.switchTheme.bind(this)}/>} />
+						</Switch>
+					</div>
+				</AuthProvider>
 			</Router>
 		);
 	}

@@ -1,0 +1,23 @@
+welcome-page.center {
+	width: 100%;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-evenly;
+
+	h1, h2, h4 {
+		width: 80%;
+		/* max-width: 15rem; */
+		color: var(--dark);
+		text-align: left;
+	}
+}
+
+mark {
+	color: var(--white);
+	background-color: var(--orange);
+	font-size: 60%;
+	padding: 0.3em 0.4em;
+	border-radius: 0.4em;
+}

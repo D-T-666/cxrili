@@ -1,52 +1,37 @@
-import { Component } from 'react';
-import 'css/dayView/class-block/class-block-details.css';
-import NumText from 'components/small/NumText.jsx';
+import 'css/dayView/class-block/class-block-details.scss';
+import Notes from 'components/dayView/classBlock/blockDetails/notes';
 
-class ClassBlockDetails extends Component {
-	constructor(props) {
-		super(props);
+import { Profile, Time } from 'iconComponents';
 
-		this.state = {};
-	}
-
-	componentDidMount() {
-		this.setState({
-			...this.props.getData(this.props.blockIndex)
-		})
-	}
-
-	componentDidUpdate() {
-		const newData = this.props.getData(this.props.blockIndex);
-		if(this.state.id !== newData.id)
-		this.setState({
-			...newData
-		})
-	}
-
-	render() {
-		return (
-			<>
-				<div
-					className="details"
-					style={{
-						opacity: this.props.expanded ? "1" : "0",
-						maxHeight: this.props.expanded ? "20rem" : "0px",
-						// display: this.props.expanded ? "block" : "none"
-					}}>
-					<div>
-						{
-							this.props.timeLeft &&
-							<p><span className="key o">დარჩენილი დრო</span>: <NumText>{this.props.timeLeft}</NumText></p>
-						}
-						<p><span className="key g">მასწავლებელი</span>: {this.state.teacher}</p>
+const ClassBlockDetails = (props) => (
+	<>
+		{
+			props.timeLeft &&
+			<div
+				className="details"
+				style={{
+					opacity: props.expanded ? "1" : "0",
+					maxHeight: props.expanded ? "100rem" : "0px"
+				}}>
+				{
+					props.timeLeft &&
+					<div className="key o">
+						<Time />
+						<p>
+							<span style={{fontFamily: "numFont"}}>{props.timeLeft}</span>
+						</p>
 					</div>
-					<div>
-						<p><span className="key b">შენიშვნა</span>: ამ ტერიტორიაზე დავამატებ საშინაო დავალებებს</p>
-					</div>
-				</div>
-			</>
-		)
-	}
-}
+				}
+				{/* <div className="key g">
+					<Profile />
+					<p>
+						{props.classData.teacher}
+					</p>
+				</div> */}
+			</div>
+		}
+		<Notes blockData={props.classData} visible={props.expanded} />
+	</>
+);
 
 export default ClassBlockDetails

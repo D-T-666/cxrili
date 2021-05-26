@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "css/index.css";
-import "css/App.css";
-import "css/main.css";
-import "css/root.css";
+import "css/index.scss";
+import "css/main.scss";
+import "css/root.scss";
 import App from "./components/App.jsx";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
