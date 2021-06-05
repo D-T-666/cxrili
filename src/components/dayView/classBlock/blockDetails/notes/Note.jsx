@@ -61,7 +61,7 @@ const Note = ({ note, deleteNote }) => {
 			</div>
 
 			<div className="content">
-				<ul style={{listStyle:"outside"}}>
+				<ul>
 					{note.content.split("\n").map((s, i) => (
 						<>
 							{

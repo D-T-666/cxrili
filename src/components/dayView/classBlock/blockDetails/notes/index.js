@@ -40,16 +40,16 @@ const Notes = ({blockData, parentExpanded}) => {
 		const data = {
 			content: content,
 			day: blockData.dayIndex,
-			class: blockData.classIndex
+			class: blockData.name
 		};
 		// console.log(blockData);
 		postNote(data);
 		setCreating(false);
 	};
 
-	const onCancel = e => setCreating(false);
+	const onCancel = e => setCreating(false)
 
-	const onDeleteNote = (noteId) => deleteNote(noteId);
+	const onDeleteNote = (noteId) => deleteNote(noteId)
 
 	return (
 		<>

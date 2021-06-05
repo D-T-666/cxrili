@@ -5,7 +5,12 @@ const DayButton = ({name, className, onClick, active, children}) => {
 	const me = useRef();
 
 	useEffect(() => {
-		if(active) setTimeout(() => me.current.scrollIntoView({behavior: "smooth", inline: "center"}), 1200, false);
+		let timeout;
+		if(active)
+			timeout = setTimeout(() => me.current.scrollIntoView({behavior: "smooth", inline: "center"}), 1200, false);
+		return () => {
+			clearTimeout(timeout)
+		}
 	});
 
 	return (

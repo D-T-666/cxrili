@@ -20,12 +20,12 @@ const NavBar = ({match}) => (
 			კვირა
 		</NavButton>
 		
-		{/* <NavButton 
+		<NavButton 
 			active={match.params.page === "homework"} 
 			icon={match.params.page === "homework"?HomeworkFilled:Homework}
 			to="/homework">
 			დავალება
-		</NavButton> */}
+		</NavButton>
 
 		<NavButton 
 			active={match.params.page === "settings"} 

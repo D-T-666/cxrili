@@ -32,12 +32,11 @@ button {
 	}
 }
 
-div.notes {
+.notes {
 	padding: 0;
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
 	display: block;
-	align-items: stretch;
 
 	max-height: 0px;
 
@@ -49,6 +48,10 @@ div.notes {
 		&.multiple {
 			max-height: 34rem;
 			--mh: 439px;
+		}
+		&.unlimited {
+			max-height: 1000rem;
+			--mh: 1000px;
 		}
 		animation: expand 200ms ease;
 	}
@@ -92,191 +95,11 @@ div.notes {
 	}
 
 	.list {
-		// background-color: rgb(20, 15, 29);
 		border-top: 1px solid var(--dark-3);
 		border-bottom: 1px solid var(--dark-3);
-		// border: 2px solid var(--dark-3);
-		// border-radius: 1.41rem;
 		border-radius: 0;
-		padding: .6rem .6rem;
+		padding: .6rem;
 		position: relative;
-
-		.note {
-			border: solid 1px var(--dark-4);
-			border-radius: 1rem;
-
-			display: flex;
-			flex-direction: column;
-
-			min-height: $noteHeight;
-
-			padding: .8rem;
-			&+.note {
-				// border-top: 2px solid var(--dark-4);
-				margin-top: .6rem;
-			}
-
-			.content {
-				margin: .8rem 0;
-
-				p, li {
-					font-family: myFont;
-					flex-grow: 1;
-					font-size: .8rem;
-					text-indent: 1.5ch;
-					// text-align: justify;
-					color: var(--dark);
-					margin: .2rem 0 .2rem 0;
-
-
-					.list-item {
-						display: flex;
-						align-items: center;
-
-						margin-top: .4rem;
-
-						.checkbox {
-							width: .9rem;
-							height: .9rem;
-							margin: 0 1.5ch 0 1.5rem;
-							border-radius: .2rem;
-							background-color: transparent;
-							border: 1px solid var(--dark-2);
-
-							box-sizing: border-box;
-						}
-
-						flex-grow: 1;
-						&.checked {
-							color: var(--dark-2);
-
-							.checkbox {
-								background-color: var(--green-1);
-								border: none;
-								color: var(dark-2);
-							}
-						}
-					}
-				}
-
-				p+p {
-					border: none;
-					border-top: 1px solid var(--dark-3);
-					margin-top: .8rem;
-					padding-top: .6rem;
-				}
-			}
-
-			.info {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: flex-start;
-				// margin-right: .4rem;
-				
-				font-family: monospace;
-				font-size: 1.1rem;
-
-				.avatar {
-					width: 1.4rem;
-					margin-right: .4rem;
-					border-radius: 100%;
-				}
-
-				.date {
-					flex-grow: 1;
-					text-align: right;
-					font-size: .6rem;
-					color: var(--dark-2);
-				}
- 			}
-
-			>.buttons {
-				// border-top: 2px solid var(--darker-block);
-				// padding-top: .8rem;
-
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				color: var(--dark);
-				font-size: .8rem;
-
-				.votes, .modify {
-					display: flex;
-					font-family: numFont;
-					button{
-						font-size: .8rem;
-						display: flex;
-						justify-content: space-between;
-
-						align-items: center;
-
-						color: currentColor;
-						// background-color: var(--darker-block);
-						padding: 0 .6rem;
-						border-radius: .4rem;
-
-						&+button {
-							margin-left: .6rem;
-						}
-
-						svg {
-							width: 1.2rem;
-							height: auto;
-							fill: currentColor;
-							margin-right: 1ch;
-						}
-
-						&.red {
-							color: var(--red);
-						}
-
-						&.green {
-							color: var(--green);
-						}
-					}
-				}
-
-				.votes {
-					button:disabled {
-						background-color: transparent;
-					}
-				}
-
-				.modify {
-					button {
-						padding: .2rem;
-						font-family: myFont;
-						svg {
-							margin: 0;
-						}
-					}
-				}
-
-			}
-		}
-
-		// &::before {
-		// 	content: " ";
-		// 	width: 100%;
-		// 	z-index: 100;
-		// 	position: sticky;
-		// 	display: block;
-		// 	top: 0;
-		// 	height: 1rem;
-		// 	box-shadow: inset 0 1rem .7rem -.7rem var(--block-background);
-		// }
-		
-		// &::after {
-		// 	content: " ";
-		// 	width: 100%;
-		// 	z-index: 100;
-		// 	position: sticky;
-		// 	display: block;
-		// 	bottom: 0;
-		// 	height: 1rem;
-		// 	box-shadow: inset 0 -1rem .6rem -.6rem var(--block-background);
-		// }
 	}
 
 	ul {
@@ -347,6 +170,160 @@ div.notes {
 	}
 }
 
+.note {
+	border: solid 1px var(--dark-3);
+	border-radius: 1rem;
+
+	display: flex;
+	flex-direction: column;
+
+	min-height: $noteHeight;
+
+	padding: .8rem;
+	&+.note {
+		// border-top: 2px solid var(--dark-4);
+		margin-top: .6rem;
+	}
+
+	.content {
+		margin: .8rem 0;
+
+		p, li {
+			font-family: monospace;
+			flex-grow: 1;
+			font-size: .8rem;
+			text-indent: 1.5ch;
+			// text-align: justify;
+			color: var(--dark);
+			margin: .2rem 0 .2rem 0;
+
+
+			.list-item {
+				display: flex;
+				align-items: center;
+
+				margin-top: .4rem;
+
+				.checkbox {
+					width: .9rem;
+					height: .9rem;
+					margin: 0 1.5ch 0 1.5rem;
+					border-radius: .2rem;
+					background-color: transparent;
+					border: 1px solid var(--dark-2);
+
+					box-sizing: border-box;
+				}
+
+				flex-grow: 1;
+				&.checked {
+					color: var(--dark-2);
+
+					.checkbox {
+						background-color: var(--green-1);
+						border: none;
+						color: var(dark-2);
+					}
+				}
+			}
+		}
+
+		p+p {
+			border: none;
+			border-top: 1px solid var(--dark-3);
+			margin-top: .8rem;
+			padding-top: .6rem;
+		}
+	}
+
+	.info {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		// margin-right: .4rem;
+		
+		font-family: monospace;
+		font-size: 1.1rem;
+
+		.avatar {
+			width: 1.4rem;
+			margin-right: .4rem;
+			border-radius: 100%;
+		}
+
+		.date {
+			flex-grow: 1;
+			text-align: right;
+			font-size: .6rem;
+			color: var(--dark-2);
+		}
+	 }
+
+	>.buttons {
+		// border-top: 2px solid var(--darker-block);
+		// padding-top: .8rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: var(--dark);
+		font-size: .8rem;
+
+		.votes, .modify {
+			display: flex;
+			font-family: numFont;
+			button{
+				font-size: .8rem;
+				display: flex;
+				justify-content: space-between;
+
+				align-items: center;
+
+				color: currentColor;
+				// background-color: var(--darker-block);
+				padding: 0 .6rem;
+				border-radius: .4rem;
+
+				&+button {
+					margin-left: .6rem;
+				}
+
+				svg {
+					width: 1.2rem;
+					height: auto;
+					fill: currentColor;
+					margin-right: 1ch;
+				}
+
+				&.red {
+					color: var(--red);
+				}
+
+				&.green {
+					color: var(--green);
+				}
+			}
+		}
+
+		.votes {
+			button:disabled {
+				background-color: transparent;
+			}
+		}
+
+		.modify {
+			button {
+				padding: .2rem;
+				font-family: myFont;
+				svg {
+					margin: 0;
+				}
+			}
+		}
+
+	}
+}
 
 
 .active.class {

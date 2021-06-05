@@ -96,11 +96,10 @@ const TimeTable = (props) => {
 			const timeNow = Date.now()
 			setTables(
 				tables.map((table, dayIndex) => {
-					let classIndex = 0;
 					return table.map((block) => {
 						const blockNotes = [];
 						notes.forEach(note => {
-							if(note.day === dayIndex && note.class === classIndex)
+							if(note.day === dayIndex && note.class === block.name)
 								blockNotes.push({
 									...note,
 									currentVote: 0,
@@ -109,8 +108,6 @@ const TimeTable = (props) => {
 									authorPhotoURL: users[note.author] ? users[note.author].photoURL : ""
 								});
 						})
-
-						if(block.name !== 'break') classIndex++;
 
 						return {...block, notes: blockNotes};
 					})

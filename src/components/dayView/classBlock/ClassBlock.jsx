@@ -20,7 +20,6 @@ const ClassTimeBlock = ({classData, isToday, blockExpanded, setBlockExpanded}) =
 		if(!expanded) {
 			setBlockExpanded(id);
 			// me.current.scrollIntoView({block:"start", behavior:"smooth"})
-			setTimeout(() => me.current.scrollIntoView({behavior:"smooth"}), 400, false);
 		}
 		setExpanded(old => !old);
 	}
@@ -53,13 +52,24 @@ const ClassTimeBlock = ({classData, isToday, blockExpanded, setBlockExpanded}) =
 	}, [classData]);
 
 	useEffect(() => {
+		let timeout;
 		if (id !== blockExpanded)
 			setExpanded(false);
+		else
+			timeout = setTimeout(() => me.current.scrollIntoView({behavior:"smooth"}), 400, false);
+
+		return () => {
+			clearTimeout(timeout);
+		}
 	}, [blockExpanded]);
 
 	useEffect(() => {
+		let timeout;
 		if (active)
-			setTimeout(() => me.current.scrollIntoView({behavior: "smooth",  block: "center"}), 500, false);
+		timeout = setTimeout(() => me.current.scrollIntoView({behavior: "smooth",  block: "center"}), 500, false);
+		return () => {
+			clearTimeout(timeout)
+		};
 	}, [active])
 
 	return (

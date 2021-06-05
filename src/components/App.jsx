@@ -6,6 +6,7 @@ import { Confirm } from 'components/popup';
 
 import { AuthProvider } from 'contexts/AuthContext';
 import { PopupProvider } from 'contexts/PopupContext';
+import { NotesProvider } from 'contexts/NotesContext';
 import ls from 'local-storage';
 
 const DayViewPage = lazy(() => import('components/dayView/DayViewPage'));
@@ -59,8 +60,8 @@ class App extends Component {
 									<Route path="/day/:d?" component={DayViewPage}/>
 									
 									<Route path="/week" component={() => <WeekTable today={this.state.today}/>} />
-
-									<Route path="/homework" component={HomeworkView} />
+	
+									<Route path="/homework" component={() => <NotesProvider><HomeworkView /></NotesProvider>} />
 
 									<Route path="/settings" component={() => <SettingsPage switchTheme={this.switchTheme.bind(this)}/>} />
 								
