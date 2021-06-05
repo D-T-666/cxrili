@@ -54,6 +54,11 @@ button {
 			--mh: 1000px;
 		}
 		animation: expand 200ms ease;
+
+		.list {
+			border: none;
+			padding: 0 .6rem;
+		}
 	}
 
 	transition: max-height 200ms ease;
@@ -62,7 +67,7 @@ button {
 	>.buttons {
 		display: flex;
 		flex-direction: row;
-		margin-top: .4rem;
+		margin-top: .8rem;
 		justify-content: space-between;
 		// padding-left: .6rem;
 
@@ -205,6 +210,7 @@ button {
 				margin-top: .4rem;
 
 				.checkbox {
+					min-width: .9rem;
 					width: .9rem;
 					height: .9rem;
 					margin: 0 1.5ch 0 1.5rem;

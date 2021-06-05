@@ -7,10 +7,10 @@
 
 	/* Presets */
 	--dark: #645a56;
-	--red: #e95151;
-	--orange: #ff7a51;
-	--green: #26b182;
-	--blue: #787ae4;
+	--red: #ff0000;
+	--orange: #ff3c00;
+	--green: #26b12d;
+	--blue: #006eff;
 	--white: #faf2e7;
 	/*  */
 	--dark-block: #f3e1c8;
@@ -20,10 +20,10 @@
 	--dark-2: #86756d66;
 	--dark-3: #86756d33;
 	--dark-4: #86756d22;
-	--green-1: #98e6b0aa;
-	--green-2: #98e6b066;
-	--green-3: #98e6b022;
-	--green-4: #98e6b011;
+	--green-1: #26b12daa;
+	--green-2: #26b12d66;
+	--green-3: #26b12d22;
+	--green-4: #26b12d11;
 	--orange-1: #ff7a51aa;
 	--orange-2: #ff7a5166;
 	--orange-3: #ff7a5122;
@@ -85,30 +85,31 @@
 .dark-theme {
 	/* Presets */
 	--dark: #ddd6d4;
-	--red: #f04e4e;
-	--green: #51bb8b;
-	--white: #222329;
-	--blue: #8caaeb;
+	--orange: #ff7044;
+	--red: #ff0000;
+	--green: #27c427;
+	--white: #19191d;
+	--blue: #358dff;
 	/* */
 	--dark-block: #3a3a42;
 	--darker-block: #43434d;
 	/* transparent */
 	--dark-1: #ddd6d4cc;
-	--dark-2: #ddd6d466;
-	--dark-3: #ddd6d422;
-	--dark-4: #ddd6d411;
-	--green-1: #98e6b0aa;
-	--green-2: #98e6b066;
-	--green-3: #98e6b022;
-	--green-4: #98e6b011;
-	--orange-1: #ff7a51aa;
-	--orange-2: #ff7a5166;
-	--orange-3: #ff7a5122;
-	--orange-4: #ff7a5111;
-	--blue-1: #96b2ecaa;
-	--blue-2: #8caaeb66;
-	--blue-3: #8caaeb22;
-	--blue-4: #8caaeb11;
+	--dark-2: #ddd6d48f;
+	--dark-3: #ddd6d449;
+	--dark-4: #ddd6d41a;
+	--green-1: #4eb933aa;
+	--green-2: #27c42766;
+	--green-3: #27c42722;
+	--green-4: #27c42711;
+	--orange-1: #ff7044aa;
+	--orange-2: #ff704466;
+	--orange-3: #ff704422;
+	--orange-4: #ff704411;
+	--blue-1: #358dffaa;
+	--blue-2: #358dff66;
+	--blue-3: #358dff22;
+	--blue-4: #358dff11;
 	--white-1: #27282eaa;
 	--white-2: #27282e66;
 	--white-3: #27282e22;
@@ -153,11 +154,11 @@
 	--time-line: var(--dark);
 
 	/* Background color */
-	--body-background: #1d1d22;
-	--body-background-1: #1d1d22aa;
-	--body-background-2: #1d1d2266;
-	--body-background-3: #1d1d2222;
-	--body-background-4: #1d1d2211;
+	--body-background: #141418;
+	--body-background-1: #141418aa;
+	--body-background-2: #14141866;
+	--body-background-3: #14141822;
+	--body-background-4: #14141811;
 }
 
 /* @supports (-webkit-touch-callout: none) {

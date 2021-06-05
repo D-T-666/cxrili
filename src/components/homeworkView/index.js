@@ -12,7 +12,7 @@ const HomeworkView = () => {
 	const [ blockExpanded, setBlockExpanded ] = useState(null);
 
 	const { notes } = useNotes();
-	const { users } = useAuth();
+	const { users, currentUser } = useAuth();
 
 	useEffect(() => {
 		// Sort Notes
@@ -30,13 +30,17 @@ const HomeworkView = () => {
 			if(sorted[note.class][note.day] === undefined)
 				sorted[note.class][note.day] = [];
 
-			// console.log(users)
+			let currentVote = 0;
+
+			if(note.upVoters.includes(currentUser.uid)) currentVote = 1
+			if(note.downVoters.includes(currentUser.uid)) currentVote = 2;
 
 			sorted[note.class][note.day].push(users[note.author] ? {
 				...note,
 				authorPhotoURL: users[note.author].photoURL,
 				authorName: users[note.author].name,
-				createdAt: note.createdAt !== null ? note.createdAt.seconds * 1000 : Date.now()
+				createdAt: note.createdAt !== null ? note.createdAt.seconds * 1000 : Date.now(),
+				currentVote: currentVote
 			} : note);
 		}
 

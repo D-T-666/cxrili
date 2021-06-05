@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
-import Note from 'components/dayView/classBlock/blockDetails/notes/Note';
 import NotesIndicator from 'components/dayView/classBlock/blockDetails/NotesIndicator';
+import DaySection from './DaySection';
 import { More, Less } from 'iconComponents';
 
 const ClassSection = ({days, cls, parentBlockExpanded, setParentBlockExpanded}) => {
-	const daynames = ["ორშაბათი", "სამშაბათი", "ოთხშაბათი", "ხუთშაბათი", "პარასკევი"];
 	const [ expanded, setExpanded ] = useState(false);
 	const [ elementsVisible, setElementsVisible ] = useState(false);
 	const me = useRef();
@@ -29,9 +28,9 @@ const ClassSection = ({days, cls, parentBlockExpanded, setParentBlockExpanded}) 
 	}
 
 	return (
-		<section className={"class-section"+(expanded?" expanded":"")} ref={me}>
+		<section className={"class-section" + (expanded ? " expanded" : "")} ref={me}>
 			<h1 className="class-section-title" onClick={handleClick}>
-				{cls+" "}
+				{cls + " "}
 				<div className="flex">
 					<NotesIndicator number={days.number} show={!expanded} />
 					{ expanded 	? <Less />
@@ -40,19 +39,10 @@ const ClassSection = ({days, cls, parentBlockExpanded, setParentBlockExpanded}) 
 			</h1>
 
 			{	elementsVisible &&
-				<div className={"notes unlimited"+(expanded?" expanded":"")} id={cls} onClick={handleClick}>
+				<div className={"notes unlimited" + (expanded ? " expanded" : "")} id={cls} onClick={handleClick}>
 					{
-						Object.keys(days).map(cls => cls!=="number"&&(
-							<section className={"day-section "+cls} key={cls+"daySection"}>
-								<h5>{daynames[cls]}</h5>
-								<div className="list">
-									{
-										days[cls].map(note => (
-											<Note note={note} key={note.id}/>
-										))
-									}
-								</div>
-							</section>
+						Object.keys(days).map(cls => cls !== "number" && (
+							<DaySection cls={cls} days={days} />
 						))
 					}
 				</div>

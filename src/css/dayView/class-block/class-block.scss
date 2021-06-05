@@ -20,6 +20,7 @@ ul {
 	&.class {
 		color: var(--class-text);
 		position: relative;
+		transition: background-color 200ms;
 
 		&+&::before {
 			content: " ";
@@ -34,13 +35,13 @@ ul {
 		}
 
 		&.active {
-			background-color: var(--green-3);
+			background-color: var(--blue-2);
 		}
 
 		&.expanded {
 			background-color: var(--class-block-background);
 			&.active {
-				background-color: var(--green-2);
+				background-color: var(--blue-1);
 			}	
 			height: auto;
 		}
