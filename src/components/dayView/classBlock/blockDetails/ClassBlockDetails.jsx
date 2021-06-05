@@ -6,14 +6,14 @@ import { Profile, Time } from 'iconComponents';
 const ClassBlockDetails = (props) => (
 	<>
 		{
-			props.timeLeft &&
+			props.timeLeft && props.expanded && false &&
 			<div
 				className="details"
 				style={{
 					opacity: props.expanded ? "1" : "0",
 					maxHeight: props.expanded ? "100rem" : "0px"
 				}}>
-				{
+				{/* {
 					props.timeLeft &&
 					<div className="key o">
 						<Time />
@@ -21,7 +21,7 @@ const ClassBlockDetails = (props) => (
 							<span style={{fontFamily: "numFont"}}>{props.timeLeft}</span>
 						</p>
 					</div>
-				}
+				} */}
 				{/* <div className="key g">
 					<Profile />
 					<p>
@@ -30,7 +30,7 @@ const ClassBlockDetails = (props) => (
 				</div> */}
 			</div>
 		}
-		<Notes blockData={props.classData} visible={props.expanded} />
+		<Notes blockData={props.classData} parentExpanded={props.expanded} />
 	</>
 );
 

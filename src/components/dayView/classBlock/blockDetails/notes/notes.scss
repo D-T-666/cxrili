@@ -7,7 +7,7 @@ $noteHeight: 4rem;
 	align-items: center;
 	font-size: .9rem;
 	color: currentColor;
-	background-color: var(--dark-block);
+	// background-color: var(--dark-block);
 	padding: .6rem;
 	border-radius: .4rem;
 	border: none;
@@ -15,6 +15,7 @@ $noteHeight: 4rem;
 
 button {
 	border: none;
+	background-color: transparent;
 
 	padding: 0;
 	margin: 0;
@@ -22,41 +23,62 @@ button {
 	width: 100%;
 }
 
+@keyframes expand {
+	0% {
+		max-height: 0vh;
+	}
+	100% {
+		max-height: var(--mh);
+	}
+}
+
 div.notes {
 	padding: 0;
-	margin: .6rem 0 0 0;
+	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
 	display: block;
 	align-items: stretch;
 
-	&:not(.empty) {
-		border-top: .2rem solid var(--body-background);
+	max-height: 0px;
+
+	&.expanded {
+		&.empty {
+			max-height: 34rem;
+			--mh: 106px;
+		}
+		&.multiple {
+			max-height: 34rem;
+			--mh: 439px;
+		}
+		animation: expand 200ms ease;
 	}
 
-	box-sizing: border-box;
-	scroll-behavior: smooth;
-
+	transition: max-height 200ms ease;
+	overflow: hidden;
 	
-	.buttons {
+	>.buttons {
 		display: flex;
 		flex-direction: row;
-		margin: 0;
+		margin-top: .4rem;
+		justify-content: space-between;
 		// padding-left: .6rem;
 
 		button {
-			@include roundedBlock;
+			display: flex;
+			color: var(--dark);
+			// padding: .2rem 0;
+			flex-direction: row;
+			align-items: center;
+			justify-content: start;
+			width: auto;
 
 			font-family: myFont;
-
-			&+button {
-				margin-left: .6rem;
-			}
+			font-weight: bolder;
 
 			svg {
 				fill: currentColor;
-				// margin-left: 1ch;
-				height: 1.6rem;
-				width: 3rem;
+				height: 2.2rem;
+				width: auto;
 			}
 
 			&.red {
@@ -67,6 +89,194 @@ div.notes {
 				color: var(--green);
 			}
 		}
+	}
+
+	.list {
+		// background-color: rgb(20, 15, 29);
+		border-top: 1px solid var(--dark-3);
+		border-bottom: 1px solid var(--dark-3);
+		// border: 2px solid var(--dark-3);
+		// border-radius: 1.41rem;
+		border-radius: 0;
+		padding: .6rem .6rem;
+		position: relative;
+
+		.note {
+			border: solid 1px var(--dark-4);
+			border-radius: 1rem;
+
+			display: flex;
+			flex-direction: column;
+
+			min-height: $noteHeight;
+
+			padding: .8rem;
+			&+.note {
+				// border-top: 2px solid var(--dark-4);
+				margin-top: .6rem;
+			}
+
+			.content {
+				margin: .8rem 0;
+
+				p, li {
+					font-family: myFont;
+					flex-grow: 1;
+					font-size: .8rem;
+					text-indent: 1.5ch;
+					// text-align: justify;
+					color: var(--dark);
+					margin: .2rem 0 .2rem 0;
+
+
+					.list-item {
+						display: flex;
+						align-items: center;
+
+						margin-top: .4rem;
+
+						.checkbox {
+							width: .9rem;
+							height: .9rem;
+							margin: 0 1.5ch 0 1.5rem;
+							border-radius: .2rem;
+							background-color: transparent;
+							border: 1px solid var(--dark-2);
+
+							box-sizing: border-box;
+						}
+
+						flex-grow: 1;
+						&.checked {
+							color: var(--dark-2);
+
+							.checkbox {
+								background-color: var(--green-1);
+								border: none;
+								color: var(dark-2);
+							}
+						}
+					}
+				}
+
+				p+p {
+					border: none;
+					border-top: 1px solid var(--dark-3);
+					margin-top: .8rem;
+					padding-top: .6rem;
+				}
+			}
+
+			.info {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: flex-start;
+				// margin-right: .4rem;
+				
+				font-family: monospace;
+				font-size: 1.1rem;
+
+				.avatar {
+					width: 1.4rem;
+					margin-right: .4rem;
+					border-radius: 100%;
+				}
+
+				.date {
+					flex-grow: 1;
+					text-align: right;
+					font-size: .6rem;
+					color: var(--dark-2);
+				}
+ 			}
+
+			>.buttons {
+				// border-top: 2px solid var(--darker-block);
+				// padding-top: .8rem;
+
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				color: var(--dark);
+				font-size: .8rem;
+
+				.votes, .modify {
+					display: flex;
+					font-family: numFont;
+					button{
+						font-size: .8rem;
+						display: flex;
+						justify-content: space-between;
+
+						align-items: center;
+
+						color: currentColor;
+						// background-color: var(--darker-block);
+						padding: 0 .6rem;
+						border-radius: .4rem;
+
+						&+button {
+							margin-left: .6rem;
+						}
+
+						svg {
+							width: 1.2rem;
+							height: auto;
+							fill: currentColor;
+							margin-right: 1ch;
+						}
+
+						&.red {
+							color: var(--red);
+						}
+
+						&.green {
+							color: var(--green);
+						}
+					}
+				}
+
+				.votes {
+					button:disabled {
+						background-color: transparent;
+					}
+				}
+
+				.modify {
+					button {
+						padding: .2rem;
+						font-family: myFont;
+						svg {
+							margin: 0;
+						}
+					}
+				}
+
+			}
+		}
+
+		// &::before {
+		// 	content: " ";
+		// 	width: 100%;
+		// 	z-index: 100;
+		// 	position: sticky;
+		// 	display: block;
+		// 	top: 0;
+		// 	height: 1rem;
+		// 	box-shadow: inset 0 1rem .7rem -.7rem var(--block-background);
+		// }
+		
+		// &::after {
+		// 	content: " ";
+		// 	width: 100%;
+		// 	z-index: 100;
+		// 	position: sticky;
+		// 	display: block;
+		// 	bottom: 0;
+		// 	height: 1rem;
+		// 	box-shadow: inset 0 -1rem .6rem -.6rem var(--block-background);
+		// }
 	}
 
 	ul {
@@ -86,122 +296,6 @@ div.notes {
 		border-radius: .4rem;
 		scroll-padding-top: 1rem;
 
-		.gradient {
-			position: sticky;
-			bottom: 0;
-			height: 1rem;
-			box-shadow: inset 0 -1rem .4rem -.4rem var(--block-background);
-
-			&:first-child {
-				top: 0;
-				box-shadow: inset 0 1rem .4rem -.4rem var(--block-background);
-			}
-		}
-
-		.note {
-			background-color: var(--dark-block);
-			// border: solid 1px var(--dark-block);
-
-			display: flex;
-			flex-direction: column;
-
-			min-height: $noteHeight;
-
-			border-radius: .4rem;
-			padding: .8rem;
-			// margin: .6rem 0 0 0;
-			&+.note {
-				margin-top: .6rem;
-			}
-
-			p {
-				font-family: myFont;
-				flex-grow: 1;
-				font-size: .9rem;
-				text-indent: 2ch;
-				text-align: justify;
-				color: var(--dark);
-				margin: .4rem 0 .6rem 0;
-			}
-
-			>div {
-				border-top: 2px solid var(--darker-block);
-				padding-top: .8rem;
-
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				color: var(--dark);
-				font-size: .8rem;
-
-				.votes, .modify {
-					display: flex;
-					font-family: numFont;
-					button{
-						font-size: .8rem;
-						display: flex;
-						justify-content: space-between;
-
-						align-items: center;
-
-						color: currentColor;
-						background-color: var(--darker-block);
-						padding: .4rem .6rem;
-						border-radius: .4rem;
-
-						&+button {
-							margin-left: .6rem;
-						}
-
-						svg {
-							fill: currentColor;
-							margin-right: 1ch;
-						}
-
-						&.red {
-							background-color: var(--red);
-							color: var(--dark-block);
-						}
-
-						&.green {
-							background-color: var(--green);
-							color: var(--dark-block);
-						}
-					}
-				}
-
-				.votes {
-					button:disabled {
-						background-color: transparent;
-					}
-				}
-
-				.modify {
-					button {
-						padding: .2rem;
-						font-family: myFont;
-						svg {
-							margin: 0;
-							width: 1.2rem;
-							height: 1.2rem;
-						}
-					}
-				}
-
-				.info {
-					display: flex;
-					align-items: center;
-					justify-content: flex-end;
-					margin-right: .4rem;
-					
-					.avatar {
-						width: 1rem;
-						margin-right: .4rem;
-						border-radius: 100%;
-					}
-				}
-			}
-		}
 	}
 
 	.create {
@@ -211,7 +305,8 @@ div.notes {
 		textarea {
 			@include roundedBlock;
 			outline: none;
-			border: .1rem solid var(--dark);
+			border: 1px solid var(--dark-3);
+			background-color: transparent;
 			margin-top: .2rem;
 			// text-indent: 2ch;
 			hyphens: manual;
@@ -252,3 +347,13 @@ div.notes {
 	}
 }
 
+
+
+.active.class {
+	.notes {
+		.note {
+			background-color: var(--white-2);
+			border-color: var(--white);
+		}
+	}
+}

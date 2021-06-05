@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import { firestore } from 'firebase.js';
+import ls from 'local-storage';
 
 import { useAuth } from 'contexts/AuthContext';
 const NotesContext = createContext();
@@ -10,12 +11,28 @@ export const useNotes = () => {
 }
 
 export const NotesProvider = ({ children }) => {
+	const [ storedNotes, _setStoredNotes ] = useState(ls.get("notes"));
+
 	const [ notes, setNotes ] = useState(false);
 	const [ loading, setLoading ] = useState(false);
 
 	const notesRef = firestore.collection('notes');
 	const { currentUser } = useAuth();
 
+	const setNoteOption = (noteId, option, data) => {
+		_setStoredNotes(old => {
+			if(old[noteId]) {
+				old[noteId][option] = data;
+			} else {
+				old[noteId] = [];
+				old[noteId][option] = data;
+			}
+
+			ls.set("notes", old);
+
+			return old;
+		})
+	}
 
 	const postNote = async (note) => {
 		const data = {
@@ -80,6 +97,10 @@ export const NotesProvider = ({ children }) => {
 	}
 
 	useEffect(() => {
+		if(storedNotes === null) {
+			_setStoredNotes({});
+			ls.set("notes", {});
+		}
 		setLoading(true);
 		notesRef.onSnapshot((querySnapshot) => {
 			const items = [];
@@ -100,7 +121,9 @@ export const NotesProvider = ({ children }) => {
 		upVoteNoteCancel,
 		downVoteNote,
 		downVoteNoteCancel,
-		setCurrentVote
+		setCurrentVote,
+		storedNotes, 
+		setNoteOption
 	};
 
 	return (

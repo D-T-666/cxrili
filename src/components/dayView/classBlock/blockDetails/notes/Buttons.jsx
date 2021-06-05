@@ -9,18 +9,21 @@ const Buttons = ({ onAdd, onExpand, expanded, notes }) => {
 	return (
 		( notes.length > 1 || currentUser !== null ) &&
 		<ul className="buttons">
+			{currentUser!==null && <button onClick={onAdd}><PlusIcon />დამატება</button>}
 			{
 				notes.length > 1
 					? <button onClick={onExpand}>
 							{ 
 								!expanded
-									? <><More /><span style={{fontWeight:"900"}}>კიდევ <span style={{fontSize:"0.9rem",fontFamily:"numFont"}}>{notes.length-1}</span></span></>
-									: <><Less />ნაკლები</>
+									? <>
+											<span style={{fontWeight:"900"}}><span style={{fontSize:"1.1rem",fontFamily:"numFont"}}>+{notes.length-1}</span></span>
+											<More />
+										</>
+									: <><Less /></>
 							}
 						</button>
 					: ""
 			}
-			{currentUser!==null && <button onClick={onAdd} className="green"><PlusIcon />დამატება</button>}
 		</ul>
 	)
 }

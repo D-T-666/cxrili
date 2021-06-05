@@ -4,8 +4,8 @@ export const getTimeHMS = (stringified) => {
 	// Store the current date in the HMS object.
 	const date = new Date();
 	const HMS = {
-		h: date.getHours(),
-		m: date.getMinutes(),
+		h: date.getHours(),//11,//
+		m: date.getMinutes(),//%5+15,
 		s: date.getSeconds(),
 	};
 

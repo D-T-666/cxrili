@@ -12,6 +12,7 @@ const WeekDayBar = ({ onDayChange, day }) => {
 					key={dayName} 
 					onClick={onDayChange} 
 					name={idx} 
+					active={idx === day}
 					className={(idx === day? "active": "")}
 				>
 					{dayName}

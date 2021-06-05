@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useNotes } from 'contexts/NotesContext';
 import { useAuth } from 'contexts/AuthContext';
@@ -9,9 +9,17 @@ import Buttons from './Buttons';
 
 import './notes.scss';
 
-const Notes = ({blockData, visible}) => {
+const Notes = ({blockData, parentExpanded}) => {
 	const [expanded, setExpanded] = useState(blockData.notes.length <= 1);
 	const [creating, setCreating] = useState(false);
+	const [visible, setVisible] = useState(parentExpanded);
+
+	useEffect(() => {
+		if(parentExpanded)
+			setVisible(parentExpanded)
+		else
+			setTimeout(() => setVisible(parentExpanded), 150, false)
+	}, [parentExpanded])
 
 	const { loading, postNote, deleteNote } = useNotes();
 	const { currentUser, usersLoading } = useAuth();
@@ -46,15 +54,14 @@ const Notes = ({blockData, visible}) => {
 	return (
 		<>
 			{((!loading && currentUser) || (blockData.notes.length > 0)) && visible &&
-				<div className="notes" onClick={e=>e.stopPropagation()}>
+				<div className={"notes"+(parentExpanded?" expanded":"")+(blockData.notes.length>0?" multiple":" empty")}>
 					{
 						!loading && !usersLoading
 						? <>
 								{ blockData.notes.length > 0
 									? <>
-											<h3 style={{fontFamily: "myFont",marginBottom:"0"}}>საშინაო დავალება:</h3>
-											<ul>
-												<li className="gradient"></li>
+											<h1 style={{fontFamily: "myFont"}}>საშინაო დავალება</h1>
+											<ul className={"list"+(expanded?" expanded":"")}>
 												<Note note={blockData.notes[0]} key={blockData.notes[0].id} deleteNote={onDeleteNote} blockData={blockData} />
 												{
 													expanded
@@ -63,7 +70,6 @@ const Notes = ({blockData, visible}) => {
 															index > 0 && <Note note={note} key={note.id} deleteNote={onDeleteNote} blockData={blockData} />
 														)
 												}
-												{( blockData.notes.length > 1 || currentUser ) && <li className="gradient"></li>}
 											</ul>
 										</>
 									: (currentUser && <h1 style={{fontFamily: "myFont"}}>საშინაო დავალება</h1>)

@@ -1,12 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 import { useAuth } from 'contexts/AuthContext';
 import { useNotes } from 'contexts/NotesContext';
-import { time_ago	} from 'functions';
+import { time_ago	} from 'utils';
 import RecactNote from './RedactNote';
 
 import { Like, Dislike, LikeFilled, DislikeFilled } from 'iconComponents';
 
+const Checkbox = ({note, id, children}) => {
+	const { storedNotes, setNoteOption } = useNotes();
+	const [ checked, setChecked ] = useState(storedNotes[note] ? storedNotes[note][id] : false);
+
+	const handleClick = (e) => {
+		e.stopPropagation();
+
+		setChecked(old => !old);
+
+		setNoteOption(note, id, !checked);
+	};
+
+	return (
+		<div onClick={handleClick} className={"list-item" + (checked ? " checked" : "")} style={{display:"flex"}}>
+			<div className="checkbox"> </div>
+			{children}
+		</div>
+	);
+};
 
 const Note = ({ note, deleteNote }) => {
 	const [vote, setVote] = useState(note.currentVote);
@@ -36,9 +55,30 @@ const Note = ({ note, deleteNote }) => {
 
 	return (
 		<li className="note">
-			<p>{note.content}</p>
+			<div className="info">
+				<img src={note.authorPhotoURL} alt="profile picture" className="avatar"/>
+				{note.authorName} <span className="date">{time_ago(note.createdAt)}</span>
+			</div>
 
-			<div>
+			<div className="content">
+				<ul style={{listStyle:"outside"}}>
+					{note.content.split("\n").map((s, i) => (
+						<>
+							{
+								s.startsWith("-")
+									?	<li key={note.id+`${i}`}>
+											<Checkbox note={note.id} id={i}>{s.substring(1)}</Checkbox>
+										</li>
+									:	<p key={note.id+`${i}`}>
+											{s}
+										</p>
+							}
+						</>
+					))}
+				</ul>
+			</div>
+
+			<div className="buttons">
 				<div className="votes">
 					<button 
 						disabled={ !currentUser } 
@@ -63,10 +103,6 @@ const Note = ({ note, deleteNote }) => {
 					)
 				}
 
-				<div className="info">
-					<img src={note.authorPhotoURL} alt="profile picture" className="avatar"/>
-					{note.authorName} - {time_ago(note.createdAt)}
-				</div>
 			</div>
 		</li>
 	)

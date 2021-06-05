@@ -1,23 +1,20 @@
 import { Component } from 'react';
-import 'functions.js';
 import 'css/dayView/class-block/block-timers.scss';
-import { getTimeInMinutes, getTimeInSeconds, stringifyHMS, timeLeftToHMS } from 'functions.js';
+import { getTimeInMinutes, getTimeInSeconds, stringifyHMS, timeLeftToHMS } from 'utils.js'
 
-const ProgressBar = ({percentage, active}) => (
-	<ul className="progress-bar" style={{opacity: active ? 1 : 0.2}}>
-		<li className="start" style={{
-			backgroundColor: percentage <= 0 &&"var(--dark)"
-		}}>
-		</li>
-		<div className={"rail"+(active?" left":"")} style={{flexGrow: percentage}}></div>
-		{ active && <div className="knob"></div> }
-		<div className="rail" style={{flexGrow: 1-percentage}}></div>
-		<li className="end" style={{
-			backgroundColor: percentage >= 1 &&"var(--dark)"
-		}}>
-		</li>
-	</ul>
-);
+
+const ProgressBar = ({percentage, active, timeLeft}) => {
+	const min = (a, b) => a < b ? a : b;
+	return (
+		<ul className="progress-bar" style={{opacity: active ? 1 : 0.2}}>
+			<div className="left" style={{flexGrow: percentage}}> </div>
+
+			<div className="right" style={{flexGrow: 1 - percentage}}>
+				{timeLeft}
+			</div>
+		</ul>
+	);
+};
 
 class BlockTimers extends Component {
 	constructor(props) {
@@ -157,7 +154,7 @@ class BlockTimers extends Component {
 				this.props.changeActive(active);
 
 				// Set the state to newly calculated values
-				return { left, active, previousPercentageThrough: percentage };
+				return { left, active, previousPercentageThrough: percentage, left };
 			});
 		}
 	}
@@ -171,7 +168,10 @@ class BlockTimers extends Component {
 							<li className="block-timer start"> {this.props.classData.start} </li>
 							{this.props.expanded
 								? 
-									<ProgressBar percentage={this.state.previousPercentageThrough} active={this.state.active}/>
+									<ProgressBar
+										percentage={this.state.previousPercentageThrough}
+										active={this.state.active}
+										timeLeft={this.state.left}/>
 								:
 									<span style={{fontWeight:900,fontFamily:"numFont",margin:"0 1ch"}}> - </span>
 							}
@@ -179,10 +179,10 @@ class BlockTimers extends Component {
 						</ul>
 					:
 						this.state.active && 
-						<>
-							<ul> <li className="block-timer left"> {this.state.left} </li> </ul>
-							<ProgressBar percentage={this.state.previousPercentageThrough} active={this.state.active}/>
-						</>
+						<ProgressBar
+							percentage={this.state.previousPercentageThrough}
+							active={this.state.active}
+							timeLeft={this.state.left}/>
 				}
 
 			</div>

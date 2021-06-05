@@ -10,6 +10,8 @@ const TimeTable = (props) => {
 	const [ notesSet, setNotesSet ] = useState(false);
 	const [ tablesReady, setTablesReady ] = useState(false);
 
+	const [ blockExpanded, setBlockExpanded ] = useState(null);
+
 	const { notes } = useNotes();
 	const { users, currentUser } = useAuth();
 
@@ -127,7 +129,9 @@ const TimeTable = (props) => {
 							key={block.id} 
 							blockIndex={blockIndex}
 							classData={block}
-							isToday={props.today === props.day}/>
+							isToday={props.today === props.day}
+							blockExpanded={blockExpanded}
+							setBlockExpanded={setBlockExpanded}/>
 					)
 				}
 				{

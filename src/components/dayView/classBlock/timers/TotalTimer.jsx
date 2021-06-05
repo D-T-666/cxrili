@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import 'css/dayView/class-block/total-timer.scss';
-import { getTimeInMinutes, stringifyHMS, timeLeftToHMS } from 'functions.js';
+import { getTimeInMinutes, stringifyHMS, timeLeftToHMS } from 'utils.js';
 
 class TotalTimer extends Component {
 	constructor(props) {

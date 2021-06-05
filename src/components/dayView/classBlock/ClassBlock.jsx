@@ -1,88 +1,103 @@
-import { Component } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import BlockTimers from 'components/dayView/classBlock/timers/BlockTimers';
 import ClassBlockDetails from 'components/dayView/classBlock/blockDetails/ClassBlockDetails';
 import 'css/dayView/class-block/class-block.scss';
+import NotesIndicator from './blockDetails/NotesIndicator';
 
-class ClassTimeBlock extends Component {
-	constructor(props) {
-		super(props);
+import { More, Less } from 'iconComponents';
 
-		this.state = {active: false, timeLeft: false, id: this.props.classData.id};
+const ClassTimeBlock = ({classData, isToday, blockExpanded, setBlockExpanded}) => {
+	const [active, setActive] = useState(false);
+	const [timeLeft, setTimeLeft] = useState(false);
+	const [expanded, setExpanded] = useState(false);
+	const [id, setId] = useState(classData.id);
 
-		this.changeActive = this.changeActive.bind(this);
-		this.updateTimeLeft = this.updateTimeLeft.bind(this);
-		this.expand = this.expand.bind(this);
+	const me = useRef();
+
+	const changeActive = newActive => setActive(newActive && isToday);
+
+	const toggleExpanded = () => {
+		if(!expanded) {
+			setBlockExpanded(id);
+			// me.current.scrollIntoView({block:"start", behavior:"smooth"})
+			setTimeout(() => me.current.scrollIntoView({behavior:"smooth"}), 400, false);
+		}
+		setExpanded(old => !old);
 	}
 
-	changeActive(newActive) {
-		this.setState({
-			active: newActive && this.props.isToday
-		});
-	}
-
-	updateTimeLeft(timeLeft) {
-		this.setState({timeLeft});
-	}
-
-	getBlockClassName() {
+	const getBlockClassName = () => {
 		let classList = ["class-block"];
 
-		classList.push(this.props.classData.name === "break" ? "break" : "class")
+		classList.push(classData.name === "break" ? "break" : "class")
 
-		if (this.state.active) classList.push("active");
+		if (active) classList.push("active");
 
-		let duration = this.props.classData.int_end-this.props.classData.int_start;
-		if((this.props.classData.name === "break" ? 7.5 : 32.5) < duration)
+		let duration = classData.int_end-classData.int_start;
+		if((classData.name === "break" ? 7.5 : 32.5) < duration)
 			classList.push("long")
 		else
 			classList.push("short")
 
-		if(this.state.expanded) classList.push("expanded");
+		if(expanded) classList.push("expanded");
+
+		if(classData.notes.length > 0) classList.push("has-homework");
 
 		return classList.join(" ")
-	} 
+	};
 
-	componentDidUpdate() {
-		if(this.state.id !== this.props.classData.id)
-			this.setState({
-				expanded: false,
-				id: this.props.classData.id
-			})
-	}
+	useEffect(() => {
+		if (id !== classData.id) {
+			setId(classData.id);
+			setExpanded(false);
+		}
+	}, [classData]);
 
-	expand() {
-		this.setState((state) => ({
-			expanded: !state.expanded,
-			expanding: true
-		}));
-	}
+	useEffect(() => {
+		if (id !== blockExpanded)
+			setExpanded(false);
+	}, [blockExpanded]);
 
-	render() {
-		return (
-			<section className={this.getBlockClassName()} onClick={this.expand}>
-				<div className="title">
-					{
-						this.props.classData.name !== "break" && 
-						<h2 className="class-name"> {this.props.classData.name} </h2>
-					}
-					<BlockTimers 
-						expanded={this.state.expanded}
-						classData={this.props.classData}
-						showStartAndFinish={this.props.classData.name !== "break"}
-						shouldUpdate={this.props.isToday}
-						changeActive={this.changeActive}
-						updateTimeLeft={this.updateTimeLeft}/>
-				</div>
+	useEffect(() => {
+		if (active)
+			setTimeout(() => me.current.scrollIntoView({behavior: "smooth",  block: "center"}), 500, false);
+	}, [active])
+
+	return (
+		<section className={getBlockClassName()} onClick={toggleExpanded} ref={me}>
+			<div className="title"  style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
 				{
-					this.props.classData.name !== "break" && 
-					<ClassBlockDetails
-						classData={this.props.classData} 
-						expanded={this.state.expanded}
-						timeLeft={this.state.timeLeft}/>
+					classData.name !== "break" && 
+					<>
+						<h2 className="class-name"> {classData.name} </h2>
+						<div style={{display:"flex",alignItems:"center"}}>
+							<NotesIndicator number={classData.notes.length} show={classData.name !== "break" && !expanded}/>
+							{
+								classData.name !== "break" &&
+								(expanded ? <Less />
+													: <More />)
+							}
+						</div>
+					</>
 				}
-			</section>
-		)
-	}
+			</div>
+			<div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:classData.name !== "break" && ".6rem"}}>
+				<BlockTimers 
+					expanded={active}
+					classData={classData}
+					showStartAndFinish={classData.name !== "break"}
+					shouldUpdate={isToday}
+					changeActive={changeActive}
+					updateTimeLeft={setTimeLeft}/>
+			</div>
+			{
+				classData.name !== "break" && 
+				<ClassBlockDetails
+					classData={classData} 
+					expanded={expanded}
+					timeLeft={timeLeft}/>
+			}
+		</section>
+	)
 }
 
 export default ClassTimeBlock

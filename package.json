@@ -35,7 +35,7 @@
   "scripts": {
     "start": "react-scripts start",
 
-    "predeploy": "npm run build .env.development && npm run compile-serviceworker",
+    "predeploy": "npm run build && npm run compile-serviceworker",
     "deploy": "NODE_ENV=development netlify deploy --alias=nightly -d build",
     "deploy-prod": "NODE_ENV=production netlify deploy --prod -d build",
     
