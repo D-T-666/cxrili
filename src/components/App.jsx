@@ -39,7 +39,7 @@ class App extends Component {
 		if(colorTheme !== this.state.colorTheme)
 		this.setState(
 			state => {
-				document.getElementById("theme-color").content = state.colorTheme==="dark" ? "#f3e1c8" : "#161410";
+				document.getElementById("theme-color").content = state.colorTheme==="dark" ? "#f3e1c8" : "#141418";
 
 				document.body.classList.remove(state.colorTheme+"-theme");
 				document.body.classList.add(colorTheme+"-theme");

@@ -1,6 +1,6 @@
 import React from 'react';
 import DayButton from "./DayButton";
-import 'css/dayView/week-day-bar/week-day-bar.css';
+import 'css/dayView/week-day-bar/week-day-bar.scss';
 
 const WeekDayBar = ({ onDayChange, day }) => {
 	const dayNames = ["ორშაბათი", "სამშაბათი", "ოთხშაბათი", "ხუთშაბათი", "პარასკევი"];

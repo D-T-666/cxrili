@@ -6,11 +6,11 @@ const DaySection = ({cls, days}) => {
 
 	return (
 		<section className={"day-section "+cls} key={cls+"daySection"}>
-			<h5>{daynames[cls]}</h5>
+			<h3>{daynames[cls]}</h3>
 			<div className="list">
 				{
 					days[cls].map(note => (
-						<Note note={note} key={note.id}/>
+						<Note note={note} key={note.id} showButtons={false}/>
 					))
 				}
 			</div>

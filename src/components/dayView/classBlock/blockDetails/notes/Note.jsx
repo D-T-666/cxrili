@@ -27,7 +27,7 @@ const Checkbox = ({note, id, children}) => {
 	);
 };
 
-const Note = ({ note, deleteNote }) => {
+const Note = ({ note, deleteNote, showButtons=true }) => {
 	const [vote, setVote] = useState(note.currentVote);
 
 	const { currentUser } = useAuth();
@@ -78,7 +78,7 @@ const Note = ({ note, deleteNote }) => {
 				</ul>
 			</div>
 
-			<div className="buttons">
+			{showButtons && <div className="buttons">
 				<div className="votes">
 					<button 
 						disabled={ !currentUser } 
@@ -103,7 +103,7 @@ const Note = ({ note, deleteNote }) => {
 					)
 				}
 
-			</div>
+			</div>}
 		</li>
 	)
 }

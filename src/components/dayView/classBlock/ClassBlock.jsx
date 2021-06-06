@@ -19,7 +19,8 @@ const ClassTimeBlock = ({classData, isToday, blockExpanded, setBlockExpanded}) =
 	const toggleExpanded = () => {
 		if(!expanded) {
 			setBlockExpanded(id);
-			// me.current.scrollIntoView({block:"start", behavior:"smooth"})
+		} else {
+			setBlockExpanded(-1);
 		}
 		setExpanded(old => !old);
 	}
@@ -61,7 +62,7 @@ const ClassTimeBlock = ({classData, isToday, blockExpanded, setBlockExpanded}) =
 		return () => {
 			clearTimeout(timeout);
 		}
-	}, [blockExpanded]);
+	}, [blockExpanded, expanded]);
 
 	useEffect(() => {
 		let timeout;

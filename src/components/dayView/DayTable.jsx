@@ -7,7 +7,7 @@ import TotalTimer from 'components/dayView/classBlock/timers/TotalTimer';
 const TimeTable = (props) => {
 	const [ tables, setTables ] = useState([]);
 	const [ timeRange, setTimeRange ] = useState([]);
-	const [ notesSet, setNotesSet ] = useState(false);
+	const [ notesSet, setNotesSet ] = useState(0);
 	const [ tablesReady, setTablesReady ] = useState(false);
 
 	const [ blockExpanded, setBlockExpanded ] = useState(null);
@@ -67,7 +67,7 @@ const TimeTable = (props) => {
 	}, [])
 
 	useEffect(() => {
-		// Asign votes
+		// Assign votes
 		if(currentUser && notesSet) {
 			console.log("yeo")
 			setTables(
@@ -92,7 +92,6 @@ const TimeTable = (props) => {
 	useEffect(() => {
 		// Set up notes
 		if(tablesReady && notes && users) {
-			console.log("oui")
 			const timeNow = Date.now()
 			setTables(
 				tables.map((table, dayIndex) => {
@@ -113,7 +112,7 @@ const TimeTable = (props) => {
 					})
 				})
 			)
-			setNotesSet(true);
+			setNotesSet(old => old+1);
 		};
 	}, [notes, users, tablesReady])
 	

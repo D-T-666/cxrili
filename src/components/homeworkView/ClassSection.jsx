@@ -17,12 +17,13 @@ const ClassSection = ({days, cls, parentBlockExpanded, setParentBlockExpanded}) 
 
 	const handleClick = (e) => {
 		e.stopPropagation();
-		setExpanded(old => !old);
 		if(!expanded) {
+			setElementsVisible(true);
 			setParentBlockExpanded(cls);
 			setTimeout(() => me.current.scrollIntoView({behavior:"smooth"}), 600, false);
-			setElementsVisible(true);
+			setTimeout(() => setExpanded(true), 1, false);
 		} else {
+			setExpanded(false);
 			setTimeout(() => setElementsVisible(false), 300, false);
 		}
 	}

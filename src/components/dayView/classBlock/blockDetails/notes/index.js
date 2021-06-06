@@ -10,7 +10,7 @@ import Buttons from './Buttons';
 import './notes.scss';
 
 const Notes = ({blockData, parentExpanded}) => {
-	const [expanded, setExpanded] = useState(blockData.notes.length <= 1);
+	const [expanded, setExpanded] = useState(false);
 	const [creating, setCreating] = useState(false);
 	const [visible, setVisible] = useState(parentExpanded);
 

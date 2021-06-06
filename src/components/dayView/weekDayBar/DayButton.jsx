@@ -14,7 +14,7 @@ const DayButton = ({name, className, onClick, active, children}) => {
 	});
 
 	return (
-		<li ref={me}>
+		<li ref={me} className={className}>
 			<Link to={`/${name}`} onClick={() => onClick(name)} 
 								className={className}>
 					{children}
