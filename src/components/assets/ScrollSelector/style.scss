@@ -1,20 +1,28 @@
 .scroll-selector {
+  flex-grow: 0;
+
   display: flex;
+  flex-direction: row;
+  align-items: center;
   // justify-content: center;
+  overflow-x: auto;
+
   position: relative;
   top: 0;
-  overflow-x: auto;
-  flex-direction: row;
-  // padding: 0.4rem 0.6rem;
+
   margin: 0;
+  // padding: 0.4rem 0.6rem;
   padding: 0;
-  flex-grow: 0;
-  align-items: center;
+
   -ms-overflow-style: none;
   scrollbar-width: none;
   list-style: none;
 
   li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     list-style: none;
     font-family: myFont;
     font-size: 0.8rem;
@@ -22,13 +30,9 @@
     color: var(--dark);
 
     padding: 0.6rem 1rem;
-    // margin: 0 0.2rem;
     height: 1.2rem;
     border-radius: 1.2rem;
     -webkit-tap-highlight-color: transparent;
-
-    display: flex;
-    align-items: center;
 
     transition: background-color 100ms ease;
 
