@@ -1,192 +1,237 @@
 .homework-page {
-	display: block;
-	// display: flex;
-	// flex-direction: column;
-	// align-items: stretch;
+  display: block;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: stretch;
 
-	.homework-list {
-		overflow-y: scroll;
-		color: var(--dark);
-		align-self: stretch;
+  .homework-list {
+    overflow-y: scroll;
+    color: var(--dark);
+    align-self: stretch;
 
-		// border: 2px solid red;
-		
-		.flex {
-			display: flex;
-		}
+    // border: 2px solid red;
 
-		.class-section {
-			h1, h3 {
-				font-weight: normal;
-				margin: 0;
-				margin-bottom: .8rem;
-				font-family: myFont;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-			h1 { font-size: 2rem; }
-			h3 { margin-left: .4rem; }
+    .flex {
+      display: flex;
+    }
 
-			.indicator {
-				font-size: 1.2rem;
-				justify-self: flex-end;
-				text-align: center;
-				color: var(--dark-2);
-				font-weight: 700;
-				font-family: numFont;
-		
-				span {
-					vertical-align: sub;
-				}
-			}
+    .class-section {
+      h1,
+      h3 {
+        font-weight: normal;
+        margin: 0;
+        margin-bottom: 0.8rem;
+        font-family: myFont;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h3 {
+        margin-left: 0.4rem;
+      }
 
-			padding: 1rem;
-			.day-section {
-				padding: .8rem;
-				padding-right: .4rem;
-				// padding-bottom: 1.4rem;
+      .indicator {
+        font-size: 1.2rem;
+        justify-self: flex-end;
+        text-align: center;
+        color: var(--dark-2);
+        font-weight: 700;
+        font-family: numFont;
 
-				.note {
-					.content {
-						height: fit-content
-					}
-				}
-			}
+        span {
+          vertical-align: sub;
+        }
+      }
 
-			&.expanded {
-				background-color: var(--white-2);
-			}
+      padding: 1rem;
+      .day-section {
+        padding: 0.8rem;
+        padding-right: 0.4rem;
+        // padding-bottom: 1.4rem;
 
-			.notes {
-				transition: max-height 400ms ease;
-				overflow-y: scroll;
+        .note {
+          .content {
+            height: fit-content;
+          }
+        }
+      }
 
-				max-height: 0rem;
-				&.expanded {
-					animation: none;
-					max-height: 40rem;
+      &.expanded {
+        background-color: var(--white-2);
+      }
 
-					.list {
-						padding: 0;
-					}
-				}
+      .notes {
+        transition: max-height 400ms ease;
+        overflow-y: scroll;
 
-				border-left: 1px solid var(--dark-3);
-				border-bottom: 1px solid var(--dark-3);
-				border-radius: 0 0 0 1rem;
-			}
-		}
-	}
+        max-height: 0rem;
+        &.expanded {
+          animation: none;
+          max-height: 40rem;
 
-	.homework-creation {
-		flex-shrink: 0;
-		position: sticky;
-		bottom: 0;
-		overflow-y: scroll;
-		color: var(--dark);
-		// height: auto;
-		display: flex;
-		flex-direction: column;
-		align-items: stretch;
+          .list {
+            padding: 0;
+          }
+        }
 
-		form {
-			border-radius: 1rem 1rem 0 0;
-			background-color: var(--white);
-			box-sizing: border-box;
-			border-bottom: none;
-			display: flex;
-			flex-direction: column;
-			padding: 1rem;
-			
-			textarea {
-				font-size: 1rem;
-				color: var(--dark);
-				border: 2px solid var(--dark-1);
-				border-radius: .6rem;
-				background-color: transparent;
-				outline: none;
-			}
+        border-left: 1px solid var(--dark-3);
+        border-bottom: 1px solid var(--dark-3);
+        border-radius: 0 0 0 1rem;
+      }
+    }
+  }
 
-			.options {
-				margin-top: .4rem;
-				// display: flex;
-				text-align: right;
-				justify-content: space-between;
+  .homework-creation {
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    overflow-y: scroll;
+    color: var(--dark);
+    // height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 
-				td {
-					// border: 1px solid white;
-				}
+    form {
+      border-radius: 1rem 1rem 0 0;
+      background-color: var(--white);
+      box-sizing: border-box;
+      border-bottom: none;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
 
-				select, input {
-					margin: .2rem;
-					font-size: rem;
-					padding: .5rem;
-					border-radius: 2rem;
-					outline: none;
-					color: var(--dark);
-					background-color: transparent;
-					border: none;
-					// border: 1px solid var(--dark-4);
-				}
+      .options {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-around;
 
-				select {
-					&.p1 {
-						color: var(--dark);
-					}
-					&.p2 {
-						color: var(--green);
-					}
-					&.p3 {
-						color: var(--blue);
-					}
-					&.p4 {
-						color: var(--orange);
-					}
+        > ul {
+          overflow-x: scroll;
+          padding: 0.4rem 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
 
-					option {
-						color: var(--dark);
-					}
-				}
+          &.content {
+            flex-shrink: 1;
+            display: flex;
+            border: 1px solid var(--dark-3);
+            border-radius: 0.8rem;
+            // padding: 1rem 0;
+          }
 
-				input[type="date"] {
-					width: 16ch;
-				}
-			}
-		}
-	}
+          &.titles {
+            flex-shrink: 0;
+            margin-right: 1rem;
+            font-family: myFont;
+          }
+        }
+      }
 
-	// &.creating {
-	// 	display: flex;
-	// 	flex-direction: column;
-	// 	align-items: space-between;
-	// 	justify-content: center;
-	// }
+      .scroll-selector {
+        margin: 0.4rem 0;
+        padding: 0 0.8rem;
+
+        li {
+          margin-right: 0.4rem;
+          padding: 0.5rem 0.6rem 0.4rem 0.6rem;
+          font-size: 0.7rem;
+          border-radius: 1rem;
+        }
+
+        &.priorities {
+          li {
+            span {
+              font-family: numFont;
+            }
+          }
+
+          .active {
+            &.p1 {
+              background-color: var(--blue);
+            }
+            &.p2 {
+              background-color: var(--green);
+            }
+            &.p3 {
+              background-color: var(--orange);
+            }
+            &.p4 {
+              background-color: var(--red);
+            }
+
+            span {
+              color: var(--dark);
+            }
+          }
+        }
+      }
+
+      textarea {
+        padding: 1ch;
+        font-size: 1rem;
+        color: var(--dark);
+        border: none;
+        border-radius: 0.6rem;
+        background-color: var(--dark-4);
+        outline: none;
+        resize: none;
+      }
+
+      select,
+      input {
+        font-size: 0.7rem;
+        padding: 0.45rem 0.6rem;
+        border-radius: 1rem;
+        outline: none;
+        // color: var(--white);
+        color: var(--dark);
+        border: 1px solid var(--dark-3);
+        background-color: transparent; //var(--dark);
+        // border: none;
+        font-family: numFont;
+        margin: 0.4rem;
+        // width: auto;
+      }
+    }
+  }
+
+  // &.creating {
+  // 	display: flex;
+  // 	flex-direction: column;
+  // 	align-items: space-between;
+  // 	justify-content: center;
+  // }
 }
 
 .create-note {
-	display: flex;
-	justify-content: center;
-	position: sticky;
-	bottom: 1.5rem;
-	z-index: 0;
-	div {
-		flex-shrink: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin-top: 3rem;
-		padding: 1rem;
-		border-radius: 100%;
-		// color: var(--white);
-		background-color: var(--white-1);
-		color: var(--blue);
-		border: 2px solid var(--blue);
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  bottom: 1.5rem;
+  z-index: 0;
 
-		svg {
-			fill: currentColor;
-			width: 1.6rem;
-			height: 1.6rem;
-		}
-	}
+  div {
+    flex-shrink: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    padding: 1rem;
+    border-radius: 100%;
+    // color: var(--white);
+    background-color: var(--white-1);
+    color: var(--blue);
+    border: 2px solid var(--blue);
+
+    svg {
+      fill: currentColor;
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
 }

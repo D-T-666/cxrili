@@ -1,53 +1,91 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from "react"
+import ScrollSelector from "components/assets/ScrollSelector"
 
 const HomeworkCreation = () => {
-	const tables = ['11 - გ'];
-	const classes = ['მათემატიკა', 'ქართული', 'ქიმია', 'ფიზიკა'];
+  // const tables = ["11 - გ"]
+  const classes = {
+    მათემატიკა: [0, 1, 3],
+    ქართული: [0, 1, 2, 3, 4],
+    ქიმია: [0, 2],
+    ფიზიკა: [1, 4],
+    ბიოლოგია: [2, 3],
+    ინგლისური: [0, 4],
+    რუსული: [2, 3, 4],
+    ისტორია: [0, 1, 2, 4],
+    გეოგრაფია: [0, 2]
+  }
+  const days = ["ორშაბათი", "სამშაბათი", "ოთხშაბათი", "ხუთშაბათი", "პარასკევი"]
 
-	// -- Refs ---
-	const contentRef = useRef();
-	const classRef = useRef();
-	const tableRef = useRef();
-	const priorityRef = useRef();
-	const dayRef = useRef();
+  // -- Refs ---
+  const contentRef = useRef()
 
-	const suppress = e => {
-		e.stopPropagation();
-		e.preventDefault();
-	}
+  const [cls, setCls] = useState(undefined)
+  const [day, setDay] = useState(0)
+  const [priority, setPriority] = useState("p2")
 
-	return (
-		<div className="homework-creation">
-			<form onSubmit={e=>e.preventDefault()}>
-				<textarea onClick={suppress} rows={8} />
-				<table>
-					<tr className="options">
-						<td>
-							<select className="tables">
-								{tables.map(table => <option value={table}> {table} </option>)}
-							</select>
-						</td>
-						<td>
-							<select className="classes">
-								{classes.map(cls => <option value={cls}> {cls} </option>)}
-							</select>
-						</td>
-						<td>
-							<input type="number" 
-										 className={"priorities p"+(priorityRef.current ? priorityRef.current.value : "")}
-										 ref={priorityRef}
-										 max={4} min={1} placeholder={2} />
-						</td>
-					</tr>
-					<tr className="options">
-						<td colSpan={3}>
-						   <input type="date" placeholder="2020-06-06" min="2020-06-05" max="2020-12-31" />
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-	)
+  const suppress = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
+  }
+
+  return (
+    <div className='homework-creation'>
+      <form onSubmit={(e) => e.preventDefault()}>
+        <textarea
+          onClick={suppress}
+          rows={8}
+          ref={contentRef}
+          resizable={false}
+        />
+
+        <div className='options'>
+          <ul className='titles'>
+            <li>გაკვეთილი:</li>
+            {cls && <li>დღე:</li>}
+            <li>პრიორიტეტი:</li>
+            <li>თარიღი:</li>
+          </ul>
+
+          <ul className='content'>
+            <li>
+              <ScrollSelector
+                className='classes'
+                options={Object.keys(classes)}
+                onSelect={(o, e) => setCls(o)}
+              />
+            </li>
+
+            {cls && (
+              <li>
+                <ScrollSelector
+                  className='day'
+                  options={classes[cls].map((day) => days[day])}
+                  onSelect={(o, e) => setDay(o)}
+                />
+              </li>
+            )}
+
+            <li>
+              <ScrollSelector
+                className='priorities'
+                options={["p1", "p2", "p3", "p4"]}
+                onSelect={(o, e) => setPriority(o)}
+              />
+            </li>
+
+            <li>
+              <input
+                type='date'
+                placeholder='2020-06-06'
+                min='2020-06-05'
+                max='2020-12-31'
+              />
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+  )
 }
 
 export default HomeworkCreation
