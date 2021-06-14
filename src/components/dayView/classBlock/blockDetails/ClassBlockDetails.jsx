@@ -1,37 +1,36 @@
-import 'css/dayView/class-block/class-block-details.scss';
-import Notes from 'components/dayView/classBlock/blockDetails/notes';
+import "css/dayView/class-block/class-block-details.scss"
+import Notes from "components/dayView/classBlock/blockDetails/notes"
 
-import { Profile, Time } from 'iconComponents';
+import { Profile, Time } from "iconComponents"
 
 const ClassBlockDetails = (props) => (
-	<>
-		{
-			props.timeLeft && props.expanded && false &&
-			<div
-				className="details"
-				style={{
-					opacity: props.expanded ? "1" : "0",
-					maxHeight: props.expanded ? "100rem" : "0px"
-				}}>
-				{/* {
+  <>
+    {props.timeLeft && props.expanded && false && (
+      <div
+        className='details'
+        style={{
+          opacity: props.expanded ? "1" : "0",
+          maxHeight: props.expanded ? "100rem" : "0px"
+        }}>
+        {/* {
 					props.timeLeft &&
 					<div className="key o">
 						<Time />
 						<p>
-							<span style={{fontFamily: "numFont"}}>{props.timeLeft}</span>
+							<span style={{fontFamily: "dejavu"}}>{props.timeLeft}</span>
 						</p>
 					</div>
 				} */}
-				{/* <div className="key g">
+        {/* <div className="key g">
 					<Profile />
 					<p>
 						{props.classData.teacher}
 					</p>
 				</div> */}
-			</div>
-		}
-		<Notes blockData={props.classData} parentExpanded={props.expanded} />
-	</>
-);
+      </div>
+    )}
+    <Notes blockData={props.classData} parentExpanded={props.expanded} />
+  </>
+)
 
 export default ClassBlockDetails

@@ -1,164 +1,164 @@
 :root {
-	--day-bar-height: 2.8rem;
-	--navbar-height: 3.8rem;
-	--home-button-bar-height: 0rem;
+  --day-bar-height: 2.8rem;
+  --navbar-height: 3.8rem;
+  --home-button-bar-height: 0rem;
 
-	/* Colors */
+  /* Colors */
 
-	/* Presets */
-	--dark: #494341;
-	--red: #ff0000;
-	--orange: #f17955;
-	--green: #6ec272;
-	--blue: #69a9fd;
-	--white: #faf2e7;
-	/*  */
-	--dark-block: #f3e1c8;
-	--darker-block: #dfcbb2;
-	/* transparent */
-	--dark-1: #494341aa;
-	--dark-2: #49434166;
-	--dark-3: #49434133;
-	--dark-4: #49434122;
-	--green-1: #6ec272aa;
-	--green-2: #6ec27266;
-	--green-3: #6ec27222;
-	--green-4: #6ec27211;
-	--orange-1: #f17955aa;
-	--orange-2: #f1795566;
-	--orange-3: #f1795522;
-	--orange-4: #f1795511;
-	--blue-1: #69a9fdcc;
-	--blue-2: #69a9fd66;
-	--blue-3: #69a9fd22;
-	--blue-4: #69a9fd11;
-	--white-1: #faf2e7aa;
-	--white-2: #faf2e766;
-	--white-3: #faf2e722;
-	--white-4: #faf2e711;
+  /* Presets */
+  --dark: #494341;
+  --red: #ff0000;
+  --orange: #f17955;
+  --green: #6ec272;
+  --blue: #69a9fd;
+  --white: #faf2e7;
+  /*  */
+  --dark-block: #f3e1c8;
+  --darker-block: #dfcbb2;
+  /* transparent */
+  --dark-1: #494341aa;
+  --dark-2: #49434166;
+  --dark-3: #49434133;
+  --dark-4: #49434122;
+  --green-1: #6ec272aa;
+  --green-2: #6ec27266;
+  --green-3: #6ec27222;
+  --green-4: #6ec27211;
+  --orange-1: #f17955aa;
+  --orange-2: #f1795566;
+  --orange-3: #f1795522;
+  --orange-4: #f1795511;
+  --blue-1: #69a9fdcc;
+  --blue-2: #69a9fd66;
+  --blue-3: #69a9fd22;
+  --blue-4: #69a9fd11;
+  --white-1: #faf2e7aa;
+  --white-2: #faf2e766;
+  --white-3: #faf2e722;
+  --white-4: #faf2e711;
 
-	/* Week tables */
-	--week-table-text: var(--dark);
-	--week-table-background: var(--white);
-	--week-table-highlight: var(--blue);
+  /* Week tables */
+  --week-table-text: var(--dark);
+  --week-table-background: var(--white);
+  --week-table-highlight: var(--blue);
 
-	/* Blocks */
-	--block-background: var(--white);
-	--block-text: var(--dark);
-	--class-block-background: var(--white);
-	--class-text: var(--dark);
-	--class-text-highlight: var(--dark);
-	--break-block-background: var(--blue-1);
-	--break-text: var(--blue);
-	--shadow-color: var(--dark-3);
+  /* Blocks */
+  --block-background: var(--white);
+  --block-text: var(--dark);
+  --class-block-background: var(--white);
+  --class-text: var(--dark);
+  --class-text-highlight: var(--dark);
+  --break-block-background: var(--blue-1);
+  --break-text: var(--blue);
+  --shadow-color: var(--dark-3);
 
-	/* Buttons */
-	--button-background: var(--white);
-	--button-text: var(--dark);
-	--orange-button-background: var(--orange);
-	--orange-button-text: var(--white);
-	--green-button-background: var(--green);
-	--green-button-text: var(--white);
-	--blue-button-background: var(--blue);
-	--blue-button-text: var(--white);
+  /* Buttons */
+  --button-background: var(--white);
+  --button-text: var(--dark);
+  --orange-button-background: var(--orange);
+  --orange-button-text: var(--white);
+  --green-button-background: var(--green);
+  --green-button-text: var(--white);
+  --blue-button-background: var(--blue);
+  --blue-button-text: var(--white);
 
-	/* Timers */
-	--timer-start-text: var(--dark);
-	--timer-end-text: var(--dark);
-	--timer-live: var(--green);
-	--timer-live-pre-active: var(--red);
+  /* Timers */
+  --timer-start-text: var(--dark);
+  --timer-end-text: var(--dark);
+  --timer-live: var(--green);
+  --timer-live-pre-active: var(--red);
 
-	--total-time-text: var(--dark);
-	--total-time-background: transparent;
+  --total-time-text: var(--dark);
+  --total-time-background: transparent;
 
-	/* Timeline */
-	--time-line-active: var(--green);
-	--time-line: var(--dark);
+  /* Timeline */
+  --time-line-active: var(--green);
+  --time-line: var(--dark);
 
-	/* Background color */
-	--body-background: #f3e1c8;
+  /* Background color */
+  --body-background: #f3e1c8;
 
-	user-select: none;
-	vertical-align: baseline;
+  user-select: none;
+  vertical-align: baseline;
 }
 
 .dark-theme {
-	/* Presets */
-	--dark: #ece5e3;
-	--orange: #ff7044;
-	--red: #ff0000;
-	--green: #27c427;
-	--white: #19191d;
-	--blue: #167bff;
-	/* */
-	--dark-block: #3a3a42;
-	--darker-block: #43434d;
-	/* transparent */
-	--dark-1: #ece5e3cc;
-	--dark-2: #ece5e38f;
-	--dark-3: #ece5e349;
-	--dark-4: #ece5e31a;
-	--green-1: #4eb933aa;
-	--green-2: #27c42766;
-	--green-3: #27c42722;
-	--green-4: #27c42711;
-	--orange-1: #ff7044aa;
-	--orange-2: #ff704466;
-	--orange-3: #ff704422;
-	--orange-4: #ff704411;
-	--blue-1: #358dffaa;
-	--blue-2: #358dff66;
-	--blue-3: #358dff22;
-	--blue-4: #358dff11;
-	--white-1: #27282eaa;
-	--white-2: #27282e66;
-	--white-3: #27282e22;
-	--white-4: #27282e11;
+  /* Presets */
+  --dark: #ece5e3;
+  --orange: #ff7044;
+  --red: #ff0000;
+  --green: #27c427;
+  --white: #19191d;
+  --blue: #167bff;
+  /* */
+  --dark-block: #3a3a42;
+  --darker-block: #43434d;
+  /* transparent */
+  --dark-1: #ece5e3cc;
+  --dark-2: #ece5e38f;
+  --dark-3: #ece5e349;
+  --dark-4: #ece5e31a;
+  --green-1: #4eb933aa;
+  --green-2: #27c42766;
+  --green-3: #27c42722;
+  --green-4: #27c42711;
+  --orange-1: #ff7044aa;
+  --orange-2: #ff704466;
+  --orange-3: #ff704422;
+  --orange-4: #ff704411;
+  --blue-1: #358dffaa;
+  --blue-2: #358dff66;
+  --blue-3: #358dff22;
+  --blue-4: #358dff11;
+  --white-1: #27282eaa;
+  --white-2: #27282e66;
+  --white-3: #27282e22;
+  --white-4: #27282e11;
 
-	/* Week tables */
-	--week-table-text: var(--dark);
-	--week-table-background: var(--white);
-	--week-table-highlight: var(--blue);
+  /* Week tables */
+  --week-table-text: var(--dark);
+  --week-table-background: var(--white);
+  --week-table-highlight: var(--blue);
 
-	/* Blocks */
-	--block-background: var(--white);
-	--block-text: var(--dark);
-	--class-block-background: var(--white);
-	--class-text: var(--dark);
-	--class-text-highlight: var(--dark);
-	--break-block-background: var(--blue-1);
-	--break-text: var(--blue);
-	--shadow-color: transparent;
+  /* Blocks */
+  --block-background: var(--white);
+  --block-text: var(--dark);
+  --class-block-background: var(--white);
+  --class-text: var(--dark);
+  --class-text-highlight: var(--dark);
+  --break-block-background: var(--blue-1);
+  --break-text: var(--blue);
+  --shadow-color: transparent;
 
-	/* Buttons */
-	--button-background: var(--white);
-	--button-text: var(--dark);
-	--orange-button-background: var(--orange);
-	--orange-button-text: var(--white);
-	--green-button-background: var(--green);
-	--green-button-text: var(--dark);
-	--blue-button-background: var(--blue);
-	--blue-button-text: var(--white);
+  /* Buttons */
+  --button-background: var(--white);
+  --button-text: var(--dark);
+  --orange-button-background: var(--orange);
+  --orange-button-text: var(--white);
+  --green-button-background: var(--green);
+  --green-button-text: var(--dark);
+  --blue-button-background: var(--blue);
+  --blue-button-text: var(--white);
 
-	/* Timers */
-	--timer-start-text: var(--dark);
-	--timer-end-text: var(--dark);
-	--timer-live: var(--green);
-	--timer-live-pre-active: var(--red);
+  /* Timers */
+  --timer-start-text: var(--dark);
+  --timer-end-text: var(--dark);
+  --timer-live: var(--green);
+  --timer-live-pre-active: var(--red);
 
-	--total-time-text: var(--dark);
-	--total-time-background: transparent;
+  --total-time-text: var(--dark);
+  --total-time-background: transparent;
 
-	/* Timeline */
-	--time-line-active: var(--green);
-	--time-line: var(--dark);
+  /* Timeline */
+  --time-line-active: var(--green);
+  --time-line: var(--dark);
 
-	/* Background color */
-	--body-background: #141418;
-	--body-background-1: #141418aa;
-	--body-background-2: #14141866;
-	--body-background-3: #14141822;
-	--body-background-4: #14141811;
+  /* Background color */
+  --body-background: #141418;
+  --body-background-1: #141418aa;
+  --body-background-2: #14141866;
+  --body-background-3: #14141822;
+  --body-background-4: #14141811;
 }
 
 /* @supports (-webkit-touch-callout: none) {
@@ -170,22 +170,20 @@
 } */
 
 @font-face {
-	font-family: myFont;
-	src: url("https://d-t-666.github.io/cxrili/fonts/bpg_glaho_sylfaen.ttf");
-	font-weight: normal;
-	font-style: normal;
+  font-family: myFont;
+  src: url("https://d-t-666.github.io/cxrili/fonts/bpg_glaho_sylfaen.ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: numFont;
-	src: url("https://d-t-666.github.io/cxrili/fonts/SourceCodePro-Medium.ttf");
-	font-weight: normal;
-	font-style: normal;
+  font-family: dejavu;
+  src: url("https://d-t-666.github.io/cxrili/fonts/dejavu-sans-mono.book.ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-	/* overscroll-behavior: contain; */
-	margin: 0;
-	background-color: var(--body-background);
-	/* transition: background-color .4s; */
+  margin: 0;
+  background-color: var(--body-background);
 }
