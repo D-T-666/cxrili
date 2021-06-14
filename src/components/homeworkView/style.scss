@@ -39,11 +39,15 @@
         text-align: center;
         color: var(--dark-2);
         font-weight: 700;
-        font-family: numFont;
+        font-family: dejavu;
 
         span {
           vertical-align: sub;
         }
+      }
+
+      svg {
+        fill: currentColor;
       }
 
       padding: 1rem;
@@ -105,7 +109,7 @@
       padding: 1rem;
 
       .options {
-        margin-top: 1rem;
+        margin: 1rem 0;
         display: flex;
         justify-content: space-around;
 
@@ -121,19 +125,21 @@
             display: flex;
             border: 1px solid var(--dark-3);
             border-radius: 0.8rem;
-            // padding: 1rem 0;
+            margin: 0;
           }
 
           &.titles {
             flex-shrink: 0;
-            margin-right: 1rem;
             font-family: myFont;
+            margin: 0;
+            margin-right: 1rem;
+            text-align: right;
           }
         }
       }
 
       .scroll-selector {
-        margin: 0.4rem 0;
+        margin: 0.1rem 0;
         padding: 0 0.8rem;
 
         li {
@@ -146,7 +152,7 @@
         &.priorities {
           li {
             span {
-              font-family: numFont;
+              font-family: dejavu;
             }
           }
 
@@ -180,6 +186,7 @@
         background-color: var(--dark-4);
         outline: none;
         resize: none;
+        font-family: dejavu;
       }
 
       select,
@@ -188,24 +195,24 @@
         padding: 0.45rem 0.6rem;
         border-radius: 1rem;
         outline: none;
-        // color: var(--white);
         color: var(--dark);
         border: 1px solid var(--dark-3);
-        background-color: transparent; //var(--dark);
-        // border: none;
-        font-family: numFont;
-        margin: 0.4rem;
-        // width: auto;
+        background-color: transparent;
+        font-family: dejavu;
+        margin: 0.1rem;
+        margin-left: 0.8rem;
+      }
+
+      button.add {
+        align-self: stretch;
+        background-color: var(--dark);
+        color: var(--white);
+        font-family: myFont;
+        padding: 0.8rem;
+        border-radius: 2rem;
       }
     }
   }
-
-  // &.creating {
-  // 	display: flex;
-  // 	flex-direction: column;
-  // 	align-items: space-between;
-  // 	justify-content: center;
-  // }
 }
 
 .create-note {
