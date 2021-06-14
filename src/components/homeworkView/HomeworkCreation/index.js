@@ -1,8 +1,12 @@
 import React, { useRef, useState } from "react"
 import ScrollSelector from "components/assets/ScrollSelector"
 
-const HomeworkCreation = () => {
-  // const tables = ["11 - გ"]
+import { useNotes } from "contexts/NotesContext"
+
+const HomeworkCreation = ({ onNoteAdded }) => {
+  // Contexts
+  const { notes, postNote } = useNotes()
+
   const classes = {
     მათემატიკა: [0, 1, 3],
     ქართული: [0, 1, 2, 3, 4],
@@ -18,24 +22,40 @@ const HomeworkCreation = () => {
 
   // -- Refs ---
   const contentRef = useRef()
+  const deadlineRef = useRef()
+  const formRef = useRef()
 
   const [cls, setCls] = useState(undefined)
-  const [day, setDay] = useState(0)
-  const [priority, setPriority] = useState("p2")
+  const [day, setDay] = useState(undefined)
+  const [priority, setPriority] = useState(undefined)
 
   const suppress = (e) => {
     e.stopPropagation()
     e.preventDefault()
   }
 
+  const onSubmit = (e) => {
+    if (cls && day && priority) {
+      postNote({
+        content: contentRef.current.value,
+        class: cls,
+        day: day,
+        priority: priority,
+        deadline: deadlineRef.current.value
+      })
+
+      onNoteAdded({ cls, day })
+    }
+  }
+
   return (
     <div className='homework-creation'>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()} ref={formRef}>
         <textarea
           onClick={suppress}
           rows={8}
           ref={contentRef}
-          resizable={false}
+          resizable='false'
         />
 
         <div className='options'>
@@ -79,12 +99,15 @@ const HomeworkCreation = () => {
                 placeholder='2020-06-06'
                 min='2020-06-05'
                 max='2020-12-31'
+                ref={deadlineRef}
               />
             </li>
           </ul>
         </div>
 
-        <button className='add'>დამატება</button>
+        <button className='add' onClick={onSubmit}>
+          დამატება
+        </button>
       </form>
     </div>
   )
