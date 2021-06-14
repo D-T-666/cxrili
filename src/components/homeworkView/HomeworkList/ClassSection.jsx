@@ -1,55 +1,66 @@
-import React, { useState, useRef, useEffect } from 'react'
-import NotesIndicator from 'components/dayView/classBlock/blockDetails/NotesIndicator';
-import DaySection from './DaySection';
-import { More, Less } from 'iconComponents';
+import React, { useState, useRef, useEffect } from "react"
+import NotesIndicator from "components/dayView/classBlock/blockDetails/NotesIndicator"
+import DaySection from "./DaySection"
+import { More, Less } from "iconComponents"
 
-const ClassSection = ({days, cls, parentBlockExpanded, setParentBlockExpanded}) => {
-	const [ expanded, setExpanded ] = useState(false);
-	const [ elementsVisible, setElementsVisible ] = useState(false);
-	const me = useRef();
+const ClassSection = ({
+  days,
+  cls,
+  parentBlockExpanded,
+  setParentBlockExpanded
+}) => {
+  const [expanded, setExpanded] = useState(false)
+  const [elementsVisible, setElementsVisible] = useState(false)
+  const me = useRef()
 
-	useEffect(() => {
-		if (cls !== parentBlockExpanded){
-			setExpanded(false);
-			setTimeout(() => setElementsVisible(false), 300, false);
-		}
-	}, [parentBlockExpanded]);
+  useEffect(() => {
+    if (cls !== parentBlockExpanded) {
+      setExpanded(false)
+      setTimeout(() => setElementsVisible(false), 300, false)
+    } else {
+      setTimeout(() => setExpanded(true), 1, false)
+      setElementsVisible(true)
 
-	const handleClick = (e) => {
-		e.stopPropagation();
-		if(!expanded) {
-			setElementsVisible(true);
-			setParentBlockExpanded(cls);
-			setTimeout(() => me.current.scrollIntoView({behavior:"smooth"}), 600, false);
-			setTimeout(() => setExpanded(true), 1, false);
-		} else {
-			setExpanded(false);
-			setTimeout(() => setElementsVisible(false), 300, false);
-		}
-	}
+      setTimeout(
+        () => me.current.scrollIntoView({ behavior: "smooth" }),
+        600,
+        false
+      )
+    }
+  }, [parentBlockExpanded])
 
-	return (
-		<section className={"class-section" + (expanded ? " expanded" : "")} ref={me}>
-			<h1 className="class-section-title" onClick={handleClick}>
-				{cls + " "}
-				<div className="flex">
-					<NotesIndicator number={days.number} show={!expanded} />
-					{ expanded 	? <Less />
-											: <More /> }
-				</div>
-			</h1>
+  const handleClick = (e) => {
+    e.stopPropagation()
+    if (!expanded) {
+      setParentBlockExpanded(cls)
+    }
+  }
 
-			{	elementsVisible &&
-				<div className={"notes unlimited" + (expanded ? " expanded" : "")} id={cls} onClick={handleClick}>
-					{
-						Object.keys(days).map(cls => cls !== "number" && (
-							<DaySection cls={cls} days={days} />
-						))
-					}
-				</div>
-			}
-		</section>
-	)
+  return (
+    <section
+      className={"class-section" + (expanded ? " expanded" : "")}
+      ref={me}>
+      <h1 className='class-section-title' onClick={handleClick}>
+        {cls + " "}
+        <div className='flex'>
+          <NotesIndicator number={days.number} show={!expanded} />
+          {expanded ? <Less /> : <More />}
+        </div>
+      </h1>
+
+      {elementsVisible && (
+        <div
+          className={"notes unlimited" + (expanded ? " expanded" : "")}
+          id={cls}
+          onClick={handleClick}>
+          {Object.keys(days).map(
+            (cls, idx) =>
+              cls !== "number" && <DaySection cls={cls} days={days} key={idx} />
+          )}
+        </div>
+      )}
+    </section>
+  )
 }
 
 export default ClassSection

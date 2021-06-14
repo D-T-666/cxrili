@@ -1,65 +1,75 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from "react"
 
-import { useNotes } from 'contexts/NotesContext'
-import { useAuth } from 'contexts/AuthContext'
+import { useNotes } from "contexts/NotesContext"
+import { useAuth } from "contexts/AuthContext"
 
-import ClassSection from './ClassSection'
+import ClassSection from "./ClassSection"
 
-const HomeworkList = () => {
-	const [ notesSorted, setNotesSorted ] = useState({});
-	const [ blockExpanded, setBlockExpanded ] = useState(null);
+const HomeworkList = ({ attention }) => {
+  const [notesSorted, setNotesSorted] = useState({})
+  const [blockExpanded, setBlockExpanded] = useState(null)
 
-	const { notes } = useNotes();
-	const { users, currentUser } = useAuth();
+  const { notes } = useNotes()
+  const { users, currentUser } = useAuth()
 
-	useEffect(() => {
-		// Sort Notes
+  useEffect(() => {
+    if (attention.cls) {
+      setBlockExpanded(attention.cls)
+    }
+  }, [attention])
 
-		let sorted = {};
+  useEffect(() => {
+    // Sort Notes
 
-		for(let i = 0; i < notes.length; i++){
-			const note = notes[i];
+    let sorted = {}
 
-			if(sorted[note.class] === undefined)
-				sorted[note.class] = {number: 0};
-			
-			sorted[note.class].number += 1;
+    for (let i = 0; i < notes.length; i++) {
+      const note = notes[i]
 
-			if(sorted[note.class][note.day] === undefined)
-				sorted[note.class][note.day] = [];
+      if (sorted[note.class] === undefined) sorted[note.class] = { number: 0 }
 
-			let currentVote = 0;
+      sorted[note.class].number += 1
 
-			if(note.upVoters.includes(currentUser.uid)) currentVote = 1
-			if(note.downVoters.includes(currentUser.uid)) currentVote = 2;
+      if (sorted[note.class][note.day] === undefined)
+        sorted[note.class][note.day] = []
 
-			sorted[note.class][note.day].push(users[note.author] ? {
-				...note,
-				authorPhotoURL: users[note.author].photoURL,
-				authorName: users[note.author].name,
-				createdAt: note.createdAt !== null ? note.createdAt.seconds * 1000 : Date.now(),
-				currentVote: currentVote
-			} : note);
-		}
+      let currentVote = 0
 
-		setNotesSorted(sorted);
+      if (note.upVoters.includes(currentUser.uid)) currentVote = 1
+      if (note.downVoters.includes(currentUser.uid)) currentVote = 2
 
-	}, [notes, users])
+      sorted[note.class][note.day].push(
+        users[note.author]
+          ? {
+              ...note,
+              authorPhotoURL: users[note.author].photoURL,
+              authorName: users[note.author].name,
+              createdAt:
+                note.createdAt !== null
+                  ? note.createdAt.seconds * 1000
+                  : Date.now(),
+              currentVote: currentVote
+            }
+          : note
+      )
+    }
 
-    return (
-		<div className="homework-list">
-			{
-				Object.keys(notesSorted).map((cls, ind) => (
-					<ClassSection
-						days={notesSorted[cls]} 
-						cls={cls} 
-						parentBlockExpanded={blockExpanded}
-						setParentBlockExpanded={setBlockExpanded}
-						key={cls+ind+"classSection"}/>
-				))
-			}
-		</div>
-    )
+    setNotesSorted(sorted)
+  }, [notes, users])
+
+  return (
+    <div className='homework-list'>
+      {Object.keys(notesSorted).map((cls, ind) => (
+        <ClassSection
+          days={notesSorted[cls]}
+          cls={cls}
+          parentBlockExpanded={blockExpanded}
+          setParentBlockExpanded={setBlockExpanded}
+          key={cls + ind + "classSection"}
+        />
+      ))}
+    </div>
+  )
 }
 
 export default HomeworkList

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react"
-import { useNotes } from "contexts/NotesContext"
+import React, { useState } from "react"
 import { useAuth } from "contexts/AuthContext"
 
 import "components/dayView/classBlock/blockDetails/notes/notes.scss"
@@ -11,6 +10,10 @@ import HomeworkCreation from "./HomeworkCreation"
 
 const HomeworkView = () => {
   const [creating, setCreating] = useState()
+  const [currentAttention, setCurrentAttention] = useState({
+    cls: undefined,
+    day: undefined
+  })
 
   const { currentUser } = useAuth()
 
@@ -18,14 +21,19 @@ const HomeworkView = () => {
     setCreating(true)
   }
 
+  const onNoteAdded = (e) => {
+    setCreating(false)
+    setCurrentAttention(e)
+  }
+
   return (
     <div
       className={"homework-page content-box" + (creating ? " creating" : "")}>
-      <HomeworkList />
+      <HomeworkList attention={currentAttention} />
 
       {currentUser &&
         (creating ? (
-          <HomeworkCreation />
+          <HomeworkCreation onNoteAdded={onNoteAdded} />
         ) : (
           <CreateNoteButton onClick={onCreateButtonClicked} />
         ))}
