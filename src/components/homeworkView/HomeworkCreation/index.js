@@ -40,10 +40,10 @@ const HomeworkCreation = () => {
 
         <div className='options'>
           <ul className='titles'>
-            <li>გაკვეთილი:</li>
-            {cls && <li>დღე:</li>}
-            <li>პრიორიტეტი:</li>
-            <li>თარიღი:</li>
+            <li>გაკვეთილი</li>
+            {cls && <li>დღე</li>}
+            <li>პრიორიტეტი</li>
+            <li>თარიღი</li>
           </ul>
 
           <ul className='content'>
@@ -83,6 +83,8 @@ const HomeworkCreation = () => {
             </li>
           </ul>
         </div>
+
+        <button className='add'>დამატება</button>
       </form>
     </div>
   )
