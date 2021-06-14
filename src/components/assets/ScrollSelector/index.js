@@ -15,13 +15,13 @@ const ScrollSelector = ({
       {options.map((option) => (
         <li
           key={option}
-          ref={option === active ? activeRef : undefined} // Asign ref to this object if it's active
-          className={option + (option == active ? " active" : "")} // Asign the "active" class if it's active
+          ref={option === active ? activeRef : undefined} // Assign ref to this object if it's active
+          className={option + (option == active ? " active" : "")} // Assign the "active" class if it's active
           onClick={(e) => {
             e.stopPropagation()
 
             if (active !== option) {
-              // scrooll this element into view after 200 miliseconds
+              // scroll this element into view after 200 milliseconds
               setTimeout(
                 () =>
                   activeRef.current.scrollIntoView({
@@ -36,7 +36,7 @@ const ScrollSelector = ({
               setActive(option)
 
               // Call the event listener
-              onSelect(option, e)
+              onSelect(option, options.indexOf(option), e)
             }
           }}>
           <span>{option}</span>
